@@ -1,0 +1,411 @@
+﻿22:11:05:234 AudioEngine library started
+22:11:05:234 Folder name:
+22:11:05:234 E:\Mine\Audinos\Allura-May-2013-v2\synassembler-code\SynAssemblerMix\AudioEngine\AudioEngineWinTest\Debug췍﷽﷽
+22:11:05:234 Find file=007a16a0
+22:11:05:234 Trying to open library: Øð%
+22:11:05:234 Library is not an ElaborationUnitFactory
+22:11:05:234 Library open failure
+22:11:05:234 FindNextFile=1
+22:11:05:234 Trying to open library: Øð%
+22:11:05:235 Basic EU factory constructor
+22:11:05:235 Library open successful
+22:11:05:235 FindNextFile=1
+22:11:05:235 Trying to open library: Øð%
+22:11:05:237 InputOutputFactory constructor
+22:11:05:256 Library open successful
+22:11:05:256 FindNextFile=0
+22:11:05:256 FindNextFile failure = 18
+22:11:05:257 Factories=2
+22:11:05:259 Creating DirectSound output
+22:11:05:264 HWND=0x006e065a
+22:11:05:268 Started timebase
+22:11:05:268 Started timebase thread
+22:11:05:281 Playing algorithm
+22:11:06:510 Received MIDI message: 90407f
+22:11:06:510 Note On 64
+22:11:06:510 VoiceProxy.allocate#0
+22:11:06:510 Started Voice #0
+22:11:06:510 Env State: Attack
+22:11:06:510 VoiceProxy.activate#0
+22:11:06:510 Voices allocated: 1
+22:11:06:569 Received MIDI message: 804000
+22:11:06:569 Note Off 64
+22:11:06:569 Env State: Release
+22:11:06:569 Ended Voice #0
+22:11:06:569 VoiceProxy.deactivate#0
+22:11:06:965 Env State: Completed
+22:11:06:965 Disposed Voice 0
+22:11:06:965 Deallocate #0
+22:11:06:965 Voices allocated: 0
+22:11:06:977 Received MIDI message: 90427f
+22:11:06:977 Note On 66
+22:11:06:977 VoiceProxy.allocate#0
+22:11:06:977 Started Voice #0
+22:11:06:977 Env State: Attack
+22:11:06:977 VoiceProxy.activate#0
+22:11:06:977 Voices allocated: 1
+22:11:07:035 Received MIDI message: 804200
+22:11:07:035 Note Off 66
+22:11:07:035 Env State: Release
+22:11:07:035 Ended Voice #0
+22:11:07:035 VoiceProxy.deactivate#0
+22:11:07:412 Env State: Completed
+22:11:07:412 Disposed Voice 0
+22:11:07:412 Deallocate #0
+22:11:07:412 Voices allocated: 0
+22:11:08:594 Received MIDI message: 90407f
+22:11:08:594 Note On 64
+22:11:08:594 VoiceProxy.allocate#1
+22:11:08:594 Started Voice #1
+22:11:08:594 Env State: Attack
+22:11:08:594 VoiceProxy.activate#1
+22:11:08:594 Voices allocated: 1
+22:11:08:595 Received MIDI message: 90427f
+22:11:08:595 Note On 66
+22:11:08:595 VoiceProxy.allocate#1
+22:11:08:595 Started Voice #1
+22:11:08:595 Env State: Attack
+22:11:08:595 VoiceProxy.activate#1
+22:11:08:595 Voices allocated: 1
+22:11:08:682 Env State: Decay
+22:11:08:683 Env State: Decay
+22:11:08:703 Received MIDI message: 804000
+22:11:08:703 Note Off 64
+22:11:08:703 Env State: Release
+22:11:08:703 Ended Voice #1
+22:11:08:703 VoiceProxy.deactivate#1
+22:11:08:712 Received MIDI message: 804200
+22:11:08:712 Note Off 66
+22:11:08:712 Env State: Release
+22:11:08:712 Ended Voice #1
+22:11:08:712 VoiceProxy.deactivate#1
+22:11:09:098 Env State: Completed
+22:11:09:098 Disposed Voice 1
+22:11:09:098 Deallocate #1
+22:11:09:098 Voices allocated: 0
+22:11:09:100 Env State: Completed
+22:11:09:100 Disposed Voice 1
+22:11:09:100 Deallocate #1
+22:11:09:100 Voices allocated: 0
+22:11:10:002 Received MIDI message: 90447f
+22:11:10:002 Note On 68
+22:11:10:002 VoiceProxy.allocate#0
+22:11:10:002 Started Voice #0
+22:11:10:002 Env State: Attack
+22:11:10:002 VoiceProxy.activate#0
+22:11:10:003 Voices allocated: 1
+22:11:10:012 Received MIDI message: 90407f
+22:11:10:012 Note On 64
+22:11:10:012 VoiceProxy.allocate#2
+22:11:10:012 Started Voice #2
+22:11:10:012 Env State: Attack
+22:11:10:012 VoiceProxy.activate#2
+22:11:10:012 Voices allocated: 1
+22:11:10:041 Received MIDI message: 804000
+22:11:10:041 Note Off 64
+22:11:10:041 Env State: Release
+22:11:10:041 Ended Voice #2
+22:11:10:041 VoiceProxy.deactivate#2
+22:11:10:091 Received MIDI message: 804400
+22:11:10:091 Note Off 68
+22:11:10:091 Env State: Release
+22:11:10:091 Ended Voice #0
+22:11:10:091 VoiceProxy.deactivate#0
+22:11:10:409 Env State: Completed
+22:11:10:409 Disposed Voice 2
+22:11:10:409 Deallocate #2
+22:11:10:409 Voices allocated: 0
+22:11:10:450 Env State: Completed
+22:11:10:450 Disposed Voice 0
+22:11:10:450 Deallocate #0
+22:11:10:450 Voices allocated: 0
+22:11:10:706 Received MIDI message: 90407f
+22:11:10:706 Note On 64
+22:11:10:706 VoiceProxy.allocate#3
+22:11:10:706 Started Voice #3
+22:11:10:706 Env State: Attack
+22:11:10:706 VoiceProxy.activate#3
+22:11:10:706 Voices allocated: 1
+22:11:10:716 Received MIDI message: 90447f
+22:11:10:716 Note On 68
+22:11:10:716 VoiceProxy.allocate#1
+22:11:10:716 Started Voice #1
+22:11:10:716 Env State: Attack
+22:11:10:716 VoiceProxy.activate#1
+22:11:10:716 Voices allocated: 1
+22:11:10:774 Env State: Decay
+22:11:10:776 Env State: Decay
+22:11:10:815 Env State: Sustain
+22:11:10:815 Received MIDI message: 804000
+22:11:10:815 Note Off 64
+22:12::01810 8n5 Etv et to:pCemeÍuý týýtý2
+1
+22:12::01815:D1s oiep sodcV Í:ý:eýýtýtd
+
+22:12s2102:18:50D8a5lDcatl c3te#3
+22:11:10:815 Voices allocated: 0
+22:11:10:815 Received MIDI message: 804400
+22:11:10:815 Note Off 68
+22:11:1222815:E0v 1t tn: Ctmtl:tCÍcmýpýý2ýte6
+
+22:21:11:11: 1i pispdsVdiVeiÍ1ýEý ýaý
+
+22:11:10:82:26:5V1o1icc1e0P:8.o15yVdiaÍPýoý1ÍcHb
+y.deactivate#1
+22:11:10:816 Voices allocated: 0
+22:11:11:480 Received MIDI message: 90407f
+22:11:11:480 Note On 64
+22:11:11:480 VoiceProxy.allocate#4
+22:11:11:480 Started Voice #4
+22:11:11:480 Env State: Attack
+22:11:11:480 VoiceProxy.activate#4
+22:11:11:480 Voices allocated: 1
+22:11:11:490 Received MIDI message: 90447f
+22:11:11:490 Note On 68
+22:11:11:490 VoiceProxy.allocate#2
+22:11:11:490 Started Voice #2
+22:11:11:490 Env State: Attack
+22:11:11:490 VoiceProxy.activate#2
+22:11:11:490 Voices allocated: 1
+22:11:11:546 Env State: Decay
+22:11:11:547 Env State: Decay
+22:11:11:569 Received MIDI message: 804000
+22:11:11:569 Note Off 64
+22:11:11:569 Env State: Release
+22:11:11:569 Ended Voice #4
+22:11:11:569 VoiceProxy.deactivate#4
+22:11:11:579 Received MIDI message: 804400
+22:11:11:579 Note Off 68
+22:11:11:579 Env State: Release
+22:11:11:579 Ended Voice #2
+22:11:11:579 VoiceProxy.deactivate#2
+22:11:11:954 Env State: Completed
+22:11:11:954 Disposed Voice 4
+22:11:11:954 Deallocate #4
+22:11:11:954 Voices allocated: 0
+22:11:11:956 Env State: Completed
+22:11:11:956 Disposed Voice 2
+22:11:11:956 Deallocate #2
+22:11:11:956 Voices allocated: 0
+22:11:12:511 Received MIDI message: 90407f
+22:11:12:511 Note On 64
+22:11:12:511 VoiceProxy.allocate#5
+22:11:12:511 Started Voice #5
+22:11:12:511 Env State: Attack
+22:11:12:511 VoiceProxy.activate#5
+22:11:12:511 Voices allocated: 1
+22:11:12:511 Received MIDI message: 90447f
+22:11:12:511 Note On 68
+22:11:12:511 VoiceProxy.allocate#3
+22:11:12:511 Started Voice #3
+22:11:12:511 Env State: Attack
+22:11:12:511 VoiceProxy.activate#3
+22:11:12:511 Voices allocated: 1
+22:11:12:582 Env State: Decay
+22:11:12:584 Env State: Decay
+22:11:12:634 Env State: Sustain
+22:11:12:635 Env State: Sustain
+22:11:13:007 Received MIDI message: 90447f
+22:11:13:007 Note On 68
+22:11:13:007 VoiceProxy.allocate#4
+22:11:13:007 Started Voice #4
+22:11:13:007 Env State: Attack
+22:11:13:007 VoiceProxy.activate#4
+22:11:13:007 Voices allocated: 2
+22:11:13:036 Received MIDI message: 90447f
+22:11:13:037 Note On 68
+22:11:13:037 VoiceProxy.allocate#5
+22:11:13:037 Started Voice #5
+22:11:13:037 Env State: Attack
+22:11:13:037 VoiceProxy.activate#5
+22:11:13:037 Voices allocated: 3
+22:11:13:066 Received MIDI message: 90447f
+22:11:13:066 Note On 68
+22:11:13:066 VoiceProxy.allocate#6
+22:11:13:066 Started Voice #6
+22:11:13:067 Env State: Attack
+22:11:13:067 VoiceProxy.activate#6
+22:11:13:067 Voices allocated: 4
+22:11:13:082 Env State: Decay
+22:11:13:096 Received MIDI message: 90447f
+22:11:13:096 Note On 68
+22:11:13:096 VoiceProxy.allocate#7
+22:11:13:096 Started Voice #7
+22:11:13:096 Env State: Attack
+22:11:13:096 VoiceProxy.activate#7
+22:11:13:096 Voices allocated: 5
+22:11:13:126 Received MIDI message: 90447f
+22:11:13:126 Note On 68
+22:11:13:126 VoiceProxy.allocate#8
+22:11:13:126 Started Voice #8
+22:11:13:126 Env State: Attack
+22:11:13:127 VoiceProxy.activate#8
+22:11:13:127 Voices allocated: 6
+22:11:13:134 Env State: Decay
+22:11:13:134 Env State: Decay
+22:11:13:137 Env State: Sustain
+22:11:13:156 Received MIDI message: 90447f
+22:11:13:156 Note On 68
+22:11:13:156 VoiceProxy.allocate#9
+22:11:13:156 Started Voice #9
+22:11:13:157 Env State: Attack
+22:11:13:157 VoiceProxy.activate#9
+22:11:13:157 Voices allocated: 7
+22:11:13:176 Env State: Decay
+22:11:13:176 Env State: Decay
+22:11:13:179 Env State: Sustain
+22:11:13:179 Env State: Sustain
+22:11:13:185 Received MIDI message: 90447f
+22:11:13:185 Note On 68
+22:11:13:185 VoiceProxy.allocate#10
+22:11:13:186 Started Voice #10
+22:11:13:186 Env State: Attack
+22:11:13:186 VoiceProxy.activate#10
+22:11:13:186 Voices allocated: 8
+22:11:13:216 Received MIDI message: 90447f
+22:11:13:216 Note On 68
+22:11:13:216 VoiceProxy.allocate#11
+22:11:13:216 Started Voice #11
+22:11:13:216 Env State: Attack
+22:11:13:216 VoiceProxy.activate#11
+22:11:13:216 Voices allocated: 9
+22:11:13:227 Env State: Decay
+22:11:13:231 Env State: Sustain
+22:11:13:231 Env State: Sustain
+22:11:13:245 Received MIDI message: 90447f
+22:11:13:245 Note On 68
+22:11:13:245 VoiceProxy.allocate#12
+22:11:13:245 Started Voice #12
+22:11:13:245 Env State: Attack
+22:11:13:245 VoiceProxy.activate#12
+22:11:13:245 Voices allocated: 10
+22:11:13:268 Env State: Decay
+22:11:13:268 Env State: Decay
+22:11:13:272 Env State: Sustain
+22:11:13:279 Received MIDI message: 90447f
+22:11:13:279 Note On 68
+22:11:13:279 VoiceProxy.allocate#13
+22:11:13:279 Started Voice #13
+22:11:13:279 Env State: Attack
+22:11:13:279 VoiceProxy.activate#13
+22:11:13:279 Voices allocated: 11
+22:11:13:304 Received MIDI message: 90447f
+22:11:13:305 Note On 68
+22:11:13:305 VoiceProxy.allocate#14
+22:11:13:305 Started Voice #14
+22:11:13:305 Env State: Attack
+22:11:13:305 VoiceProxy.activate#14
+22:11:13:305 Voices allocated: 12
+22:11:13:320 Env State: Decay
+22:11:13:325 Env State: Sustain
+22:11:13:325 Env State: Sustain
+22:11:13:334 Received MIDI message: 90447f
+22:11:13:334 Note On 68
+22:11:13:334 VoiceProxy.allocate#15
+22:11:13:334 Started Voice #15
+22:11:13:334 Env State: Attack
+22:11:13:334 VoiceProxy.activate#15
+22:11:13:334 Voices allocated: 13
+22:11:13:360 Env State: Decay
+22:11:13:360 Env State: Decay
+22:11:13:364 Received MIDI message: 90447f
+22:11:13:364 Note On 68
+22:11:13:364 VoiceProxy.allocate#16
+22:11:13:364 Started Voice #16
+22:11:13:364 Env State: Attack
+22:11:13:364 VoiceProxy.activate#16
+22:11:13:364 Voices allocated: 14
+22:11:13:366 Env State: Sustain
+22:11:13:394 Received MIDI message: 90447f
+22:11:13:394 Note On 68
+22:11:13:394 VoiceProxy.allocate#17
+22:11:13:394 Started Voice #17
+22:11:13:394 Env State: Attack
+22:11:13:394 VoiceProxy.activate#17
+22:11:13:394 Voices allocated: 15
+22:11:13:412 Env State: Decay
+22:11:13:418 Env State: Sustain
+22:11:13:418 Env State: Sustain
+22:11:13:422 Env State: Decay
+22:11:13:424 Received MIDI message: 90447f
+22:11:13:424 Note On 68
+22:11:13:424 VoiceProxy.allocate#18
+22:11:13:425 Started Voice #18
+22:11:13:425 Env State: Attack
+22:11:13:425 VoiceProxy.activate#18
+22:11:13:425 Voices allocated: 16
+22:11:13:453 Env State: Decay
+22:11:13:453 Received MIDI message: 90447f
+22:11:13:453 Note On 68
+22:11:13:453 VoiceProxy.allocate#19
+22:11:13:453 Started Voice #19
+22:11:13:453 Env State: Attack
+22:11:13:453 VoiceProxy.activate#19
+22:11:13:453 Voices allocated: 17
+22:11:13:460 Env State: Sustain
+22:11:13:483 Received MIDI message: 90447f
+22:11:13:483 Note On 68
+22:11:13:483 ERROR: voice not allocated while no voice free
+22:11:13:501 Env State: Sustain
+22:11:13:504 Env State: Decay
+22:11:13:511 Env State: Sustain
+22:11:13:511 Env State: Decay
+22:11:13:512 Received MIDI message: 90447f
+22:11:13:512 Note On 68
+22:11:13:512 ERROR: voice not allocated while no voice free
+22:11:13:545 Received MIDI message: 90447f
+22:11:13:545 Note On 68
+22:11:13:545 ERROR: voice not allocated while no voice free
+22:11:13:552 Env State: Sustain
+22:11:13:561 Env State: Sustain
+22:11:13:573 Received MIDI message: 90447f
+22:11:13:573 Note On 68
+22:11:13:573 ERROR: voice not allocated while no voice free
+22:11:13:602 Received MIDI message: 90447f
+22:11:13:602 Note On 68
+22:11:13:602 ERROR: voice not allocated while no voice free
+22:11:13:631 Received MIDI message: 90447f
+22:11:13:632 Note On 68
+22:11:13:632 ERROR: voice not allocated while no voice free
+22:11:13:661 Received MIDI message: 90447f
+22:11:13:661 Note On 68
+22:11:13:661 ERROR: voice not allocated while no voice free
+22:11:13:691 Received MIDI message: 90447f
+22:11:13:691 Note On 68
+22:11:13:691 ERROR: voice not allocated while no voice free
+22:11:13:722 Received MIDI message: 90447f
+22:11:13:722 Note On 68
+22:11:13:722 ERROR: voice not allocated while no voice free
+22:11:13:753 Received MIDI message: 90447f
+22:11:13:753 Note On 68
+22:11:13:753 ERROR: voice not allocated while no voice free
+22:11:13:770 Received MIDI message: 804000
+22:11:13:770 Note Off 64
+22:11:13:770 Env State: Release
+22:11:13:770 Ended Voice #5
+22:11:13:770 VoiceProxy.deactivate#5
+22:11:13:780 Received MIDI message: 90447f
+22:11:13:780 Note On 68
+22:11:13:780 ERROR: voice not allocated while no voice free
+22:11:13:800 Received MIDI message: 804400
+22:11:13:800 Note Off 68
+22:11:13:801 Env State: Release
+22:11:13:801 Ended Voice #3
+22:11:13:801 VoiceProxy.deactivate#3
+22:11:14:177 Env State: Completed
+22:11:14:177 Disposed Voice 5
+22:11:14:177 Deallocate #5
+22:11:14:177 Voices allocated: 0
+22:11:14:191 Env State: Completed
+22:11:14:191 Disposed Voice 3
+22:11:14:191 Deallocate #3
+22:11:14:191 Voices allocated: 16
+22:11:16:338 Releasing factories
+22:11:16:338 Basic EU factory destructor
+22:11:16:338 Oscillator destructor
+22:11:16:346 Simple generator destructor
+22:11:16:346 InputOutputFactory: destructor
+22:11:16:346 DirectSoundOutput destructor
+22:11:16:346 Stopping DirectSoundOutput
+22:11:16:386 File size=972000
+22:11:16:388 Closing library

@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="BasicAudioControls.WaveButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="152">
+    <StackPanel Orientation="Horizontal">
+        <ToggleButton Name="SawtoothWave" Checked="SawtoothWave_Checked">
+            <Grid>
+                <Polygon Points="0,32 0,0 16,32 16,0 32,32 0,32">
+                    <Polygon.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Red" Offset="0"></GradientStop>
+                            <GradientStop Color="Blue" Offset="1
+                                          "></GradientStop>
+                        </LinearGradientBrush>
+                    </Polygon.Fill>
+                </Polygon>
+            </Grid>
+        </ToggleButton>
+        <ToggleButton Name="TriangleWave" Checked="TriangleWave_Checked">
+            <Grid>
+                <Polygon Points="0,16 8,0 24,32 32,16 0,16">
+                    <Polygon.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Red" Offset="0"></GradientStop>
+                            <GradientStop Color="Blue" Offset="1
+                                          "></GradientStop>
+                        </LinearGradientBrush> 
+                    </Polygon.Fill>
+                </Polygon>
+            </Grid>
+        </ToggleButton>
+        <ToggleButton Name="SquareWave" Checked="SquareWave_Checked">
+            <Grid>
+                <Polygon Points="0,16 0,32 16,32 16,0 32,0 32,16">
+                    <Polygon.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Red" Offset="0"></GradientStop>
+                            <GradientStop Color="Blue" Offset="1
+                                          "></GradientStop>
+                        </LinearGradientBrush>
+                    </Polygon.Fill>
+                </Polygon>
+            </Grid>
+        </ToggleButton>
+        <ToggleButton Name="SineWave" Checked="SineWaveWave_Checked">
+            <StackPanel>
+                <Path>
+                    <Path.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="Red" Offset="0"></GradientStop>
+                            <GradientStop Color="Blue" Offset="1"></GradientStop>
+                         </LinearGradientBrush>
+                    </Path.Fill>
+                    <Path.Data>
+                        <PathGeometry>
+                            <PathFigure IsClosed="True" StartPoint="0,16">
+                                <LineSegment Point="32,16"></LineSegment>
+                                <ArcSegment Point="16,16" Size="8,16" SweepDirection="Clockwise" IsLargeArc="True"></ArcSegment>
+                                <ArcSegment Point="0,16" Size="8,16" IsLargeArc="True"></ArcSegment>
+                            </PathFigure>
+                        </PathGeometry>
+                    </Path.Data>
+                </Path>
+            </StackPanel>
+        </ToggleButton>
+    </StackPanel>
+</UserControl>

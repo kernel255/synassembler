@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="AbstractElaborationUnits">
+      <UniqueIdentifier>{39f95be4-74f3-477a-b322-91221c8c174c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Facilities">
+      <UniqueIdentifier>{f41dfde4-e00f-4897-a73d-da050c9fa9f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AbstractElaborationUnits\Resource Files">
+      <UniqueIdentifier>{fc8e125d-ae82-4596-bf33-b9f6abdbf602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Facilities\General">
+      <UniqueIdentifier>{a029bea2-6395-4c87-8edd-251a3bbd561c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BasicElaborationUnits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BasicEUFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\Oscillator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\OscillatorKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnitFactory.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\Algorithm.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AudioOutput.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ConcretePort.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitFactory.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitPort.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\EUKind.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\MIDIChannelMessage.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ModuleServices.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\PhysicalElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ProxyElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\VirtualElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\MIDISequencePlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\MIDISequencePlayerKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\TimeBase.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PCMWaveform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PCMWaveformKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleVoice.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\textfile.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceLIFO.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceProxy.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\GainProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\AbstractProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BasicElaborationUnits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicEUFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PCMWaveform.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PCMWaveformKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleVoice.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\Oscillator.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\OscillatorKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\MIDISequencePlayerKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\MIDISequencePlayer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceLIFO.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceProxy.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

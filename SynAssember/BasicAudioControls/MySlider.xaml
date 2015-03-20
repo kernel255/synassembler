@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="BasicAudioControls.BasicSlider"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="50" Background="#ffd0d0d0">
+    <WrapPanel Orientation="Vertical">
+    <Canvas Name="SliderPanel" Background="#ffd0d0d0" VerticalAlignment="Bottom" Width="50" Height="100">
+        <Rectangle Name="SliderBackground" Canvas.Top="0" Canvas.Left="10" Width="30" Height="100">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#ff868686"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="SliderSpace" Canvas.Top="0" Canvas.Left="15" Width="20" Height="100">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="DarkGray"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Name="SliderCursor" Canvas.Top="0" Canvas.Left="10" Width="30" Height="20" RadiusX="15" RadiusY="5"
+                   MouseDown="SliderCursor_MouseDown" MouseUp="SliderCursor_MouseUp" MouseMove="SliderCursor_MouseMove" MouseLeave="SliderCursor_MouseLeave">
+            <Rectangle.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="Black" Offset="0"></GradientStop>
+                    <GradientStop Color="DarkGray" Offset="1"></GradientStop>
+                 </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+    </Canvas>
+        <Label Name="SliderLabel" VerticalAlignment="Top" Background="#ffa0a0e0"></Label>
+    </WrapPanel>
+</UserControl>

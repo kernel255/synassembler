@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="ElaborationUnits">
+      <UniqueIdentifier>{88e6cd67-253f-42fb-b8d6-bfec51808921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Facilities">
+      <UniqueIdentifier>{5d818b8d-8a70-4e4d-a487-43c1e8c654fc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AudioEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FactoryRetriever.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\AbstractElaborationUnit.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\AbstractElaborationUnitFactory.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\AbstractPhysicalElaborationUnitFactory.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\Algorithm.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\AudioOutput.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ConcretePort.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ElaborationUnit.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ElaborationUnitFactory.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ElaborationUnitPort.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\EUKind.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\MIDIChannelMessage.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ModuleServices.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PhysicalElaborationUnit.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\ProxyElaborationUnit.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\VirtualElaborationUnit.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\TimeBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\Audio\WaveLogger.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\Audio\SimpleEnvelope.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\AbstractEUKind.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\AbstractProperty.cpp">
+      <Filter>ElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\textfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\hpslib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\PropertyValuesHolder.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\GainProperty.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\IntegerProperty.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AudioEngine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioEngineAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FactoryRetriever.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\AbstractElaborationUnit.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\AbstractElaborationUnitFactory.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\AbstractPhysicalElaborationUnitFactory.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\Algorithm.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\AudioOutput.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ConcretePort.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ElaborationUnit.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ElaborationUnitFactory.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ElaborationUnitPort.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnitProperty.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\EUKind.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\MIDIChannelMessage.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ModuleServices.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PhysicalElaborationUnit.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\ProxyElaborationUnit.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecificOSInfo.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\VirtualElaborationUnit.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\DSPTypes.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\Audio\WaveLogger.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\Property.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\GainProperty.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\AbstractEUKind.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\AbstractProperty.h">
+      <Filter>ElaborationUnits</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\textfile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\PropertyValuesHolder.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\IntegerProperty.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

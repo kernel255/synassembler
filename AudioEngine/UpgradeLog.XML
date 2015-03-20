@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="AudioEngine">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine.sln">
+</Property><Property Name="User Options File" Value="C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine.suo">
+</Property><Property Name="Date" Value="martedì 20 aprile 2010">
+</Property><Property Name="Time" Value="14.22">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="AudioEngine.sln" Description="File successfully backed up as C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="AudioEngine.suo" Description="File successfully backed up as C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine.suo.old">
+</Event><Event ErrorLevel="0" Project="BasicElaborationUnits" Source="BasicElaborationUnits\BasicElaborationUnits.vcproj" Description="Converting project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\BasicElaborationUnits\BasicElaborationUnits.vcproj'.">
+</Event><Event ErrorLevel="1" Project="BasicElaborationUnits" Source="BasicElaborationUnits\BasicElaborationUnits.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="BasicElaborationUnits" Source="BasicElaborationUnits\BasicElaborationUnits.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\BasicElaborationUnits\BasicElaborationUnits.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="BasicElaborationUnits" Source="BasicElaborationUnits\BasicElaborationUnits.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="InputOutput" Source="InputOutput\InputOutput.vcproj" Description="Converting project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\InputOutput\InputOutput.vcproj'.">
+</Event><Event ErrorLevel="1" Project="InputOutput" Source="InputOutput\InputOutput.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="InputOutput" Source="InputOutput\InputOutput.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\InputOutput\InputOutput.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="InputOutput" Source="InputOutput\InputOutput.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AudioEngineUnitTest" Source="AudioEngineUnitTest\AudioEngineUnitTest.vcproj" Description="Converting project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngineUnitTest\AudioEngineUnitTest.vcproj'.">
+</Event><Event ErrorLevel="1" Project="AudioEngineUnitTest" Source="AudioEngineUnitTest\AudioEngineUnitTest.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="AudioEngineUnitTest" Source="AudioEngineUnitTest\AudioEngineUnitTest.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngineUnitTest\AudioEngineUnitTest.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="AudioEngineUnitTest" Source="AudioEngineUnitTest\AudioEngineUnitTest.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="AudioEngine" Source="AudioEngine\AudioEngine.vcproj" Description="Converting project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine\AudioEngine.vcproj'.">
+</Event><Event ErrorLevel="1" Project="AudioEngine" Source="AudioEngine\AudioEngine.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="0" Project="AudioEngine" Source="AudioEngine\AudioEngine.vcproj" Description="Done converting to new project file 'C:\Documents and Settings\stefanoc\Desktop\Mine\Audinos\SynAssembler-Apr2010\SynAssemblerMix\AudioEngine\AudioEngine\AudioEngine.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="AudioEngine" Source="AudioEngine\AudioEngine.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="AudioEngine.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="AudioEngine.sln" Description="Converted">
+</Event></UpgradeLog>

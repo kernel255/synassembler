@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="AbstractElaborationUnits">
+      <UniqueIdentifier>{7ceda459-7f2f-4dc8-98ef-44e1e6a95a41}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ElaborationUnits\DirectSoundOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\DirectSoundOutputKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputOutputFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\MIDIChannelMessage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\MIDIInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\MIDIInputKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PolyKeyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PolyKeyboardKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnitFactory.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractPhysicalElaborationUnitFactory.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\Algorithm.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AudioOutput.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ConcretePort.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitFactory.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitPort.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\EUKind.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ModuleServices.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\PhysicalElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ProxyElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\VirtualElaborationUnit.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\TimeBase.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveLogger.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp">
+      <Filter>AbstractElaborationUnits</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\textfile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PCKeyboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ElaborationUnits\PCKeyboardKind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ElaborationUnits\PolyKeyboard.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PolyKeyboardKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputOutput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InputOutputFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\DirectSoundOutput.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\DirectSoundOutputKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\MIDIInputKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PCKeyboard.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ElaborationUnits\PCKeyboardKind.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

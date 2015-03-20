@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="SynthPanelTest.MySynthPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="140" d:DesignWidth="280" Background="#ffe0d0d0">
+    <Canvas Background="#ffd0d0d0" Width="280" Height="200" Name="mySynthPanel">
+        <auc:BasicSlider Label="Amplitude" Canvas.Top="60" Canvas.Left="0"></auc:BasicSlider>
+        <auc:BasicSlider Label="Amplitude" Canvas.Top="60" Canvas.Left="80"></auc:BasicSlider>
+        <auc:BasicPotentiometer Canvas.Top="60" Canvas.Left="160"></auc:BasicPotentiometer>
+        <auc:WaveButton Canvas.Top="10" Canvas.Left="10"></auc:WaveButton>
+    </Canvas>
+</UserControl>

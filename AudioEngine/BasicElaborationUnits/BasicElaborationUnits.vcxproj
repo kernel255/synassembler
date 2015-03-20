@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{23B71CCD-B825-4A11-B195-167FCAD57EE7}</ProjectGuid>
+    <RootNamespace>BasicElaborationUnits</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\AudioEngine\AudioEngine\ElaborationUnits</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;BASICELABORATIONUNITS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;BASICELABORATIONUNITS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\AudioEngine\AudioEngine\ElaborationUnits</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleVoice.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceLIFO.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceProxy.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\AbstractProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\GainProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\textfile.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\TimeBase.cpp" />
+    <ClCompile Include="BasicElaborationUnits.cpp" />
+    <ClCompile Include="BasicEUFactory.cpp" />
+    <ClCompile Include="ElaborationUnits\MIDISequencePlayer.cpp" />
+    <ClCompile Include="ElaborationUnits\MIDISequencePlayerKind.cpp" />
+    <ClCompile Include="ElaborationUnits\Oscillator.cpp" />
+    <ClCompile Include="ElaborationUnits\OscillatorKind.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnit.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnitFactory.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\Algorithm.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\AudioOutput.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ConcretePort.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnit.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitFactory.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ElaborationUnitPort.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\EUKind.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\MIDIChannelMessage.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ModuleServices.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\PhysicalElaborationUnit.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\ProxyElaborationUnit.cpp" />
+    <ClCompile Include="..\AudioEngine\ElaborationUnits\VirtualElaborationUnit.cpp" />
+    <ClCompile Include="ElaborationUnits\PCMWaveform.cpp" />
+    <ClCompile Include="ElaborationUnits\PCMWaveformKind.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.h" />
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleVoice.h" />
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceLIFO.h" />
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceProxy.h" />
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.h" />
+    <ClInclude Include="BasicElaborationUnits.h" />
+    <ClInclude Include="BasicEUFactory.h" />
+    <ClInclude Include="ElaborationUnits\MIDISequencePlayer.h" />
+    <ClInclude Include="ElaborationUnits\MIDISequencePlayerKind.h" />
+    <ClInclude Include="ElaborationUnits\Oscillator.h" />
+    <ClInclude Include="ElaborationUnits\OscillatorKind.h" />
+    <ClInclude Include="ElaborationUnits\PCMWaveform.h" />
+    <ClInclude Include="ElaborationUnits\PCMWaveformKind.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

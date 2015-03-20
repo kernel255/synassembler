@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="BasicAudioControls.VuMeter"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="140" d:DesignWidth="50" Background="#ff909090">
+    <StackPanel Loaded="StackPanel_Loaded">
+        <Rectangle Width="30" Height="10" Fill="#ffb00000" Margin="5,3,5,3" Name="Led1"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ffb00000" Margin="5,3,5,3" Name="Led2"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ffb0b000" Margin="5,3,5,3" Name="Led3"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ffb0b000" Margin="5,3,5,3" Name="Led4"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ff00b000" Margin="5,3,5,3" Name="Led5"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ff00b000" Margin="5,3,5,3" Name="Led6"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ff00b000" Margin="5,3,5,3" Name="Led7"></Rectangle>
+        <Rectangle Width="30" Height="10" Fill="#ff00b000" Margin="5,3,5,3" Name="Led8"></Rectangle>
+    </StackPanel>
+</UserControl>
