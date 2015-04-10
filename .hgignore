@@ -1,2 +1,2 @@
 syntax: glob
-AudioEngine/AudioEngine/Debug/**
+**/AudioEngine/AudioEngine/Debug/
