@@ -110,6 +110,8 @@ namespace SynthPanels
 
         public delegate bool WriteEUDoubleProperty(int id, String propertyName, Double val);
 
+		public delegate bool WriteEUIntegerProperty(int id, String propertyName, Int32 val);
+
         public ISynthPanel createSynthPanel(String factoryName, String panelName, int euId)
         {
             if(!m_FactoryDict.ContainsKey(factoryName))

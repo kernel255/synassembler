@@ -1,0 +1,2 @@
+syntax: glob
+AudioEngine/AudioEngine/Debug/**

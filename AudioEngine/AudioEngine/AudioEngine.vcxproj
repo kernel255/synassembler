@@ -66,9 +66,7 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Configuration)\*.dll ..\..\SynAssember\SynAssember\bin\Release
-copy $(SolutionDir)$(Configuration)\*.dll ..\..\SynAssember\SynAssember\bin\Debug
-copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Release
+      <Command>copy $(SolutionDir)$(Configuration)\*.dll ..\..\SynAssember\SynAssember\bin\Debug
 copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debug</Command>
       <Message>Copy dll to be used by SynAssembler</Message>
     </PostBuildEvent>
