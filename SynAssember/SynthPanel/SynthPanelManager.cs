@@ -11,7 +11,7 @@ using System.Xml;
 
 namespace SynthPanels
 {
-    public class SynthPanelManager
+	public class SynthPanelManager
     {
 
         private static double SPACE_X_BETWEENPANELS = 10;
@@ -46,16 +46,16 @@ namespace SynthPanels
             return result;
         }
 
-        /**
-         * Read a list of name of factories and try to load them 
-         * @return A list of SynthPanelFactories corresponding to the requested factories
-         */
+		/**
+			* Read a list of name of factories and try to load them 
+			* @return A list of SynthPanelFactories corresponding to the requested factories
+			*/
 
-        private Dictionary<String, ISynthPanelFactory> m_FactoryDict = new Dictionary<string, ISynthPanelFactory>();
+		private Dictionary<String, ISynthPanelFactory> m_FactoryDict = new Dictionary<string, ISynthPanelFactory>();
 
-        private WriteEUDoubleProperty writeEUDProp;
+		private WriteEUDoubleProperty writeEUDProp;
 
-        public IList<ISynthPanelFactory> initSynthPanelsFactories(StringBuilder folderName, IList<String> requestedFactories, WriteEUProperty writeProp, WriteEUDoubleProperty writedProp)
+        public IList<ISynthPanelFactory> initSynthPanelsFactories(StringBuilder folderName, IList<String> requestedFactories, WriteEUProperty writeProp, WriteEUDoubleProperty writedProp, DelegateFactoryInterface delegateFactory)
         {
             Assembly synPanelAssembly;
             List<ISynthPanelFactory> factories = new List<ISynthPanelFactory>();
@@ -106,11 +106,6 @@ namespace SynthPanels
             return factories;
         }
 
-        public delegate bool WriteEUProperty(Int32 id, String propertyName, String value);
-
-        public delegate bool WriteEUDoubleProperty(int id, String propertyName, Double val);
-
-		public delegate bool WriteEUIntegerProperty(int id, String propertyName, Int32 val);
 
         public ISynthPanel createSynthPanel(String factoryName, String panelName, int euId)
         {
@@ -233,5 +228,6 @@ namespace SynthPanels
 		}
 
         public const string XML_PANEL = "SynthPanel";
-    }
+
+	}
 }

@@ -16,7 +16,7 @@ namespace ClayAudioEngine
 
         public static bool writeEUDoubleProperty(int euId, String propertyName, Double value)
         {
-            AudioEngineWrapper.writeEUDProperty(euId, 0, value);
+			AudioEngineWrapper.getDefault().writeEUDProperty(euId, 0, value);
             /*
             // TODO: find a way to pass directly a double to C++
             String strValue = Convert.ToString(value);

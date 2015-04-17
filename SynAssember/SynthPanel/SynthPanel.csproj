@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="AbstractSynthPanel.cs" />
     <Compile Include="AbstractSynthPanelFactory.cs" />
+    <Compile Include="DelegateFactoryInterface1.cs" />
     <Compile Include="ISynthPanel.cs" />
     <Compile Include="ISynthPanelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

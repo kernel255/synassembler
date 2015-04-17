@@ -14,7 +14,7 @@ namespace BasicEUSynthFactory
 
         OscillatorPanel m_OscillatorPanel = null;
 
-        public OscillatorPanelWrapper(int id, SynthPanelManager.WriteEUDoubleProperty writeDProp) : base(new OscillatorPanel(id, writeDProp), id) {
+        public OscillatorPanelWrapper(int id, WriteEUDoubleProperty writeDProp) : base(new OscillatorPanel(id, writeDProp), id) {
             m_OscillatorPanel = (OscillatorPanel)m_UserControl;
         }
 

@@ -7,8 +7,8 @@ namespace SynthPanels
 {
     public abstract partial class AbstractSynthPanelFactory : ISynthPanelFactory
     {
-        protected SynthPanelManager.WriteEUDoubleProperty writeEUDProp;
-        virtual public void init(SynthPanelManager.WriteEUDoubleProperty writeEUDProp)
+        protected WriteEUDoubleProperty writeEUDProp;
+        virtual public void init(WriteEUDoubleProperty writeEUDProp)
         {
             this.writeEUDProp = writeEUDProp;
         }

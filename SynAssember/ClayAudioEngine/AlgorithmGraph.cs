@@ -21,7 +21,7 @@ namespace ClayAudioEngine
         public AlgorithmGraph(Canvas canvas)
         {
             m_Canvas = canvas;
-            m_AudioEngineId = AudioEngineWrapper.createNewAlgorithm();
+			m_AudioEngineId = AudioEngineWrapper.getDefault().createNewAlgorithm();
             m_EUGlyphs = new List<ElaborationUnitGlyphInstance>();
             m_EUConnections = new List<EUConnection>();
         }
@@ -32,14 +32,14 @@ namespace ClayAudioEngine
             int id;
 			if (euDesc.Physical)
 			{
-				id = AudioEngineWrapper.createNewPhysicalElaborationUnit(euFactory.Id, euDesc.Id, 0, physicalInstanceId);
+				id = AudioEngineWrapper.getDefault().createNewPhysicalElaborationUnit(euFactory.Id, euDesc.Id, 0, physicalInstanceId);
 				if(euDesc.Name.Equals("PC Keyboard"))
 				{
-					AudioEngineWrapper.keybProcessor.EUId = id;
+					AudioEngineWrapper.getDefault().keybProcessor.EUId = id;
 				}
 			}
 			else
-				id = AudioEngineWrapper.createNewVirtualElaborationUnit(euFactory.Id, euDesc.Id);
+				id = AudioEngineWrapper.getDefault().createNewVirtualElaborationUnit(euFactory.Id, euDesc.Id);
             if (id < 0)
             {
                 return null;
@@ -70,10 +70,10 @@ namespace ClayAudioEngine
             euInst.addToCanvas(m_Canvas);
             //euInst.addToPanel(m_Canvas);
 
-			AudioEngineWrapper.addElaborationUnit(algoId, euDesc.Id);
+			AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euDesc.Id);
 
             // Create synth panel
-            ISynthPanel synPanel = AudioEngineWrapper.createNewPanel(euFactory.getName(), euDesc.Name, euInst.AudioEngineId);
+			ISynthPanel synPanel = AudioEngineWrapper.getDefault().createNewPanel(euFactory.getName(), euDesc.Name, euInst.AudioEngineId);
 			
             euInst.m_SynthPanel = synPanel;
             SynthPanelManager.getDefault().AddSynthPanel(synPanel, true);
@@ -87,7 +87,7 @@ namespace ClayAudioEngine
             euConn.setTransparent(false);
             m_EUConnections.Add(euConn);
 
-            AudioEngineWrapper.connectElaborationUnits(m_AudioEngineId, euConn.euSourceId,euConn.sourcePortIndex,euConn.euDestinationId,euConn.destinationPortIndex);
+			AudioEngineWrapper.getDefault().connectElaborationUnits(m_AudioEngineId, euConn.euSourceId, euConn.sourcePortIndex, euConn.euDestinationId, euConn.destinationPortIndex);
 
             m_Changed = true;
         }
@@ -198,10 +198,10 @@ namespace ClayAudioEngine
                                         string euFact = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_FACTNAME_ATTR);
                                         string physInst = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_PHYSINST_ATTR);
                                         string id = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_AUDIOENGINEID_ATTR);
-                                        int factIndex = AudioEngineWrapper.getFactoryIdByName(euFact);
-                                        int euIndex = AudioEngineWrapper.getEUByName(euName, factIndex);
+										int factIndex = AudioEngineWrapper.getDefault().getFactoryIdByName(euFact);
+										int euIndex = AudioEngineWrapper.getDefault().getEUByName(euName, factIndex);
                                         int physInstIndex = Int32.Parse(physInst);
-                                        ElaborationUnitFactory fact = AudioEngineWrapper.getFactoryById(factIndex);
+										ElaborationUnitFactory fact = AudioEngineWrapper.getDefault().getFactoryById(factIndex);
                                         ElaborationUnitDescription euDescr = AudioEngineWrapper.getEUDescriptionById(fact, euIndex);
                                         String posX = reader.GetAttribute("X");
                                         String posY = reader.GetAttribute("Y");
@@ -221,7 +221,7 @@ namespace ClayAudioEngine
                                         }
                                         euInst.read(reader);
                                         storeTempAEId(euInst, id);
-										AudioEngineWrapper.addElaborationUnit(algoId, euInst.AudioEngineId);
+										AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);
                                         m_EUGlyphs.Add(euInst);
 										lastEUFact = euFact;
 										lastEUName = euName;
@@ -253,7 +253,7 @@ namespace ClayAudioEngine
 
                                         euConn.setTransparent(false);
 										m_EUConnections.Add(euConn);
-										int res = AudioEngineWrapper.connectElaborationUnits(m_AudioEngineId, euConn.euSourceId, euConn.sourcePortIndex, euConn.euDestinationId, euConn.destinationPortIndex);
+										int res = AudioEngineWrapper.getDefault().connectElaborationUnits(m_AudioEngineId, euConn.euSourceId, euConn.sourcePortIndex, euConn.euDestinationId, euConn.destinationPortIndex);
 										if (res != 0)
 											throw new Exception("Error while connecting EUId:" + euConn.euSourceId + " to EUId:" + euConn.euDestinationId);
                                     }

@@ -13,7 +13,7 @@ namespace InputOutputSynthFactory
         private const String POLYTRACKKEY_NAME = "Polytrack Keyboard";
 		private const String PCKEYBOARD_NAME = "PC Keyboard";
 
-        public override void init(SynthPanelManager.WriteEUDoubleProperty writeEUDProp)
+        public override void init(WriteEUDoubleProperty writeEUDProp)
         {
             base.init(writeEUDProp);
         }

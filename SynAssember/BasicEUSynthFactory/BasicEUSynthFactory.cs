@@ -12,7 +12,7 @@ namespace BasicEUSynthFactory
         private const String PCMWAVE_NAME = "PCM Waveform";
         private const String MIDISEQ_NAME = "MIDI Sequence Player";
 
-        public override void init(SynthPanelManager.WriteEUDoubleProperty writeEUDProp)
+        public override void init(WriteEUDoubleProperty writeEUDProp)
         {
             base.init(writeEUDProp);
         }

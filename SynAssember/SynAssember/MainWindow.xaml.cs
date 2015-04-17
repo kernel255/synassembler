@@ -77,7 +77,7 @@ namespace SynAssember
                 Trace.Write("Current folder=" + currentFolder);
 
 
-                m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getFactories());
+				m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
                 m_Shelf.addToPanel(LeftPanel);
 
                 m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
@@ -144,7 +144,7 @@ namespace SynAssember
                 XmlTextReader reader = new XmlTextReader(dlg.FileName);
                 m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
                 Int32 hWnd = (Int32)getWindowHwnd();
-                AudioEngineWrapper._setHwnd((int)hWnd);
+				AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
                 try {
                     m_CurrentAlgorithGraph.read(reader);
                 }
@@ -168,7 +168,7 @@ namespace SynAssember
 					XmlTextReader reader = new XmlTextReader(filename);
 					m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
 					Int32 hWnd = (Int32)getWindowHwnd();
-					AudioEngineWrapper._setHwnd((int)hWnd);
+					AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
 					try
 					{
 						m_CurrentAlgorithGraph.read(reader);
@@ -202,7 +202,7 @@ namespace SynAssember
         {
             //StringBuilder dllPath = new StringBuilder("D:\\Mine\\Audinos\\SynAssembler-Apr2010\\SynAssemblerMix\\AudioEngine\\Debug\\");
             StringBuilder dllPath = new StringBuilder(applicationFolder);
-            ClayAudioEngine.AudioEngineWrapper.init(dllPath,0,48000,16,1);
+			ClayAudioEngine.AudioEngineWrapper.getDefault().init(dllPath, 0, 48000, 16, 1);
 
             return true;
         }
@@ -270,7 +270,7 @@ namespace SynAssember
                     Point p = e.GetPosition(RightPanel);
                     int physicalInstanceId = -1;
 
-                    ElaborationUnitFactory fact = AudioEngineWrapper.getFactoryById(factoryIndex);
+					ElaborationUnitFactory fact = AudioEngineWrapper.getDefault().getFactoryById(factoryIndex);
                     ElaborationUnitDescription euDescr = AudioEngineWrapper.getEUDescriptionById(fact, euIndex);
                     if (euDescr.Physical)
                     {
@@ -291,7 +291,7 @@ namespace SynAssember
                     try
                     {
                         Int32 hWnd = (Int32) getWindowHwnd();
-                        AudioEngineWrapper._setHwnd((int)hWnd);
+						AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
 
                         m_CurrentAlgorithGraph.addElaborationUnitGlyph(p.X, p.Y, euDescr, fact, physicalInstanceId);
                     }
@@ -424,7 +424,7 @@ namespace SynAssember
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            AudioEngineWrapper.release();
+			AudioEngineWrapper.getDefault().release();
 			StoreSettings();
             App.Current.Shutdown();
         }
@@ -484,7 +484,7 @@ namespace SynAssember
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
 		{
-			byte[] result = AudioEngineWrapper.FirePCKeyboardEvent(e);
+			byte[] result = AudioEngineWrapper.getDefault().FirePCKeyboardEvent(e);
 			if(result==null)
 			{
 				
@@ -493,7 +493,7 @@ namespace SynAssember
 
 		private void Window_KeyUp(object sender, KeyEventArgs e)
 		{
-			byte[] result = AudioEngineWrapper.FirePCKeyboardEvent(e);
+			byte[] result = AudioEngineWrapper.getDefault().FirePCKeyboardEvent(e);
 			if (result == null)
 			{
 
@@ -503,7 +503,7 @@ namespace SynAssember
 
 		private void PlayButton_Click(object sender, RoutedEventArgs e)
 		{
-			int res =AudioEngineWrapper.PlayAlgorithm(m_CurrentAlgorithGraph.algoId);
+			int res =AudioEngineWrapper.getDefault().PlayAlgorithm(m_CurrentAlgorithGraph.algoId);
 			if(res!=0)
 			{
 				MessageBox.Show("Error while playing algorithm: " + res);
@@ -514,7 +514,7 @@ namespace SynAssember
 
 		private void StopButton_Click(object sender, RoutedEventArgs e)
 		{
-			int res = AudioEngineWrapper.StopAlgorithm(m_CurrentAlgorithGraph.algoId);
+			int res = AudioEngineWrapper.getDefault().StopAlgorithm(m_CurrentAlgorithGraph.algoId);
 			if(res!=0)
 			{
 				MessageBox.Show("Error while stopping algorithm: " + res);

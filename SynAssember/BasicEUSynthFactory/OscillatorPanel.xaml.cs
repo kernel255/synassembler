@@ -22,11 +22,11 @@ namespace BasicEUSynthFactory
     /// </summary>
     public partial class OscillatorPanel : UserControl
     {
-        SynthPanelManager.WriteEUDoubleProperty writeDProp;
+        WriteEUDoubleProperty writeDProp;
 
         int id;
 
-        public OscillatorPanel(int id, SynthPanelManager.WriteEUDoubleProperty writeDProp)
+        public OscillatorPanel(int id, WriteEUDoubleProperty writeDProp)
         {
             InitializeComponent();
             OutputLevel.setOwner(this);

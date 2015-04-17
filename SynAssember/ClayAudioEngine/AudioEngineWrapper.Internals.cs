@@ -19,7 +19,7 @@ namespace ClayAudioEngine
             return m_Factories;
         }
 
-        public static ElaborationUnitFactory getFactoryById(int id)
+        public ElaborationUnitFactory getFactoryById(int id)
         {
             ElaborationUnitFactory[] facts = m_Factories.ToArray();
             for (int i = 0; i < m_Factories.Count; i++)
@@ -47,7 +47,7 @@ namespace ClayAudioEngine
             VIRTUAL = 1
         }
 
-        public static bool queryEUFactories()
+        public bool queryEUFactories()
         {
             m_Factories = new List<ElaborationUnitFactory>();
             m_NumFactories = getFactoryNumber();
@@ -135,7 +135,7 @@ namespace ClayAudioEngine
             return true;
         }
 
-        public static int getFactoryIdByName(String name)
+        public int getFactoryIdByName(String name)
         {
             int numFact = m_Factories.Count;
             for (int factoryIndex = 0; factoryIndex < numFact; factoryIndex++)
@@ -148,7 +148,7 @@ namespace ClayAudioEngine
             throw new Exception("Factory not found: {0}" + name);
         }
 
-        public static int getEUByName(String name, int factoryIndex)
+        public int getEUByName(String name, int factoryIndex)
         {
             ElaborationUnitFactory fact = m_Factories[factoryIndex];
 

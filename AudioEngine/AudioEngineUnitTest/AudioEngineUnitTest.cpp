@@ -120,17 +120,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	//Create DirectSound
 	dsId = ::createElaborationUnit(INOUT_EU_FACTORY,PHYSICAL_EU_CATEGORY,0, 0);
 	//Create Polytrack keyboard
-	//seqId = ::createElaborationUnit(BASIC_EU_FACTORY,VIRTUAL_EU_CATEGORY,1, -1);
+	seqId = ::createElaborationUnit(BASIC_EU_FACTORY,VIRTUAL_EU_CATEGORY,1, -1);
 	//Create PC keyboard
 	int pcKId = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 3, 0);
 	//Add to algorithm
 	::addElaborationUnitToAlgorithm(algoId,dsId);
 	::addElaborationUnitToAlgorithm(algoId,oscId);
-	//::addElaborationUnitToAlgorithm(algoId,seqId);
-	::addElaborationUnitToAlgorithm(algoId, pcKId);
+	::addElaborationUnitToAlgorithm(algoId,seqId);
+	//::addElaborationUnitToAlgorithm(algoId, pcKId);
 	//Connect EU
 	::connectElaboratioUnits(algoId,oscId,0,dsId,0);
-	//::connectElaboratioUnits(algoId,seqId,0,oscId,2);
+	::connectElaboratioUnits(algoId,seqId,0,oscId,2);
 	::connectElaboratioUnits(algoId, pcKId, 0, oscId, 2);
 #endif //OSCILLATOR
 
@@ -176,13 +176,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	::playAlgorithm(algoId);
 
 	/// STUDY SENDING MIDI MSG
-	unsigned char buffer[3];
+	//unsigned char buffer[3];
 
-	buffer[0] = 0x90;
-	buffer[1] = 0x41;
-	buffer[2] = 0x7F;
-	::sendMIDIMessage(pcKId, buffer);
-	::Sleep(1000);
+	//buffer[0] = 0x90;
+	//buffer[1] = 0x41;
+	//buffer[2] = 0x7F;
+	//::sendMIDIMessage(pcKId, buffer);
+	//::Sleep(1000);
 
 	/* 
 	buffer[0] = 0x90;
@@ -198,18 +198,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	::Sleep(2000);
 	*/
 	
-	buffer[0] = 0x80;
-	buffer[1] = 0x41;
-	buffer[2] = 0x00;
-	::sendMIDIMessage(pcKId, buffer);
-	::Sleep(1000);
-	
+	//buffer[0] = 0x80;
+	//buffer[1] = 0x41;
+	//buffer[2] = 0x00;
+	//::sendMIDIMessage(pcKId, buffer);
+	//::Sleep(1000);
 
 
+	::Sleep(10000);
 
 
-
-	::stopAlgorithm(algoId);
+	//::stopAlgorithm(algoId);
 
 
 //#define PLAY_SOMETHING 1

@@ -11,14 +11,14 @@ using System.Windows.Input;
 namespace ClayAudioEngine
 {
 
-    public partial class AudioEngineWrapper
+	public partial class AudioEngineWrapper : DelegateFactoryInterface
     {
 
-        private static int m_NumFactories = 0;
-        private static List<ElaborationUnitFactory> m_Factories;
+        private int m_NumFactories = 0;
+        private List<ElaborationUnitFactory> m_Factories;
 
 
-        public static int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
+        public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
         {
             String currentFolder = Directory.GetCurrentDirectory();
             // Try to init engine
@@ -47,43 +47,48 @@ namespace ClayAudioEngine
             return result;
         }
 
-        private static EUPropertyPlumbing initPlumbing()
+        private EUPropertyPlumbing initPlumbing()
         {
             EUPropertyPlumbing plumbing = new EUPropertyPlumbing();
 
             return plumbing;
         }
 
-        private static void querySynthPanels(StringBuilder path)
+		WriteEUDoubleProperty DelegateFactoryInterface.getWriteEUDubleProperty()
+		{
+			throw new NotImplementedException();
+		}
+
+        private void querySynthPanels(StringBuilder path)
         {
-            SynthPanelManager.WriteEUProperty euPlumb = new SynthPanelManager.WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
-            SynthPanelManager.WriteEUDoubleProperty euDoublePlumb = new SynthPanelManager.WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
+			SynthPanels.WriteEUProperty euPlumb = new SynthPanels.WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
+			SynthPanels.WriteEUDoubleProperty euDoublePlumb = new SynthPanels.WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 
-            List<String> requestedFactories = new List<string>();
-            foreach(ElaborationUnitFactory factory in m_Factories)
-            {
-                requestedFactories.Add(factory.getName());
-            }
+			List<String> requestedFactories = new List<string>();
+			foreach(ElaborationUnitFactory factory in m_Factories)
+			{
+				requestedFactories.Add(factory.getName());
+			}
 
-            SynthPanelManager.getDefault().initSynthPanelsFactories(path, requestedFactories, euPlumb, euDoublePlumb);
-        }
+			SynthPanelManager.getDefault().initSynthPanelsFactories(path, requestedFactories, euPlumb, euDoublePlumb, AudioEngineWrapper.getDefault());
+		}
 
-        public static void release()
+        public void release()
         {
             releaseEngine();
         }
 
-        public static void _setHwnd(Int32 hwnd)
+        public void _setHwnd(Int32 hwnd)
         {
             setHwndEngine(hwnd);
         }
 
-        public static int getNumFactories()
+        public int getNumFactories()
         {
             m_NumFactories = getFactoryNumber();
             return m_NumFactories;
         }
-        public static String getFactoryName(int factoryIndex)
+        public String getFactoryName(int factoryIndex)
         {
             if (factoryIndex > m_NumFactories)
                 return "";
@@ -91,17 +96,17 @@ namespace ClayAudioEngine
                 return getNthFactoryName(factoryIndex);
         }
 
-        static public IList<ElaborationUnitFactory> getFactories()
+        public IList<ElaborationUnitFactory> getFactories()
         {
             return m_Factories;
         }
 
-        public static int createNewAlgorithm()
+        public int createNewAlgorithm()
         {
             return createAlgorithm();
         }
 
-		public static int addElaborationUnit(int algoId, int euId)
+		public int addElaborationUnit(int algoId, int euId)
 		{
 			return addElaborationUnitToAlgorithm(algoId, euId);
 		}
@@ -109,28 +114,28 @@ namespace ClayAudioEngine
         private const int PHYSICAL_CATEGORY = 1;
         private const int VIRTUAL_CATEGORY = 0;
 
-        public static int createNewVirtualElaborationUnit(int factoryIndex, int euIndex)
+        public int createNewVirtualElaborationUnit(int factoryIndex, int euIndex)
         {
             return createNewElaborationUnit(factoryIndex, VIRTUAL_CATEGORY, euIndex, 0);
         }
 
-        public static int createNewPhysicalElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
+        public int createNewPhysicalElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
         {
             return createElaborationUnit(factoryIndex, PHYSICAL_CATEGORY, euIndex, physicalInstanceId);
         }
 
-        public static int createNewElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
+        public int createNewElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
         {
             //TODO: fix the category issue
             return createElaborationUnit(factoryIndex, 0, euIndex, physicalInstanceId);
         }
 
-        public static String getElaborationUnitCreationError(int error)
+        public String getElaborationUnitCreationError(int error)
         {
             return "";
         }
 
-        public static int connectElaborationUnits(int algorithmId, int sourceId, int sourcePortIndex, int destinationId, int destinationPortIndex)
+        public int connectElaborationUnits(int algorithmId, int sourceId, int sourcePortIndex, int destinationId, int destinationPortIndex)
         {
             try
             {
@@ -143,27 +148,27 @@ namespace ClayAudioEngine
             }
         }
 
-        internal static int writeEUProperty(int elaborationUnitIndex, int propertyIndex, String valueStr)
+        internal int writeEUProperty(int elaborationUnitIndex, int propertyIndex, String valueStr)
         {
             setEUProperty(elaborationUnitIndex, propertyIndex, valueStr);
             return 0;
         }
 
-        internal static int writeEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)
+        internal int writeEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)
         {
             return setEUDProperty(elaborationUnitIndex, propertyIndex, value);
         }
 
-        public static EUPropertyPlumbing euPlumbing;
+        public EUPropertyPlumbing euPlumbing;
 
-        public static ISynthPanel createNewPanel(String factoryName, String name, int id)
+        public ISynthPanel createNewPanel(String factoryName, String name, int id)
         {
             return SynthPanelManager.getDefault().createSynthPanel(factoryName, name, id);
         }
 
-		internal static PCKeyboardProcessor keybProcessor = new PCKeyboardProcessor();
+		internal PCKeyboardProcessor keybProcessor = new PCKeyboardProcessor();
 
-		public static byte[] FirePCKeyboardEvent(KeyEventArgs args)
+		public byte[] FirePCKeyboardEvent(KeyEventArgs args)
 		{
 			byte[] msg = keybProcessor.ProcessPCKeyboardEvent(args);
 			if(msg!=null)
@@ -173,16 +178,25 @@ namespace ClayAudioEngine
 			return msg;
 		}
 		
-		public static int PlayAlgorithm(int id)
+		public int PlayAlgorithm(int id)
 		{
 			return playAlgorithm(id);
 		}
 
-		public static int StopAlgorithm(int id)
+		public int StopAlgorithm(int id)
 		{
 			return stopAlgorithm(id);
 		}
-		
+
+		static AudioEngineWrapper audioWrapper = null;
+		public static AudioEngineWrapper getDefault()
+		{
+			if (audioWrapper == null)
+			{
+				audioWrapper = new AudioEngineWrapper();
+			}
+			return audioWrapper;
+		}
     }
 }
 
