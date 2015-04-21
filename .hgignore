@@ -3,3 +3,10 @@ syntax: glob
 **/SynAssember/SynAssember/bin/
 **/SynAssember/SynAssember/obj/
 **/AudioEngine/AudioEngineUnitTest/Debug/
+**/AudioEngine/BasicElaborationUnits/Debug/
+**/AudioEngine/Debug/
+**/AudioEngine/InputOutput/Debug/
+**/SynAssember/BasicAudioControls/obj/
+**/SynAssember/BasicEUSynthFactory/obj/
+**/SynAssember/InputOutputSynthFactory/obj/
+**/SynAssember/ClayAudioEngine/obj/
