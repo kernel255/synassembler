@@ -2,3 +2,4 @@ syntax: glob
 **/AudioEngine/AudioEngine/Debug/
 **/SynAssember/SynAssember/bin/
 **/SynAssember/SynAssember/obj/
+**/AudioEngine/AudioEngineUnitTest/Debug/
