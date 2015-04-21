@@ -55,13 +55,16 @@ namespace SynthPanels
 
 		private WriteEUDoubleProperty writeEUDProp;
 
-        public IList<ISynthPanelFactory> initSynthPanelsFactories(StringBuilder folderName, IList<String> requestedFactories, WriteEUProperty writeProp, WriteEUDoubleProperty writedProp, DelegateFactoryInterface delegateFactory)
-        {
-            Assembly synPanelAssembly;
-            List<ISynthPanelFactory> factories = new List<ISynthPanelFactory>();
-            m_FactoryDict.Clear();
+		private DelegateFactoryInterface deleFactory;
 
-            writeEUDProp = writedProp;
+		SynthDelegateHolder deleHolder;
+		public IList<ISynthPanelFactory> initSynthPanelsFactories(StringBuilder folderName, IList<String> requestedFactories, SynthDelegateHolder synDeleHolder)
+		{
+			Assembly synPanelAssembly;
+			List<ISynthPanelFactory> factories = new List<ISynthPanelFactory>();
+			m_FactoryDict.Clear();
+
+			deleHolder = synDeleHolder;
 
             foreach (String requestedFactory in requestedFactories)
             {
@@ -86,7 +89,8 @@ namespace SynthPanels
                             ISynthPanelFactory factory = (ISynthPanelFactory)synPanelAssembly.CreateInstance(synFactType.FullName);
                             if (factory != null)
                             {
-                                factory.init(writedProp);
+                                //factory.init(writedProp);
+								factory.init(synDeleHolder);
                                 m_FactoryDict.Add(requestedFactory, factory);
                             }
                         }

@@ -240,5 +240,7 @@ namespace ClayAudioEngine
         private static extern int getPropertyRanges(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex, StringBuilder lowRange, StringBuilder highRange, int bufferSize);
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+		private static extern int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
     }
 }

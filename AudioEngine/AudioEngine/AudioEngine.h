@@ -55,6 +55,9 @@ public:
 	int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double *value);
 	int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);
 
+	int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
+	int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
+
 	int setPropertyByName(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex, const char* value);
 	const char* getPropertyByName(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex);
 	//int sendMIDIMessage(int euIndex, wchar_t* msg);

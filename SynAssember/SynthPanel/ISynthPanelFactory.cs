@@ -10,7 +10,7 @@ namespace SynthPanels
     {
         String getEUFactoryName();
         String[] getEUNames();
-        void init(WriteEUDoubleProperty writeEUProp);
         ISynthPanel createSynthPanel(String name, Int32 id);
+		void init(SynthDelegateHolder deleHolder);
     }
 }

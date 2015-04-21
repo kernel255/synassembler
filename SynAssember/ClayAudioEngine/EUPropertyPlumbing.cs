@@ -14,15 +14,14 @@ namespace ClayAudioEngine
             return false;
         }
 
-        public static bool writeEUDoubleProperty(int euId, String propertyName, Double value)
+        public static int writeEUDoubleProperty(int euId, int propertyIndex, Double value)
         {
-			AudioEngineWrapper.getDefault().writeEUDProperty(euId, 0, value);
-            /*
-            // TODO: find a way to pass directly a double to C++
-            String strValue = Convert.ToString(value);
-            AudioEngineWrapper.writeEUProperty(euId,0,strValue);
-             */
-            return false;
+			return AudioEngineWrapper.getDefault().writeEUDProperty(euId, 0, value);
         }
+
+		public static int writeEUIntegerProperty(int euId, int propertyIndex, int value)
+		{
+			return AudioEngineWrapper.getDefault().writeEUIProperty(euId, propertyIndex, value);
+		}
     }
 }

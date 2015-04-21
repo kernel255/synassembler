@@ -13,9 +13,9 @@ namespace InputOutputSynthFactory
         private const String POLYTRACKKEY_NAME = "Polytrack Keyboard";
 		private const String PCKEYBOARD_NAME = "PC Keyboard";
 
-        public override void init(WriteEUDoubleProperty writeEUDProp)
+		public override void init(DelegateFactoryInterface delegInterf)
         {
-            base.init(writeEUDProp);
+            base.init(delegInterf);
         }
 
         public override string getEUFactoryName()

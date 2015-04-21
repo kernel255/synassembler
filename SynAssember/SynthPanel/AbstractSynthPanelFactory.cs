@@ -1,20 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SynthPanels
 {
-    public abstract partial class AbstractSynthPanelFactory : ISynthPanelFactory
-    {
-        protected WriteEUDoubleProperty writeEUDProp;
-        virtual public void init(WriteEUDoubleProperty writeEUDProp)
-        {
-            this.writeEUDProp = writeEUDProp;
-        }
+	public abstract partial class AbstractSynthPanelFactory : ISynthPanelFactory
+	{
+		protected SynthDelegateHolder deleHolder;
+		virtual public void init(SynthDelegateHolder delHold)
+		{
+			deleHolder = delHold;
+		}
 
-        abstract public string getEUFactoryName();
-        abstract public ISynthPanel createSynthPanel(string name, int id);
-        abstract public String[] getEUNames();
-    }
+		protected DelegateFactoryInterface delegateFactory;
+		virtual public void init(DelegateFactoryInterface delegInterf)
+		{
+			delegateFactory = delegInterf;
+		}
+
+		abstract public string getEUFactoryName();
+		abstract public ISynthPanel createSynthPanel(string name, int id);
+		abstract public String[] getEUNames();
+	}
 }

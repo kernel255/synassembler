@@ -47,10 +47,11 @@
   <ItemGroup>
     <Compile Include="AbstractSynthPanel.cs" />
     <Compile Include="AbstractSynthPanelFactory.cs" />
-    <Compile Include="DelegateFactoryInterface1.cs" />
+    <Compile Include="DelegateFactoryInterface.cs" />
     <Compile Include="ISynthPanel.cs" />
     <Compile Include="ISynthPanelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SynthDelegateHolder.cs" />
     <Compile Include="SynthPanelManager.cs" />
   </ItemGroup>
   <ItemGroup>

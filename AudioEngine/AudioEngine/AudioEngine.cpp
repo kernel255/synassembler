@@ -337,6 +337,33 @@ int AudioEngine::setEUDProperty(int elaborationUnitIndex, int propertyIndex, dou
 		return 0;
 }
 
+int AudioEngine::setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value)
+{
+	ElaborationUnit* pEU = getElaborationUnitById(elaborationUnitIndex);
+	if (pEU != NULL)
+	{
+		return pEU->setIProperty(propertyIndex, value);
+	}
+	else
+	{
+		return 0;
+	}
+
+}
+
+int AudioEngine::getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value)
+{
+	ElaborationUnit* pEU = getElaborationUnitById(elaborationUnitIndex);
+	if (pEU != NULL)
+	{
+		return pEU->getIProperty(propertyIndex, value);
+	}
+	else
+	{
+		return 0;
+	}
+}
+
 
 int AudioEngine::getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize)
 {
@@ -854,6 +881,17 @@ extern "C" __declspec( dllexport ) int getEUDProperty(int elaborationUnitIndex, 
 {
 	return audioEngine->getEUDProperty(elaborationUnitIndex, propertyIndex, value);
 }
+
+extern "C" __declspec(dllexport) int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value)
+{
+	return audioEngine->setEUIProperty(elaborationUnitIndex, propertyIndex, value);
+}
+
+extern "C" __declspec(dllexport) int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value)
+{
+	return audioEngine->getEUIProperty(elaborationUnitIndex, propertyIndex, value);
+}
+
 
 extern "C" __declspec( dllexport ) int getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize)
 {

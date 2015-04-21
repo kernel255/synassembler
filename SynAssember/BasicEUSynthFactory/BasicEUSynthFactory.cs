@@ -12,9 +12,9 @@ namespace BasicEUSynthFactory
         private const String PCMWAVE_NAME = "PCM Waveform";
         private const String MIDISEQ_NAME = "MIDI Sequence Player";
 
-        public override void init(WriteEUDoubleProperty writeEUDProp)
+		public override void init(DelegateFactoryInterface delegInterf)
         {
-            base.init(writeEUDProp);
+			base.init(delegInterf);
         }
 
         public override string getEUFactoryName()
@@ -32,7 +32,7 @@ namespace BasicEUSynthFactory
             switch (name)
             {
                 case OSC_NAME:
-                    return new OscillatorPanelWrapper(id, base.writeEUDProp);
+                    return new OscillatorPanelWrapper(id, base.deleHolder);
                 case PCMWAVE_NAME:
                     return new PCMWaveformWrapper(id);
                 case MIDISEQ_NAME:

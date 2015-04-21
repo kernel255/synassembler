@@ -26,11 +26,11 @@ namespace BasicEUSynthFactory
 
         int id;
 
-        public OscillatorPanel(int id, WriteEUDoubleProperty writeDProp)
+		public OscillatorPanel(int id, SynthDelegateHolder deleHolder)
         {
             InitializeComponent();
             OutputLevel.setOwner(this);
-            this.writeDProp = writeDProp;
+			this.writeDProp = deleHolder.writeEUDProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
             this.id = id;
         }
@@ -38,7 +38,7 @@ namespace BasicEUSynthFactory
         public static void OutputLevel_SliderChangedEvent(Object o, Double level)
         {
             OscillatorPanel oscPanel = (OscillatorPanel)o;
-            oscPanel.writeDProp(oscPanel.id, "OutputLevel", level);
+            oscPanel.writeDProp(oscPanel.id, 0, level);
         }
 
         internal System.Drawing.Rectangle getRectangle()

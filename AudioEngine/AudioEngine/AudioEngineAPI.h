@@ -236,6 +236,10 @@ extern "C" __declspec( dllexport ) int getNthEUPropertyName(int factoryIndex, in
 
  extern "C" __declspec( dllexport ) int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double* value);
 
+ extern "C" __declspec(dllexport) int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
+
+ extern "C" __declspec(dllexport) int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
+
  /**
   * @fn Read the property type accordingly to the table in the API specification
   */

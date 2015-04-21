@@ -11,15 +11,20 @@ using System.Windows.Input;
 namespace ClayAudioEngine
 {
 
-	public partial class AudioEngineWrapper : DelegateFactoryInterface
+	public partial class AudioEngineWrapper
     {
 
-        private int m_NumFactories = 0;
-        private List<ElaborationUnitFactory> m_Factories;
+		private int m_NumFactories = 0;
+		private List<ElaborationUnitFactory> m_Factories;
 
 
-        public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
-        {
+		public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
+		{
+			WriteEUProperty euPlumb = new WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
+			WriteEUDoubleProperty euDoublePlumb = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
+			WriteEUIntegerProperty euIntegerPlumb = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
+			deleHolder = new SynthDelegateHolder();
+			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
             String currentFolder = Directory.GetCurrentDirectory();
             // Try to init engine
             int result = -1;
@@ -54,15 +59,12 @@ namespace ClayAudioEngine
             return plumbing;
         }
 
-		WriteEUDoubleProperty DelegateFactoryInterface.getWriteEUDubleProperty()
-		{
-			throw new NotImplementedException();
-		}
+		List<WriteEUDoubleProperty> dPropertyList = new List<WriteEUDoubleProperty>();
+
+		SynthDelegateHolder deleHolder;
 
         private void querySynthPanels(StringBuilder path)
         {
-			SynthPanels.WriteEUProperty euPlumb = new SynthPanels.WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
-			SynthPanels.WriteEUDoubleProperty euDoublePlumb = new SynthPanels.WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 
 			List<String> requestedFactories = new List<string>();
 			foreach(ElaborationUnitFactory factory in m_Factories)
@@ -70,7 +72,7 @@ namespace ClayAudioEngine
 				requestedFactories.Add(factory.getName());
 			}
 
-			SynthPanelManager.getDefault().initSynthPanelsFactories(path, requestedFactories, euPlumb, euDoublePlumb, AudioEngineWrapper.getDefault());
+			SynthPanelManager.getDefault().initSynthPanelsFactories(path, requestedFactories, deleHolder);
 		}
 
         public void release()
@@ -158,6 +160,11 @@ namespace ClayAudioEngine
         {
             return setEUDProperty(elaborationUnitIndex, propertyIndex, value);
         }
+
+		internal int writeEUIProperty(int elaborationUnitIndex, int propertyIndex, int value)
+		{
+			return setEUIProperty(elaborationUnitIndex, propertyIndex, value);
+		}
 
         public EUPropertyPlumbing euPlumbing;
 
