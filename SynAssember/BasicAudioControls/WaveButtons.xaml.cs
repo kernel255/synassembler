@@ -23,16 +23,16 @@ namespace BasicAudioControls
     {
         public static DependencyProperty SelectedWaveProperty;
 
-        public String SelectedWave
+        public Int32 SelectedWave
         {
-            get { return (String)GetValue(SelectedWaveProperty); }
+            get { return (Int32)GetValue(SelectedWaveProperty); }
             set { SetValue(SelectedWaveProperty, value); }
         }
 
 
         static WaveButton()
         {
-            SelectedWaveProperty = DependencyProperty.Register("SelectedWave", typeof(Int32), typeof(BasicSlider),
+			SelectedWaveProperty = DependencyProperty.Register("SelectedWave", typeof(Int32), typeof(WaveButton),
                 new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnSelectedWaveChanged)));
         }
 
@@ -50,12 +50,14 @@ namespace BasicAudioControls
             TriangleWave.IsChecked = false;
             SineWave.IsChecked = false;
             SquareWave.IsChecked = false;
+			WaveChangedEvent(owner, 0);
         }
         private void SineWaveWave_Checked(object sender, RoutedEventArgs e)
         {
             TriangleWave.IsChecked = false;
             SawtoothWave.IsChecked = false;
             SquareWave.IsChecked = false;
+			WaveChangedEvent(owner, 1);
         }
 
         private void SquareWave_Checked(object sender, RoutedEventArgs e)
@@ -63,6 +65,7 @@ namespace BasicAudioControls
             TriangleWave.IsChecked = false;
             SawtoothWave.IsChecked = false;
             SineWave.IsChecked = false;
+			WaveChangedEvent(owner, 2);
         }
 
         private void TriangleWave_Checked(object sender, RoutedEventArgs e)
@@ -70,6 +73,18 @@ namespace BasicAudioControls
             SquareWave.IsChecked = false;
             SawtoothWave.IsChecked = false;
             SineWave.IsChecked = false;
+			WaveChangedEvent(owner, 3);
         }
+
+		public delegate void WaveChanged(object sender, int waveNumber);
+
+		public event WaveChanged WaveChangedEvent;
+
+		private Object owner;
+		public void setOwner(Object owner)
+		{
+			this.owner = owner;
+		}
+
     }
 }

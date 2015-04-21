@@ -56,12 +56,11 @@ namespace BasicAudioControls
             InitializeComponent();
         }
 
-        private Object owner;
-
-        public void setOwner(Object owner)
-        {
-            this.owner = owner;
-        }
+		private Object owner;
+		public void setOwner(Object owner)
+		{
+			this.owner = owner;
+		}
 
         private static void OnLevelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
