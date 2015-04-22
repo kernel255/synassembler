@@ -41,49 +41,50 @@ namespace BasicAudioControls
             InitializeComponent();
         }
 
-        private static void OnSelectedWaveChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-        }
+		private static void OnSelectedWaveChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+		}
 
-        private void SawtoothWave_Checked(object sender, RoutedEventArgs e)
-        {
-            TriangleWave.IsChecked = false;
-            SineWave.IsChecked = false;
-            SquareWave.IsChecked = false;
+		private void SineWaveWave_Checked(object sender, RoutedEventArgs e)
+		{
+			TriangleWave.IsChecked = false;
+			SawtoothWave.IsChecked = false;
+			SquareWave.IsChecked = false;
 			WaveChangedEvent(owner, 0);
-        }
-        private void SineWaveWave_Checked(object sender, RoutedEventArgs e)
-        {
-            TriangleWave.IsChecked = false;
-            SawtoothWave.IsChecked = false;
-            SquareWave.IsChecked = false;
+		}
+
+		private void SquareWave_Checked(object sender, RoutedEventArgs e)
+		{
+			TriangleWave.IsChecked = false;
+			SawtoothWave.IsChecked = false;
+			SineWave.IsChecked = false;
 			WaveChangedEvent(owner, 1);
-        }
+		}
 
-        private void SquareWave_Checked(object sender, RoutedEventArgs e)
-        {
-            TriangleWave.IsChecked = false;
-            SawtoothWave.IsChecked = false;
-            SineWave.IsChecked = false;
+		private void TriangleWave_Checked(object sender, RoutedEventArgs e)
+		{
+			SquareWave.IsChecked = false;
+			SawtoothWave.IsChecked = false;
+			SineWave.IsChecked = false;
 			WaveChangedEvent(owner, 2);
-        }
+		}
 
-        private void TriangleWave_Checked(object sender, RoutedEventArgs e)
-        {
-            SquareWave.IsChecked = false;
-            SawtoothWave.IsChecked = false;
-            SineWave.IsChecked = false;
+		private void SawtoothWave_Checked(object sender, RoutedEventArgs e)
+		{
+			TriangleWave.IsChecked = false;
+			SineWave.IsChecked = false;
+			SquareWave.IsChecked = false;
 			WaveChangedEvent(owner, 3);
-        }
+		}
 
 		public delegate void WaveChanged(object sender, int waveNumber);
 
 		public event WaveChanged WaveChangedEvent;
 
 		private Object owner;
-		public void setOwner(Object owner)
+		public void setOwner(Object _owner)
 		{
-			this.owner = owner;
+			this.owner = _owner;
 		}
 
     }

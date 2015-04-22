@@ -25,6 +25,7 @@ namespace ClayAudioEngine
 			WriteEUIntegerProperty euIntegerPlumb = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
 			deleHolder = new SynthDelegateHolder();
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
+			deleHolder.writeEUIProp = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
             String currentFolder = Directory.GetCurrentDirectory();
             // Try to init engine
             int result = -1;

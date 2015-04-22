@@ -9,6 +9,7 @@ PropertyValuesHolder::PropertyValuesHolder(ModuleServices* pServices, int numPro
 {
 	m_Values.resize(numProperties);
 	m_Dvalues.resize(numProperties);
+	m_IValues.resize(numProperties);
 	//m_pKind = *kind;
 	m_pEU = eu;
 	m_pServices = pServices;

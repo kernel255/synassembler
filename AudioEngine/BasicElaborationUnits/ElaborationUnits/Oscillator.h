@@ -132,7 +132,7 @@ public:
 		pOsc->m_WaveKind = (WaveKind)(*kind);
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Osc Wave: %d", kind);
+		sprintf(buf, "Osc Wave: %d", *kind);
 		pOsc->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}

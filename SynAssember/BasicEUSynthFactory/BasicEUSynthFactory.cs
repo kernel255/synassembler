@@ -32,7 +32,9 @@ namespace BasicEUSynthFactory
             switch (name)
             {
                 case OSC_NAME:
-                    return new OscillatorPanelWrapper(id, base.deleHolder);
+
+					
+					return new OscillatorPanelWrapper(id, base.deleHolder);
                 case PCMWAVE_NAME:
                     return new PCMWaveformWrapper(id);
                 case MIDISEQ_NAME:

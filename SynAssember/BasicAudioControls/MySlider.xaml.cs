@@ -57,9 +57,9 @@ namespace BasicAudioControls
         }
 
 		private Object owner;
-		public void setOwner(Object owner)
+		public void setOwner(Object _owner)
 		{
-			this.owner = owner;
+			this.owner = _owner;
 		}
 
         private static void OnLevelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)

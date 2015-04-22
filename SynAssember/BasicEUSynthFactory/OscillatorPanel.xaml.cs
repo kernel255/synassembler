@@ -23,6 +23,7 @@ namespace BasicEUSynthFactory
     public partial class OscillatorPanel : UserControl
     {
         WriteEUDoubleProperty writeDProp;
+		WriteEUIntegerProperty writeIProp;
 
         int id;
 
@@ -31,7 +32,8 @@ namespace BasicEUSynthFactory
             InitializeComponent();
             OutputLevel.setOwner(this);
 			WaveButton.setOwner(this);
-			this.writeDProp = deleHolder.writeEUDProp;
+			writeDProp = deleHolder.writeEUDProp;
+			writeIProp = deleHolder.writeEUIProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
             this.id = id;
@@ -43,9 +45,10 @@ namespace BasicEUSynthFactory
             oscPanel.writeDProp(oscPanel.id, 0, level);
         }
 
-		public static void WaveButton_ChangedEvent(Object p, Int32 wave)
+		public static void WaveButton_ChangedEvent(Object o, Int32 wave)
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
+			oscPanel.writeIProp(oscPanel.id, 1, wave);
 		}
 
         internal System.Drawing.Rectangle getRectangle()

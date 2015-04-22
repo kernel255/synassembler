@@ -136,6 +136,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
+	::setEUIProperty(oscId, 1, 1);
+
 
 
 

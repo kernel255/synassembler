@@ -79,11 +79,31 @@ int AbstractElaborationUnit::getDProperty(int propertyIndex, double* value)
 		}
 	default:
 		{
-		return UNAVAILABLE_PROPERTY;
+			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			return UNAVAILABLE_PROPERTY;
 		}
 	}
 	return 0;
 }
+
+int AbstractElaborationUnit::getIProperty(int propertyIndex, int* value)
+{
+	switch (getKind()->getPropertyType(propertyIndex))
+	{
+		case C_Integer:
+		{
+			m_ValuesHolder.getIValue(propertyIndex, value);
+			break;
+		}
+		default:
+		{
+			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			return UNAVAILABLE_PROPERTY;
+		}
+	}
+	return 0;
+}
+
 
 int AbstractElaborationUnit::setDProperty(int propertyIndex, double value)
 {
@@ -94,17 +114,33 @@ int AbstractElaborationUnit::setDProperty(int propertyIndex, double value)
 			m_ValuesHolder.setDValue(propertyIndex, value);
 			break;
 		}
+	default:
+		{
+			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			return UNAVAILABLE_PROPERTY;
+		}
 	}
 
 	return 0;
 }
 
+
+
 int AbstractElaborationUnit::setIProperty(int propertyIndex, int value)
 {
+	switch (getKind()->getPropertyType(propertyIndex))
+	{
+	case C_Integer:
+	{
+		m_ValuesHolder.setIValue(propertyIndex, value);
+		break;
+	}
+	default:
+		{
+			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			return UNAVAILABLE_PROPERTY;
+		}
+	}
 	return 0;
 }
 
-int AbstractElaborationUnit::getIProperty(int propertyIndex, int* value)
-{
-	return 0;
-}

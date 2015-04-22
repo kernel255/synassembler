@@ -201,6 +201,7 @@ namespace SynthPanels
 						if(reader.Name.Equals(XML_PANEL))
 						{
 							ISynthPanel panel = createSynthPanel(factory, euName, int.Parse(id));
+							
 							panel.read(reader);
 							AddSynthPanel(panel, false);
 							return panel;
