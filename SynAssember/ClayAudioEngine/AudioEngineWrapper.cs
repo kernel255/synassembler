@@ -20,12 +20,11 @@ namespace ClayAudioEngine
 
 		public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
 		{
-			WriteEUProperty euPlumb = new WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
-			WriteEUDoubleProperty euDoublePlumb = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
-			WriteEUIntegerProperty euIntegerPlumb = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
 			deleHolder = new SynthDelegateHolder();
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 			deleHolder.writeEUIProp = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
+			deleHolder.readEUDprop = new ReadEUDoubleProperty(EUPropertyPlumbing.readEUDoubleProperty);
+			deleHolder.readEUIProp = new ReadEUIntegerProperty(EUPropertyPlumbing.readEUIntegerProperty);
             String currentFolder = Directory.GetCurrentDirectory();
             // Try to init engine
             int result = -1;
@@ -165,6 +164,16 @@ namespace ClayAudioEngine
 		internal int writeEUIProperty(int elaborationUnitIndex, int propertyIndex, int value)
 		{
 			return setEUIProperty(elaborationUnitIndex, propertyIndex, value);
+		}
+
+		internal double readEUDProperty(int elaborationUnitIndex, int propertyIndex)
+		{
+			return getEUDProperty(elaborationUnitIndex, propertyIndex);
+		}
+
+		internal int readEUIProperty(int elaborationUnitIndex, int propertyIndex)
+		{
+			return getEUIProperty(elaborationUnitIndex, propertyIndex);
 		}
 
         public EUPropertyPlumbing euPlumbing;

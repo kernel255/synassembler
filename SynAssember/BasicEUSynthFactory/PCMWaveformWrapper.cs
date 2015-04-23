@@ -9,7 +9,8 @@ namespace BasicEUSynthFactory
 {
     class PCMWaveformWrapper : AbstractSynthPanel
     {
-        public PCMWaveformWrapper(int id) : base(new PCMWaveformPanel(), id)
+		public PCMWaveformWrapper(int id, SynthDelegateHolder deleHolder)
+			: base(new PCMWaveformPanel(), id, deleHolder)
         {
 
         }

@@ -8,7 +8,7 @@ namespace BasicEUSynthFactory
 {
     class MIDISequencePlayerWrapper : AbstractSynthPanel
     {
-        public MIDISequencePlayerWrapper(int id) : base(new MIDISequencePanel(), id)
+        public MIDISequencePlayerWrapper(int id, SynthDelegateHolder deleHolder) : base(new MIDISequencePanel(), id, deleHolder)
         {
 
         }

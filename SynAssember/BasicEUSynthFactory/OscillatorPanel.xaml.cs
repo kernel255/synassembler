@@ -42,18 +42,21 @@ namespace BasicEUSynthFactory
         public static void OutputLevel_SliderChangedEvent(Object o, Double level)
         {
             OscillatorPanel oscPanel = (OscillatorPanel)o;
-            oscPanel.writeDProp(oscPanel.id, 0, level);
+			oscPanel.writeDProp(oscPanel.id, LEVEL_PROPERTY_INDEX, level);
         }
 
 		public static void WaveButton_ChangedEvent(Object o, Int32 wave)
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
-			oscPanel.writeIProp(oscPanel.id, 1, wave);
+			oscPanel.writeIProp(oscPanel.id, WAVE_PROPERTY_INDEX, wave);
 		}
 
         internal System.Drawing.Rectangle getRectangle()
         {
             return new System.Drawing.Rectangle(0, 0, 180, 220);
         }
+
+		internal static int LEVEL_PROPERTY_INDEX = 0;
+		internal static int WAVE_PROPERTY_INDEX = 1;
     }
 }

@@ -17,31 +17,29 @@ namespace BasicEUSynthFactory
 			base.init(delegInterf);
         }
 
-        public override string getEUFactoryName()
-        {
-            return "BasicEU";
-        }
+		public override string getEUFactoryName()
+		{
+			return "BasicEU";
+		}
 
-        public override string[] getEUNames()
-        {
-            return new String[] { OSC_NAME };
-        }
+		public override string[] getEUNames()
+		{
+			return new String[] { OSC_NAME };
+		}
 
-        public override ISynthPanel createSynthPanel(string name, int id)
-        {
-            switch (name)
-            {
-                case OSC_NAME:
-
-					
+		public override ISynthPanel createSynthPanel(string name, int id)
+		{
+			switch (name)
+			{
+				case OSC_NAME:
 					return new OscillatorPanelWrapper(id, base.deleHolder);
-                case PCMWAVE_NAME:
-                    return new PCMWaveformWrapper(id);
-                case MIDISEQ_NAME:
-                    return new MIDISequencePlayerWrapper(id);
-                default:
-                    return null;
-            }
-        }
-    }
+				case PCMWAVE_NAME:
+					return new PCMWaveformWrapper(id, base.deleHolder);
+				case MIDISEQ_NAME:
+					return new MIDISequencePlayerWrapper(id, base.deleHolder);
+				default:
+					return null;
+			}
+		}
+	}
 }

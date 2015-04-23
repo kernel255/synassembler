@@ -8,7 +8,8 @@ namespace InputOutputSynthFactory
 {
     class PolyTrackKeyboardWrapper : AbstractSynthPanel
     {
-        public PolyTrackKeyboardWrapper(int id) : base(new PolyTrackKeyboardPanel(), id)
+		public PolyTrackKeyboardWrapper(int id, SynthDelegateHolder deleHolder)
+			: base(new PolyTrackKeyboardPanel(), id, deleHolder)
         {
         }
 

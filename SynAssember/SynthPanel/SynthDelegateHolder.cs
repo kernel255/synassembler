@@ -9,5 +9,8 @@ namespace SynthPanels
 	{
 		public WriteEUDoubleProperty writeEUDProp;
 		public WriteEUIntegerProperty writeEUIProp;
+
+		public ReadEUDoubleProperty readEUDprop;
+		public ReadEUIntegerProperty readEUIProp;
 	}
 }

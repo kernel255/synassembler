@@ -9,7 +9,7 @@ namespace InputOutputSynthFactory
 {
     class DirectSoundOutputWrapper : AbstractSynthPanel
     {
-        public DirectSoundOutputWrapper(int id) : base(new DirectSoundOutputPanel(), id)
+        public DirectSoundOutputWrapper(int id, SynthDelegateHolder deleHolder) : base(new DirectSoundOutputPanel(), id, deleHolder)
         {
 			m_DSPanel = (DirectSoundOutputPanel)m_UserControl;
         }

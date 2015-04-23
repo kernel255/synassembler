@@ -33,13 +33,13 @@ namespace InputOutputSynthFactory
             switch (name)
             {
                 case DIRECTSOUND_NAME:
-                    return new DirectSoundOutputWrapper(id);
+                    return new DirectSoundOutputWrapper(id, base.deleHolder);
                 case MIDIIN_NAME:
-                    return new MIDIInputWrapper(id);
+                    return new MIDIInputWrapper(id, base.deleHolder);
                 case POLYTRACKKEY_NAME:
-                    return new PolyTrackKeyboardWrapper(id);
+                    return new PolyTrackKeyboardWrapper(id, base.deleHolder);
 				case PCKEYBOARD_NAME:
-					return new PCKeyboardWrapper(id);
+					return new PCKeyboardWrapper(id, deleHolder);
                 default:
                     return null;
             }

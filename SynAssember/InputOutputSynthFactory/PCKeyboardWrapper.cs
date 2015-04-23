@@ -13,7 +13,8 @@ namespace InputOutputSynthFactory
 	{
 		PCKeyboard m_PCKeyboard = null;
 
-		public PCKeyboardWrapper(int id) : base(new PCKeyboard(), id)
+		public PCKeyboardWrapper(int id, SynthDelegateHolder deleHolder)
+			: base(new PCKeyboard(), id, deleHolder)
 		{
 			m_PCKeyboard = (PCKeyboard)m_UserControl;
 		}

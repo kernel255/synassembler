@@ -8,7 +8,8 @@ namespace InputOutputSynthFactory
 {
     class MIDIInputWrapper : AbstractSynthPanel
     {
-        public MIDIInputWrapper(int id) : base(new MIDIInputPanel(), id)
+		public MIDIInputWrapper(int id, SynthDelegateHolder deleHolder)
+			: base(new MIDIInputPanel(), id, deleHolder)
         {
 
         }
