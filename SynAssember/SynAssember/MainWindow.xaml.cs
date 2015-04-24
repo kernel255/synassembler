@@ -20,6 +20,7 @@ using System.IO;
 using System.Diagnostics;
 using ClayAudioEngine;
 using SynthPanels;
+using GeneralUtils;
 
 namespace SynAssember
 {
@@ -37,68 +38,63 @@ namespace SynAssember
 
         private bool hwndRetrieved = false;
 
-        private void fileManagementBindings() {
-            CommandBinding saveBind = new CommandBinding(ApplicationCommands.Save);
-            saveBind.CanExecute += canSaveExecute;
-            saveBind.Executed += saveExecuted;
-            CommandBindings.Add(saveBind);
-            CommandBinding openBind = new CommandBinding(ApplicationCommands.Open);
-            openBind.CanExecute += canOpenExecute;
-            openBind.Executed += openExecuted;
-            CommandBindings.Add(openBind);
-            CommandBinding newBind = new CommandBinding(ApplicationCommands.New);
-            newBind.CanExecute += canNewExecute;
-            newBind.Executed += newExecuted;
-            CommandBindings.Add(newBind);
+		private void fileManagementBindings() {
+			CommandBinding saveBind = new CommandBinding(ApplicationCommands.Save);
+			saveBind.CanExecute += canSaveExecute;
+			saveBind.Executed += saveExecuted;
+			CommandBindings.Add(saveBind);
+			CommandBinding openBind = new CommandBinding(ApplicationCommands.Open);
+			openBind.CanExecute += canOpenExecute;
+			openBind.Executed += openExecuted;
+			CommandBindings.Add(openBind);
+			CommandBinding newBind = new CommandBinding(ApplicationCommands.New);
+			newBind.CanExecute += canNewExecute;
+			newBind.Executed += newExecuted;
+			CommandBindings.Add(newBind);
+			CommandBinding saveAsBind = new CommandBinding(ApplicationCommands.SaveAs);
+			saveAsBind.CanExecute += canSaveAsExecute;
+			saveAsBind.Executed += saveAsExecute;
+			CommandBindings.Add(saveAsBind);
+		}
 
-        }
+		EUShelf m_Shelf;
 
-        EUShelf m_Shelf;
+		Options options;
 
-        Options options;
+		Facilities facilities;
 
-        public MainWindow()
-        {
-            InitializeComponent();
-            fileManagementBindings();
+		public MainWindow()
+		{
+			InitializeComponent();
+			fileManagementBindings();
+			facilities = new Facilities();
+			String currentFolder = Directory.GetCurrentDirectory();
+			Trace.Write("Current folder=" + currentFolder);
 
-            String currentFolder = Directory.GetCurrentDirectory();
-            Trace.Write("Current folder=" + currentFolder);
-
-            if (!initAudioEngine(currentFolder))
-            {
-                MessageBox.Show("Error while initializing AudioEngine");
-                //TODO: Show some message
-                //Application.Current.Exit();
-            }
-            else
-            {
-                currentFolder = Directory.GetCurrentDirectory();
-                Trace.Write("Current folder=" + currentFolder);
-
-
+			if (!initAudioEngine(currentFolder))
+			{
+				MessageBox.Show("Error while initializing AudioEngine");
+				//TODO: Show some message
+				//Application.Current.Exit();
+			}
+			else
+			{
+				currentFolder = Directory.GetCurrentDirectory();
+				Trace.Write("Current folder=" + currentFolder);
 				m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
-                m_Shelf.addToPanel(LeftPanel);
+				m_Shelf.addToPanel(LeftPanel);
+				CurrentAlgorithm = new AlgorithmGraph(RightPanel);
+				//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
+				m_CurrentConnection = new EUConnection(new Point(0, 0), new Point(0, 0), RightPanel);
+				m_CurrentConnection.place();
+			}
 
-                m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
+			SynthPanelManager.getDefault().SetCanvas(SynthPanelArea);
 
+			options = new Options();
 
-                m_CurrentConnection = new EUConnection(new Point(0, 0), new Point(0, 0), RightPanel);
-                m_CurrentConnection.place();
-
-                /*
-                Canvas.SetTop(m_CurrentConnection, 0);
-                Canvas.SetLeft(m_CurrentConnection, 0);
-                 */
-                //RightPanel.Children.Add(m_CurrentConnection);
-            }
-
-            SynthPanelManager.getDefault().SetCanvas(SynthPanelArea);
-
-            options = new Options();
-
-            RetrieveSettings();
-        }
+			RetrieveSettings();
+		}
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
@@ -107,7 +103,7 @@ namespace SynAssember
 
         private void canSaveExecute(object sender, CanExecuteRoutedEventArgs e)
         {
-            e.CanExecute = m_CurrentAlgorithGraph.hasChanged();
+			e.CanExecute = CurrentAlgorithm.hasChanged();
         }
 
         private void saveExecuted(object sender, ExecutedRoutedEventArgs e)
@@ -118,13 +114,28 @@ namespace SynAssember
             String filename = dlg.FileName;
             if (filename.Length != 0)
             {
-                m_CurrentAlgorithGraph.write(filename);
-
-
+				CurrentAlgorithm.write(filename);
             }
-
             MessageBox.Show("File saved successfully.");
         }
+
+		private void canSaveAsExecute(object sender, CanExecuteRoutedEventArgs e)
+		{
+			e.CanExecute = true;
+		}
+
+		private void saveAsExecute(object sender, ExecutedRoutedEventArgs e)
+		{
+			SaveFileDialog dlg = new SaveFileDialog();
+			dlg.Title = "Save a synthesizer";
+			dlg.ShowDialog(this);
+			String filename = dlg.FileName;
+			if (filename.Length != 0)
+			{
+				CurrentAlgorithm.write(filename);
+			}
+			MessageBox.Show("File saved successfully.");
+		}
 
         private void canOpenExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -142,11 +153,12 @@ namespace SynAssember
             if(dlg.FileName.Length!=0)
             {
                 XmlTextReader reader = new XmlTextReader(dlg.FileName);
-                m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
+				CurrentAlgorithm = new AlgorithmGraph(RightPanel);
+				//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
                 Int32 hWnd = (Int32)getWindowHwnd();
 				AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
                 try {
-                    m_CurrentAlgorithGraph.read(reader);
+					CurrentAlgorithm.read(reader);
                 }
                 catch (Exception ex)
                 {
@@ -166,12 +178,13 @@ namespace SynAssember
 				if (filename != null && filename.Length > 0)
 				{
 					XmlTextReader reader = new XmlTextReader(filename);
-					m_CurrentAlgorithGraph = new AlgorithmGraph(RightPanel);
+					CurrentAlgorithm = new AlgorithmGraph(RightPanel);
+					//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph)
 					Int32 hWnd = (Int32)getWindowHwnd();
 					AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
 					try
 					{
-						m_CurrentAlgorithGraph.read(reader);
+						CurrentAlgorithm.read(reader);
 					}
 					catch (Exception ex)
 					{
@@ -293,7 +306,7 @@ namespace SynAssember
                         Int32 hWnd = (Int32) getWindowHwnd();
 						AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
 
-                        m_CurrentAlgorithGraph.addElaborationUnitGlyph(p.X, p.Y, euDescr, fact, physicalInstanceId);
+                        CurrentAlgorithm.addElaborationUnitGlyph(p.X, p.Y, euDescr, fact, physicalInstanceId);
                     }
                     catch (Exception ex)
                     {
@@ -309,6 +322,18 @@ namespace SynAssember
         }
 
         private AlgorithmGraph m_CurrentAlgorithGraph;
+		private AlgorithmGraph CurrentAlgorithm
+		{
+			set
+			{
+				m_CurrentAlgorithGraph = value;
+				facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
+			}
+			get
+			{
+				return m_CurrentAlgorithGraph;
+			}
+		}
 
         private bool m_IsConnecting = false;
         private String m_SourceEUStringDescr = null;
@@ -331,7 +356,7 @@ namespace SynAssember
                 {
                     String name = (e.Source as Shape).Name;
                     int euIndex = InputOutputGlyph.getEUAudioEngineIdByCombined(name);
-                    ElaborationUnitGlyphInstance euSrc = m_CurrentAlgorithGraph.getEUInstanceByAudioEngineId(euIndex);
+					ElaborationUnitGlyphInstance euSrc = CurrentAlgorithm.getEUInstanceByAudioEngineId(euIndex);
                     int portIndex = InputOutputGlyph.getPortIndexByCombined(name);
                     m_CurrentConnection.setSourceEU(euSrc, portIndex);
                     m_SourceEUStringDescr = name;
@@ -398,10 +423,10 @@ namespace SynAssember
                         {
                             EUConnection conn = new EUConnection(m_CurrentConnection);
                             int euIndex = InputOutputGlyph.getEUAudioEngineIdByCombined(dstName);
-                            ElaborationUnitGlyphInstance euDst = m_CurrentAlgorithGraph.getEUInstanceByAudioEngineId(euIndex);
+							ElaborationUnitGlyphInstance euDst = CurrentAlgorithm.getEUInstanceByAudioEngineId(euIndex);
                             int portIndex = InputOutputGlyph.getPortIndexByCombined(dstName);
                             conn.setDestinationEU(euDst, portIndex);
-                            m_CurrentAlgorithGraph.addConnection(conn);
+							CurrentAlgorithm.addConnection(conn);
                             resetIOSearch();
                         }
                     }
@@ -503,7 +528,7 @@ namespace SynAssember
 
 		private void PlayButton_Click(object sender, RoutedEventArgs e)
 		{
-			int res =AudioEngineWrapper.getDefault().PlayAlgorithm(m_CurrentAlgorithGraph.algoId);
+			int res = AudioEngineWrapper.getDefault().PlayAlgorithm(CurrentAlgorithm.algoId);
 			if(res!=0)
 			{
 				MessageBox.Show("Error while playing algorithm: " + res);
@@ -514,7 +539,7 @@ namespace SynAssember
 
 		private void StopButton_Click(object sender, RoutedEventArgs e)
 		{
-			int res = AudioEngineWrapper.getDefault().StopAlgorithm(m_CurrentAlgorithGraph.algoId);
+			int res = AudioEngineWrapper.getDefault().StopAlgorithm(CurrentAlgorithm.algoId);
 			if(res!=0)
 			{
 				MessageBox.Show("Error while stopping algorithm: " + res);

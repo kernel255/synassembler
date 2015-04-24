@@ -11,11 +11,12 @@ using System.Xml;
 using ClayAudioEngine;
 using EUShelves;
 using SynthPanels;
+using GeneralUtils;
 
 namespace ClayAudioEngine
 {
     // This class holds the list of the Elaboration units dropped inside the graph
-    public class AlgorithmGraph
+	public class AlgorithmGraph : ChangedAlgoruthmInterface
     {
 
         public AlgorithmGraph(Canvas canvas)
@@ -108,7 +109,7 @@ namespace ClayAudioEngine
 			writer.WriteAttributeString(BUSYX_ATTR, p.X.ToString());
 			writer.WriteAttributeString(BUSYY_ATTR, p.Y.ToString());
 
-			writer.WriteWhitespace("\\n\\t");
+			//writer.WriteWhitespace("\\n\\t");
 
 			writer.WriteStartElement(EUS);
             int numEU = m_EUGlyphs.Count();
@@ -161,6 +162,7 @@ namespace ClayAudioEngine
 			reader.WhitespaceHandling = WhitespaceHandling.None;
             bool foundAlgorithm = false;
 			string lastEUFact = "", lastEUName = "", lastId = "";
+			ElaborationUnitGlyphInstance lastEUInst = null;
             while (reader.Read())
             {
                 switch (reader.NodeType)
@@ -177,7 +179,7 @@ namespace ClayAudioEngine
 
                             switch(element)
                             {
-                                case XML_ELEMENT_NAME:
+                                case XML_ALGO_ELEMENT_NAME:
                                 {
                                     foundAlgorithm = true;
 									SynthPanelManager.getDefault().reset();
@@ -220,6 +222,7 @@ namespace ClayAudioEngine
                                             throw new Exception("Unable to create Elaboration Unit");
                                         }
                                         euInst.read(reader);
+										lastEUInst = euInst;
                                         storeTempAEId(euInst, id);
 										AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);
                                         m_EUGlyphs.Add(euInst);
@@ -263,15 +266,12 @@ namespace ClayAudioEngine
                                 {
                                     if(foundAlgorithm)
                                     {
-
-										SynthPanelManager.getDefault().ReadPanel(reader, lastEUFact, lastEUName, lastId);
-
+										ISynthPanel panel = SynthPanelManager.getDefault().ReadPanel(reader, lastEUFact, lastEUName, lastId);
+										lastEUInst.m_SynthPanel = panel;
 									}
                                     break;
                                 }
                             }
-
-
                             break;
                         }
                 }
@@ -303,7 +303,7 @@ namespace ClayAudioEngine
 			m_EUGlyphs.Clear();
 		}
 
-        public const string XML_ELEMENT_NAME = "Algorithm";
+        public const string XML_ALGO_ELEMENT_NAME = "Algorithm";
 
         // Id assigned by the AudioEngine library
         private int m_AudioEngineId;
@@ -314,6 +314,11 @@ namespace ClayAudioEngine
 			{
 				return m_AudioEngineId;
 			}
+		}
+
+		public void algorithmChanged()
+		{
+			m_Changed = true;
 		}
 
         private List<ElaborationUnitGlyphInstance> m_EUGlyphs;

@@ -163,6 +163,10 @@
       <Project>{43F6AB85-8F49-4C35-A546-FE5A7E4A3CC9}</Project>
       <Name>ClayAudioEngine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GeneralUtils\GeneralUtils.csproj">
+      <Project>{5834fddb-ed35-458b-92a1-3bf7393fc170}</Project>
+      <Name>GeneralUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SynthPanel\SynthPanel.csproj">
       <Project>{4ce432ce-4a49-48a7-a096-d983df933598}</Project>
       <Name>SynthPanel</Name>

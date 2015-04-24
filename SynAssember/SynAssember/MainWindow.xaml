@@ -9,7 +9,7 @@
                 <MenuItem Header="New Synthesizer" Command="New"></MenuItem>
                 <MenuItem Header="Open Synthesizer..." Command="Open"></MenuItem>
                 <MenuItem Header="Save Synthesizer...." Command="Save"></MenuItem>
-                <MenuItem Header="Save Synthesizer as..."></MenuItem>
+                <MenuItem Header="Save Synthesizer as..." Command="SaveAs"></MenuItem>
                 <Separator/>
                 <MenuItem Header="Exit" Click="MenuItem_Click"></MenuItem>
             </MenuItem>
