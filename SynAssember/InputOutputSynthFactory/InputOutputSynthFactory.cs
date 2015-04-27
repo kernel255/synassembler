@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SynthPanels;
+using GeneralUtils;
 
 namespace InputOutputSynthFactory
 {
@@ -13,9 +14,9 @@ namespace InputOutputSynthFactory
         private const String POLYTRACKKEY_NAME = "Polytrack Keyboard";
 		private const String PCKEYBOARD_NAME = "PC Keyboard";
 
-		public override void init(DelegateFactoryInterface delegInterf)
+		public override void init(SynthDelegateHolder delHold, Facilities facilities)
         {
-            base.init(delegInterf);
+            base.init(delHold, facilities);
         }
 
         public override string getEUFactoryName()
@@ -33,13 +34,13 @@ namespace InputOutputSynthFactory
             switch (name)
             {
                 case DIRECTSOUND_NAME:
-                    return new DirectSoundOutputWrapper(id, base.deleHolder);
+                    return new DirectSoundOutputWrapper(id, base.deleHolder, facilities);
                 case MIDIIN_NAME:
-                    return new MIDIInputWrapper(id, base.deleHolder);
+                    return new MIDIInputWrapper(id, base.deleHolder, facilities);
                 case POLYTRACKKEY_NAME:
-                    return new PolyTrackKeyboardWrapper(id, base.deleHolder);
+                    return new PolyTrackKeyboardWrapper(id, base.deleHolder, facilities);
 				case PCKEYBOARD_NAME:
-					return new PCKeyboardWrapper(id, deleHolder);
+					return new PCKeyboardWrapper(id, deleHolder, facilities);
                 default:
                     return null;
             }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SynthPanels;
+using GeneralUtils;
 
 namespace BasicEUSynthFactory
 {
@@ -12,9 +13,9 @@ namespace BasicEUSynthFactory
         private const String PCMWAVE_NAME = "PCM Waveform";
         private const String MIDISEQ_NAME = "MIDI Sequence Player";
 
-		public override void init(DelegateFactoryInterface delegInterf)
+		public override void init(SynthDelegateHolder deleHold, Facilities facilities)
         {
-			base.init(delegInterf);
+			base.init(deleHold, facilities);
         }
 
 		public override string getEUFactoryName()
@@ -32,11 +33,11 @@ namespace BasicEUSynthFactory
 			switch (name)
 			{
 				case OSC_NAME:
-					return new OscillatorPanelWrapper(id, base.deleHolder);
+					return new OscillatorPanelWrapper(id, base.deleHolder, facilities);
 				case PCMWAVE_NAME:
-					return new PCMWaveformWrapper(id, base.deleHolder);
+					return new PCMWaveformWrapper(id, base.deleHolder, facilities);
 				case MIDISEQ_NAME:
-					return new MIDISequencePlayerWrapper(id, base.deleHolder);
+					return new MIDISequencePlayerWrapper(id, base.deleHolder, facilities);
 				default:
 					return null;
 			}

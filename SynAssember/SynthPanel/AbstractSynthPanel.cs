@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Drawing;
 using System.Xml;
+using GeneralUtils;
 
 namespace SynthPanels
 {
@@ -12,11 +13,14 @@ namespace SynthPanels
     {
 		protected SynthDelegateHolder delegateHolder;
         protected int m_EUId;
-		public AbstractSynthPanel(UserControl userControl, int id, SynthDelegateHolder deleHolder)
+		protected Facilities facilities;
+
+		public AbstractSynthPanel(UserControl userControl, int id, SynthDelegateHolder deleHolder, Facilities facilities)
         {
             m_UserControl = userControl;
             m_EUId = id;
 			delegateHolder = deleHolder;
+			this.facilities = facilities;
         }
 
 		public virtual Rectangle getRect()

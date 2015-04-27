@@ -6,160 +6,168 @@ using SynthPanels;
 using System.IO;
 using System.Windows.Controls;
 using System.Windows.Input;
+using GeneralUtils;
 
 
 namespace ClayAudioEngine
 {
 
 	public partial class AudioEngineWrapper
-    {
+	{
 
 		private int m_NumFactories = 0;
 		private List<ElaborationUnitFactory> m_Factories;
 
-
-		public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels)
+		Facilities facilities;
+		public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels, Facilities facilities)
 		{
+			this.facilities = facilities;
 			deleHolder = new SynthDelegateHolder();
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 			deleHolder.writeEUIProp = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
 			deleHolder.readEUDprop = new ReadEUDoubleProperty(EUPropertyPlumbing.readEUDoubleProperty);
 			deleHolder.readEUIProp = new ReadEUIntegerProperty(EUPropertyPlumbing.readEUIntegerProperty);
-            String currentFolder = Directory.GetCurrentDirectory();
-            // Try to init engine
-            int result = -1;
-            try
-            {
-                result = initEngine(path, hwnd, samplingFrequence, bitResolution, numChannels);
-            }
-            catch (Exception)
-            {
-                return result;
-            }
+			String currentFolder = Directory.GetCurrentDirectory();
+			// Try to init engine
+			int result = -1;
+			try
+			{
+				result = initEngine(path, hwnd, samplingFrequence, bitResolution, numChannels);
+			}
+			catch (Exception)
+			{
+				return result;
+			}
 
-            try
-            {
-                queryEUFactories();
-                Directory.SetCurrentDirectory(currentFolder);
-                euPlumbing = initPlumbing();
-                querySynthPanels(path);
-            }
-            catch (Exception)
-            {
-                releaseEngine();
-                return -1;
-            }
-            return result;
-        }
+			try
+			{
+				queryEUFactories();
+				Directory.SetCurrentDirectory(currentFolder);
+				euPlumbing = initPlumbing();
+				querySynthPanels(path);
+			}
+			catch (Exception)
+			{
+				releaseEngine();
+				return -1;
+			}
+			return result;
+		}
 
-        private EUPropertyPlumbing initPlumbing()
-        {
-            EUPropertyPlumbing plumbing = new EUPropertyPlumbing();
+		private EUPropertyPlumbing initPlumbing()
+		{
+			EUPropertyPlumbing plumbing = new EUPropertyPlumbing();
 
-            return plumbing;
-        }
+			return plumbing;
+		}
 
 		List<WriteEUDoubleProperty> dPropertyList = new List<WriteEUDoubleProperty>();
 
+		private void initSynthPanel(StringBuilder path)
+		{
+
+			querySynthPanels(path);
+		}
+
 		SynthDelegateHolder deleHolder;
 
-        private void querySynthPanels(StringBuilder path)
-        {
+		private void querySynthPanels(StringBuilder path)
+		{
 
 			List<String> requestedFactories = new List<string>();
 			foreach(ElaborationUnitFactory factory in m_Factories)
 			{
 				requestedFactories.Add(factory.getName());
 			}
-
+			SynthPanelManager.getDefault().facilities = facilities;
 			SynthPanelManager.getDefault().initSynthPanelsFactories(path, requestedFactories, deleHolder);
 		}
 
-        public void release()
-        {
-            releaseEngine();
-        }
+		public void release()
+		{
+			releaseEngine();
+		}
 
-        public void _setHwnd(Int32 hwnd)
-        {
-            setHwndEngine(hwnd);
-        }
+		public void _setHwnd(Int32 hwnd)
+		{
+			setHwndEngine(hwnd);
+		}
 
-        public int getNumFactories()
-        {
-            m_NumFactories = getFactoryNumber();
-            return m_NumFactories;
-        }
-        public String getFactoryName(int factoryIndex)
-        {
-            if (factoryIndex > m_NumFactories)
-                return "";
-            else
-                return getNthFactoryName(factoryIndex);
-        }
+		public int getNumFactories()
+		{
+			m_NumFactories = getFactoryNumber();
+			return m_NumFactories;
+		}
+		public String getFactoryName(int factoryIndex)
+		{
+			if (factoryIndex > m_NumFactories)
+				return "";
+			else
+				return getNthFactoryName(factoryIndex);
+		}
 
-        public IList<ElaborationUnitFactory> getFactories()
-        {
-            return m_Factories;
-        }
+		public IList<ElaborationUnitFactory> getFactories()
+		{
+			return m_Factories;
+		}
 
-        public int createNewAlgorithm()
-        {
-            return createAlgorithm();
-        }
+		public int createNewAlgorithm()
+		{
+			return createAlgorithm();
+		}
 
 		public int addElaborationUnit(int algoId, int euId)
 		{
 			return addElaborationUnitToAlgorithm(algoId, euId);
 		}
 
-        private const int PHYSICAL_CATEGORY = 1;
-        private const int VIRTUAL_CATEGORY = 0;
+		private const int PHYSICAL_CATEGORY = 1;
+		private const int VIRTUAL_CATEGORY = 0;
 
-        public int createNewVirtualElaborationUnit(int factoryIndex, int euIndex)
-        {
-            return createNewElaborationUnit(factoryIndex, VIRTUAL_CATEGORY, euIndex, 0);
-        }
+		public int createNewVirtualElaborationUnit(int factoryIndex, int euIndex)
+		{
+			return createNewElaborationUnit(factoryIndex, VIRTUAL_CATEGORY, euIndex, 0);
+		}
 
-        public int createNewPhysicalElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
-        {
-            return createElaborationUnit(factoryIndex, PHYSICAL_CATEGORY, euIndex, physicalInstanceId);
-        }
+		public int createNewPhysicalElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
+		{
+			return createElaborationUnit(factoryIndex, PHYSICAL_CATEGORY, euIndex, physicalInstanceId);
+		}
 
-        public int createNewElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
-        {
-            //TODO: fix the category issue
-            return createElaborationUnit(factoryIndex, 0, euIndex, physicalInstanceId);
-        }
+		public int createNewElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)
+		{
+			//TODO: fix the category issue
+			return createElaborationUnit(factoryIndex, 0, euIndex, physicalInstanceId);
+		}
 
-        public String getElaborationUnitCreationError(int error)
-        {
-            return "";
-        }
+		public String getElaborationUnitCreationError(int error)
+		{
+			return "";
+		}
 
-        public int connectElaborationUnits(int algorithmId, int sourceId, int sourcePortIndex, int destinationId, int destinationPortIndex)
-        {
-            try
-            {
-                return connectElaboratioUnits(algorithmId, sourceId, sourcePortIndex, destinationId, destinationPortIndex);
-            }
-            catch (Exception)
-            {
-                releaseEngine();
-                return -1;
-            }
-        }
+		public int connectElaborationUnits(int algorithmId, int sourceId, int sourcePortIndex, int destinationId, int destinationPortIndex)
+		{
+			try
+			{
+				return connectElaboratioUnits(algorithmId, sourceId, sourcePortIndex, destinationId, destinationPortIndex);
+			}
+			catch (Exception)
+			{
+				releaseEngine();
+				return -1;
+			}
+		}
 
-        internal int writeEUProperty(int elaborationUnitIndex, int propertyIndex, String valueStr)
-        {
-            setEUProperty(elaborationUnitIndex, propertyIndex, valueStr);
-            return 0;
-        }
+		internal int writeEUProperty(int elaborationUnitIndex, int propertyIndex, String valueStr)
+		{
+			setEUProperty(elaborationUnitIndex, propertyIndex, valueStr);
+			return 0;
+		}
 
-        internal int writeEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)
-        {
-            return setEUDProperty(elaborationUnitIndex, propertyIndex, value);
-        }
+		internal int writeEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)
+		{
+			return setEUDProperty(elaborationUnitIndex, propertyIndex, value);
+		}
 
 		internal int writeEUIProperty(int elaborationUnitIndex, int propertyIndex, int value)
 		{
@@ -176,12 +184,12 @@ namespace ClayAudioEngine
 			return getEUIProperty(elaborationUnitIndex, propertyIndex);
 		}
 
-        public EUPropertyPlumbing euPlumbing;
+		public EUPropertyPlumbing euPlumbing;
 
-        public ISynthPanel createNewPanel(String factoryName, String name, int id)
-        {
-            return SynthPanelManager.getDefault().createSynthPanel(factoryName, name, id);
-        }
+		public ISynthPanel createNewPanel(String factoryName, String name, int id)
+		{
+			return SynthPanelManager.getDefault().createSynthPanel(factoryName, name, id);
+		}
 
 		internal PCKeyboardProcessor keybProcessor = new PCKeyboardProcessor();
 

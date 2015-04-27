@@ -6,6 +6,7 @@ using SynthPanels;
 using System.Windows.Controls;
 using System.Drawing;
 using System.Xml;
+using GeneralUtils;
 
 namespace BasicEUSynthFactory
 {
@@ -13,10 +14,12 @@ namespace BasicEUSynthFactory
     {
 
         OscillatorPanel m_OscillatorPanel = null;
+		Facilities facilities;
 
-		public OscillatorPanelWrapper(int id, SynthDelegateHolder deleHolder) : base(new OscillatorPanel(id, deleHolder), id, deleHolder)
+		public OscillatorPanelWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities) : base(new OscillatorPanel(id, deleHolder, facilities), id, deleHolder, facilities)
 		{
             m_OscillatorPanel = (OscillatorPanel)m_UserControl;
+			this.facilities = facilities;
         }
 
         public UserControl getUserControlPanel()

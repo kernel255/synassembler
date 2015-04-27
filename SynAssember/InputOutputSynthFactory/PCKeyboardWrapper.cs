@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Drawing;
+using GeneralUtils;
 
 namespace InputOutputSynthFactory
 {
@@ -13,8 +14,8 @@ namespace InputOutputSynthFactory
 	{
 		PCKeyboard m_PCKeyboard = null;
 
-		public PCKeyboardWrapper(int id, SynthDelegateHolder deleHolder)
-			: base(new PCKeyboard(), id, deleHolder)
+		public PCKeyboardWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
+			: base(new PCKeyboard(), id, deleHolder, facilities)
 		{
 			m_PCKeyboard = (PCKeyboard)m_UserControl;
 		}

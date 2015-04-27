@@ -7,10 +7,17 @@ namespace GeneralUtils
 {
 	public class Facilities
 	{
-		ChangedAlgoruthmInterface changedAlgorithm;
-		public void setCurrentChangeAlgorithm(ChangedAlgoruthmInterface algo)
+		private ChangedAlgoruthmInterface changedAlgorithm;
+		public ChangedAlgoruthmInterface ChangedAlgorithm
 		{
-			changedAlgorithm = algo;
+			get
+			{
+				return changedAlgorithm;
+			}
+			set
+			{
+				changedAlgorithm = value;
+			}
 		}
 	}
 }

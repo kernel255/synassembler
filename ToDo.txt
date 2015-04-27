@@ -1,0 +1,2 @@
+1. Fix reading problem from C, while reading double Output Level, some problem arise
+2. Save/SaveAs management

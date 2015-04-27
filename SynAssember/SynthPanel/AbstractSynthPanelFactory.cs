@@ -1,19 +1,17 @@
 ﻿using System;
+using GeneralUtils;
+
 
 namespace SynthPanels
 {
 	public abstract partial class AbstractSynthPanelFactory : ISynthPanelFactory
 	{
 		protected SynthDelegateHolder deleHolder;
-		virtual public void init(SynthDelegateHolder delHold)
+		protected Facilities facilities;
+		virtual public void init(SynthDelegateHolder delHold, Facilities facilities)
 		{
 			deleHolder = delHold;
-		}
-
-		protected DelegateFactoryInterface delegateFactory;
-		virtual public void init(DelegateFactoryInterface delegInterf)
-		{
-			delegateFactory = delegInterf;
+			this.facilities = facilities;
 		}
 
 		abstract public string getEUFactoryName();

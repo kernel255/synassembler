@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Drawing;
 using SynthPanels;
 using BasicAudioControls;
+using GeneralUtils;
 
 namespace BasicEUSynthFactory
 {
@@ -24,14 +25,16 @@ namespace BasicEUSynthFactory
     {
         WriteEUDoubleProperty writeDProp;
 		WriteEUIntegerProperty writeIProp;
+		Facilities facilities;
 
         int id;
 
-		public OscillatorPanel(int id, SynthDelegateHolder deleHolder)
-        {
-            InitializeComponent();
-            OutputLevel.setOwner(this);
+		public OscillatorPanel(int id, SynthDelegateHolder deleHolder, Facilities facilities)
+		{
+			InitializeComponent();
+			OutputLevel.setOwner(this);
 			WaveButton.setOwner(this);
+			this.facilities = facilities;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
@@ -43,12 +46,14 @@ namespace BasicEUSynthFactory
         {
             OscillatorPanel oscPanel = (OscillatorPanel)o;
 			oscPanel.writeDProp(oscPanel.id, LEVEL_PROPERTY_INDEX, level);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
         }
 
 		public static void WaveButton_ChangedEvent(Object o, Int32 wave)
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
 			oscPanel.writeIProp(oscPanel.id, WAVE_PROPERTY_INDEX, wave);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
         internal System.Drawing.Rectangle getRectangle()

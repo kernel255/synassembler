@@ -162,7 +162,7 @@ namespace SynAssember
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error while reading " + dlg.FileName);
+                    MessageBox.Show("Error while reading " + dlg.FileName + "\n" + ex.Message);
                     return;
                 }
 
@@ -188,7 +188,7 @@ namespace SynAssember
 					}
 					catch (Exception ex)
 					{
-						string msg = "Error while reading: " + filename;
+						string msg = "Error while reading: " + filename + "\n" + ex.Message;
 						MessageBox.Show(msg);
 					}
 				}
@@ -215,7 +215,7 @@ namespace SynAssember
         {
             //StringBuilder dllPath = new StringBuilder("D:\\Mine\\Audinos\\SynAssembler-Apr2010\\SynAssemblerMix\\AudioEngine\\Debug\\");
             StringBuilder dllPath = new StringBuilder(applicationFolder);
-			ClayAudioEngine.AudioEngineWrapper.getDefault().init(dllPath, 0, 48000, 16, 1);
+			ClayAudioEngine.AudioEngineWrapper.getDefault().init(dllPath, 0, 48000, 16, 1, facilities);
 
             return true;
         }
@@ -327,7 +327,7 @@ namespace SynAssember
 			set
 			{
 				m_CurrentAlgorithGraph = value;
-				facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
+				facilities.ChangedAlgorithm = m_CurrentAlgorithGraph;
 			}
 			get
 			{
@@ -499,12 +499,10 @@ namespace SynAssember
 
 		private void DockPanel_KeyDown(object sender, KeyEventArgs e)
 		{
-			int i = 0;
 		}
 
 		private void SynthPanelArea_KeyDown(object sender, KeyEventArgs e)
 		{
-			int i = 0;
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)

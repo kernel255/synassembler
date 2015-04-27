@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using SynthPanels;
 using System.Drawing;
+using GeneralUtils;
 
 namespace BasicEUSynthFactory
 {
     class PCMWaveformWrapper : AbstractSynthPanel
     {
-		public PCMWaveformWrapper(int id, SynthDelegateHolder deleHolder)
-			: base(new PCMWaveformPanel(), id, deleHolder)
+		public PCMWaveformWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
+			: base(new PCMWaveformPanel(), id, deleHolder, facilities)
         {
 
         }

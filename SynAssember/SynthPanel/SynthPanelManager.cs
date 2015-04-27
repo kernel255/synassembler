@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Xml;
+using GeneralUtils;
 
 namespace SynthPanels
 {
@@ -57,6 +58,19 @@ namespace SynthPanels
 
 		private DelegateFactoryInterface deleFactory;
 
+		private Facilities _facilities;
+		public Facilities facilities
+		{
+			set
+			{
+				_facilities = value;
+			}
+			get
+			{
+				return _facilities;
+			}
+		}
+
 		SynthDelegateHolder deleHolder;
 		public IList<ISynthPanelFactory> initSynthPanelsFactories(StringBuilder folderName, IList<String> requestedFactories, SynthDelegateHolder synDeleHolder)
 		{
@@ -90,7 +104,7 @@ namespace SynthPanels
                             if (factory != null)
                             {
                                 //factory.init(writedProp);
-								factory.init(synDeleHolder);
+								factory.init(synDeleHolder, facilities);
                                 m_FactoryDict.Add(requestedFactory, factory);
                             }
                         }
