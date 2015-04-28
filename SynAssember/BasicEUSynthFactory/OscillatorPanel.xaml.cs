@@ -25,6 +25,8 @@ namespace BasicEUSynthFactory
     {
         WriteEUDoubleProperty writeDProp;
 		WriteEUIntegerProperty writeIProp;
+		ReadEUDoubleProperty readDProp;
+		ReadEUIntegerProperty readIProp;
 		Facilities facilities;
 
         int id;
@@ -37,6 +39,8 @@ namespace BasicEUSynthFactory
 			this.facilities = facilities;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
+			readDProp = deleHolder.readEUDprop;
+			readIProp = deleHolder.readEUIProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
             this.id = id;
@@ -60,6 +64,14 @@ namespace BasicEUSynthFactory
         {
             return new System.Drawing.Rectangle(0, 0, 180, 220);
         }
+
+		internal void updateToModel()
+		{
+			int waveId = readIProp(id, WAVE_PROPERTY_INDEX);
+			WaveButton.SelectedWave = waveId;
+			double outLevel = readDProp(id, LEVEL_PROPERTY_INDEX);
+			OutputLevel.LevelValue = outLevel;
+		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
 		internal static int WAVE_PROPERTY_INDEX = 1;

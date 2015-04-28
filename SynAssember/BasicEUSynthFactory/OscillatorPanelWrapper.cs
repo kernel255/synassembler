@@ -6,6 +6,8 @@ using SynthPanels;
 using System.Windows.Controls;
 using System.Drawing;
 using System.Xml;
+using System.Globalization;
+
 using GeneralUtils;
 
 namespace BasicEUSynthFactory
@@ -48,6 +50,7 @@ namespace BasicEUSynthFactory
 
         public override void read(XmlTextReader reader)
         {
+			// Read and write inside model (AudioEngine)
 			base.read(reader);
 			String str;
 			// Read wave
@@ -56,8 +59,11 @@ namespace BasicEUSynthFactory
 			delegateHolder.writeEUIProp(m_EUId, OscillatorPanel.WAVE_PROPERTY_INDEX, waveId);
 			// Read level
 			str = reader.GetAttribute(XML_OUT_LEVEL);
-			double level = Double.Parse(str);
+			CultureInfo cInfo = new CultureInfo("en-US");
+			double level = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.LEVEL_PROPERTY_INDEX, level);
+			// Now update the view to the model
+			m_OscillatorPanel.updateToModel();
         }
 
         public bool hasChanged()

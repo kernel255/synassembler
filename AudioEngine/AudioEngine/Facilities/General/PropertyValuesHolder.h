@@ -11,6 +11,8 @@
 
 class ElaborationUnit;
 
+#define UNAVALIABLE_VALUE -1
+
 class PropertyValuesHolder
 {
 public:

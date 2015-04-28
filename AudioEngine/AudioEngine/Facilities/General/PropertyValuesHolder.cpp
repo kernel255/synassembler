@@ -68,6 +68,24 @@ int PropertyValuesHolder::setDValue(int propertyIndex, double value)
 
 int PropertyValuesHolder::getDValue(int propertyIndex, double* value)
 {
+	if (propertyIndex >= m_Dvalues.size())
+		return UNAVALIABLE_VALUE;
+	Property* prop = m_pKind->getProperty(propertyIndex);
+	pfnGetValue pfn = m_pKind->getProperty(propertyIndex)->getGetter();
+	switch (prop->getType())
+	{
+	case C_Gain:
+	{
+		double* pDVal = (double*)pfn(m_pEU);
+		*value = *pDVal;
+		m_Dvalues[propertyIndex].dValue = *pDVal;
+		break;
+	}
+	default:
+		return UNAVALIABLE_VALUE;
+		break;
+	}
+
 	return 0;
 }
 

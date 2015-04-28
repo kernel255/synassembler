@@ -138,8 +138,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	::setEUIProperty(oscId, 1, 1);
 
+	::setEUDProperty(oscId, 0, 0.5);
 
-
+	double oVal;
+	::getEUDProperty(oscId, 0, &oVal);
+	printf("Read value: %f\n", oVal);
 
 
 #ifdef PCMWAVEFORM
