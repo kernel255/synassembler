@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows.Controls;
 using System.Windows.Input;
 using GeneralUtils;
-
+using System.Runtime.InteropServices;
 
 namespace ClayAudioEngine
 {
@@ -176,12 +176,35 @@ namespace ClayAudioEngine
 
 		internal double readEUDProperty(int elaborationUnitIndex, int propertyIndex)
 		{
-			return getEUDProperty(elaborationUnitIndex, propertyIndex);
+			//return getEUDProperty(elaborationUnitIndex, propertyIndex);
+			double val = 0.0;
+			unsafe
+			{
+				GCHandle hVal = GCHandle.Alloc(val, GCHandleType.Pinned);
+				var ptr = hVal.AddrOfPinnedObject();
+				int result = getEUDProperty(elaborationUnitIndex, propertyIndex, (IntPtr)ptr);
+			}
+			return val;
 		}
 
 		internal int readEUIProperty(int elaborationUnitIndex, int propertyIndex)
 		{
-			return getEUIProperty(elaborationUnitIndex, propertyIndex);
+			int val = 0;
+			try
+			{
+				unsafe
+				{
+					GCHandle hVal = GCHandle.Alloc(val, GCHandleType.Pinned);
+					var ptr = hVal.AddrOfPinnedObject();
+					int result = getEUIProperty(elaborationUnitIndex, propertyIndex, (IntPtr)ptr);
+				}
+				return val;
+			}
+			catch(Exception ex)
+			{
+
+			}
+			return -1;
 		}
 
 		public EUPropertyPlumbing euPlumbing;
