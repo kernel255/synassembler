@@ -107,6 +107,7 @@ public:
 	static void* getAmplitude(void* pEU) 
 	{
 		Oscillator* pOsc = (Oscillator *) pEU;
+		pOsc->m_pModuleServices->pLogger->writeLine("Read Osc Amplitude: %f", pOsc->m_Amplitude);
 		return &(pOsc->m_Amplitude);
 	}
 	static bool setAmplitude(void* pEU, void* value) {
@@ -115,7 +116,7 @@ public:
 		pOsc->m_Amplitude = *amplitude;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Osc Amplitude: %f", pOsc->m_Amplitude);
+		sprintf(buf, "Write Osc Amplitude: %f", pOsc->m_Amplitude);
 		pOsc->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}

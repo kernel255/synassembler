@@ -507,21 +507,24 @@ namespace SynAssember
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
 		{
+			/*
 			byte[] result = AudioEngineWrapper.getDefault().FirePCKeyboardEvent(e);
 			if(result==null)
 			{
 				
 			}
+			 */
 		}
 
 		private void Window_KeyUp(object sender, KeyEventArgs e)
 		{
+			/*
 			byte[] result = AudioEngineWrapper.getDefault().FirePCKeyboardEvent(e);
 			if (result == null)
 			{
 
 			}
-
+			*/
 		}
 
 		private void PlayButton_Click(object sender, RoutedEventArgs e)

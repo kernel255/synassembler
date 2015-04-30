@@ -29,8 +29,18 @@ namespace BasicAudioControls
 
         public Double LevelValue
         {
-            get { return (Double)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { 
+				return (Double)GetValue(ValueProperty); 
+			}
+            set { 
+				SetValue(ValueProperty, value);
+				/*
+				double min = getCursorMin();
+				double max = getCursorMax();
+				double lvl = value * (max - min);
+				Canvas.SetTop(SliderCursor, min + lvl);
+				 */
+			}
         }
 
         public String Label
@@ -64,6 +74,10 @@ namespace BasicAudioControls
 
         private static void OnLevelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+
+			BasicSlider me = (BasicSlider)sender;
+			Double level = (Double)e.NewValue;
+			level = 1.0 - level;
         }
 
         private static void OnLabelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
