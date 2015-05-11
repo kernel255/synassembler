@@ -180,9 +180,9 @@ namespace ClayAudioEngine
 			double val = 0.0;
 			unsafe
 			{
-				GCHandle hVal = GCHandle.Alloc(val, GCHandleType.Pinned);
-				var ptr = hVal.AddrOfPinnedObject();
-				int result = getEUDProperty(elaborationUnitIndex, propertyIndex, (IntPtr)ptr);
+				//GCHandle hVal = GCHandle.Alloc(val, GCHandleType.Pinned);
+				//var ptr = hVal.AddrOfPinnedObject();
+				int result = getEUDProperty(elaborationUnitIndex, propertyIndex, &val);
 			}
 			return val;
 		}
@@ -194,9 +194,7 @@ namespace ClayAudioEngine
 			{
 				unsafe
 				{
-					GCHandle hVal = GCHandle.Alloc(val, GCHandleType.Pinned);
-					var ptr = hVal.AddrOfPinnedObject();
-					int result = getEUIProperty(elaborationUnitIndex, propertyIndex, (IntPtr)ptr);
+					int result = getEUIProperty(elaborationUnitIndex, propertyIndex, &val);
 				}
 				return val;
 			}

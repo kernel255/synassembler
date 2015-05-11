@@ -9,7 +9,7 @@ using GeneralUtils;
 
 namespace SynthPanels
 {
-    public class AbstractSynthPanel : ISynthPanel
+    public abstract class AbstractSynthPanel : ISynthPanel
     {
 		protected SynthDelegateHolder delegateHolder;
         protected int m_EUId;
@@ -72,5 +72,9 @@ namespace SynthPanels
             return false;
         }
 
+		public virtual void readParametersFromEngine()
+		{
+			// By default does nothing
+		}
     }
 }

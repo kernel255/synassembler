@@ -246,6 +246,14 @@ namespace SynthPanels
 			m_CurrentBusyY = p.Y;
 		}
 
+		public void updateSynthPanels()
+		{
+			foreach(ISynthPanel synthPanel in m_PanelList)
+			{
+				synthPanel.readParametersFromEngine();
+			}
+		}
+
         public const string XML_PANEL = "SynthPanel";
 
 	}

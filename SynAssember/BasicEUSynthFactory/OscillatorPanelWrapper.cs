@@ -63,13 +63,19 @@ namespace BasicEUSynthFactory
 			double level = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.LEVEL_PROPERTY_INDEX, level);
 			// Now update the view to the model
-			m_OscillatorPanel.updateToModel();
+			//m_OscillatorPanel.readParametersFromEngine();
         }
 
         public bool hasChanged()
         {
             return false;
         }
+
+		public override void readParametersFromEngine()
+
+		{
+			m_OscillatorPanel.readParametersFromEngine();
+		}
 
     }
 }

@@ -25,10 +25,57 @@ namespace BasicAudioControls
 
         public Int32 SelectedWave
         {
-            get { return (Int32)GetValue(SelectedWaveProperty); }
-            set { SetValue(SelectedWaveProperty, value); }
+            get { 
+				return (Int32)GetValue(SelectedWaveProperty); 
+			}
+            set { 
+				SetValue(SelectedWaveProperty, value);
+				setButton(value);
+			}
         }
 
+		private bool updatingUI = false;
+
+		void setButton(int val)
+		{
+			switch (val)
+			{
+				case 0:
+					updatingUI = true;
+					TriangleWave.IsChecked = false;
+					SawtoothWave.IsChecked = false;
+					SquareWave.IsChecked = false;
+					SineWave.IsChecked = true;
+					updatingUI = false;
+					break;
+				case 1:
+					updatingUI = true;
+					TriangleWave.IsChecked = false;
+					SawtoothWave.IsChecked = false;
+					SquareWave.IsChecked = true;
+					SineWave.IsChecked = false;
+					updatingUI = false;
+					break;
+				case 2:
+					updatingUI = true;
+					TriangleWave.IsChecked = true;
+					SawtoothWave.IsChecked = false;
+					SquareWave.IsChecked = false;
+					SineWave.IsChecked = false;
+					updatingUI = false;
+					break;
+				case 3:
+					updatingUI = true;
+					TriangleWave.IsChecked = false;
+					SawtoothWave.IsChecked = true;
+					SquareWave.IsChecked = false;
+					SineWave.IsChecked = false;
+					updatingUI = false;
+					break;
+				default:
+					break;
+			}
+		}
 
         static WaveButton()
         {
@@ -43,6 +90,7 @@ namespace BasicAudioControls
 
 		private static void OnSelectedWaveChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
+			
 		}
 
 		private void SineWaveWave_Checked(object sender, RoutedEventArgs e)
@@ -50,7 +98,8 @@ namespace BasicAudioControls
 			TriangleWave.IsChecked = false;
 			SawtoothWave.IsChecked = false;
 			SquareWave.IsChecked = false;
-			WaveChangedEvent(owner, 0);
+			if(!updatingUI)
+				WaveChangedEvent(owner, 0);
 		}
 
 		private void SquareWave_Checked(object sender, RoutedEventArgs e)
@@ -58,7 +107,8 @@ namespace BasicAudioControls
 			TriangleWave.IsChecked = false;
 			SawtoothWave.IsChecked = false;
 			SineWave.IsChecked = false;
-			WaveChangedEvent(owner, 1);
+			if (!updatingUI)
+				WaveChangedEvent(owner, 1);
 		}
 
 		private void TriangleWave_Checked(object sender, RoutedEventArgs e)
@@ -66,7 +116,8 @@ namespace BasicAudioControls
 			SquareWave.IsChecked = false;
 			SawtoothWave.IsChecked = false;
 			SineWave.IsChecked = false;
-			WaveChangedEvent(owner, 2);
+			if (!updatingUI)
+				WaveChangedEvent(owner, 2);
 		}
 
 		private void SawtoothWave_Checked(object sender, RoutedEventArgs e)
@@ -74,7 +125,8 @@ namespace BasicAudioControls
 			TriangleWave.IsChecked = false;
 			SineWave.IsChecked = false;
 			SquareWave.IsChecked = false;
-			WaveChangedEvent(owner, 3);
+			if (!updatingUI)
+				WaveChangedEvent(owner, 3);
 		}
 
 		public delegate void WaveChanged(object sender, int waveNumber);

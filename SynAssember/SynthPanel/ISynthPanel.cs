@@ -14,6 +14,7 @@ namespace SynthPanels
         Rectangle getRect();
         int GetX();
         int GetY();
+		void readParametersFromEngine();
     }
    
 }

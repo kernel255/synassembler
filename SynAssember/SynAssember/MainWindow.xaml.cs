@@ -159,6 +159,7 @@ namespace SynAssember
 				AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
                 try {
 					CurrentAlgorithm.read(reader);
+					CurrentAlgorithm.updateSynthPanels();
                 }
                 catch (Exception ex)
                 {
@@ -185,6 +186,7 @@ namespace SynAssember
 					try
 					{
 						CurrentAlgorithm.read(reader);
+						CurrentAlgorithm.updateSynthPanels();
 					}
 					catch (Exception ex)
 					{
@@ -449,6 +451,17 @@ namespace SynAssember
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+			if(CurrentAlgorithm.Changed)
+			{
+				MessageBoxResult res = MessageBox.Show(this, "The Synthesizer has been changed.\nDo you want to save it?", "Save Alert", MessageBoxButton.YesNo);
+				if(res.Equals(MessageBoxResult.Yes))
+				{
+					saveAsExecute(this, null);
+				}
+			}
+
+
+
 			AudioEngineWrapper.getDefault().release();
 			StoreSettings();
             App.Current.Shutdown();

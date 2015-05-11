@@ -29,17 +29,20 @@ namespace BasicAudioControls
 
         public Double LevelValue
         {
-            get { 
+            get 
+			{ 
 				return (Double)GetValue(ValueProperty); 
 			}
             set { 
 				SetValue(ValueProperty, value);
-				/*
-				double min = getCursorMin();
-				double max = getCursorMax();
-				double lvl = value * (max - min);
-				Canvas.SetTop(SliderCursor, min + lvl);
-				 */
+				if (!sliderChanging)
+				{
+					// Change does not come from slider: update cursor position
+					//double min = getCursorMin();
+					//double max = getCursorMax();
+					//double lvl = value * (max - min);
+					//Canvas.SetTop(SliderCursor, min + lvl);
+				}
 			}
         }
 
@@ -143,6 +146,8 @@ namespace BasicAudioControls
 
         public event SliderChanged SliderChangedEvent;
 
+		bool sliderChanging = false;
+
         private void SliderCursor_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
@@ -157,6 +162,7 @@ namespace BasicAudioControls
                 if (estimatedCursorCenter <= cursorMax && estimatedCursorCenter >= cursorMin)
                 {
                     Canvas.SetTop(SliderCursor, p.Y - delta);
+					sliderChanging = true;
                     LevelValue = normalizeLevel(estimatedCursorCenter - cursorMin);
                     if (LevelValue != previousValue)
                     {
@@ -164,6 +170,7 @@ namespace BasicAudioControls
                         if(SliderChangedEvent!=null)
                             SliderChangedEvent(owner, LevelValue);
                     }
+					sliderChanging = false;
                     previousValue = LevelValue;
                     Trace.Write("Level = " + LevelValue + "\n");
                 }

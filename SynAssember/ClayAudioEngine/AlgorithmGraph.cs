@@ -321,9 +321,21 @@ namespace ClayAudioEngine
 			m_Changed = true;
 		}
 
+		public void updateSynthPanels()
+		{
+			SynthPanelManager.getDefault().updateSynthPanels();
+		}
+
         private List<ElaborationUnitGlyphInstance> m_EUGlyphs;
         private List<EUConnection> m_EUConnections;
         private Canvas m_Canvas;
         private bool m_Changed = false;
+		public bool Changed
+		{
+			get
+			{
+				return m_Changed;
+			}
+		}
     }
 }

@@ -65,7 +65,7 @@ namespace BasicEUSynthFactory
             return new System.Drawing.Rectangle(0, 0, 180, 220);
         }
 
-		internal void updateToModel()
+		internal void readParametersFromEngine()
 		{
 			int waveId = readIProp(id, WAVE_PROPERTY_INDEX);
 			WaveButton.SelectedWave = waveId;
