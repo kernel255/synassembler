@@ -37,6 +37,7 @@ namespace BasicAudioControls
 				SetValue(ValueProperty, value);
 				if (!sliderChanging)
 				{
+					setPosition(value);
 					// Change does not come from slider: update cursor position
 					//double min = getCursorMin();
 					//double max = getCursorMax();
@@ -45,6 +46,11 @@ namespace BasicAudioControls
 				}
 			}
         }
+
+		void setPosition(double val)
+		{
+
+		}
 
         public String Label
         {

@@ -124,12 +124,14 @@ public:
 	static void* getWaveKind(void* pEU)
 	{
 		Oscillator* pOsc = (Oscillator*)pEU;
+		pOsc->m_pModuleServices->pLogger->writeLine("getWaveKind: %d", pOsc->m_WaveKind);
 		return &(pOsc->m_WaveKind);
 	}
 	static bool setWaveKind(void* pEU, void* value)
 	{
 		Oscillator* pOsc = (Oscillator *)pEU;
 		int* kind = (int*)value;
+		pOsc->m_pModuleServices->pLogger->writeLine("setWaveKind: %d", *kind);
 		pOsc->m_WaveKind = (WaveKind)(*kind);
 		char buf[50];
 		memset(buf, 0, 50);

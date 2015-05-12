@@ -134,5 +134,22 @@ int PropertyValuesHolder::setIValue(int propertyIndex, int value)
 
 int PropertyValuesHolder::getIValue(int propertyIndex, int* value)
 {
+	if (propertyIndex >= m_IValues.size())
+		return UNAVALIABLE_VALUE;
+	Property* prop = m_pKind->getProperty(propertyIndex);
+	pfnGetValue pfn = prop->getGetter();
+	switch (prop->getType())
+	{
+	case C_Integer:
+	{
+		int* pIVal = (int*)pfn(m_pEU);
+		*value = *pIVal;
+		m_IValues[propertyIndex].iValue = *pIVal;
+		break;
+	}
+	default:
+		return UNAVALIABLE_VALUE;
+		break;
+	}
 		return 0;
 }
