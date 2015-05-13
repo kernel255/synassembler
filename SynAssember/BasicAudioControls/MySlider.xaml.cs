@@ -50,6 +50,12 @@ namespace BasicAudioControls
 		void setPosition(double val)
 		{
 
+			double min = getCursorMin();
+			double max = getCursorMax();
+			double ext = getCursorExtension();
+			double pos = min + ext * val - SliderCursor.ActualHeight/2;
+
+			Canvas.SetTop(SliderCursor, pos);
 		}
 
         public String Label
@@ -147,6 +153,13 @@ namespace BasicAudioControls
 
             return 1 - (val / range);
         }
+
+		private double unNormalizeLevel(double val)
+		{
+			double range = getCursorMax() - getCursorMin() - 1;
+
+			return (val - 1) * range;
+		}
 
         public delegate void SliderChanged(Object sender, Double value);
 

@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices;
+using System.Windows.Threading;
 using EUShelves;
 using Microsoft.Win32;
 using System.Xml;
@@ -171,6 +172,14 @@ namespace SynAssember
             }
         }
 
+		bool lastSynthLoaded = false;
+
+		void updateLastSynth()
+		{
+			if(lastSynthLoaded)
+				CurrentAlgorithm.updateSynthPanels();
+		}
+
 		private void LoadLastSynth()
 		{
 			if (Properties.Settings.Default.LoadAtStartUp == true)
@@ -186,7 +195,8 @@ namespace SynAssember
 					try
 					{
 						CurrentAlgorithm.read(reader);
-						CurrentAlgorithm.updateSynthPanels();
+						lastSynthLoaded = true;
+						
 					}
 					catch (Exception ex)
 					{
@@ -508,6 +518,15 @@ namespace SynAssember
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			LoadLastSynth();
+
+			Dispatcher.BeginInvoke(
+				new Action(()=>
+					{
+						updateLastSynth();
+					}
+					),
+				DispatcherPriority.ContextIdle,
+				null);
 		}
 
 		private void DockPanel_KeyDown(object sender, KeyEventArgs e)
