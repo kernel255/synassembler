@@ -53,6 +53,7 @@ namespace BasicAudioControls
 			double min = getCursorMin();
 			double max = getCursorMax();
 			double ext = getCursorExtension();
+			val = 1 - val;
 			double pos = min + ext * val - SliderCursor.ActualHeight/2;
 
 			Canvas.SetTop(SliderCursor, pos);

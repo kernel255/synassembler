@@ -45,7 +45,9 @@ namespace BasicEUSynthFactory
 			writer.WriteAttributeString(XML_WAVE_ID, waveId.ToString());
 			// Write output
 			double level = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.LEVEL_PROPERTY_INDEX);
-			writer.WriteAttributeString(XML_OUT_LEVEL, level.ToString());
+			CultureInfo cInfo = new CultureInfo("en-US");
+			string strLevel = level.ToString(cInfo);
+			writer.WriteAttributeString(XML_OUT_LEVEL, strLevel);
         }
 
         public override void read(XmlTextReader reader)

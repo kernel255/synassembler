@@ -109,8 +109,6 @@ namespace ClayAudioEngine
 			writer.WriteAttributeString(BUSYX_ATTR, p.X.ToString());
 			writer.WriteAttributeString(BUSYY_ATTR, p.Y.ToString());
 
-			//writer.WriteWhitespace("\\n\\t");
-
 			writer.WriteStartElement(EUS);
             int numEU = m_EUGlyphs.Count();
             // Write all the EUs

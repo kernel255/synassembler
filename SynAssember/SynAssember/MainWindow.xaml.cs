@@ -107,18 +107,27 @@ namespace SynAssember
 			e.CanExecute = CurrentAlgorithm.hasChanged();
         }
 
-        private void saveExecuted(object sender, ExecutedRoutedEventArgs e)
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "Save a synthesizer";
-            dlg.ShowDialog(this);
-            String filename = dlg.FileName;
-            if (filename.Length != 0)
-            {
-				CurrentAlgorithm.write(filename);
-            }
-            MessageBox.Show("File saved successfully.");
-        }
+		private void saveExecuted(object sender, ExecutedRoutedEventArgs e)
+		{
+			SaveFileDialog dlg = new SaveFileDialog();
+			dlg.Title = "Save a synthesizer";
+			dlg.ShowDialog(this);
+			String filename = dlg.FileName;
+			if (filename.Length != 0)
+			{
+				try
+				{
+					CurrentAlgorithm.write(filename);
+				}
+				catch (Exception ex) 
+				{
+					string msg = "Error while saving algorithm:\n" + ex.Message;
+					MessageBox.Show(msg);
+					return;
+				}
+				MessageBox.Show("File saved successfully.");
+			}
+		}
 
 		private void canSaveAsExecute(object sender, CanExecuteRoutedEventArgs e)
 		{
@@ -133,9 +142,18 @@ namespace SynAssember
 			String filename = dlg.FileName;
 			if (filename.Length != 0)
 			{
-				CurrentAlgorithm.write(filename);
+				try
+				{
+					CurrentAlgorithm.write(filename);
+				}
+				catch(Exception ex)
+				{
+					string msg = "Error while saving algorithm:\n" + ex.Message;
+					MessageBox.Show(msg);
+					return;
+				}
+				MessageBox.Show("File saved successfully.");
 			}
-			MessageBox.Show("File saved successfully.");
 		}
 
         private void canOpenExecute(object sender, CanExecuteRoutedEventArgs e)
