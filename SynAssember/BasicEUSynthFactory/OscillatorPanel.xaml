@@ -5,10 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignHeight="220" d:DesignWidth="180" HorizontalAlignment="Center">
+             d:DesignHeight="220" d:DesignWidth="350" HorizontalAlignment="Center">
     <Canvas >
-        <Rectangle Name="BaseRect"  Height="220" Width="180" Fill="#ffa0a010"></Rectangle>
-        <auc:BasicSlider Name="OutputLevel" Label="Output Level" Canvas.Top="80" Canvas.Left="5"></auc:BasicSlider>
+        <Rectangle Name="BaseRect" Height="220" Width="350" Fill="#ffa0a010"></Rectangle>
+        <Rectangle Name="LevelBackground" Height="145" Width="180" Fill="#50a000a0" Canvas.Top="70" Canvas.Left="5"></Rectangle>
+        <auc:BasicSlider Name="AttackLevel" Label="Attack" Canvas.Left="10" Canvas.Top="80"></auc:BasicSlider>
+        <auc:BasicSlider Name="DecayLevel" Label="Decay" Canvas.Left="70" Canvas.Top="80"></auc:BasicSlider>
+        <auc:BasicSlider Name="SustainLevel" Label="Sustain" Canvas.Left="130" Canvas.Top="80"></auc:BasicSlider>
+        <auc:BasicSlider Name="OutputLevel" Label="Output Level" Canvas.Top="80" Canvas.Left="240"></auc:BasicSlider>
         <auc:WaveButton Name="WaveButton" Canvas.Top="5" Canvas.Left="5"></auc:WaveButton>
         <Label Canvas.Left="5" Canvas.Top="40" Foreground="Aqua">Oscillator Waveform</Label>
     </Canvas>
