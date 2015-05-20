@@ -140,6 +140,21 @@ public:
 		return true;
 	}
 
+	static bool setAttackLevel(void* pEU, void* value)
+	{
+		Oscillator* pOsc = (Oscillator *)pEU;
+		double* attackLevel = (double*)value;
+		for (int i = 0; i < MIDIChannelMessage::NumMIDINotes; i++)
+		{
+			for (int j = 0; j < NUM_VOICES; j++)
+			{
+				pOsc->m_pVoicesLIFO[i]->preallocatedVoices[j]->simpleVoice.m_pEnvelope->AttackLevel = attackLevel;
+			}
+			
+		}
+		return true;
+	}
+
 protected:
 	SimpleGenerator::SampleCalculationResult calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice);
 

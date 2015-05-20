@@ -18,6 +18,9 @@ OscillatorKind::OscillatorKind()
 	waveKind->setSetter(Oscillator::setWaveKind);
 	waveKind->setGetter(Oscillator::getWaveKind);
 	addProperty(waveKind);
+
+	GainProperty* attackLevel = new GainProperty("Attack Level");
+
 }
 
 const char* OscillatorKind::getName(void) const
