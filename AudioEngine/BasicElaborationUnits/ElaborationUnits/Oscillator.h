@@ -140,6 +140,13 @@ public:
 		return true;
 	}
 
+
+	static void* getAttackLevel(void* pEU)
+	{
+		Oscillator* pOsc = (Oscillator*)pEU;
+		return pOsc->m_pVoicesLIFO[0]->preallocatedVoices[0]->simpleVoice.m_pEnvelope->getAttackLevel();
+	}
+
 	static bool setAttackLevel(void* pEU, void* value)
 	{
 		Oscillator* pOsc = (Oscillator *)pEU;
@@ -148,7 +155,7 @@ public:
 		{
 			for (int j = 0; j < NUM_VOICES; j++)
 			{
-				pOsc->m_pVoicesLIFO[i]->preallocatedVoices[j]->simpleVoice.m_pEnvelope->AttackLevel = attackLevel;
+				pOsc->m_pVoicesLIFO[i]->preallocatedVoices[j]->simpleVoice.m_pEnvelope->setAttackLevel(*attackLevel);
 			}
 			
 		}

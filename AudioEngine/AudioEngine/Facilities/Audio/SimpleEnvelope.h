@@ -50,6 +50,22 @@ public:
 	void stop(void);
 	EAG_SAMPLE_TYPE getCurrentLevel(void);
 	bool releaseCompleted(void);
+	
+	void setAttackTime(int attack)	{	attackTime = attack;	}
+	int getAttackTime()	{ return attackTime; }
+
+	void setDecayTime(int decay) { decayTime = decay; }
+	int getDecayTime() { return decayTime; }
+
+	void setReleaseTime(int release) { releaseTime = release; }
+	int getReleaseTime() { return releaseTime; }
+
+	void setAttackLevel(EAG_SAMPLE_TYPE attack) { attackLevel = attack; }
+	EAG_SAMPLE_TYPE* getAttackLevel() { return &attackLevel; }
+
+	void setSustainLevel(EAG_SAMPLE_TYPE sustain) { sustainLevel = sustain; }
+	EAG_SAMPLE_TYPE getSustainLevel() { return sustainLevel; }
+
 private:
 	double getmsec(int msec);
 	ModuleServices* m_pModuleServices;
