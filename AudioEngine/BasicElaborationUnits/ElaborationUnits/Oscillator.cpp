@@ -487,6 +487,7 @@ void Oscillator::deallocate(void)
 
 void Oscillator::play(void)
 {
+	int i = 0;
 }
 
 void Oscillator::pause(void)

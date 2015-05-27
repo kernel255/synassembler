@@ -5,7 +5,7 @@
 #include "VirtualElaborationUnit.h"
 #include "SimpleVoice.h"
 #include "VoiceLIFO.h"
-//#include "VoiceAllocator.h"
+#include "..\General\MutexProxy.h"
 
 class SimpleGenerator : public VirtualElaborationUnit {
 public:

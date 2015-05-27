@@ -94,14 +94,33 @@ void Algorithm::setNthInputPort( unsigned int n, ElaborationUnit* pEU,CommandRes
 
 void Algorithm::allocate(void)
 {
+	ProxyElaborationUnitsListIterator it;
+	it = m_ProxyEUList.begin();
+	while (it != m_ProxyEUList.end())
+	{
+		ProxyElaborationUnit&  proxy = *it;
+		proxy.getEU()->allocate();
+		it++;
+	}
 }
 
 void Algorithm::deallocate(void)
 {
+	ProxyElaborationUnitsListIterator it;
+	it = m_ProxyEUList.begin();
+	while (it != m_ProxyEUList.end())
+	{
+		ProxyElaborationUnit&  proxy = *it;
+		proxy.getEU()->deallocate();
+		it++;
+	}
 }
 
 void Algorithm::play(void)
 {
+	// Ask to all the involved EU to allocate
+	allocate();
+	//Play all the EUs
 	ProxyElaborationUnitsListIterator it;
 	it = m_ProxyEUList.begin();
 	while( it != m_ProxyEUList.end() )
