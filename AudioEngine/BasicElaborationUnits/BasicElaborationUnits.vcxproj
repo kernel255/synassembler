@@ -99,6 +99,7 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\MutexProxy.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\textfile.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\TimeBase.cpp" />

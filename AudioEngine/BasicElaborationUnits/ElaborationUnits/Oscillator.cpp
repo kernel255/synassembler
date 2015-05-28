@@ -480,9 +480,11 @@ int Oscillator::getOutputPortNumber(void)
 
 void Oscillator::allocate(void)
 {
+	SimpleGenerator::allocate();
 }
 void Oscillator::deallocate(void)
 {
+	SimpleGenerator::deallocate();
 }
 
 void Oscillator::play(void)

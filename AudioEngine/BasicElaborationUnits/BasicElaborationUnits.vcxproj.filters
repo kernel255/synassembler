@@ -138,6 +138,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp">
       <Filter>Facilities\General</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\MutexProxy.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

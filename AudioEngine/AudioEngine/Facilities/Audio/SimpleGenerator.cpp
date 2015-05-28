@@ -204,21 +204,33 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 			//When NoteOn is received with velocity 0, is a note off
 			if( midimsg.data.NoteMessage.Velocity == 0 )
 			{
+				m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
+				int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
+				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 				m_pModuleServices->pLogger->writeLine("Note Off %d", midimsg.data.NoteMessage.Note);
 				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Deactivate();
+				m_MutexProxy->ReleaseMutex();
 			}
 			else
 			{
+				m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
+				int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
+				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 				//This is a true NoteOn
 				m_pModuleServices->pLogger->writeLine("Note On %d", midimsg.data.NoteMessage.Note);
 				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency);
+				m_MutexProxy->ReleaseMutex();
 			}
 			break;
 		}
 	case MIDIChannelMessage::e_NoteOff:
 		{
+			m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
+			m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 			m_pModuleServices->pLogger->writeLine("Note Off %d", midimsg.data.NoteMessage.Note);
 			m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Deactivate();
+			int res = m_MutexProxy->ReleaseMutex();
+			m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 			break;
 		}
 	default:
@@ -253,9 +265,13 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 	//Now It's time for processing...
 	for(int noteIndex=0;noteIndex<MIDIChannelMessage::NumMIDINotes;++noteIndex)
 	{
+		
+		m_pModuleServices->pLogger->writeLine("Waiting mutex on updateSamples");
+		int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
+		m_pModuleServices->pLogger->writeLine("Elapsed updateSamples: %d", res);
 		if (m_pVoicesLIFO[noteIndex]->isActive())
-		//if( m_pVoices[noteIndex]->m_bActive )
-			for(int sampleIndex=0;sampleIndex<numsamples;sampleIndex++)
+		{
+			for (int sampleIndex = 0; sampleIndex < numsamples; sampleIndex++)
 			{
 				int numLoops = 0;
 				VoiceProxy* voiceIterator = m_pVoicesLIFO[noteIndex]->getFirstAllocatedVoice();
@@ -286,36 +302,10 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 					voiceIterator = m_pVoicesLIFO[noteIndex]->getNextAllocatedVoice();
 					numLoops++;
 				}
-				/*
-				if (numLoops != lastVoiceActNumber)
-				{
-					lastVoiceActNumber = numLoops;
-					m_pModuleServices->pLogger->writeLine("Loops num: %d", numLoops);
-				}
-				*/
-				//EAG_SAMPLE_TYPE envLevel = m_pVoices[noteIndex]->m_pEnvelope->getUpdatedLevel();
-				//if(m_pVoices[noteIndex]->m_bFinalRelease)
-				//{
-				//	if(m_pVoices[noteIndex]->m_pEnvelope->releaseCompleted())
-				//	{
-				//		m_pVoices[noteIndex]->dispose();
-				//		break;
-				//	}
-				//}
-				//EAG_SAMPLE_TYPE currSample;
-				//if(calculateSample(currSample,*(m_pVoices[noteIndex]))==CALCULATION_COMPLETED)
-				//{
-				//	m_pVoices[noteIndex]->dispose();
-				//	break;
-				//}
-				//else
-				//{
-				//	pSamplesBuffer[sampleIndex] += m_Amplitude * envLevel * m_pAmplitudeInBuffer[sampleIndex] * currSample;
-					// Original code from Oscillator class
-					//pSamplesBuffer[sampleIndex] += m_Amplitude * envLevel * m_pAmplitudeInBuffer[sampleIndex] * sin( m_pVoices[noteIndex]->m_TimeAccumulator * 2.0 * 3.14159265358979323846 / m_pVoices[noteIndex]->m_Period );
-				//	m_pVoices[noteIndex]->m_TimeAccumulator += m_SamplingTime;
-				//}
 			}
+		}
+
+		m_MutexProxy->ReleaseMutex();
 	}
 
 }
@@ -323,4 +313,16 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 bool SimpleGenerator::isFinalElaborationUnit()
 {
 	return false;
+}
+
+void SimpleGenerator::allocate()
+{
+	m_MutexProxy = new MutexProxy(NULL);
+}
+
+void SimpleGenerator::deallocate()
+{
+	m_MutexProxy->ReleaseMutex();
+	delete m_MutexProxy;
+	m_MutexProxy = NULL;
 }

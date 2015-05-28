@@ -23,6 +23,8 @@ public:
 	int getOutputPortNumber(void);
 	virtual void receiveMIDIMessage(MIDIChannelMessage& midimsg);
 	virtual void updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int numsamples);
+	virtual void allocate(void);
+	virtual void deallocate(void);
 protected:
 	enum SampleCalculationResult {
 		CALCULATION_CONTINUE,
@@ -59,4 +61,6 @@ protected:
 	 */
 	//SimpleVoice* m_pVoices[MIDIChannelMessage::NumMIDINotes];
 	VoiceLIFO* m_pVoicesLIFO[MIDIChannelMessage::NumMIDINotes];
+
+	MutexProxy* m_MutexProxy;
 };
