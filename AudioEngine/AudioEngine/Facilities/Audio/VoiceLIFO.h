@@ -9,22 +9,25 @@ public:
 
 #define NUM_VOICES 20
 
+	/**
+	Array of voices to support polyphony for the same note
+	*/
 	VoiceProxy* preallocatedVoices[NUM_VOICES];
-
-	VoiceProxy* firstFree;
 
 	VoiceProxy* getFirstFreeVoice();
 
 	VoiceProxy* getLatestAllocated();
 
 	VoiceProxy* firstAllocated;
-	VoiceProxy* last;
+	VoiceProxy* lastAllocated;
 
 	VoiceProxy* getFirstAllocatedVoice();
 	VoiceProxy* getNextAllocatedVoice();
 	VoiceProxy* allocatedIterator;
 	int numActiveVoices;
 	VoiceProxy* getFirstAllocated();
+	VoiceProxy* getMyPredecessor(VoiceProxy* myVProxy);
+	VoiceProxy* getFirstDeactivable();
 public:
 	VoiceLIFO(double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
 	~VoiceLIFO();

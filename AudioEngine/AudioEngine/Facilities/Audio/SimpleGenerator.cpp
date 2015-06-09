@@ -15,6 +15,7 @@ MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,Elabor
 	//m_SamplingTime = 1.0 / m_SamplingFrequency;
 	initVoices(m_SamplingTime);
 	lastVoiceActNumber = 0;
+	playing = false;
 }
 
 SimpleGenerator::~SimpleGenerator()
@@ -247,6 +248,8 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 	{
 		pSamplesBuffer[i] = EAG_SAMPLE_ZERO;
 	}
+	if (m_MutexProxy == NULL)
+		return;
 	//Read inputs buffer if available
 	ElaborationUnitPort* pPort;
 	ElaborationUnit* pEU;
@@ -266,9 +269,10 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 	for(int noteIndex=0;noteIndex<MIDIChannelMessage::NumMIDINotes;++noteIndex)
 	{
 		
-		m_pModuleServices->pLogger->writeLine("Waiting mutex on updateSamples");
+		//m_pModuleServices->pLogger->writeLine("Waiting mutex on updateSamples");
 		int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
-		m_pModuleServices->pLogger->writeLine("Elapsed updateSamples: %d", res);
+		if (res!=WAIT_OBJECT_0)
+			m_pModuleServices->pLogger->writeLine("Elapsed updateSamples: %d", res);
 		if (m_pVoicesLIFO[noteIndex]->isActive())
 		{
 			for (int sampleIndex = 0; sampleIndex < numsamples; sampleIndex++)
@@ -288,6 +292,7 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						}
 					}
 					EAG_SAMPLE_TYPE currSample;
+					// The value CALCULATION_COMPLETED is returned in case of fixed len samples
 					if (calculateSample(currSample, voiceIterator->simpleVoice) == CALCULATION_COMPLETED)
 					{
 						voiceIterator->simpleVoice.dispose();
@@ -318,6 +323,7 @@ bool SimpleGenerator::isFinalElaborationUnit()
 void SimpleGenerator::allocate()
 {
 	m_MutexProxy = new MutexProxy(NULL);
+	playing = true;
 }
 
 void SimpleGenerator::deallocate()
@@ -325,4 +331,5 @@ void SimpleGenerator::deallocate()
 	m_MutexProxy->ReleaseMutex();
 	delete m_MutexProxy;
 	m_MutexProxy = NULL;
+	playing = false;
 }

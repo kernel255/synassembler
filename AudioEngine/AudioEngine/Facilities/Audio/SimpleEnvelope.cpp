@@ -52,7 +52,7 @@ EAG_SAMPLE_TYPE SimpleEnvelope::getRatioByState(State state)
 void SimpleEnvelope::setState(State _state)
 {
 	state = _state;
-	char* strState = "";
+	char* strState = "Unknown";
 	switch (state)
 	{
 		case None:

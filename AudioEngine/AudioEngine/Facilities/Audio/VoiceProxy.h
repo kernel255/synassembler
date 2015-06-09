@@ -12,10 +12,11 @@ public:
 	void activate(double initialfreq);
 	void deactivate(void);
 	bool isFree();
+	bool isDeactivating();
 	void allocate();
+	void freeVoice();
 
 	VoiceProxy *nextAllocated;
-	VoiceProxy *nextFree;
 
 	ModuleServices* m_pModuleServices;
 
@@ -24,4 +25,5 @@ public:
 private:
 
 	bool free;
+	bool deactivating;
 };

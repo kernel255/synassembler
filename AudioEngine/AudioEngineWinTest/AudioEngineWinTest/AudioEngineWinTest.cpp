@@ -101,7 +101,9 @@ int pcKId = -1;
 //        create and display the main program window.
 //
 
+#define NUM_NOTES 256
 
+bool activeNotes[NUM_NOTES];
 
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
@@ -123,10 +125,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    //Init AudioEngine
-   wchar_t* folderName = L"E:\\Mine\\Audinos\\Allura-May-2013-v2\\synassembler-code\\SynAssemblerMix\\AudioEngine\\AudioEngineWinTest\\Debug";
+   wchar_t* folderName = L"E:\\Mine\\Audinos\\HG-SynAssembler\\AudioEngine\\AudioEngineWinTest\\Debug";
    int result = ::initEngine(folderName, (int)hWnd, 44100, 16, 1);
    if (result != 0)
 	   return FALSE;
+   if (::getFactoryNumber() == 0)
+   {
+	   //printf("No factory available. Exiting...\n");
+	   ::releaseEngine();
+
+	   return FALSE;
+   }
 
 
 #define BASIC_EU_FACTORY	0
@@ -154,8 +163,47 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ::playAlgorithm(algoId);
 
+   for (int i = 0; i < NUM_NOTES; i++)
+	   activeNotes[i] = false;
+
    return TRUE;
 }
+
+unsigned char getNoteByChar(char key)
+{
+	switch (key)
+	{
+	case 'q':
+	case 'Q':
+		return 0x40;
+	case 'w':
+	case 'W':
+		return 0x42;
+	case 'e':
+	case 'E':
+		return 0x44;
+	case 'r':
+	case 'R':
+		return 0x45;
+	case 't':
+	case 'T':
+		return 0x47;
+	case 'y':
+	case 'Y':
+		return 0x49;
+	case 'u':
+	case 'U':
+		return 0x51;
+	case 'i':
+	case 'I':
+		return 0x52;
+	default:
+		return 0;
+		break;
+	}
+}
+
+
 
 //
 //  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
@@ -198,62 +246,46 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
+	case WM_QUIT:
+		::stopAlgorithm(0);
 		::releaseEngine();
 		break;
 	case WM_KEYDOWN:
+	{
 		unsigned char buffer[3];
-		switch (wParam)
+		unsigned char note = getNoteByChar(wParam);
+		if (!activeNotes[note])
 		{
-		case 'q':
-		case 'Q':
-			buffer[0] = 0x90;
-			buffer[1] = 0x40;
-			buffer[2] = 0x7F;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
-		case 'w':
-		case 'W':
-			buffer[0] = 0x90;
-			buffer[1] = 0x42;
-			buffer[2] = 0x7F;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
-		case 'e':
-		case 'E':
-			buffer[0] = 0x90;
-			buffer[1] = 0x44;
-			buffer[2] = 0x7F;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
-		default:
-			break;
+			activeNotes[note] = true;
+			if (note != 0)
+			{
+				buffer[0] = 0x90;
+				buffer[1] = note;
+				buffer[2] = 0x7F;
+				::sendMIDIMessage(pcKId, buffer);
+				
+			}
 		}
-		break;
+	}
+	break;
 	case WM_KEYUP:
-		switch (wParam)
+	{
+		unsigned char buffer[3];
+		unsigned char note = getNoteByChar(wParam);
+		if (activeNotes[note])
 		{
-		case 'q':
-		case 'Q':
-			buffer[0] = 0x80;
-			buffer[1] = 0x40;
-			buffer[2] = 0x00;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
-		case 'w':
-		case 'W':
-			buffer[0] = 0x80;
-			buffer[1] = 0x42;
-			buffer[2] = 0x00;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
-		case 'e':
-		case 'E':
-			buffer[0] = 0x80;
-			buffer[1] = 0x44;
-			buffer[2] = 0x00;
-			::sendMIDIMessage(pcKId, buffer);
-			break;
+			activeNotes[note] = false;
+			if (note != 0)
+			{
+				buffer[0] = 0x80;
+				buffer[1] = note;
+				buffer[2] = 0x7F;
+				::sendMIDIMessage(pcKId, buffer);
+			}
+			
 		}
+	}
+	break;
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}

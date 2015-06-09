@@ -63,4 +63,6 @@ protected:
 	VoiceLIFO* m_pVoicesLIFO[MIDIChannelMessage::NumMIDINotes];
 
 	MutexProxy* m_MutexProxy;
+
+	bool playing;
 };

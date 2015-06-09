@@ -213,7 +213,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	::Sleep(10000);
 
 
-	//::stopAlgorithm(algoId);
+	::stopAlgorithm(algoId);
 
 
 //#define PLAY_SOMETHING 1

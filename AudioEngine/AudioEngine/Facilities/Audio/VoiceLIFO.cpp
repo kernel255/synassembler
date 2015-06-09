@@ -11,20 +11,8 @@ VoiceLIFO::VoiceLIFO(double samplingPeriod, int samplesBufferSize, ModuleService
 		preallocatedVoices[i] = new VoiceProxy(i, samplingPeriod, samplesBufferSize, pModuleServices);
 	}
 
-	firstFree = preallocatedVoices[0];
 	firstAllocated = NULL;
-	for (int i = 0; i < NUM_VOICES; i++)
-	{
-		if (i == NUM_VOICES - 1)
-		{
-			preallocatedVoices[i]->nextFree = preallocatedVoices[0];
-		}
-		else
-		{
-			preallocatedVoices[i]->nextFree = preallocatedVoices[i + 1];
-		}
-	}
-
+	lastAllocated = NULL;
 }
 
 VoiceLIFO::~VoiceLIFO()
@@ -35,6 +23,7 @@ VoiceLIFO::~VoiceLIFO()
 	}
 }
 
+// Scan all the voices until a free one is found
 VoiceProxy* VoiceLIFO::getFirstFreeVoice()
 {
 	for (int i = 0; i < NUM_VOICES; i++)
@@ -49,7 +38,10 @@ VoiceProxy* VoiceLIFO::getLatestAllocated()
 {
 	//Nothing has been allocated
 	if (firstAllocated == NULL)
+	{
+		m_pModuleServices->pLogger->writeLine("No voice yet allocated");
 		return NULL;
+	}
 	VoiceProxy* ptr = firstAllocated;
 	while (ptr->nextAllocated != NULL)
 	{
@@ -70,13 +62,21 @@ void VoiceLIFO::Activate(double initialfreq)
 		{
 			firstAllocated = firstFree;
 			firstAllocated->nextAllocated = NULL;
+			lastAllocated = firstFree;
+			m_pModuleServices->pLogger->writeLine("First voice allocated");
 		}
 		else
 		{
+			firstFree->nextAllocated = NULL;
+			lastAllocated->nextAllocated = firstFree;
+			lastAllocated = firstFree;
+			m_pModuleServices->pLogger->writeLine("Some voice already allocated");
 			// Some other voice is already allocated
+			/*
 			VoiceProxy* latestAllocated = getLatestAllocated();
 			latestAllocated->nextAllocated = firstFree;
 			firstFree->nextAllocated = NULL;
+			*/
 		}
 
 		firstFree->activate(initialfreq);
@@ -84,14 +84,17 @@ void VoiceLIFO::Activate(double initialfreq)
 		m_pModuleServices->pLogger->writeLine("Voices allocated: %d", numActiveVoices);
 	}
 	else
-		m_pModuleServices->pLogger->writeLine("ERROR: voice not allocated while no voice free");
+		m_pModuleServices->pLogger->writeLine("ERROR: voice not allocated while no free voice found");
 }
 
 VoiceProxy* VoiceLIFO::getFirstAllocated()
 {
 	VoiceProxy* first = firstAllocated;
 	if (first == NULL)
+	{
+		m_pModuleServices->pLogger->writeLine("firstAllocated NULL");
 		return NULL;
+	}
 	while (first->simpleVoice.m_bFinalRelease)
 	{
 		first = first->nextAllocated;
@@ -101,31 +104,82 @@ VoiceProxy* VoiceLIFO::getFirstAllocated()
 	return first;
 }
 
+VoiceProxy* VoiceLIFO::getFirstDeactivable()
+{
+	if (firstAllocated == NULL)
+		return NULL;
+	VoiceProxy* pVoice = firstAllocated;
+	while (pVoice->isDeactivating())
+	{
+		pVoice = pVoice->nextAllocated;
+		if (pVoice == NULL)
+		{
+			m_pModuleServices->pLogger->writeLine("ERROR: No voice deactivable!");
+			return NULL;
+		}
+	}
+	return pVoice;
+}
+
 void VoiceLIFO::Deactivate()
 {
-	//VoiceProxy* first = firstAllocated;
-	VoiceProxy* first = getFirstAllocated();
-	if (first == NULL)
+	if (firstAllocated == NULL)
 	{
-		m_pModuleServices->pLogger->writeLine("ERROR: No voice allocated (voice id=%d)");
+		m_pModuleServices->pLogger->writeLine("ERROR: no voice allocated, cannot deallocate");
 		return;
 	}
-	/*
-	firstAllocated = first->nextAllocated;
-	first->nextAllocated = NULL;
-	*/
-	first->deactivate();
+	VoiceProxy* pDeactivable = getFirstDeactivable();
+	if (pDeactivable != NULL)
+	{
+		m_pModuleServices->pLogger->writeLine("%s Found deactivable: %d", __FUNCTION__, pDeactivable->id);
+		pDeactivable->deactivate();
+	}
+}
+
+VoiceProxy* VoiceLIFO::getMyPredecessor(VoiceProxy* myVProxy)
+{
+	if (firstAllocated == NULL)
+		return NULL;
+	VoiceProxy* pVProxy = firstAllocated;
+	while (pVProxy != NULL)
+	{
+		if (pVProxy->nextAllocated == myVProxy)
+			return pVProxy;
+		pVProxy = pVProxy->nextAllocated;
+	}
+	return NULL;
 }
 
 void VoiceLIFO::Deallocate(VoiceProxy* toBeDeallocated)
 {
 	m_pModuleServices->pLogger->writeLine("Deallocate #%d", toBeDeallocated->id);
-	toBeDeallocated = toBeDeallocated->nextAllocated;
-	firstAllocated = toBeDeallocated;
-	if (toBeDeallocated != NULL)
+	// The voice to deallocate is the first
+	if (toBeDeallocated == firstAllocated)
 	{
-		toBeDeallocated->nextAllocated = NULL;
+		firstAllocated = toBeDeallocated->nextAllocated;
 	}
+	if (toBeDeallocated == lastAllocated)
+	{
+		VoiceProxy* pPrevious = getMyPredecessor(toBeDeallocated);
+		if (pPrevious != NULL)
+		{
+			lastAllocated = pPrevious;
+			pPrevious->nextAllocated = NULL;
+		} 
+		else
+		{
+			lastAllocated = NULL;
+		}
+	}
+
+	VoiceProxy* pPrevious = getMyPredecessor(toBeDeallocated);
+	if (pPrevious != NULL)
+	{
+		pPrevious->nextAllocated = toBeDeallocated->nextAllocated;
+	}
+	toBeDeallocated->nextAllocated = NULL;
+	toBeDeallocated->freeVoice();
+
 	numActiveVoices--;
 	m_pModuleServices->pLogger->writeLine("Voices allocated: %d", numActiveVoices);
 }
