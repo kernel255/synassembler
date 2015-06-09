@@ -28,8 +28,7 @@ Algorithm::~Algorithm()
 	it = m_ProxyEUList.begin();
 	while( it != m_ProxyEUList.end() )
 	{
-//		pEU = (*it).m_pEU;
-//		delete pEU;
+		it->getFactory()->destroyElaborationUnit(it->getEU());
 		it = m_ProxyEUList.erase( it );
 	}
 }
@@ -77,20 +76,6 @@ ElaborationUnitPort* Algorithm::getNthInputPort(int n )
 {
 	return NULL;
 }
-
-/*
-void Algorithm::setNthOutputPort(unsigned int n, ElaborationUnit* pEU,CommandResult *pCmdRes)
-{
-	char str[] = "Algorthm Out cannot currenlty be set!";
-	char *pcRes = new char [strlen(str)];
-
-	pCmdRes->pcBriefResultDescription = pcRes;
-}
-
-void Algorithm::setNthInputPort( unsigned int n, ElaborationUnit* pEU,CommandResult *pCmdRes)
-{
-}
-*/
 
 void Algorithm::allocate(void)
 {

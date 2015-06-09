@@ -165,6 +165,11 @@ extern "C" __declspec( dllexport ) int getNthElaborationUnitOutputPortType(int f
  */
 extern "C" __declspec( dllexport ) int createAlgorithm();
 /**
+ * Delete an already create algorithm
+ * @return Return 0 if the destoying has been successful
+*/
+extern "C" __declspec(dllexport) int destroyAlgorithm(int id);
+/**
  * Create an elaboration unit by id, category id and factory id
  */
 extern "C" __declspec( dllexport ) int createElaborationUnit(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int physicalInstanceIndex);

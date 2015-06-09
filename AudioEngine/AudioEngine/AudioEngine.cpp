@@ -69,20 +69,18 @@ int AudioEngine::createAlgorithm()
 
 int AudioEngine::removeAlgorithm(int algorithmIndex)
 {
-	//Algorithm* algo;
-
-	std::map<int, Algorithm*>::iterator it;
-	it = mapIdToAlgorithms.find(algorithmIndex);
-	/*
-	if(it==NULL)
-		return ALGORITHM_NOT_FOUND;
-	else
-	{
-		mapIdToAlgorithms.erase(algorithmIndex);
-		return ALGORITHM_REMOVED;
-	}
-	*/
 	mapIdToAlgorithms.erase(algorithmIndex);
+	std::vector<AlgorithmProxy>::iterator it;
+	for (it=algorithms.begin(); it != algorithms.end(); ++it)
+	{
+		if (it->id == algorithmIndex)
+		{
+			delete it->algo;
+			algorithms.erase(it);
+			break;
+		}
+	}
+
 	return ALGORITHM_REMOVED;
 }
 
@@ -1096,6 +1094,11 @@ const EUKind* AudioEngine::getEUKind(int factoryIndex, int categoryIndex, int el
 extern "C" __declspec( dllexport ) int createAlgorithm()
 {
 	return audioEngine->createAlgorithm();
+}
+
+extern "C" __declspec(dllexport) int destroyAlgorithm(int id)
+{
+	return audioEngine->removeAlgorithm(id);
 }
 
 extern "C" __declspec( dllexport ) int createElaborationUnit(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int physicalInstanceIndex)

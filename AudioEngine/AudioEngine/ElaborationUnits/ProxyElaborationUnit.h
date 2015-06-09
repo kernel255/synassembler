@@ -21,4 +21,5 @@ public:
 	ProxyElaborationUnit& operator=(ProxyElaborationUnit& right);
 	ProxyElaborationUnit(const ProxyElaborationUnit& PEU);
 	ElaborationUnit* getEU(void) { return m_pEU; }
+	ElaborationUnitFactory* getFactory(void) { return m_pFactory; }
 };

@@ -210,10 +210,12 @@ int _tmain(int argc, _TCHAR* argv[])
 	//::Sleep(1000);
 
 
-	::Sleep(10000);
+	::Sleep(1000);
 
 
 	::stopAlgorithm(algoId);
+
+	::destroyAlgorithm(algoId);
 
 
 //#define PLAY_SOMETHING 1
