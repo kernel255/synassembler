@@ -13,3 +13,10 @@ syntax: glob
 AudioEngine\AudioEngine.sdf
 *.exp
 *.tlog
+AudioEngine\AudioEngineWinTest\Debug\dsoundoutput.raw
+AudioEngine\AudioEngineWinTest\Debug\dsoundoutput.wav
+SynAssember\SynthPanel\obj\Debug\SynthPanel.csproj.FileListAbsolute.txt
+AudioEngine\AudioEngineWinTest\Debug\AudioEngine.bsc
+SynAssember\GeneralUtils\obj\Debug\GeneralUtils.csproj.FileListAbsolute.txt
+AudioEngine\AudioEngineWinTest\AudioEngineWinTest\Debug\vc120.idb
+AudioEngine\AudioEngineWinTest\AudioEngineWinTest\Debug\AudioEngineWinTest.res
