@@ -70,6 +70,11 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
+	createAlgoAndDestroy();
+
+
+
+
 #define BASIC_EU_FACTORY	0
 #define INOUT_EU_FACTORY	1
 

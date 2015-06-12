@@ -110,3 +110,33 @@ HWND getConsoleHwnd(void)
 
        return(hwndFound);
    }
+
+
+void createAlgoAndDestroy()
+{
+	//Algorith build
+	int algoId, dsId, seqId;
+	algoId = ::createAlgorithm();
+	//Create oscillator
+	int oscId = ::createElaborationUnit(0, VIRTUAL_EU_CATEGORY, 0, -1);
+	//Create DirectSound
+	dsId = ::createElaborationUnit(1, PHYSICAL_EU_CATEGORY, 0, 0);
+	//Create Polytrack keyboard
+	seqId = ::createElaborationUnit(0, VIRTUAL_EU_CATEGORY, 1, -1);
+	//Create PC keyboard
+	int pcKId = ::createElaborationUnit(1, PHYSICAL_EU_CATEGORY, 3, 0);
+	//Add to algorithm
+	::addElaborationUnitToAlgorithm(algoId, dsId);
+	::addElaborationUnitToAlgorithm(algoId, oscId);
+	::addElaborationUnitToAlgorithm(algoId, seqId);
+	//::addElaborationUnitToAlgorithm(algoId, pcKId);
+	//Connect EU
+	::connectElaboratioUnits(algoId, oscId, 0, dsId, 0);
+	::connectElaboratioUnits(algoId, seqId, 0, oscId, 2);
+	::connectElaboratioUnits(algoId, pcKId, 0, oscId, 2);
+
+	::destroyAlgorithm(algoId);
+
+	algoId = ::createAlgorithm();
+
+}

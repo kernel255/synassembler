@@ -23,7 +23,7 @@ Algorithm::~Algorithm()
 {
 	//Destroy the list of EUs
 	ProxyElaborationUnitsListIterator it;
-//	EUtype* pEU;
+	m_pModuleServices->pLogger->writeLine("Algorithm destructor");
 
 	it = m_ProxyEUList.begin();
 	while( it != m_ProxyEUList.end() )
@@ -31,6 +31,7 @@ Algorithm::~Algorithm()
 		it->getFactory()->destroyElaborationUnit(it->getEU());
 		it = m_ProxyEUList.erase( it );
 	}
+
 }
 
 

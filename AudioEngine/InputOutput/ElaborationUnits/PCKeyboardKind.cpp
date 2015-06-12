@@ -15,7 +15,7 @@ PCKeyboardKind::~PCKeyboardKind()
 
 const char* PCKeyboardKind::getName(void) const
 {
-	return "PC Keyboard";
+	return PCKEYB_NAME;
 }
 
 bool PCKeyboardKind::isPhysical(void) const

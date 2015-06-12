@@ -75,7 +75,7 @@ MainInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::AUDIO_PORT,Elabo
 
 DirectSoundOutput::~DirectSoundOutput()
 {
-	this->m_pModuleServices->pLogger->writeLine("DirectSoundOutput destructor");
+	this->m_pModuleServices->pLogger->writeLine("DirectSoundOutput destructor id=%d", iId);
 	HRESULT hr;
 	//Release all DSound objects
 	stop();

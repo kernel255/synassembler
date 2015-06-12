@@ -152,6 +152,10 @@ private:
 			id = _id;
 		}
 	};
+	/**
+	* True if some algorithm is playing
+	*/
+	bool m_bPlaying;
 	void cleanUpAlgorithms(void);
 	Algorithm* getAlgorithmById(int id);
 	ElaborationUnit* getElaborationUnitById(int id);

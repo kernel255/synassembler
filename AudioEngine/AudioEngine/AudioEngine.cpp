@@ -25,7 +25,7 @@ AudioEngine::AudioEngine(const wchar_t* folderName, ModuleServices* _pServices)
 {
 	pModuleServices = _pServices;
 	factoryRetriever = new FactoryRetriever(folderName, pModuleServices);
-
+	m_bPlaying = false;
 	currentAlgorithmId = 0;
 	currentElaborationUnitId = 0;
 }
@@ -58,7 +58,7 @@ std::vector<ElaborationUnitFactory*> AudioEngine::getFactories()
 
 int AudioEngine::createAlgorithm()
 {
-	Algorithm* algo = new Algorithm(NULL,0);
+	Algorithm* algo = new Algorithm(pModuleServices, 0);
 	int id = currentAlgorithmId++;
 	mapIdToAlgorithms[id] = algo;
 	AlgorithmProxy algoProxy(algo, id);
@@ -265,7 +265,7 @@ int AudioEngine::playAlgorithm(int algorithmId)
 		pModuleServices->pLogger->writeLine(str.c_str());
 		return INVALID_ALGORITHM_ID;
 	}
-	
+	m_bPlaying = true;
 	pModuleServices->timeBase->start();
 	algo->play();
 	pModuleServices->pLogger->writeLine("Playing algorithm");
@@ -283,7 +283,7 @@ int AudioEngine::stopAlgorithm(int algorithmId)
 		pModuleServices->pLogger->writeLine(str.c_str());
 		return INVALID_ALGORITHM_ID;
 	}
-	
+	m_bPlaying = false;
 	pModuleServices->timeBase->stop();
 	algo->stop();
 	pModuleServices->pLogger->writeLine("Stopping algorithm");
@@ -945,9 +945,13 @@ extern "C" __declspec(dllexport) int sendMIDIMessage(int euIndex, unsigned char*
 	return audioEngine->sendMIDIMessage(euIndex, midiMsg);
 }
 
-//int AudioEngine::sendMIDIMessage(int euIndex, wchar_t* strMsg)
 int AudioEngine::sendMIDIMessage(int euIndex, unsigned char* strMsg)
 {
+	if (!m_bPlaying)
+	{
+		pModuleServices->pLogger->writeLine("Received MIDI message but not executed while not playing");
+		return -1;
+	}
 	ElaborationUnit* pEU = getElaborationUnitById(euIndex);
 	if (pEU == NULL)
 		return -1;

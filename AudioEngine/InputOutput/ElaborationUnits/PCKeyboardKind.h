@@ -4,6 +4,8 @@
 
 #define MAIN_OUTPUT_INDEX 0
 
+#define PCKEYB_NAME "PC Keyboard"
+
 class PCKeyboardKind : public AbstractEUKind
 {
 public:

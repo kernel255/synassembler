@@ -451,6 +451,11 @@ bool InputOutputFactory::GetNextAvailableDirectSoundOutput(GUID& guid, LPDIRECTS
 
 void InputOutputFactory::destroyElaborationUnit(ElaborationUnit* peu)
 {
+	const char* euName = peu->getKind()->getName();
+	if (!strcmp(PCKEYB_NAME, euName))
+	{
+		pcKeyAllocated = false;
+	}
 	removeElaborationUnit(peu);
 	//ElaborationUnitFactory::DestroyElaborationUnit(pGEU);
 }

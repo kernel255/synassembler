@@ -27,6 +27,11 @@ namespace ClayAudioEngine
             m_EUConnections = new List<EUConnection>();
         }
 
+		public void Dispose()
+		{
+			AudioEngineWrapper.getDefault().removeAlgorithm(m_AudioEngineId);
+		}
+
         private ElaborationUnitGlyphInstance createElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDesc,
             ElaborationUnitFactory euFactory, string physInstName, int physicalInstanceId = -1)
         {
@@ -157,6 +162,7 @@ namespace ClayAudioEngine
 
         public void read(System.Xml.XmlTextReader reader)
         {
+			Dictionary<int, int> mapFileIdToId = new Dictionary<int, int>();
 			reader.WhitespaceHandling = WhitespaceHandling.None;
             bool foundAlgorithm = false;
 			string lastEUFact = "", lastEUName = "", lastId = "";
@@ -198,6 +204,7 @@ namespace ClayAudioEngine
                                         string euFact = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_FACTNAME_ATTR);
                                         string physInst = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_PHYSINST_ATTR);
                                         string id = reader.GetAttribute(ElaborationUnitGlyphInstance.XML_AUDIOENGINEID_ATTR);
+										int fileId = Int32.Parse(id);
 										int factIndex = AudioEngineWrapper.getDefault().getFactoryIdByName(euFact);
 										int euIndex = AudioEngineWrapper.getDefault().getEUByName(euName, factIndex);
                                         int physInstIndex = Int32.Parse(physInst);
@@ -219,14 +226,18 @@ namespace ClayAudioEngine
                                         {
                                             throw new Exception("Unable to create Elaboration Unit");
                                         }
+										// Store the read id and the new key
+										mapFileIdToId.Add(fileId, euInst.AudioEngineId);
                                         euInst.read(reader);
 										lastEUInst = euInst;
-                                        storeTempAEId(euInst, id);
+                                        //storeTempAEId(euInst, id);
+										storeTempAEId(euInst, euInst.AudioEngineId.ToString());
 										AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);
                                         m_EUGlyphs.Add(euInst);
 										lastEUFact = euFact;
 										lastEUName = euName;
-										lastId = id;
+										//lastId = id;
+										lastId = euInst.AudioEngineId.ToString();
 
 										//SynthPanelManager.getDefault().ReadPanel(reader,euFact,euName,id);
                                         
@@ -242,8 +253,13 @@ namespace ClayAudioEngine
                                     {
                                         EUConnection euConn = EUConnection.getConnectionFromXML(reader, m_Canvas);
                                         euConn.read(reader);
-										int sourceId = euConn.euSourceId;
-										int destId = euConn.euDestinationId;
+										//int sourceId = euConn.euSourceId;
+										//int destId = euConn.euDestinationId;
+
+										int sourceId = mapFileIdToId[euConn.euSourceId];
+										int destId = mapFileIdToId[euConn.euDestinationId];
+
+
 										ElaborationUnitGlyphInstance euSourceInst = getUEInstById(sourceId.ToString());
 										ElaborationUnitGlyphInstance euDestinationInst = getUEInstById(destId.ToString());
 										int sourcePortIndex = euConn.sourcePortIndex;

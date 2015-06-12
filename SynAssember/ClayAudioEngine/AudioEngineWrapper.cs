@@ -116,6 +116,11 @@ namespace ClayAudioEngine
 			return createAlgorithm();
 		}
 
+		public int removeAlgorithm(int id)
+		{
+			return destroyAlgorithm(id);
+		}
+
 		public int addElaborationUnit(int algoId, int euId)
 		{
 			return addElaborationUnitToAlgorithm(algoId, euId);

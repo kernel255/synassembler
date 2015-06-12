@@ -15,7 +15,7 @@ messagesOutPort(ElaborationUnitPort::OUTPUT_PORT, ElaborationUnitPort::MIDI_PORT
 
 PCKeyboard::~PCKeyboard()
 {
-	m_pModuleServices->pLogger->writeLine("PCKeyboard destructor");
+	m_pModuleServices->pLogger->writeLine("PCKeyboard destructor id=%d", iId);
 }
 
 void PCKeyboard::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples)

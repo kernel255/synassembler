@@ -68,7 +68,7 @@ Oscillator::~Oscillator()
 		delete m_pVoices[i];
 	}
 	*/
-	this->m_pModuleServices->pLogger->writeLine("Oscillator destructor");
+	this->m_pModuleServices->pLogger->writeLine("Oscillator destructor id=%d", iId);
 }
 
 /*

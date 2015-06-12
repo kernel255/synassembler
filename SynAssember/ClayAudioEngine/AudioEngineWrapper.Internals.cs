@@ -208,6 +208,8 @@ namespace ClayAudioEngine
         // Algorithm management
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int createAlgorithm();
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+		private static extern int destroyAlgorithm(int id);
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int createElaborationUnit(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int physicalInstanceIndex);
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]

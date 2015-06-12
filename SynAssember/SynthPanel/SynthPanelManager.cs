@@ -154,8 +154,6 @@ namespace SynthPanels
             m_Canvas = canvas;
         }
 
-        //Dictionary<int, ISynthPanel> m_SynthPanelsMap = new Dictionary<int,ISynthPanel>;
-
         public void AddSynthPanel(ISynthPanel panel, bool automaticPlace)
         {
             UserControl uiElem = panel.getUserControlPanel();
@@ -252,6 +250,16 @@ namespace SynthPanels
 			{
 				synthPanel.readParametersFromEngine();
 			}
+		}
+
+		public void CleanUp()
+		{
+			foreach(ISynthPanel synth in m_PanelList)
+			{
+				UserControl uiElem = synth.getUserControlPanel();
+				m_Canvas.Children.Remove(uiElem);
+			}
+			m_PanelList.Clear();
 		}
 
         public const string XML_PANEL = "SynthPanel";
