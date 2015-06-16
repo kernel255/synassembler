@@ -65,4 +65,108 @@ protected:
 	MutexProxy* m_MutexProxy;
 
 	bool playing;
+
+	// Functions to access to ADSR
+	// AttackTime, DecayTime, ReleaseTime,
+	// AttackLevel, SustainLevel
+	double m_AttackTime, m_DecayTime, m_ReleaseTime, m_AttackLevel, m_SustainLevel;
+
+public:
+
+	// ATTACK
+	static void* getAttackTime(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG AT: %f", pSG->m_AttackTime);
+		return &(pSG->m_AttackTime);
+	}
+	static bool setAttackTime(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_AttackTime = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG AT: %f", pSG->m_AttackTime);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// DECAY
+	static void* getDecayTime(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG DT: %f", pSG->m_DecayTime);
+		return &(pSG->m_DecayTime);
+	}
+	static bool setDecayTime(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_DecayTime = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG DT: %f", pSG->m_DecayTime);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// RELEASE
+	static void* getReleaseTime(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG RT: %f", pSG->m_ReleaseTime);
+		return &(pSG->m_ReleaseTime);
+	}
+	static bool setReleaseTime(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_ReleaseTime = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG RT: %f", pSG->m_ReleaseTime);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// ATTACK LEVEL
+	static void* getAttackLevel(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG AL: %f", pSG->m_AttackLevel);
+		return &(pSG->m_AttackLevel);
+	}
+	static bool setAttackLevel(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_AttackLevel = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG AL: %f", pSG->m_AttackLevel);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// SUSTAIN LEVEL
+	static void* getSustainLevel(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG SL: %f", pSG->m_SustainLevel);
+		return &(pSG->m_SustainLevel);
+	}
+	static bool setSustainLevel(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_SustainLevel = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG SL: %f", pSG->m_SustainLevel);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+
+
+
+
+
+
 };

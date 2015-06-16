@@ -42,6 +42,9 @@ namespace BasicEUSynthFactory
 			readDProp = deleHolder.readEUDprop;
 			readIProp = deleHolder.readEUIProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
+
+			//AttackRate.SliderChangedEvent += new BasicSlider.SliderChanged
+
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
             this.id = id;
         }
@@ -52,6 +55,18 @@ namespace BasicEUSynthFactory
 			oscPanel.writeDProp(oscPanel.id, LEVEL_PROPERTY_INDEX, level);
 			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
         }
+
+
+
+		public static void AttackRate_SliderChangedEvent(Object o, Double level)
+		{
+
+		}
+
+
+
+
+
 
 		public static void WaveButton_ChangedEvent(Object o, Int32 wave)
 		{
@@ -74,6 +89,13 @@ namespace BasicEUSynthFactory
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
+
 		internal static int WAVE_PROPERTY_INDEX = 1;
+
+		internal static int AT_PROPERTY_INDEX = 2;
+		internal static int DT_PROPERTY_INDEX = 3;
+		internal static int RT_PROPERTY_INDEX = 4;
+		internal static int AL_PROPERTY_INDEX = 5;
+		internal static int SL_PROPERTY_INDEX = 6;
     }
 }

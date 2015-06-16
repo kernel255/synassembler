@@ -5,6 +5,7 @@
 #include "OscillatorKind.h"
 #include "..\Facilities\General\GainProperty.h"
 #include "..\Facilities\General\IntegerProperty.h"
+#include "..\..\AudioEngine\Facilities\Audio\SimpleGenerator.h"
 #include "Oscillator.h"
 
 OscillatorKind::OscillatorKind()
@@ -14,12 +15,42 @@ OscillatorKind::OscillatorKind()
 	gain->setSetter(Oscillator::setAmplitude);
 	addProperty(gain);
 
+	gain = new GainProperty("AttackTime");
+	gain->setGetter(SimpleGenerator::getAttackTime);
+	gain->setSetter(SimpleGenerator::setAttackTime);
+	addProperty(gain);
+
+	gain = new GainProperty("DecayTime");
+	gain->setGetter(SimpleGenerator::getDecayTime);
+	gain->setSetter(SimpleGenerator::setDecayTime);
+	addProperty(gain);
+
+	gain = new GainProperty("ReleaseTime");
+	gain->setGetter(SimpleGenerator::getReleaseTime);
+	gain->setSetter(SimpleGenerator::setReleaseTime);
+	addProperty(gain);
+
+	gain = new GainProperty("AttackLevel");
+	gain->setGetter(SimpleGenerator::getAttackLevel);
+	gain->setSetter(SimpleGenerator::setAttackLevel);
+	addProperty(gain);
+
+	gain = new GainProperty("SustainLevel");
+	gain->setGetter(SimpleGenerator::getSustainLevel);
+	gain->setSetter(SimpleGenerator::setSustainLevel);
+	addProperty(gain);
+
+
+
+
+
+
+
+
 	IntegerProperty* waveKind = new IntegerProperty("Wave Kind");
 	waveKind->setSetter(Oscillator::setWaveKind);
 	waveKind->setGetter(Oscillator::getWaveKind);
 	addProperty(waveKind);
-
-	GainProperty* attackLevel = new GainProperty("Attack Level");
 
 }
 
