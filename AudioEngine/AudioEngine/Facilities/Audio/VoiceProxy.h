@@ -1,6 +1,7 @@
 
 #include <stdio.h>
 #include "../../ElaborationUnits/ModuleServices.h"
+#include "ADSR.h"
 #include "SimpleVoice.h"
 
 class VoiceProxy
@@ -9,7 +10,7 @@ public:
 	static int index;
 
 	VoiceProxy(int id,double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
-	void activate(double initialfreq);
+	void activate(double initialfreq, ADSR adsr);
 	void deactivate(void);
 	bool isFree();
 	bool isDeactivating();

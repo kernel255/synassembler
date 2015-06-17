@@ -36,6 +36,11 @@ namespace BasicEUSynthFactory
 			InitializeComponent();
 			OutputLevel.setOwner(this);
 			WaveButton.setOwner(this);
+			AttackRate.setOwner(this);
+			DecayRate.setOwner(this);
+			ReleaseRate.setOwner(this);
+			AttackLevel.setOwner(this);
+			SustainLevel.setOwner(this);
 			this.facilities = facilities;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
@@ -43,30 +48,35 @@ namespace BasicEUSynthFactory
 			readIProp = deleHolder.readEUIProp;
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
 
-			//AttackRate.SliderChangedEvent += new BasicSlider.SliderChanged
+			AttackRate.SliderChangedEvent += new BasicSlider.SliderChanged(AttackTime_SliderChangedEvent);
+			DecayRate.SliderChangedEvent += new BasicSlider.SliderChanged(DecayTime_SliderChangedEvent);
+			ReleaseRate.SliderChangedEvent += new BasicSlider.SliderChanged(ReleaseTime_SliderChangedEvent);
+			AttackLevel.SliderChangedEvent += new BasicSlider.SliderChanged(AttackLevel_SliderChangedEvent);
+			SustainLevel.SliderChangedEvent += new BasicSlider.SliderChanged(SustainLevel_SliderChangedEvent);
 
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
             this.id = id;
         }
 
-        public static void OutputLevel_SliderChangedEvent(Object o, Double level)
-        {
-            OscillatorPanel oscPanel = (OscillatorPanel)o;
-			oscPanel.writeDProp(oscPanel.id, LEVEL_PROPERTY_INDEX, level);
-			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
-        }
-
-
-
-		public static void AttackRate_SliderChangedEvent(Object o, Double level)
+		static void SetChangedProperty(Object o, Double level, int index)
 		{
-
+			OscillatorPanel oscPanel = (OscillatorPanel)o;
+			oscPanel.writeDProp(oscPanel.id, index, level);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
+		public static void OutputLevel_SliderChangedEvent(Object o, Double level)
+		{
+			OscillatorPanel oscPanel = (OscillatorPanel)o;
+			oscPanel.writeDProp(oscPanel.id, LEVEL_PROPERTY_INDEX, level);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
+		}
 
-
-
-
+		public static void AttackTime_SliderChangedEvent(Object o, Double level)	{	SetChangedProperty(o, level, AT_PROPERTY_INDEX);	}
+		public static void DecayTime_SliderChangedEvent(Object o, Double level) { SetChangedProperty(o, level, DT_PROPERTY_INDEX); }
+		public static void ReleaseTime_SliderChangedEvent(Object o, Double level) { SetChangedProperty(o, level, RT_PROPERTY_INDEX); }
+		public static void AttackLevel_SliderChangedEvent(Object o, Double level) { SetChangedProperty(o, level, AL_PROPERTY_INDEX); }
+		public static void SustainLevel_SliderChangedEvent(Object o, Double level) { SetChangedProperty(o, level, SL_PROPERTY_INDEX); }
 
 		public static void WaveButton_ChangedEvent(Object o, Int32 wave)
 		{

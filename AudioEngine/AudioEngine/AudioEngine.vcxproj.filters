@@ -110,6 +110,9 @@
     <ClCompile Include="Facilities\General\MutexProxy.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="Facilities\Audio\ADSR.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h">
@@ -209,6 +212,9 @@
       <Filter>Facilities</Filter>
     </ClInclude>
     <ClInclude Include="Facilities\General\MutexProxy.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\Audio\ADSR.h">
       <Filter>Facilities</Filter>
     </ClInclude>
   </ItemGroup>

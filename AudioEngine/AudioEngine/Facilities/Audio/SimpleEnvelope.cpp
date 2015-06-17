@@ -23,8 +23,13 @@ double SimpleEnvelope::getmsec(int msec)
 	return dmsec / 1000.0;
 }
 
-void SimpleEnvelope::start(void) 
+void SimpleEnvelope::start(ADSR adsr)
 {
+	attackTime = adsr.attackTime;
+	decayTime = adsr.decayTime;
+	releaseTime = adsr.releaseTime;
+	attackLevel = adsr.attackLevel;
+	sustainLevel = adsr.sustainLevel;
 	currentLevel = 0.0;
 	currentTime = 0;
 	setState(Attack);

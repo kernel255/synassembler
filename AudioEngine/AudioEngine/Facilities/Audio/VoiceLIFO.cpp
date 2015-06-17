@@ -50,7 +50,7 @@ VoiceProxy* VoiceLIFO::getLatestAllocated()
 	return ptr;
 }
 
-void VoiceLIFO::Activate(double initialfreq)
+void VoiceLIFO::Activate(double initialfreq, ADSR adsr)
 {
 	// Search for first free voice
 	VoiceProxy* firstFree = getFirstFreeVoice();
@@ -79,7 +79,7 @@ void VoiceLIFO::Activate(double initialfreq)
 			*/
 		}
 
-		firstFree->activate(initialfreq);
+		firstFree->activate(initialfreq, adsr);
 		numActiveVoices++;
 		m_pModuleServices->pLogger->writeLine("Voices allocated: %d", numActiveVoices);
 	}

@@ -140,7 +140,7 @@ public:
 		return true;
 	}
 
-
+	/*
 	static void* getAttackLevel(void* pEU)
 	{
 		Oscillator* pOsc = (Oscillator*)pEU;
@@ -161,7 +161,7 @@ public:
 		}
 		return true;
 	}
-
+	*/
 protected:
 	SimpleGenerator::SampleCalculationResult calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice);
 

@@ -141,6 +141,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\MutexProxy.cpp">
       <Filter>Facilities\General</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\ADSR.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

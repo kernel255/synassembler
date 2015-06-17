@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../ElaborationUnits/ModuleServices.h"
+#include "ADSR.h"
 #include "VoiceProxy.h"
 
 class VoiceLIFO
@@ -32,7 +33,7 @@ public:
 	VoiceLIFO(double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
 	~VoiceLIFO();
 
-	void Activate(double initialfreq);
+	void Activate(double initialfreq, ADSR adsr);
 	void Deactivate();
 	void Deallocate(VoiceProxy* toBeDeallocated);
 	bool isActive();

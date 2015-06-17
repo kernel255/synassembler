@@ -69,24 +69,23 @@ protected:
 	// Functions to access to ADSR
 	// AttackTime, DecayTime, ReleaseTime,
 	// AttackLevel, SustainLevel
-	double m_AttackTime, m_DecayTime, m_ReleaseTime, m_AttackLevel, m_SustainLevel;
-
+	ADSR adsr;
 public:
 
 	// ATTACK
 	static void* getAttackTime(void* pEU)
 	{
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
-		pSG->m_pModuleServices->pLogger->writeLine("Read SG AT: %f", pSG->m_AttackTime);
-		return &(pSG->m_AttackTime);
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG AT: %f", pSG->adsr.attackTime);
+		return &(pSG->adsr.attackTime);
 	}
 	static bool setAttackTime(void* pEU, void* value) {
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
 		double* d = (double*)value;
-		pSG->m_AttackTime = *d;
+		pSG->adsr.attackTime = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG AT: %f", pSG->m_AttackTime);
+		sprintf(buf, "Write SG AT: %f", pSG->adsr.attackTime);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
@@ -95,16 +94,16 @@ public:
 	static void* getDecayTime(void* pEU)
 	{
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
-		pSG->m_pModuleServices->pLogger->writeLine("Read SG DT: %f", pSG->m_DecayTime);
-		return &(pSG->m_DecayTime);
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG DT: %f", pSG->adsr.decayTime);
+		return &(pSG->adsr.decayTime);
 	}
 	static bool setDecayTime(void* pEU, void* value) {
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
 		double* d = (double*)value;
-		pSG->m_DecayTime = *d;
+		pSG->adsr.decayTime = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG DT: %f", pSG->m_DecayTime);
+		sprintf(buf, "Write SG DT: %f", pSG->adsr.decayTime);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
@@ -113,16 +112,16 @@ public:
 	static void* getReleaseTime(void* pEU)
 	{
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
-		pSG->m_pModuleServices->pLogger->writeLine("Read SG RT: %f", pSG->m_ReleaseTime);
-		return &(pSG->m_ReleaseTime);
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG RT: %f", pSG->adsr.releaseTime);
+		return &(pSG->adsr.releaseTime);
 	}
 	static bool setReleaseTime(void* pEU, void* value) {
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
 		double* d = (double*)value;
-		pSG->m_ReleaseTime = *d;
+		pSG->adsr.releaseTime = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG RT: %f", pSG->m_ReleaseTime);
+		sprintf(buf, "Write SG RT: %f", pSG->adsr.releaseTime);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
@@ -131,16 +130,16 @@ public:
 	static void* getAttackLevel(void* pEU)
 	{
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
-		pSG->m_pModuleServices->pLogger->writeLine("Read SG AL: %f", pSG->m_AttackLevel);
-		return &(pSG->m_AttackLevel);
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG AL: %f", pSG->adsr.attackLevel);
+		return &(pSG->adsr.attackLevel);
 	}
 	static bool setAttackLevel(void* pEU, void* value) {
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
 		double* d = (double*)value;
-		pSG->m_AttackLevel = *d;
+		pSG->adsr.attackLevel = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG AL: %f", pSG->m_AttackLevel);
+		sprintf(buf, "Write SG AL: %f", pSG->adsr.attackLevel);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
@@ -149,16 +148,16 @@ public:
 	static void* getSustainLevel(void* pEU)
 	{
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
-		pSG->m_pModuleServices->pLogger->writeLine("Read SG SL: %f", pSG->m_SustainLevel);
-		return &(pSG->m_SustainLevel);
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG SL: %f", pSG->adsr.sustainLevel);
+		return &(pSG->adsr.sustainLevel);
 	}
 	static bool setSustainLevel(void* pEU, void* value) {
 		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
 		double* d = (double*)value;
-		pSG->m_SustainLevel = *d;
+		pSG->adsr.sustainLevel = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG SL: %f", pSG->m_SustainLevel);
+		sprintf(buf, "Write SG SL: %f", pSG->adsr.sustainLevel);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}

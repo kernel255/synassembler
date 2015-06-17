@@ -1,6 +1,6 @@
 
 #include <assert.h>
-
+#include "ADSR.h"
 #include "SimpleVoice.h"
 
 SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices) : m_bActive(false)
@@ -17,7 +17,7 @@ SimpleVoice::~SimpleVoice()
 	delete m_SamplesBuffer;
 }
 
-void SimpleVoice::activate(double initialfreq)
+void SimpleVoice::activate(double initialfreq, ADSR adsr)
 {
 	if (m_bActive)
 		m_pModuleServices->pLogger->writeLine("ERROR: voice #%d already active");
@@ -25,7 +25,7 @@ void SimpleVoice::activate(double initialfreq)
 	m_InitialFrequency = initialfreq;
 	m_TimeAccumulator = 0.0;
 	m_Period = 1.0 / m_InitialFrequency;
-	m_pEnvelope->start();
+	m_pEnvelope->start(adsr);
 	//Activated by last, so the note can begin with the correct parameters
 	m_bActive = true;
 	m_bFinalRelease = false;

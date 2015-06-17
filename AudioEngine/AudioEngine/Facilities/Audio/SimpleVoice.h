@@ -12,7 +12,7 @@ public:
 	/**
 	 * @fn Starts to play the sound (e.g. MIDI note on)
 	 */
-	void activate(double initialfreq);
+	void activate(double initialfreq, ADSR adsr);
 	/**
 	 * @fn Stop to play a sound (e.g. MIDI note off)
 	 */

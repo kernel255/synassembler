@@ -10,48 +10,41 @@
 
 OscillatorKind::OscillatorKind()
 {
+	// #0
 	GainProperty* gain = new GainProperty("Output level");
 	gain->setGetter(Oscillator::getAmplitude);
 	gain->setSetter(Oscillator::setAmplitude);
 	addProperty(gain);
-
-	gain = new GainProperty("AttackTime");
-	gain->setGetter(SimpleGenerator::getAttackTime);
-	gain->setSetter(SimpleGenerator::setAttackTime);
-	addProperty(gain);
-
-	gain = new GainProperty("DecayTime");
-	gain->setGetter(SimpleGenerator::getDecayTime);
-	gain->setSetter(SimpleGenerator::setDecayTime);
-	addProperty(gain);
-
-	gain = new GainProperty("ReleaseTime");
-	gain->setGetter(SimpleGenerator::getReleaseTime);
-	gain->setSetter(SimpleGenerator::setReleaseTime);
-	addProperty(gain);
-
-	gain = new GainProperty("AttackLevel");
-	gain->setGetter(SimpleGenerator::getAttackLevel);
-	gain->setSetter(SimpleGenerator::setAttackLevel);
-	addProperty(gain);
-
-	gain = new GainProperty("SustainLevel");
-	gain->setGetter(SimpleGenerator::getSustainLevel);
-	gain->setSetter(SimpleGenerator::setSustainLevel);
-	addProperty(gain);
-
-
-
-
-
-
-
-
+	// #1
 	IntegerProperty* waveKind = new IntegerProperty("Wave Kind");
 	waveKind->setSetter(Oscillator::setWaveKind);
 	waveKind->setGetter(Oscillator::getWaveKind);
 	addProperty(waveKind);
-
+	// #2
+	gain = new GainProperty("AttackTime");
+	gain->setGetter(SimpleGenerator::getAttackTime);
+	gain->setSetter(SimpleGenerator::setAttackTime);
+	addProperty(gain);
+	// #3
+	gain = new GainProperty("DecayTime");
+	gain->setGetter(SimpleGenerator::getDecayTime);
+	gain->setSetter(SimpleGenerator::setDecayTime);
+	addProperty(gain);
+	// #4
+	gain = new GainProperty("ReleaseTime");
+	gain->setGetter(SimpleGenerator::getReleaseTime);
+	gain->setSetter(SimpleGenerator::setReleaseTime);
+	addProperty(gain);
+	// #5
+	gain = new GainProperty("AttackLevel");
+	gain->setGetter(SimpleGenerator::getAttackLevel);
+	gain->setSetter(SimpleGenerator::setAttackLevel);
+	addProperty(gain);
+	// #6
+	gain = new GainProperty("SustainLevel");
+	gain->setGetter(SimpleGenerator::getSustainLevel);
+	gain->setSetter(SimpleGenerator::setSustainLevel);
+	addProperty(gain);
 }
 
 const char* OscillatorKind::getName(void) const
@@ -157,55 +150,6 @@ bool OscillatorKind::isFinalElaborationUnit() const
 {
 	return false;
 }
-
-//##########################
-//####### PROPERTIES #######
-//##########################
-
-/*
-const int OscillatorKind::getPropertyNumber() const
-{
-	return 1;
-}
-*/
-
-/*
-const char* OscillatorKind::getNthPropertyName(int propId) const
-{
-	switch(propId)
-	{
-	case C_OutputLevelProperty:
-		return "Output level";
-	default:
-		return "";
-	}
-}
-*/
-/*
-const int OscillatorKind::getNthPropertyDirection(int propId) const
-{
-	return 0;
-}
-*/
-
-/*
-EUKind::e_PropertyType OscillatorKind::getPropertyType(int propId) const
-{
-	switch(propId)
-	{
-	case C_OutputLevelProperty:
-		return e_PropertyType::C_Gain;
-	default:
-		return e_PropertyType::C_None;
-	}
-}
-*/
-/*
-int OscillatorKind::getPropertyRanges(int propertyIndex, char* lowRange, char* highRange, int bufferSize) const
-{
-	return 0;
-}
-*/
 
 const char OscillatorKind::PhasePortName[] = "Phase In";
 const char OscillatorKind::AmplitudePortName[] = "Amp In";

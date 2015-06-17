@@ -219,7 +219,7 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 				//This is a true NoteOn
 				m_pModuleServices->pLogger->writeLine("Note On %d", midimsg.data.NoteMessage.Note);
-				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency);
+				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency, adsr);
 				m_MutexProxy->ReleaseMutex();
 			}
 			break;

@@ -102,6 +102,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
     </ClCompile>
     <ClCompile Include="ElaborationUnits\AbstractEUKind.cpp" />
+    <ClCompile Include="Facilities\Audio\ADSR.cpp" />
     <ClCompile Include="Facilities\Audio\SimpleEnvelope.cpp" />
     <ClCompile Include="Facilities\Audio\WaveLogger.cpp" />
     <ClCompile Include="Facilities\General\AbstractProperty.cpp" />
@@ -139,6 +140,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="ElaborationUnits\DSPTypes.h" />
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioEngineAPI.h" />
+    <ClInclude Include="Facilities\Audio\ADSR.h" />
     <ClInclude Include="Facilities\Audio\WaveLogger.h" />
     <ClInclude Include="Facilities\General\AbstractProperty.h" />
     <ClInclude Include="Facilities\General\GainProperty.h" />

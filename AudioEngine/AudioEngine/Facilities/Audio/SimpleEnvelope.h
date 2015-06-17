@@ -3,6 +3,7 @@
 
 #include "..\..\DSPTypes.h"
 #include "..\..\ElaborationUnits\ModuleServices.h"
+#include "ADSR.h"
 
 class SimpleEnvelope
 {
@@ -42,7 +43,7 @@ public:
 	 * @param updatePeriod Time in secons when the update function will be called periodically
 	 */
 	SimpleEnvelope(ModuleServices* pService, double updatePeriod);
-	void start(void);
+	void start(ADSR adsr);
 	/**
 	 * @fn Updates the Envelope by moving ahead the time by an updatePeriod unit
 	 */
@@ -51,6 +52,7 @@ public:
 	EAG_SAMPLE_TYPE getCurrentLevel(void);
 	bool releaseCompleted(void);
 	
+	/*
 	void setAttackTime(int attack)	{	attackTime = attack;	}
 	int getAttackTime()	{ return attackTime; }
 
@@ -65,7 +67,7 @@ public:
 
 	void setSustainLevel(EAG_SAMPLE_TYPE sustain) { sustainLevel = sustain; }
 	EAG_SAMPLE_TYPE getSustainLevel() { return sustainLevel; }
-
+	*/
 private:
 	double getmsec(int msec);
 	ModuleServices* m_pModuleServices;

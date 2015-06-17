@@ -1,3 +1,4 @@
+
 #include "VoiceProxy.h"
 
 VoiceProxy::VoiceProxy(int id, double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices) : simpleVoice(id, samplingPeriod, samplesBufferSize, pModuleServices)
@@ -8,9 +9,9 @@ VoiceProxy::VoiceProxy(int id, double samplingPeriod, int samplesBufferSize, Mod
 	nextAllocated = NULL;
 	this->id = id;
 };
-void VoiceProxy::activate(double initialfreq) {
+void VoiceProxy::activate(double initialfreq, ADSR adsr) {
 	free = false;
-	simpleVoice.activate(initialfreq);
+	simpleVoice.activate(initialfreq, adsr);
 	m_pModuleServices->pLogger->writeLine("VoiceProxy.activate#%d", id);
 }
 void VoiceProxy::deactivate(void) {

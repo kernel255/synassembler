@@ -15,7 +15,7 @@ namespace ClayAudioEngine
 
         public static int writeEUDoubleProperty(int euId, int propertyIndex, Double value)
         {
-			return AudioEngineWrapper.getDefault().writeEUDProperty(euId, 0, value);
+			return AudioEngineWrapper.getDefault().writeEUDProperty(euId, propertyIndex, value);
         }
 
 		public static int writeEUIntegerProperty(int euId, int propertyIndex, int value)
