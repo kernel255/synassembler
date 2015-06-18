@@ -44,7 +44,7 @@ namespace BasicEUSynthFactory
 			this.facilities = facilities;
 			AttackRate.MaxLevel = 100;
 			DecayRate.MaxLevel = 100;
-			ReleaseRate.MaxLevel = 600;
+			ReleaseRate.MaxLevel = 500;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
 			readDProp = deleHolder.readEUDprop;

@@ -60,16 +60,16 @@ namespace BasicEUSynthFactory
 			str = level.ToString(cInfo);
 			writer.WriteAttributeString(XML_AT, str);
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.DT_PROPERTY_INDEX);
-			str = level.ToString(cInfo);
+			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_DT, str);
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.RT_PROPERTY_INDEX);
-			str = level.ToString(cInfo);
+			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_RT, str);
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AL_PROPERTY_INDEX);
-			str = level.ToString(cInfo);
+			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_AL, str);
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.SL_PROPERTY_INDEX);
-			str = level.ToString(cInfo);
+			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_SL, str);
         }
 
@@ -82,11 +82,30 @@ namespace BasicEUSynthFactory
 			str = reader.GetAttribute(XML_WAVE_ID);
 			int waveId = Int32.Parse(str);
 			delegateHolder.writeEUIProp(m_EUId, OscillatorPanel.WAVE_PROPERTY_INDEX, waveId);
+
+			CultureInfo cInfo = new CultureInfo("en-US");
 			// Read level
 			str = reader.GetAttribute(XML_OUT_LEVEL);
-			CultureInfo cInfo = new CultureInfo("en-US");
 			double level = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.LEVEL_PROPERTY_INDEX, level);
+			// Read ADSR
+			double d;
+			str = reader.GetAttribute(XML_AT);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AT_PROPERTY_INDEX, d);
+			str = reader.GetAttribute(XML_DT);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.DT_PROPERTY_INDEX, d);
+			str = reader.GetAttribute(XML_RT);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.RT_PROPERTY_INDEX, d);
+			str = reader.GetAttribute(XML_AL);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AL_PROPERTY_INDEX, d);
+			str = reader.GetAttribute(XML_SL);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.SL_PROPERTY_INDEX, d);
+
 			// Now update the view to the model
 			//m_OscillatorPanel.readParametersFromEngine();
         }

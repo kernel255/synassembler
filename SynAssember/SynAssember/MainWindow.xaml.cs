@@ -182,6 +182,12 @@ namespace SynAssember
             dlg.ShowDialog(this);
             if(dlg.FileName.Length!=0)
             {
+				currentAlgorithm.Dispose();
+				CleanUpLayout();
+				InitLayout();
+				SynthPanelManager.getDefault().CleanUp();
+
+
                 XmlTextReader reader = new XmlTextReader(dlg.FileName);
 				currentAlgorithm = new AlgorithmGraph(RightPanel);
 				//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);

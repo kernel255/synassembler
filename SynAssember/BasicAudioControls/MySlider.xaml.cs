@@ -216,7 +216,7 @@ namespace BasicAudioControls
                         // Raise an event
 						if (SliderChangedEvent != null)
 						{
-							double d = getNormalizedLevel(NormalizedLevelValue);
+							double d = getDenormalizedLevel(NormalizedLevelValue);
 							SliderChangedEvent(owner, d);
 						}
                     }

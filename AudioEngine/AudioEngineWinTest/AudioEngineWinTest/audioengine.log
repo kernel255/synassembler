@@ -1,84 +1,779 @@
-﻿04:59:11:132 AudioEngine library started
-04:59:11:132 Folder name:
-04:59:11:132 E:\Mine\Audinos\HG-SynAssembler\AudioEngine\AudioEngineWinTest\Debug췍﷽﷽ꮫꮫꮫꮫ
-04:59:11:132 Find file=005404e0
-04:59:11:132 Trying to open library:  ó
-04:59:11:132 Library is not an ElaborationUnitFactory
-04:59:11:132 Library open failure
-04:59:11:132 FindNextFile=1
-04:59:11:132 Trying to open library:  ó
-04:59:11:186 Basic EU factory constructor
-04:59:11:186 Library open successful
-04:59:11:186 FindNextFile=1
-04:59:11:186 Trying to open library:  ó
-04:59:11:354 InputOutputFactory constructor
-04:59:11:507 Library open successful
-04:59:11:507 FindNextFile=0
-04:59:11:507 FindNextFile failure = 18
-04:59:11:507 Factories=2
-04:59:11:514 Creating DirectSound output
-04:59:11:522 HWND=0x00230a66
-04:59:11:525 Started timebase
-04:59:11:526 Started timebase thread
-04:59:11:551 Playing algorithm
-04:59:13:403 Received MIDI message: 90407f
-04:59:13:403 Waiting Mutex # 1
-04:59:13:403 Elapsed: 0
-04:59:13:403 Note On 64
-04:59:13:403 VoiceProxy.allocate#0
-04:59:13:403 First voice allocated
-04:59:13:403 Started Voice #0
-04:59:13:403 Env State: Attack
-04:59:13:404 VoiceProxy.activate#0
-04:59:13:404 Voices allocated: 1
-04:59:13:446 Env State: Decay
-04:59:13:486 Env State: Sustain
-04:59:13:542 Received MIDI message: 80407f
-04:59:13:542 Waiting Mutex # 1
-04:59:13:542 Note Off 64
-04:59:13:542 VoiceLIFO::Deactivate Found deactivable: 0
-04:59:13:542 Env State: Release
-04:59:13:542 Ended Voice #0
-04:59:13:543 VoiceProxy.deactivate#0
-04:59:13:543 Elapsed: 1
-04:59:13:943 Env State: Completed
-04:59:13:943 Disposed Voice 0
-04:59:13:943 Deallocate #0
-04:59:13:943 Voices allocated: 0
-04:59:14:277 Received MIDI message: 90427f
-04:59:14:277 Waiting Mutex # 1
-04:59:14:277 Elapsed: 0
-04:59:14:277 Note On 66
-04:59:14:277 VoiceProxy.allocate#0
-04:59:14:277 First voice allocated
-04:59:14:277 Started Voice #0
-04:59:14:277 Env State: Attack
-04:59:14:277 VoiceProxy.activate#0
-04:59:14:277 Voices allocated: 1
-04:59:14:349 Env State: Decay
-04:59:14:396 Received MIDI message: 80427f
-04:59:14:396 Waiting Mutex # 1
-04:59:14:396 Note Off 66
-04:59:14:396 VoiceLIFO::Deactivate Found deactivable: 0
-04:59:14:396 Env State: Release
-04:59:14:396 Ended Voice #0
-04:59:14:396 VoiceProxy.deactivate#0
-04:59:14:396 Elapsed: 1
-04:59:14:756 Env State: Completed
-04:59:14:756 Disposed Voice 0
-04:59:14:756 Deallocate #0
-04:59:14:756 Voices allocated: 0
-04:59:17:679 Stopped timebase
-04:59:17:679 Stopping DirectSoundOutput
-04:59:17:681 Stopping oscillator
-04:59:17:705 Stopping algorithm
-04:59:17:706 Algorithm destructor
-04:59:17:706 DirectSoundOutput destructor id=-842150451
-04:59:17:706 Stopping DirectSoundOutput
-04:59:17:725 File size=540000
-04:59:17:726 Oscillator destructor id=-842150451
-04:59:17:754 Simple generator destructor
-04:59:17:754 Releasing factories
-04:59:17:754 Basic EU factory destructor
-04:59:17:754 InputOutputFactory: destructor
-04:59:17:754 Closing library
+﻿20:39:48:288 AudioEngine library started
+20:39:48:288 Folder name:
+20:39:48:288 E:\Mine\Audinos\HG-SynAssembler\AudioEngine\AudioEngineWinTest\Debug췍﷽﷽᥯帖䗦
+20:39:48:288 Find file=002c18b0
+20:39:48:288 Trying to open library: ò
+20:39:48:288 Library is not an ElaborationUnitFactory
+20:39:48:288 Library open failure
+20:39:48:289 FindNextFile=1
+20:39:48:289 Trying to open library: ò
+20:39:48:289 Basic EU factory constructor
+20:39:48:289 Library open successful
+20:39:48:290 FindNextFile=1
+20:39:48:290 Trying to open library: ò
+20:39:48:291 InputOutputFactory constructor
+20:39:48:306 Library open successful
+20:39:48:306 FindNextFile=0
+20:39:48:306 FindNextFile failure = 18
+20:39:48:306 Factories=2
+20:39:48:308 Creating DirectSound output
+20:39:48:314 HWND=0x01790eb4
+20:39:48:317 Started timebase
+20:39:48:317 Started timebase thread
+20:39:48:324 Playing algorithm
+20:39:50:561 Received MIDI message: 90407f
+20:39:50:561 Waiting Mutex # 1
+20:39:50:561 Elapsed: 0
+20:39:50:561 Note On 64
+20:39:50:561 VoiceProxy.allocate#0
+20:39:50:561 First voice allocated
+20:39:50:561 Started Voice #0
+20:39:50:561 Env State: Attack
+20:39:50:561 VoiceProxy.activate#0
+20:39:50:561 Voices allocated: 1
+20:39:50:646 Env State: Decay
+20:39:50:697 Env State: Sustain
+20:39:51:542 Received MIDI message: 80407f
+20:39:51:542 Waiting Mutex # 1
+20:39:51:542 Note Off 64
+20:39:51:542 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:51:542 Env State: Release
+20:39:51:542 Ended Voice #0
+20:39:51:542 VoiceProxy.deactivate#0
+20:39:51:542 Elapsed: 1
+20:39:51:917 Env State: Completed
+20:39:51:917 Disposed Voice 0
+20:39:51:917 Deallocate #0
+20:39:51:917 Voices allocated: 0
+20:39:52:172 Received MIDI message: 90427f
+20:39:52:172 Waiting Mutex # 1
+20:39:52:172 Elapsed: 0
+20:39:52:173 Note On 66
+20:39:52:173 VoiceProxy.allocate#0
+20:39:52:173 First voice allocated
+20:39:52:173 Started Voice #0
+20:39:52:173 Env State: Attack
+20:39:52:173 VoiceProxy.activate#0
+20:39:52:173 Voices allocated: 1
+20:39:52:230 Env State: Decay
+20:39:52:282 Env State: Sustain
+20:39:54:195 Received MIDI message: 80427f
+20:39:54:195 Waiting Mutex # 1
+20:39:54:195 Note Off 66
+20:39:54:195 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:54:196 Env State: Release
+20:39:54:196 Ended Voice #0
+20:39:54:196 VoiceProxy.deactivate#0
+20:39:54:196 Elapsed: 1
+20:39:54:599 Env State: Completed
+20:39:54:599 Disposed Voice 0
+20:39:54:599 Deallocate #0
+20:39:54:599 Voices allocated: 0
+20:39:55:206 Received MIDI message: 90447f
+20:39:55:207 Waiting Mutex # 1
+20:39:55:207 Elapsed: 0
+20:39:55:207 Note On 68
+20:39:55:207 VoiceProxy.allocate#0
+20:39:55:207 First voice allocated
+20:39:55:207 Started Voice #0
+20:39:55:207 Env State: Attack
+20:39:55:207 VoiceProxy.activate#0
+20:39:55:207 Voices allocated: 1
+20:39:55:278 Env State: Decay
+20:39:55:319 Env State: Sustain
+20:39:57:440 Received MIDI message: 80447f
+20:39:57:440 Waiting Mutex # 1
+20:39:57:440 Note Off 68
+20:39:57:440 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:57:440 Env State: Release
+20:39:57:440 Ended Voice #0
+20:39:57:440 VoiceProxy.deactivate#0
+20:39:57:440 Elapsed: 1
+20:39:57:819 Env State: Completed
+20:39:57:819 Disposed Voice 0
+20:39:57:819 Deallocate #0
+20:39:57:819 Voices allocated: 0
+20:39:58:762 Received MIDI message: 90457f
+20:39:58:762 Waiting Mutex # 1
+20:39:58:762 Elapsed: 0
+20:39:58:762 Note On 69
+20:39:58:762 VoiceProxy.allocate#0
+20:39:58:762 First voice allocated
+20:39:58:762 Started Voice #0
+20:39:58:762 Env State: Attack
+20:39:58:762 VoiceProxy.activate#0
+20:39:58:762 Voices allocated: 1
+20:39:58:854 Env State: Decay
+20:39:58:871 Received MIDI message: 80457f
+20:39:58:871 Waiting Mutex # 1
+20:39:58:871 Note Off 69
+20:39:58:871 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:58:871 Env State: Release
+20:39:58:872 Ended Voice #0
+20:39:58:872 VoiceProxy.deactivate#0
+20:39:58:872 Elapsed: 1
+20:39:59:261 Env State: Completed
+20:39:59:261 Disposed Voice 0
+20:39:59:261 Deallocate #0
+20:39:59:261 Voices allocated: 0
+20:39:59:272 Received MIDI message: 90427f
+20:39:59:272 Waiting Mutex # 1
+20:39:59:272 Elapsed: 0
+20:39:59:272 Note On 66
+20:39:59:272 VoiceProxy.allocate#0
+20:39:59:272 First voice allocated
+20:39:59:272 Started Voice #0
+20:39:59:272 Env State: Attack
+20:39:59:272 VoiceProxy.activate#0
+20:39:59:272 Voices allocated: 1
+20:39:59:351 Env State: Decay
+20:39:59:392 Received MIDI message: 80427f
+20:39:59:392 Waiting Mutex # 1
+20:39:59:392 Note Off 66
+20:39:59:392 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:59:392 Env State: Release
+20:39:59:392 Ended Voice #0
+20:39:59:392 VoiceProxy.deactivate#0
+20:39:59:392 Elapsed: 1
+20:39:59:663 Received MIDI message: 90407f
+20:39:59:663 Waiting Mutex # 1
+20:39:59:663 Elapsed: 0
+20:39:59:663 Note On 64
+20:39:59:663 VoiceProxy.allocate#0
+20:39:59:663 First voice allocated
+20:39:59:663 Started Voice #0
+20:39:59:663 Env State: Attack
+20:39:59:663 VoiceProxy.activate#0
+20:39:59:663 Voices allocated: 1
+20:39:59:717 Env State: Decay
+20:39:59:762 Received MIDI message: 80407f
+20:39:59:762 Waiting Mutex # 1
+20:39:59:762 Note Off 64
+20:39:59:762 VoiceLIFO::Deactivate Found deactivable: 0
+20:39:59:762 Env State: Release
+20:39:59:762 Ended Voice #0
+20:39:59:762 VoiceProxy.deactivate#0
+20:39:59:762 Elapsed: 1
+20:39:59:770 Env State: Completed
+20:39:59:770 Disposed Voice 0
+20:39:59:770 Deallocate #0
+20:39:59:770 Voices allocated: 0
+20:40:00:043 Received MIDI message: 90447f
+20:40:00:043 Waiting Mutex # 1
+20:40:00:043 Elapsed: 0
+20:40:00:043 Note On 68
+20:40:00:043 VoiceProxy.allocate#0
+20:40:00:043 First voice allocated
+20:40:00:043 Started Voice #0
+20:40:00:043 Env State: Attack
+20:40:00:043 VoiceProxy.activate#0
+20:40:00:043 Voices allocated: 1
+20:40:00:125 Env State: Completed
+20:40:00:125 Disposed Voice 0
+20:40:00:125 Deallocate #0
+20:40:00:125 Voices allocated: 0
+20:40:00:125 Env State: Decay
+20:40:00:143 Received MIDI message: 80447f
+20:40:00:143 Waiting Mutex # 1
+20:40:00:143 Note Off 68
+20:40:00:143 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:00:143 Env State: Release
+20:40:00:143 Ended Voice #0
+20:40:00:143 VoiceProxy.deactivate#0
+20:40:00:143 Elapsed: 1
+20:40:00:531 Env State: Completed
+20:40:00:531 Disposed Voice 0
+20:40:00:531 Deallocate #0
+20:40:00:531 Voices allocated: 0
+20:40:00:610 Received MIDI message: 90477f
+20:40:00:610 Waiting Mutex # 1
+20:40:00:610 Elapsed: 0
+20:40:00:610 Note On 71
+20:40:00:610 VoiceProxy.allocate#0
+20:40:00:610 First voice allocated
+20:40:00:610 Started Voice #0
+20:40:00:610 Env State: Attack
+20:40:00:610 VoiceProxy.activate#0
+20:40:00:610 Voices allocated: 1
+20:40:00:672 Env State: Decay
+20:40:00:674 Received MIDI message: 80477f
+20:40:00:674 Waiting Mutex # 1
+20:40:00:674 Note Off 71
+20:40:00:674 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:00:674 Env State: Release
+20:40:00:674 Ended Voice #0
+20:40:00:674 VoiceProxy.deactivate#0
+20:40:00:674 Elapsed: 1
+20:40:00:965 Received MIDI message: 90457f
+20:40:00:965 Waiting Mutex # 1
+20:40:00:965 Elapsed: 0
+20:40:00:965 Note On 69
+20:40:00:965 VoiceProxy.allocate#0
+20:40:00:965 First voice allocated
+20:40:00:965 Started Voice #0
+20:40:00:965 Env State: Attack
+20:40:00:965 VoiceProxy.activate#0
+20:40:00:965 Voices allocated: 1
+20:40:01:038 Env State: Decay
+20:40:01:045 Received MIDI message: 80457f
+20:40:01:045 Waiting Mutex # 1
+20:40:01:045 Note Off 69
+20:40:01:045 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:01:045 Env State: Release
+20:40:01:045 Ended Voice #0
+20:40:01:045 VoiceProxy.deactivate#0
+20:40:01:045 Elapsed: 1
+20:40:01:082 Env State: Completed
+20:40:01:082 Disposed Voice 0
+20:40:01:082 Deallocate #0
+20:40:01:082 Voices allocated: 0
+20:40:01:245 Received MIDI message: 90447f
+20:40:01:245 Waiting Mutex # 1
+20:40:01:245 Elapsed: 0
+20:40:01:246 Note On 68
+20:40:01:246 VoiceProxy.allocate#0
+20:40:01:246 First voice allocated
+20:40:01:246 Started Voice #0
+20:40:01:246 Env State: Attack
+20:40:01:246 VoiceProxy.activate#0
+20:40:01:246 Voices allocated: 1
+20:40:01:303 Env State: Decay
+20:40:01:335 Received MIDI message: 80447f
+20:40:01:335 Waiting Mutex # 1
+20:40:01:335 Note Off 68
+20:40:01:335 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:01:335 Env State: Release
+20:40:01:335 Ended Voice #0
+20:40:01:335 VoiceProxy.deactivate#0
+20:40:01:335 Elapsed: 1
+20:40:01:448 Env State: Completed
+20:40:01:448 Disposed Voice 0
+20:40:01:448 Deallocate #0
+20:40:01:448 Voices allocated: 0
+20:40:01:516 Received MIDI message: 90427f
+20:40:01:516 Waiting Mutex # 1
+20:40:01:516 Elapsed: 0
+20:40:01:516 Note On 66
+20:40:01:516 VoiceProxy.allocate#0
+20:40:01:516 First voice allocated
+20:40:01:516 Started Voice #0
+20:40:01:516 Env State: Attack
+20:40:01:516 VoiceProxy.activate#0
+20:40:01:516 Voices allocated: 1
+20:40:01:577 Env State: Decay
+20:40:01:586 Received MIDI message: 80427f
+20:40:01:586 Waiting Mutex # 1
+20:40:01:586 Note Off 66
+20:40:01:586 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:01:586 Env State: Release
+20:40:01:586 Ended Voice #0
+20:40:01:586 VoiceProxy.deactivate#0
+20:40:01:586 Elapsed: 1
+20:40:01:719 Env State: Completed
+20:40:01:719 Disposed Voice 0
+20:40:01:719 Deallocate #0
+20:40:01:719 Voices allocated: 0
+20:40:01:785 Received MIDI message: 90407f
+20:40:01:785 Waiting Mutex # 1
+20:40:01:785 Elapsed: 0
+20:40:01:785 Note On 64
+20:40:01:785 VoiceProxy.allocate#0
+20:40:01:785 First voice allocated
+20:40:01:785 Started Voice #0
+20:40:01:785 Env State: Attack
+20:40:01:785 VoiceProxy.activate#0
+20:40:01:785 Voices allocated: 1
+20:40:01:841 Env State: Decay
+20:40:01:864 Received MIDI message: 80407f
+20:40:01:864 Waiting Mutex # 1
+20:40:01:864 Note Off 64
+20:40:01:864 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:01:864 Env State: Release
+20:40:01:864 Ended Voice #0
+20:40:01:864 VoiceProxy.deactivate#0
+20:40:01:864 Elapsed: 1
+20:40:01:984 Env State: Completed
+20:40:01:984 Disposed Voice 0
+20:40:01:984 Deallocate #0
+20:40:01:984 Voices allocated: 0
+20:40:02:106 Received MIDI message: 90427f
+20:40:02:106 Waiting Mutex # 1
+20:40:02:106 Elapsed: 0
+20:40:02:106 Note On 66
+20:40:02:106 VoiceProxy.allocate#0
+20:40:02:106 First voice allocated
+20:40:02:106 Started Voice #0
+20:40:02:106 Env State: Attack
+20:40:02:106 VoiceProxy.activate#0
+20:40:02:106 Voices allocated: 1
+20:40:02:168 Env State: Decay
+20:40:02:186 Received MIDI message: 80427f
+20:40:02:186 Waiting Mutex # 1
+20:40:02:186 Note Off 66
+20:40:02:186 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:02:186 Env State: Release
+20:40:02:186 Ended Voice #0
+20:40:02:186 VoiceProxy.deactivate#0
+20:40:02:186 Elapsed: 1
+20:40:02:260 Env State: Completed
+20:40:02:260 Disposed Voice 0
+20:40:02:260 Deallocate #0
+20:40:02:260 Voices allocated: 0
+20:40:02:396 Received MIDI message: 90447f
+20:40:02:396 Waiting Mutex # 1
+20:40:02:396 Elapsed: 0
+20:40:02:396 Note On 68
+20:40:02:396 VoiceProxy.allocate#0
+20:40:02:396 First voice allocated
+20:40:02:396 Started Voice #0
+20:40:02:396 Env State: Attack
+20:40:02:396 VoiceProxy.activate#0
+20:40:02:396 Voices allocated: 1
+20:40:02:432 Env State: Decay
+20:40:02:477 Received MIDI message: 80447f
+20:40:02:477 Waiting Mutex # 1
+20:40:02:477 Note Off 68
+20:40:02:477 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:02:477 Env State: Release
+20:40:02:477 Ended Voice #0
+20:40:02:477 VoiceProxy.deactivate#0
+20:40:02:477 Elapsed: 1
+20:40:02:574 Env State: Completed
+20:40:02:574 Disposed Voice 0
+20:40:02:574 Deallocate #0
+20:40:02:574 Voices allocated: 0
+20:40:02:757 Received MIDI message: 90457f
+20:40:02:757 Waiting Mutex # 1
+20:40:02:757 Elapsed: 0
+20:40:02:757 Note On 69
+20:40:02:757 VoiceProxy.allocate#0
+20:40:02:757 First voice allocated
+20:40:02:757 Started Voice #0
+20:40:02:757 Env State: Attack
+20:40:02:757 VoiceProxy.activate#0
+20:40:02:757 Voices allocated: 1
+20:40:02:848 Env State: Completed
+20:40:02:848 Disposed Voice 0
+20:40:02:848 Deallocate #0
+20:40:02:848 Voices allocated: 0
+20:40:02:849 Env State: Decay
+20:40:02:857 Received MIDI message: 80457f
+20:40:02:857 Waiting Mutex # 1
+20:40:02:857 Note Off 69
+20:40:02:858 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:02:858 Env State: Release
+20:40:02:858 Ended Voice #0
+20:40:02:858 VoiceProxy.deactivate#0
+20:40:02:858 Elapsed: 1
+20:40:03:157 Received MIDI message: 90427f
+20:40:03:157 Waiting Mutex # 1
+20:40:03:157 Elapsed: 0
+20:40:03:157 Note On 66
+20:40:03:157 VoiceProxy.allocate#0
+20:40:03:157 First voice allocated
+20:40:03:157 Started Voice #0
+20:40:03:157 Env State: Attack
+20:40:03:157 VoiceProxy.activate#0
+20:40:03:157 Voices allocated: 1
+20:40:03:203 Env State: Decay
+20:40:03:248 Received MIDI message: 80427f
+20:40:03:248 Waiting Mutex # 1
+20:40:03:248 Note Off 66
+20:40:03:248 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:03:248 Env State: Release
+20:40:03:248 Ended Voice #0
+20:40:03:248 VoiceProxy.deactivate#0
+20:40:03:248 Elapsed: 1
+20:40:03:255 Env State: Completed
+20:40:03:255 Disposed Voice 0
+20:40:03:255 Deallocate #0
+20:40:03:255 Voices allocated: 0
+20:40:03:418 Received MIDI message: 90407f
+20:40:03:418 Waiting Mutex # 1
+20:40:03:418 Elapsed: 0
+20:40:03:418 Note On 64
+20:40:03:418 VoiceProxy.allocate#0
+20:40:03:418 First voice allocated
+20:40:03:418 Started Voice #0
+20:40:03:418 Env State: Attack
+20:40:03:418 VoiceProxy.activate#0
+20:40:03:418 Voices allocated: 1
+20:40:03:486 Env State: Decay
+20:40:03:488 Received MIDI message: 80407f
+20:40:03:488 Waiting Mutex # 1
+20:40:03:489 Note Off 64
+20:40:03:490 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:03:490 Env State: Release
+20:40:03:490 Ended Voice #0
+20:40:03:490 VoiceProxy.deactivate#0
+20:40:03:490 Elapsed: 1
+20:40:03:622 Env State: Completed
+20:40:03:622 Disposed Voice 0
+20:40:03:622 Deallocate #0
+20:40:03:622 Voices allocated: 0
+20:40:03:894 Env State: Completed
+20:40:03:894 Disposed Voice 0
+20:40:03:894 Deallocate #0
+20:40:03:894 Voices allocated: 0
+20:40:04:930 Received MIDI message: 90407f
+20:40:04:930 Waiting Mutex # 1
+20:40:04:930 Elapsed: 0
+20:40:04:930 Note On 64
+20:40:04:930 VoiceProxy.allocate#0
+20:40:04:930 First voice allocated
+20:40:04:930 Started Voice #0
+20:40:04:930 Env State: Attack
+20:40:04:930 VoiceProxy.activate#0
+20:40:04:930 Voices allocated: 1
+20:40:04:980 Env State: Decay
+20:40:04:990 Received MIDI message: 90427f
+20:40:04:990 Waiting Mutex # 1
+20:40:04:990 Elapsed: 0
+20:40:04:990 Note On 66
+20:40:04:990 VoiceProxy.allocate#0
+20:40:04:990 First voice allocated
+20:40:04:990 Started Voice #0
+20:40:04:990 Env State: Attack
+20:40:04:990 VoiceProxy.activate#0
+20:40:04:990 Voices allocated: 1
+20:40:05:021 Env State: Sustain
+20:40:05:040 Received MIDI message: 80407f
+20:40:05:040 Waiting Mutex # 1
+20:40:05:040 Note Off 64
+20:40:05:040 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:040 Env State: Release
+20:40:05:040 Ended Voice #0
+20:40:05:040 VoiceProxy.deactivate#0
+20:40:05:040 Elapsed: 1
+20:40:05:063 Env State: Decay
+20:40:05:115 Env State: Sustain
+20:40:05:130 Received MIDI message: 90447f
+20:40:05:130 Waiting Mutex # 1
+20:40:05:130 Elapsed: 0
+20:40:05:130 Note On 68
+20:40:05:130 VoiceProxy.allocate#0
+20:40:05:130 First voice allocated
+20:40:05:130 Started Voice #0
+20:40:05:130 Env State: Attack
+20:40:05:130 VoiceProxy.activate#0
+20:40:05:130 Voices allocated: 1
+20:40:05:170 Received MIDI message: 80427f
+20:40:05:170 Waiting Mutex # 1
+20:40:05:170 Note Off 66
+20:40:05:170 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:170 Env State: Release
+20:40:05:170 Ended Voice #0
+20:40:05:170 VoiceProxy.deactivate#0
+20:40:05:170 Elapsed: 1
+20:40:05:190 Received MIDI message: 90457f
+20:40:05:190 Waiting Mutex # 1
+20:40:05:190 Elapsed: 0
+20:40:05:190 Note On 69
+20:40:05:190 VoiceProxy.allocate#0
+20:40:05:190 First voice allocated
+20:40:05:190 Started Voice #0
+20:40:05:190 Env State: Attack
+20:40:05:190 VoiceProxy.activate#0
+20:40:05:190 Voices allocated: 1
+20:40:05:207 Env State: Decay
+20:40:05:260 Received MIDI message: 80447f
+20:40:05:260 Waiting Mutex # 1
+20:40:05:261 Note Off 68
+20:40:05:261 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:261 Env State: Release
+20:40:05:261 Ended Voice #0
+20:40:05:261 VoiceProxy.deactivate#0
+20:40:05:261 Elapsed: 1
+20:40:05:264 Env State: Decay
+20:40:05:290 Received MIDI message: 80457f
+20:40:05:290 Waiting Mutex # 1
+20:40:05:290 Note Off 69
+20:40:05:290 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:290 Env State: Release
+20:40:05:290 Ended Voice #0
+20:40:05:290 VoiceProxy.deactivate#0
+20:40:05:290 Elapsed: 1
+20:40:05:360 Received MIDI message: 90407f
+20:40:05:360 Waiting Mutex # 1
+20:40:05:360 Elapsed: 0
+20:40:05:360 Note On 64
+20:40:05:361 VoiceProxy.allocate#1
+20:40:05:361 Some voice already allocated
+20:40:05:361 Started Voice #1
+20:40:05:361 Env State: Attack
+20:40:05:361 VoiceProxy.activate#1
+20:40:05:361 Voices allocated: 2
+20:40:05:438 Env State: Decay
+20:40:05:439 Env State: Completed
+20:40:05:439 Disposed Voice 0
+20:40:05:439 Deallocate #0
+20:40:05:439 Voices allocated: 1
+20:40:05:450 Received MIDI message: 90427f
+20:40:05:450 Waiting Mutex # 1
+20:40:05:450 Elapsed: 0
+20:40:05:450 Note On 66
+20:40:05:450 VoiceProxy.allocate#1
+20:40:05:450 Some voice already allocated
+20:40:05:450 Started Voice #1
+20:40:05:450 Env State: Attack
+20:40:05:451 VoiceProxy.activate#1
+20:40:05:451 Voices allocated: 2
+20:40:05:460 Received MIDI message: 80407f
+20:40:05:460 Waiting Mutex # 1
+20:40:05:460 Note Off 64
+20:40:05:460 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:05:460 Env State: Release
+20:40:05:460 Ended Voice #1
+20:40:05:460 VoiceProxy.deactivate#1
+20:40:05:460 Elapsed: 1
+20:40:05:500 Received MIDI message: 90447f
+20:40:05:500 Waiting Mutex # 1
+20:40:05:500 Elapsed: 0
+20:40:05:500 Note On 68
+20:40:05:500 VoiceProxy.allocate#1
+20:40:05:500 Some voice already allocated
+20:40:05:500 Started Voice #1
+20:40:05:500 Env State: Attack
+20:40:05:500 VoiceProxy.activate#1
+20:40:05:500 Voices allocated: 2
+20:40:05:529 Env State: Decay
+20:40:05:560 Received MIDI message: 80427f
+20:40:05:560 Waiting Mutex # 1
+20:40:05:560 Note Off 66
+20:40:05:560 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:05:560 Env State: Release
+20:40:05:560 Ended Voice #1
+20:40:05:560 VoiceProxy.deactivate#1
+20:40:05:560 Elapsed: 1
+20:40:05:573 Env State: Completed
+20:40:05:573 Disposed Voice 0
+20:40:05:573 Deallocate #0
+20:40:05:573 Voices allocated: 1
+20:40:05:575 Env State: Decay
+20:40:05:590 Received MIDI message: 90457f
+20:40:05:590 Waiting Mutex # 1
+20:40:05:590 Elapsed: 0
+20:40:05:590 Note On 69
+20:40:05:590 VoiceProxy.allocate#1
+20:40:05:590 Some voice already allocated
+20:40:05:590 Started Voice #1
+20:40:05:591 Env State: Attack
+20:40:05:591 VoiceProxy.activate#1
+20:40:05:591 Voices allocated: 2
+20:40:05:615 Received MIDI message: 80447f
+20:40:05:615 Waiting Mutex # 1
+20:40:05:615 Note Off 68
+20:40:05:615 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:05:615 Env State: Release
+20:40:05:615 Ended Voice #1
+20:40:05:615 VoiceProxy.deactivate#1
+20:40:05:615 Elapsed: 1
+20:40:05:624 Env State: Completed
+20:40:05:624 Disposed Voice 0
+20:40:05:624 Deallocate #0
+20:40:05:624 Voices allocated: 1
+20:40:05:631 Received MIDI message: 90407f
+20:40:05:631 Waiting Mutex # 1
+20:40:05:631 Elapsed: 0
+20:40:05:631 Note On 64
+20:40:05:631 VoiceProxy.allocate#0
+20:40:05:631 Some voice already allocated
+20:40:05:631 Started Voice #0
+20:40:05:631 Env State: Attack
+20:40:05:631 VoiceProxy.activate#0
+20:40:05:631 Voices allocated: 2
+20:40:05:658 Env State: Decay
+20:40:05:660 Env State: Completed
+20:40:05:660 Disposed Voice 0
+20:40:05:660 Deallocate #0
+20:40:05:660 Voices allocated: 1
+20:40:05:680 Received MIDI message: 80407f
+20:40:05:680 Waiting Mutex # 1
+20:40:05:681 Note Off 64
+20:40:05:681 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:681 Env State: Release
+20:40:05:681 Ended Voice #0
+20:40:05:681 VoiceProxy.deactivate#0
+20:40:05:681 Elapsed: 1
+20:40:05:709 Env State: Sustain
+20:40:05:748 Received MIDI message: 80457f
+20:40:05:748 Waiting Mutex # 1
+20:40:05:748 Note Off 69
+20:40:05:748 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:05:748 Env State: Release
+20:40:05:748 Ended Voice #1
+20:40:05:748 VoiceProxy.deactivate#1
+20:40:05:748 Elapsed: 1
+20:40:05:748 Received MIDI message: 90447f
+20:40:05:748 Waiting Mutex # 1
+20:40:05:748 Elapsed: 0
+20:40:05:748 Note On 68
+20:40:05:748 VoiceProxy.allocate#0
+20:40:05:748 Some voice already allocated
+20:40:05:748 Started Voice #0
+20:40:05:748 Env State: Attack
+20:40:05:748 VoiceProxy.activate#0
+20:40:05:748 Voices allocated: 2
+20:40:05:750 Received MIDI message: 90427f
+20:40:05:750 Waiting Mutex # 1
+20:40:05:750 Elapsed: 0
+20:40:05:750 Note On 66
+20:40:05:750 VoiceProxy.allocate#0
+20:40:05:750 Some voice already allocated
+20:40:05:750 Started Voice #0
+20:40:05:750 Env State: Attack
+20:40:05:750 VoiceProxy.activate#0
+20:40:05:750 Voices allocated: 2
+20:40:05:846 Env State: Completed
+20:40:05:846 Disposed Voice 1
+20:40:05:846 Deallocate #1
+20:40:05:846 Voices allocated: 1
+20:40:05:847 Env State: Decay
+20:40:05:851 Env State: Decay
+20:40:05:882 Received MIDI message: 90457f
+20:40:05:882 Waiting Mutex # 1
+20:40:05:882 Elapsed: 0
+20:40:05:882 Note On 69
+20:40:05:882 VoiceProxy.allocate#0
+20:40:05:882 Some voice already allocated
+20:40:05:882 Started Voice #0
+20:40:05:882 Env State: Attack
+20:40:05:882 VoiceProxy.activate#0
+20:40:05:882 Voices allocated: 2
+20:40:05:882 Received MIDI message: 90407f
+20:40:05:882 Waiting Mutex # 1
+20:40:05:882 Elapsed: 0
+20:40:05:882 Note On 64
+20:40:05:882 VoiceProxy.allocate#1
+20:40:05:882 Some voice already allocated
+20:40:05:882 Started Voice #1
+20:40:05:882 Env State: Attack
+20:40:05:882 VoiceProxy.activate#1
+20:40:05:882 Voices allocated: 2
+20:40:05:889 Env State: Sustain
+20:40:05:893 Env State: Sustain
+20:40:05:901 Received MIDI message: 80427f
+20:40:05:901 Waiting Mutex # 1
+20:40:05:901 Note Off 66
+20:40:05:901 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:901 Env State: Release
+20:40:05:901 Ended Voice #0
+20:40:05:901 VoiceProxy.deactivate#0
+20:40:05:901 Elapsed: 1
+20:40:05:920 Received MIDI message: 80447f
+20:40:05:920 Waiting Mutex # 1
+20:40:05:921 Note Off 68
+20:40:05:921 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:05:921 Env State: Release
+20:40:05:921 Ended Voice #0
+20:40:05:921 VoiceProxy.deactivate#0
+20:40:05:921 Elapsed: 1
+20:40:05:936 Env State: Decay
+20:40:05:941 Env State: Completed
+20:40:05:941 Disposed Voice 1
+20:40:05:941 Deallocate #1
+20:40:05:941 Voices allocated: 1
+20:40:05:946 Env State: Decay
+20:40:05:961 Received MIDI message: 80407f
+20:40:05:961 Waiting Mutex # 1
+20:40:05:961 Note Off 64
+20:40:05:961 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:05:961 Env State: Release
+20:40:05:961 Ended Voice #1
+20:40:05:961 VoiceProxy.deactivate#1
+20:40:05:961 Elapsed: 1
+20:40:05:979 Env State: Completed
+20:40:05:979 Disposed Voice 1
+20:40:05:979 Deallocate #1
+20:40:05:979 Voices allocated: 1
+20:40:05:980 Env State: Sustain
+20:40:06:001 Received MIDI message: 80457f
+20:40:06:001 Waiting Mutex # 1
+20:40:06:001 Note Off 69
+20:40:06:001 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:06:001 Env State: Release
+20:40:06:001 Ended Voice #0
+20:40:06:001 VoiceProxy.deactivate#0
+20:40:06:001 Elapsed: 1
+20:40:06:031 Received MIDI message: 90427f
+20:40:06:031 Waiting Mutex # 1
+20:40:06:033 Elapsed: 0
+20:40:06:033 Note On 66
+20:40:06:033 VoiceProxy.allocate#1
+20:40:06:033 Some voice already allocated
+20:40:06:033 Started Voice #1
+20:40:06:033 Env State: Attack
+20:40:06:033 VoiceProxy.activate#1
+20:40:06:033 Voices allocated: 2
+20:40:06:069 Env State: Completed
+20:40:06:069 Disposed Voice 0
+20:40:06:069 Deallocate #0
+20:40:06:069 Voices allocated: 1
+20:40:06:071 Received MIDI message: 80427f
+20:40:06:071 Waiting Mutex # 1
+20:40:06:073 Note Off 66
+20:40:06:073 VoiceLIFO::Deactivate Found deactivable: 1
+20:40:06:073 Env State: Release
+20:40:06:073 Ended Voice #1
+20:40:06:073 VoiceProxy.deactivate#1
+20:40:06:074 Elapsed: 1
+20:40:06:081 Received MIDI message: 90407f
+20:40:06:081 Waiting Mutex # 1
+20:40:06:081 Elapsed: 0
+20:40:06:081 Note On 64
+20:40:06:081 VoiceProxy.allocate#0
+20:40:06:081 Some voice already allocated
+20:40:06:081 Started Voice #0
+20:40:06:081 Env State: Attack
+20:40:06:081 VoiceProxy.activate#0
+20:40:06:081 Voices allocated: 2
+20:40:06:091 Received MIDI message: 80407f
+20:40:06:091 Waiting Mutex # 1
+20:40:06:091 Note Off 64
+20:40:06:091 VoiceLIFO::Deactivate Found deactivable: 0
+20:40:06:091 Env State: Release
+20:40:06:091 Ended Voice #0
+20:40:06:091 VoiceProxy.deactivate#0
+20:40:06:091 Elapsed: 1
+20:40:06:169 Env State: Completed
+20:40:06:169 Disposed Voice 1
+20:40:06:169 Deallocate #1
+20:40:06:169 Voices allocated: 1
+20:40:06:295 Env State: Completed
+20:40:06:295 Disposed Voice 0
+20:40:06:295 Deallocate #0
+20:40:06:295 Voices allocated: 1
+20:40:06:297 Env State: Completed
+20:40:06:297 Disposed Voice 0
+20:40:06:297 Deallocate #0
+20:40:06:297 Voices allocated: 0
+20:40:06:332 Env State: Completed
+20:40:06:332 Disposed Voice 1
+20:40:06:332 Deallocate #1
+20:40:06:332 Voices allocated: 1
+20:40:06:386 Env State: Completed
+20:40:06:387 Disposed Voice 0
+20:40:06:387 Deallocate #0
+20:40:06:387 Voices allocated: 0
+20:40:06:475 Env State: Completed
+20:40:06:475 Disposed Voice 0
+20:40:06:475 Deallocate #0
+20:40:06:475 Voices allocated: 0
+20:40:06:476 Env State: Completed
+20:40:06:476 Disposed Voice 1
+20:40:06:476 Deallocate #1
+20:40:06:476 Voices allocated: 0
+20:40:08:681 Stopped timebase
+20:40:08:681 Stopping DirectSoundOutput
+20:40:08:681 Stopping oscillator
+20:40:08:681 Stopping algorithm
+20:40:08:681 Algorithm destructor
+20:40:08:681 DirectSoundOutput destructor id=-842150451
+20:40:08:681 Stopping DirectSoundOutput
+20:40:08:719 File size=1792000
+20:40:08:721 Oscillator destructor id=-842150451
+20:40:08:724 Simple generator destructor
+20:40:08:724 Releasing factories
+20:40:08:724 Basic EU factory destructor
+20:40:08:724 InputOutputFactory: destructor
+20:40:08:724 Closing library

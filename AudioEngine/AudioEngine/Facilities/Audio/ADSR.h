@@ -4,9 +4,9 @@
 class ADSR
 {
 public:
-	int attackTime;
-	int decayTime;
-	int releaseTime;
+	double attackTime;
+	double decayTime;
+	double releaseTime;
 	double attackLevel;
 	double sustainLevel;
 	ADSR();
