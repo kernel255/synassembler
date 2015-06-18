@@ -42,6 +42,9 @@ namespace BasicEUSynthFactory
 			AttackLevel.setOwner(this);
 			SustainLevel.setOwner(this);
 			this.facilities = facilities;
+			AttackRate.MaxLevel = 100;
+			DecayRate.MaxLevel = 100;
+			ReleaseRate.MaxLevel = 600;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
 			readDProp = deleHolder.readEUDprop;
@@ -95,7 +98,18 @@ namespace BasicEUSynthFactory
 			int waveId = readIProp(id, WAVE_PROPERTY_INDEX);
 			WaveButton.SelectedWave = waveId;
 			double outLevel = readDProp(id, LEVEL_PROPERTY_INDEX);
-			OutputLevel.LevelValue = outLevel;
+			OutputLevel.NormalizedLevelValue = outLevel;
+			// ADSR
+			double at = readDProp(id, AT_PROPERTY_INDEX);
+			AttackRate.LevelValue = at;
+			double dt = readDProp(id, DT_PROPERTY_INDEX);
+			DecayRate.LevelValue = dt;
+			double rt = readDProp(id, RT_PROPERTY_INDEX);
+			ReleaseRate.LevelValue = rt;
+			double al = readDProp(id, AL_PROPERTY_INDEX);
+			AttackLevel.LevelValue = al;
+			double sl = readDProp(id, SL_PROPERTY_INDEX);
+			SustainLevel.LevelValue = sl;
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;

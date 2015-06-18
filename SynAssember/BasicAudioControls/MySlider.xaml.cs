@@ -27,11 +27,11 @@ namespace BasicAudioControls
         public static DependencyProperty ValueProperty;
         public static DependencyProperty LabelProperty;
 
-        public Double LevelValue
+        public Double NormalizedLevelValue
         {
             get 
 			{ 
-				return (Double)GetValue(ValueProperty); 
+				return (Double)GetValue(ValueProperty);
 			}
             set { 
 				SetValue(ValueProperty, value);
@@ -47,9 +47,36 @@ namespace BasicAudioControls
 			}
         }
 
+		public Double LevelValue
+		{
+			set
+			{
+				double norm = getNormalizedLevel(value);
+				NormalizedLevelValue = norm;
+			}
+		}
+
+		double max = 1.0;
+		public Double MaxLevel
+		{
+			set
+			{
+				max = value;
+			}
+		}
+
+		double getNormalizedLevel(double d)
+		{
+			return d / max;
+		}
+
+		double getDenormalizedLevel(double d)
+		{
+			return d * max;
+		}
+
 		void setPosition(double val)
 		{
-
 			double min = getCursorMin();
 			double max = getCursorMax();
 			double ext = getCursorExtension();
@@ -71,7 +98,7 @@ namespace BasicAudioControls
 
         static BasicSlider()
         {
-            ValueProperty = DependencyProperty.Register("LevelValue", typeof(Double), typeof(BasicSlider),
+            ValueProperty = DependencyProperty.Register("NormalizedLevelValue", typeof(Double), typeof(BasicSlider),
                 new FrameworkPropertyMetadata(LEVEL_DEFAULT_VALUE, new PropertyChangedCallback(OnLevelChanged)));
             LabelProperty = DependencyProperty.Register("Label", typeof(String), typeof(BasicSlider),
                 new FrameworkPropertyMetadata("", new PropertyChangedCallback(OnLabelChanged)));
@@ -148,14 +175,14 @@ namespace BasicAudioControls
             return getCursorMin() + getCursorExtension();
         }
 
-        private double normalizeLevel(double val)
+        private double normalizeLevelToUI(double val)
         {
             double range = getCursorMax() - getCursorMin() - 1;
 
             return 1 - (val / range);
         }
 
-		private double unNormalizeLevel(double val)
+		private double unNormalizeLevelFromUI(double val)
 		{
 			double range = getCursorMax() - getCursorMin() - 1;
 
@@ -183,16 +210,19 @@ namespace BasicAudioControls
                 {
                     Canvas.SetTop(SliderCursor, p.Y - delta);
 					sliderChanging = true;
-                    LevelValue = normalizeLevel(estimatedCursorCenter - cursorMin);
-                    if (LevelValue != previousValue)
+                    NormalizedLevelValue = normalizeLevelToUI(estimatedCursorCenter - cursorMin);
+                    if (NormalizedLevelValue != previousValue)
                     {
                         // Raise an event
-                        if(SliderChangedEvent!=null)
-                            SliderChangedEvent(owner, LevelValue);
+						if (SliderChangedEvent != null)
+						{
+							double d = getNormalizedLevel(NormalizedLevelValue);
+							SliderChangedEvent(owner, d);
+						}
                     }
 					sliderChanging = false;
-                    previousValue = LevelValue;
-                    Trace.Write("Level = " + LevelValue + "\n");
+                    previousValue = NormalizedLevelValue;
+                    Trace.Write("Level = " + NormalizedLevelValue + "\n");
                 }
             }
         }

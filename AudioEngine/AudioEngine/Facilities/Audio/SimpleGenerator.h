@@ -72,6 +72,8 @@ protected:
 	ADSR adsr;
 public:
 
+	static 
+
 	// ATTACK
 	static void* getAttackTime(void* pEU)
 	{
