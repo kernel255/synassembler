@@ -85,7 +85,7 @@ public:
 		pSG->adsr.attackTime = *d;
 		char buf[50];
 		memset(buf, 0, 50);
-		sprintf(buf, "Write SG AT: %d", pSG->adsr.attackTime);
+		sprintf(buf, "Write SG AT: %f", pSG->adsr.attackTime);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
@@ -161,11 +161,5 @@ public:
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
-
-
-
-
-
-
 
 };

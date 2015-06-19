@@ -42,8 +42,8 @@ namespace BasicEUSynthFactory
 			AttackLevel.setOwner(this);
 			SustainLevel.setOwner(this);
 			this.facilities = facilities;
-			AttackRate.MaxLevel = 100;
-			DecayRate.MaxLevel = 100;
+			AttackRate.MaxLevel = 200;
+			DecayRate.MaxLevel = 200;
 			ReleaseRate.MaxLevel = 500;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
