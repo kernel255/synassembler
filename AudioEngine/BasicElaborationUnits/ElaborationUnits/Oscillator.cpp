@@ -128,9 +128,21 @@ EAG_SAMPLE_TYPE getSawSample(SimpleVoice& simpleVoice, double samplingFrequence)
 	return level;
 }
 
-EAG_SAMPLE_TYPE getTriangleSample(SimpleVoice& simpleVoice)
+EAG_SAMPLE_TYPE getTriangleSample(SimpleVoice& simpleVoice, double samplingFrequence)
 {
-	return 0.0;
+	double currentAccu = simpleVoice.m_TimeAccumulator - ((int)(simpleVoice.m_TimeAccumulator / simpleVoice.m_Period))*simpleVoice.m_Period;
+	EAG_SAMPLE_TYPE increment = 1.0 / (2 * samplingFrequence / simpleVoice.m_Period);
+	EAG_SAMPLE_TYPE level = simpleVoice.m_TimeAccumulator * increment;
+	if (currentAccu >= (simpleVoice.m_Period / 2.0))
+	{
+		// Growing
+		return level;
+	}
+	else
+	{
+		// De-Growing
+		return 1.0 - level;
+	}
 }
 
 #define POLYPHONIC_ATTENUATION .5
@@ -151,7 +163,7 @@ SimpleGenerator::SampleCalculationResult Oscillator::calculateSample(EAG_SAMPLE_
 		}
 	case e_Triangle:
 		{
-			result = getTriangleSample(simpleVoice);
+			result = getTriangleSample(simpleVoice, m_pModuleServices->getEngineSettings()->samplingFrequence);
 			break;
 		}
 	case e_Saw:
