@@ -20,6 +20,21 @@ namespace BasicAudioControls
     /// </summary>
     public partial class BasicPotentiometer : UserControl
     {
+		public static DependencyProperty LabelProperty;
+
+		static BasicPotentiometer()
+		{
+			LabelProperty = DependencyProperty.Register("Label", typeof(String), typeof(BasicPotentiometer),
+				new FrameworkPropertyMetadata("", new PropertyChangedCallback(OnLabelChanged)));
+		}
+
+		private static void OnLabelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+		{
+			BasicPotentiometer me = (BasicPotentiometer)sender;
+			String name = (String)e.NewValue;
+			me.Label.Content = name;
+		}
+
         public BasicPotentiometer()
         {
             InitializeComponent();

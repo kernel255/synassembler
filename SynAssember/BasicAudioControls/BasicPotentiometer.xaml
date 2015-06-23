@@ -15,6 +15,6 @@
             </Ellipse.Fill>
         </Ellipse>
         <Polygon Name="potentiometerPointer" Fill="#ffd02000" Stroke="#fff00000" Points="50,20 55,50 45,50"></Polygon>
-        <Label Width="100" Height="30" Canvas.Top="100" Background="#ffa0a0a0">Pippo</Label>
+        <Label Name="Label"  Width="100" Height="30" Canvas.Top="100" Background="#ffa0a0a0">Pippo</Label>
     </Canvas>
 </UserControl>

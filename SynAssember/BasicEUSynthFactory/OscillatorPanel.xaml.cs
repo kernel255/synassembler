@@ -58,6 +58,7 @@ namespace BasicEUSynthFactory
 			SustainLevel.SliderChangedEvent += new BasicSlider.SliderChanged(SustainLevel_SliderChangedEvent);
 
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
+
             this.id = id;
         }
 
