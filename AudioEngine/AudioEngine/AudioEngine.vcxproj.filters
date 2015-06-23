@@ -113,6 +113,12 @@
     <ClCompile Include="Facilities\Audio\ADSR.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="Facilities\Audio\WaveGeneratoFacilities.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\Audio\LFO.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h">
@@ -215,6 +221,18 @@
       <Filter>Facilities</Filter>
     </ClInclude>
     <ClInclude Include="Facilities\Audio\ADSR.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveGeneratorFacilities.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeAccumulatedVoice.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveKind.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\Audio\LFO.h">
       <Filter>Facilities</Filter>
     </ClInclude>
   </ItemGroup>

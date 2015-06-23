@@ -5,6 +5,8 @@
 #include "ConcretePort.h"
 #include "../Facilities/Audio/SimpleEnvelope.h"
 #include "../Facilities/Audio/SimpleGenerator.h"
+#include "../../AudioEngine/Facilities/Audio/WaveGeneratorFacilities.h"
+#include "../../AudioEngine/Facilities/Audio/WaveKind.h"
 
 class EUKind;
 class OscillatorKind;
@@ -18,69 +20,9 @@ class ModuleServices;
 class Oscillator : public SimpleGenerator
 {
 public:
-	enum WaveKind
-	{
-		e_Sine = 0,
-		e_Square = 1,
-		e_Triangle = 2,
-		e_Saw = 3
-	};
 	/**
 	* \class Describe a MIDI voice
 	*/
-	//class OscillatorVoice
-	//{
-	//public:
-	//	OscillatorVoice(double samplingPeriod) : m_bActive(false) 
-	//	{
-	//		m_pEnvelope = new SimpleEnvelope(samplingPeriod);
-	//	}
-	//	virtual ~OscillatorVoice()
-	//	{
-	//		delete m_pEnvelope;
-	//	}
-	//	/**
-	//	* \var m_bActive True when the Oscillator is oscillating
-	//	*/
-	//	bool m_bActive;
-	//	/**
-	//	* \var m_bFinalRelease True when the midi off has been received but the envelope is still in place
-	//	*/
-	//	bool m_bFinalRelease;
-	//	double m_Frequency;
-	//	double m_TimeAccumulator;
-	//	double m_Period;
-	//	double m_InitialFrequency;
-	//	/**
-	//	* \var Kind of waveform
-	//	*/
-	//	WaveKind m_Kind;
-	//	void Activate(double initialfreq)
-	//	{
-	//		assert(!m_bActive);
-	//		m_InitialFrequency = initialfreq;
-	//		m_TimeAccumulator = 0.0;
-	//		m_Period = 1.0 / m_InitialFrequency;
-	//		m_pEnvelope->start();
-	//		//Activated by last, so the note can begin with the correct parameters
-	//		m_bActive = true;
-	//		m_bFinalRelease = false;
-	//	}
-	//	void Deactivate(void)
-	//	{
-	//		assert(m_bActive);
-	//		m_pEnvelope->stop();
-	//		//m_bActive = false;
-	//		m_bFinalRelease = true;
-	//	}
-	//	void Dispose(void)
-	//	{
-	//		assert(m_bActive);
-	//		m_bFinalRelease = false;
-	//		m_bActive = false;
-	//	}
-	//	SimpleEnvelope *m_pEnvelope;
-	//};
 	Oscillator(ModuleServices* pService);
 	//virtual	bool serialize(bool bSaving, class AbstractXMLParser* pParser, class AbstractXMLElement* pElement);
 	virtual ~Oscillator();
@@ -151,6 +93,8 @@ protected:
 	ConcretePort PhaseInPort;
 	ConcretePort AmplitudeInPort;
 	ConcretePort MIDIInPort;
+
+	
 
 	WaveKind m_WaveKind;
 	double m_AmplitudePort;

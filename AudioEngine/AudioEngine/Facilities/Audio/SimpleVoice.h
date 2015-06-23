@@ -3,8 +3,9 @@
 
 #include "../../ElaborationUnits/ModuleServices.h"
 #include "../Facilities/Audio/SimpleEnvelope.h"
+#include "../Audio/TimeAccumulatedVoice.h"
 
-class SimpleVoice
+class SimpleVoice : public TimeAccumulatedVoice
 {
 public:
 	SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
@@ -36,6 +37,9 @@ public:
 	SimpleEnvelope *m_pEnvelope;
 	EAG_SAMPLE_TYPE* m_SamplesBuffer;
 	ModuleServices* m_pModuleServices;
+
+	virtual double getTimeAccumulated() { return m_TimeAccumulator; }
+	virtual double getPeriod() { return m_Period; }
 private:
 	int id;
 };

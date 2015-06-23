@@ -103,7 +103,9 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     </ClCompile>
     <ClCompile Include="ElaborationUnits\AbstractEUKind.cpp" />
     <ClCompile Include="Facilities\Audio\ADSR.cpp" />
+    <ClCompile Include="Facilities\Audio\LFO.cpp" />
     <ClCompile Include="Facilities\Audio\SimpleEnvelope.cpp" />
+    <ClCompile Include="Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="Facilities\Audio\WaveLogger.cpp" />
     <ClCompile Include="Facilities\General\AbstractProperty.cpp" />
     <ClCompile Include="Facilities\General\GainProperty.cpp" />
@@ -141,6 +143,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="AudioEngine.h" />
     <ClInclude Include="AudioEngineAPI.h" />
     <ClInclude Include="Facilities\Audio\ADSR.h" />
+    <ClInclude Include="Facilities\Audio\LFO.h" />
     <ClInclude Include="Facilities\Audio\WaveLogger.h" />
     <ClInclude Include="Facilities\General\AbstractProperty.h" />
     <ClInclude Include="Facilities\General\GainProperty.h" />
@@ -169,7 +172,10 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="ElaborationUnits\ProxyElaborationUnit.h" />
     <ClInclude Include="SpecificOSInfo.h" />
     <ClInclude Include="ElaborationUnits\VirtualElaborationUnit.h" />
+    <ClInclude Include="TimeAccumulatedVoice.h" />
     <ClInclude Include="TimeBase.h" />
+    <ClInclude Include="WaveGeneratorFacilities.h" />
+    <ClInclude Include="WaveKind.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
