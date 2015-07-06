@@ -40,6 +40,7 @@ public:
 
 	virtual double getTimeAccumulated() { return m_TimeAccumulator; }
 	virtual double getPeriod() { return m_Period; }
+	virtual void increaseAccumulatedTime(double time);
 private:
 	int id;
 };

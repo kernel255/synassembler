@@ -47,3 +47,8 @@ void SimpleVoice::dispose(void)
 	m_bFinalRelease = false;
 	m_bActive = false;
 }
+
+void SimpleVoice::increaseAccumulatedTime(double time)
+{
+	m_TimeAccumulator += time;
+}

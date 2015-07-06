@@ -10,6 +10,7 @@ enum e_PropertyType {
 	C_StringArray = 3,
 	C_MIDINote = 4,
 	C_Gain = 5,
+	C_Boolean = 6,
 	C_None = 100
 };
 
@@ -42,5 +43,4 @@ public:
 	virtual void setSetter(pfnSetValue fSet) = 0;
 	virtual pfnGetValue getGetter() = 0;
 	virtual pfnSetValue getSetter() = 0;
-
 };

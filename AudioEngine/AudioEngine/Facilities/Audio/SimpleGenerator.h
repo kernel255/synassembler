@@ -6,6 +6,7 @@
 #include "SimpleVoice.h"
 #include "VoiceLIFO.h"
 #include "..\General\MutexProxy.h"
+#include "..\Audio\LFO.h"
 
 class SimpleGenerator : public VirtualElaborationUnit {
 public:
@@ -45,6 +46,9 @@ protected:
 	ConcretePort AmplitudeInPort;
 	ConcretePort MainOutPort;
 	ConcretePort MIDIInPort;
+
+	LFO m_AmplitudeLFO;
+	LFO m_FrequencyLFO;
 
 	int m_SamplesBufferMaxSize;
 

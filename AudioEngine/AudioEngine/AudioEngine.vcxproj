@@ -108,6 +108,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClCompile Include="Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="Facilities\Audio\WaveLogger.cpp" />
     <ClCompile Include="Facilities\General\AbstractProperty.cpp" />
+    <ClCompile Include="Facilities\General\BooleanProperty.cpp" />
     <ClCompile Include="Facilities\General\GainProperty.cpp" />
     <ClCompile Include="Facilities\General\hpslib.cpp" />
     <ClCompile Include="Facilities\General\IntegerProperty.cpp" />
@@ -146,6 +147,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="Facilities\Audio\LFO.h" />
     <ClInclude Include="Facilities\Audio\WaveLogger.h" />
     <ClInclude Include="Facilities\General\AbstractProperty.h" />
+    <ClInclude Include="Facilities\General\BooleanProperty.h" />
     <ClInclude Include="Facilities\General\GainProperty.h" />
     <ClInclude Include="Facilities\General\IntegerProperty.h" />
     <ClInclude Include="Facilities\General\MutexProxy.h" />

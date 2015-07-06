@@ -119,6 +119,9 @@
     <ClCompile Include="Facilities\Audio\LFO.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="Facilities\General\BooleanProperty.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h">
@@ -233,6 +236,9 @@
       <Filter>Facilities</Filter>
     </ClInclude>
     <ClInclude Include="Facilities\Audio\LFO.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\BooleanProperty.h">
       <Filter>Facilities</Filter>
     </ClInclude>
   </ItemGroup>

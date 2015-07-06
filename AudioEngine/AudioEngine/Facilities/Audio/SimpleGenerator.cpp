@@ -301,8 +301,17 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 					{
 						if (envLevel < 0.0)
 							envLevel = 0.0;
-						pSamplesBuffer[sampleIndex] += m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * currSample;
-						voiceIterator->simpleVoice.m_TimeAccumulator += m_SamplingTime;
+						double lfoAmpl = 1.0;
+						if (m_AmplitudeLFO.getEnable())
+							lfoAmpl = m_AmplitudeLFO.getSample(m_SamplingFrequency);
+						m_AmplitudeLFO.increaseAccumulatedTime(m_SamplingTime);
+						double lfoFreq = 0.0;
+						if (m_FrequencyLFO.getEnable())
+							lfoFreq = m_FrequencyLFO.getSample(m_SamplingFrequency);
+						m_FrequencyLFO.increaseAccumulatedTime(m_SamplingTime);
+						pSamplesBuffer[sampleIndex] += m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * lfoAmpl * currSample;
+						//voiceIterator->simpleVoice.m_TimeAccumulator += m_SamplingTime;
+						voiceIterator->simpleVoice.increaseAccumulatedTime(m_SamplingTime);
 					}
 					voiceIterator = m_pVoicesLIFO[noteIndex]->getNextAllocatedVoice();
 					numLoops++;

@@ -147,6 +147,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveGeneratoFacilities.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\LFO.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

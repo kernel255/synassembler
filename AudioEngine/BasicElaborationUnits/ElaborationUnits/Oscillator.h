@@ -7,6 +7,7 @@
 #include "../Facilities/Audio/SimpleGenerator.h"
 #include "../../AudioEngine/Facilities/Audio/WaveGeneratorFacilities.h"
 #include "../../AudioEngine/Facilities/Audio/WaveKind.h"
+#include "../../AudioEngine/Facilities/Audio/LFO.h"
 
 class EUKind;
 class OscillatorKind;
@@ -94,7 +95,6 @@ protected:
 	ConcretePort AmplitudeInPort;
 	ConcretePort MIDIInPort;
 
-	
 
 	WaveKind m_WaveKind;
 	double m_AmplitudePort;

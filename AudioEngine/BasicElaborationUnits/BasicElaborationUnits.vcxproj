@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\ADSR.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\LFO.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleVoice.cpp" />
