@@ -40,6 +40,9 @@ public:
 	virtual int setIProperty(int propertyIndex, int value);
 	virtual int getIProperty(int propertyIndex, int* value);
 
+	virtual int setBProperty(int propertyIndex, bool value);
+	virtual int getBProperty(int propertyIndex, bool* value);
+
 protected:
 	ModuleServices* m_pModuleServices;
 	int iNumInput;

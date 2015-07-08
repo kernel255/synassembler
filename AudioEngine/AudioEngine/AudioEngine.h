@@ -58,6 +58,9 @@ public:
 	int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
 	int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
 
+	int setEUBProperty(int elaborationUnitIndex, int propertyIndex, bool value);
+	int getEUBProperty(int elaborationUnitIndex, int propertyIndex, bool* value);
+
 	int setPropertyByName(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex, const char* value);
 	const char* getPropertyByName(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex);
 	//int sendMIDIMessage(int euIndex, wchar_t* msg);

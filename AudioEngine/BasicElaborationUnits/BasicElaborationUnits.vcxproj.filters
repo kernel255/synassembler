@@ -150,6 +150,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\LFO.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\BooleanProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

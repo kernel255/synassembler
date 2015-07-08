@@ -5,6 +5,7 @@
 #include "OscillatorKind.h"
 #include "..\Facilities\General\GainProperty.h"
 #include "..\Facilities\General\IntegerProperty.h"
+#include "..\Facilities\General\BooleanProperty.h"
 #include "..\..\AudioEngine\Facilities\Audio\SimpleGenerator.h"
 #include "Oscillator.h"
 
@@ -45,7 +46,38 @@ OscillatorKind::OscillatorKind()
 	gain->setGetter(SimpleGenerator::getSustainLevel);
 	gain->setSetter(SimpleGenerator::setSustainLevel);
 	addProperty(gain);
+	// #7
+	BooleanProperty* b = new BooleanProperty("LFO Amp Enable");
+	b->setGetter(SimpleGenerator::getAmpLFOEnable);
+	b->setSetter(SimpleGenerator::setAmpLFOEnable);
+	addProperty(b);
+	// #8
+	b = new BooleanProperty("LFO Freq Enable");
+	b->setGetter(SimpleGenerator::getFreqLFOEnable);
+	b->setSetter(SimpleGenerator::setFreqLFOEnable);
+	addProperty(b);
+	// #9
+	gain = new GainProperty("Amp LFO Level");
+	gain->setGetter(SimpleGenerator::getAmpLFOLevel);
+	gain->setSetter(SimpleGenerator::setAmpLFOLevel);
+	addProperty(gain);
+	// #10
+	gain = new GainProperty("Freq LFO Level");
+	gain->setGetter(SimpleGenerator::getFreqLFOLevel);
+	gain->setSetter(SimpleGenerator::setFreqLFOLevel);
+	addProperty(gain);
+	// #11
+	gain = new GainProperty("Amp LFO Freq");
+	gain->setGetter(SimpleGenerator::getAmpLFOFreq);
+	gain->setSetter(SimpleGenerator::setAmpLFOFreq);
+	addProperty(gain);
+	// #12
+	gain = new GainProperty("Freq LFO Freq");
+	gain->setGetter(SimpleGenerator::getFreqLFOFreq);
+	gain->setSetter(SimpleGenerator::setFreqLFOFreq);
+	addProperty(gain);
 }
+
 
 const char* OscillatorKind::getName(void) const
 {

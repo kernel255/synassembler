@@ -302,11 +302,11 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						if (envLevel < 0.0)
 							envLevel = 0.0;
 						double lfoAmpl = 1.0;
-						if (m_AmplitudeLFO.getEnable())
+						if (m_AmplitudeLFO.m_Enable)
 							lfoAmpl = m_AmplitudeLFO.getSample(m_SamplingFrequency);
 						m_AmplitudeLFO.increaseAccumulatedTime(m_SamplingTime);
 						double lfoFreq = 0.0;
-						if (m_FrequencyLFO.getEnable())
+						if (m_FrequencyLFO.m_Enable)
 							lfoFreq = m_FrequencyLFO.getSample(m_SamplingFrequency);
 						m_FrequencyLFO.increaseAccumulatedTime(m_SamplingTime);
 						pSamplesBuffer[sampleIndex] += m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * lfoAmpl * currSample;

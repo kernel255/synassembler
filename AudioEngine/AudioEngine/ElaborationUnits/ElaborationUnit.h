@@ -120,6 +120,14 @@ public:
 	* @fn Get the Nth integer property
 	*/
 	virtual int getIProperty(int propertyIndex, int* value) = 0;
+	/**
+	* @fn Set the Nth bool property
+	*/
+	virtual int setBProperty(int propertyIndex, bool value) = 0;
+	/**
+	* @fn Get the Nth bool property
+	*/
+	virtual int getBProperty(int propertyIndex, bool* value) = 0;
 
 	/**
 	* \brief Virtual destructor (necessary accordingly to Vincent Greco teaching)

@@ -166,4 +166,112 @@ public:
 		return true;
 	}
 
+	static void* getAmpLFOEnable(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read AMP LFO Ena: %d", pSG->m_AmplitudeLFO.m_Enable);
+		return &(pSG->m_AmplitudeLFO.m_Enable);
+	}
+	static bool setAmpLFOEnable(void* pEU, void* value)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		bool* b = (bool*)value;
+		pSG->m_AmplitudeLFO.m_Enable = *b;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write AMP LFO Ena: %d", pSG->m_AmplitudeLFO.m_Enable);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	static void* getFreqLFOEnable(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read Freq LFO Ena: %d", pSG->m_FrequencyLFO.m_Enable);
+		return &(pSG->m_FrequencyLFO.m_Enable);
+	}
+	static bool setFreqLFOEnable(void* pEU, void* value)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		bool* b = (bool*)value;
+		pSG->m_FrequencyLFO.m_Enable = *b;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write Freq LFO Ena: %d", pSG->m_FrequencyLFO.m_Enable);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// AMP LFO LEVEL
+	static void* getAmpLFOLevel(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG Amp LFO LVL: %f", pSG->m_AmplitudeLFO.m_Amplitude);
+		return &(pSG->m_AmplitudeLFO.m_Amplitude);
+	}
+	static bool setAmpLFOLevel(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_AmplitudeLFO.m_Amplitude = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG Amp LFO LVL: %f", pSG->m_AmplitudeLFO.m_Amplitude);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// FREQ LFO LEVEL
+	static void* getFreqLFOLevel(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG Freq LFO LVL: %f", pSG->m_FrequencyLFO.m_Amplitude);
+		return &(pSG->m_FrequencyLFO.m_Amplitude);
+	}
+	static bool setFreqLFOLevel(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_FrequencyLFO.m_Amplitude = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG Freq LFO LVL: %f", pSG->m_FrequencyLFO.m_Amplitude);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// AMP LFO FREQ
+	static void* getAmpLFOFreq(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read SG Amp LFO Freq: %f", pSG->m_AmplitudeLFO.m_Frequency);
+		return &(pSG->m_AmplitudeLFO.m_Frequency);
+	}
+	static bool setAmpLFOFreq(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_AmplitudeLFO.m_Frequency = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write SG Amp LFO Freq: %f", pSG->m_AmplitudeLFO.m_Frequency);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	// FREQ LFO FREQ
+	static void* getFreqLFOFreq(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("Read Freq LFO Freq: %f", pSG->m_FrequencyLFO.m_Frequency);
+		return &(pSG->m_FrequencyLFO.m_Frequency);
+	}
+	static bool setFreqLFOFreq(void* pEU, void* value) {
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		double* d = (double*)value;
+		pSG->m_FrequencyLFO.m_Frequency = *d;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Write Freq LFO Freq: %f", pSG->m_FrequencyLFO.m_Frequency);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
 };

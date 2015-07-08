@@ -104,6 +104,24 @@ int AbstractElaborationUnit::getIProperty(int propertyIndex, int* value)
 	return 0;
 }
 
+int AbstractElaborationUnit::getBProperty(int propertyIndex, bool* value)
+{
+	switch (getKind()->getPropertyType(propertyIndex))
+	{
+		case C_Integer:
+		{
+			m_ValuesHolder.getBValue(propertyIndex, value);
+			break;
+		}
+		default:
+		{
+			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			return UNAVAILABLE_PROPERTY;
+		}
+	}
+	return 0;
+}
+
 
 int AbstractElaborationUnit::setDProperty(int propertyIndex, double value)
 {
@@ -124,8 +142,6 @@ int AbstractElaborationUnit::setDProperty(int propertyIndex, double value)
 	return 0;
 }
 
-
-
 int AbstractElaborationUnit::setIProperty(int propertyIndex, int value)
 {
 	switch (getKind()->getPropertyType(propertyIndex))
@@ -144,3 +160,20 @@ int AbstractElaborationUnit::setIProperty(int propertyIndex, int value)
 	return 0;
 }
 
+int AbstractElaborationUnit::setBProperty(int propertyIndex, bool value)
+{
+	switch (getKind()->getPropertyType(propertyIndex))
+	{
+	case C_Boolean:
+	{
+		m_ValuesHolder.setBValue(propertyIndex, value);
+		break;
+	}
+	default:
+	{
+		m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+		return UNAVAILABLE_PROPERTY;
+	}
+	}
+	return 0;
+}

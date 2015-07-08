@@ -234,16 +234,19 @@ extern "C" __declspec( dllexport ) int getNthEUPropertyName(int factoryIndex, in
    @param value The value to be read from EU
    @param bufferSize The size of the value buffer
  */
- extern "C" __declspec( dllexport ) int getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize);
+extern "C" __declspec( dllexport ) int getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize);
 
+extern "C" __declspec( dllexport ) int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);
 
- extern "C" __declspec( dllexport ) int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);
+extern "C" __declspec( dllexport ) int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double* value);
 
- extern "C" __declspec( dllexport ) int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double* value);
+extern "C" __declspec(dllexport) int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
 
- extern "C" __declspec(dllexport) int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
+extern "C" __declspec(dllexport) int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
 
- extern "C" __declspec(dllexport) int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
+extern "C" __declspec(dllexport) int setEUBProperty(int elaborationUnitIndex, int propertyIndex, bool value);
+
+extern "C" __declspec(dllexport) int getEUBProperty(int elaborationUnitIndex, int propertyIndex, bool* value);
 
  /**
   * @fn Read the property type accordingly to the table in the API specification

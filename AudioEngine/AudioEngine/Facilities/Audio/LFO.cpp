@@ -6,29 +6,6 @@ double LFO::getTimeAccumulated()
 {
 	return m_TimeAccumulated;
 }
-double LFO::getPeriod()
-{
-	return m_Period;
-}
-
-void LFO::setFrequency(double freq)
-{
-	m_Period = 1.0 / freq;
-}
-double LFO::getFrequency(void)
-{
-	return 1.0 / m_Period;
-}
-
-void LFO::setAmplitude(double amplitude)
-{
-	m_Amplitude = amplitude;
-}
-
-double LFO::getAmplitude()
-{
-	return m_Amplitude;
-}
 
 EAG_SAMPLE_TYPE LFO::getSample(double samplingFrequency)
 {
@@ -45,4 +22,9 @@ EAG_SAMPLE_TYPE LFO::getSample(double samplingFrequency)
 void LFO::increaseAccumulatedTime(double time)
 {
 	m_TimeAccumulated += time;
+}
+
+double LFO::getPeriod()
+{
+	return 1.0 / m_Frequency;
 }

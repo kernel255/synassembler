@@ -29,6 +29,9 @@ typedef bool (*pfnSetDValue)(void* eu, double);
 // int
 typedef int(*pfnGetIValue)(void* eu);
 typedef bool(*pfnSetIValue)(void* eu, int);
+// bool
+typedef bool(pfnGetBValue)(void* eu);
+typedef bool(pfnSetBValue)(void* eu, bool value);
 
 
 class Property {

@@ -98,6 +98,7 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\AbstractProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\BooleanProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\GainProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp" />

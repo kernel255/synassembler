@@ -153,3 +153,36 @@ int PropertyValuesHolder::getIValue(int propertyIndex, int* value)
 	}
 		return 0;
 }
+
+int PropertyValuesHolder::setBValue(int propertyIndex, bool value)
+{
+	m_BValues[propertyIndex].bValue = value;
+	Property* prop = m_pKind->getProperty(propertyIndex);
+	pfnSetValue pfn = m_pKind->getProperty(propertyIndex)->getSetter();
+	pfn(m_pEU, &(value));
+	m_pServices->pLogger->writeLine("Written BValue propIndex=%d value=%d", propertyIndex, value);
+
+	return 0;
+}
+
+int PropertyValuesHolder::getBValue(int propertyIndex, bool* value)
+{
+	if (propertyIndex >= m_BValues.size())
+		return UNAVALIABLE_VALUE;
+	Property* prop = m_pKind->getProperty(propertyIndex);
+	pfnGetValue pfn = prop->getGetter();
+	switch (prop->getType())
+	{
+	case C_Boolean:
+	{
+		bool* pBVal = (bool*)pfn(m_pEU);
+		*value = *pBVal;
+		m_BValues[propertyIndex].bValue = *pBVal;
+		break;
+	}
+	default:
+		return UNAVALIABLE_VALUE;
+		break;
+	}
+	return 0;
+}

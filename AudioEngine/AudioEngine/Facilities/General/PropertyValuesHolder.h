@@ -23,6 +23,8 @@ public:
 	int getDValue(int propertyIndex, double* value);
 	int setIValue(int propertyIndex, int value);
 	int getIValue(int propertyIndex, int* value);
+	int setBValue(int propertyIndex, bool value);
+	int getBValue(int propertyIndex, bool* value);
 private:
 	class ValueHolder
 	{
@@ -44,6 +46,13 @@ private:
 		int iValue;
 	};
 	std::vector<IValueHolder> m_IValues;
+
+	class BValueHolder
+	{
+	public:
+		bool bValue;
+	};
+	std::vector<BValueHolder> m_BValues;
 
 	const EUKind* m_pKind;
 	ElaborationUnit* m_pEU;
