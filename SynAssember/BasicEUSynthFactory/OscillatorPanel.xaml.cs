@@ -111,6 +111,7 @@ namespace BasicEUSynthFactory
 			AttackLevel.LevelValue = al;
 			double sl = readDProp(id, SL_PROPERTY_INDEX);
 			SustainLevel.LevelValue = sl;
+			
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
@@ -122,5 +123,12 @@ namespace BasicEUSynthFactory
 		internal static int RT_PROPERTY_INDEX = 4;
 		internal static int AL_PROPERTY_INDEX = 5;
 		internal static int SL_PROPERTY_INDEX = 6;
+
+		internal static int AMP_LFO_ENABLE_INDEX = 7;
+		internal static int FREQ_LFO_ENABLE_INDEX = 8;
+		internal static int AMP_LFO_LEVEL_INDEX = 9;
+		internal static int FREQ_LFO_LEVEL_INDEX = 10;
+		internal static int AMP_LFO_FREQ_INDEX = 11;
+		internal static int FREQ_LFO_FREQ_INDEX = 12;
     }
 }

@@ -70,7 +70,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	createAlgoAndDestroy();
+	//createAlgoAndDestroy();
 
 
 
@@ -144,6 +144,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	::setEUIProperty(oscId, 1, 1);
 
 	::setEUDProperty(oscId, 0, 0.5);
+
+	::setEUBProperty(oscId, 7, false);
 
 	double oVal;
 	::getEUDProperty(oscId, 0, &oVal);

@@ -28,7 +28,9 @@ Algorithm::~Algorithm()
 	it = m_ProxyEUList.begin();
 	while( it != m_ProxyEUList.end() )
 	{
-		it->getFactory()->destroyElaborationUnit(it->getEU());
+		ElaborationUnitFactory* factory = it->getFactory();
+		ElaborationUnit* pEU = it->getEU();
+		factory->destroyElaborationUnit(pEU);
 		it = m_ProxyEUList.erase( it );
 	}
 
