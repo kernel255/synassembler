@@ -272,8 +272,8 @@ ElaborationUnit* InputOutputFactory::getMidiIn(int instanceIndex)
 		//Check for a MIDI device available
 		for(int i=0;i<num;++i)
 		{
-			if( !m_MIDIInDescriptions[i].m_bAllocated )
-			{
+			//if( !m_MIDIInDescriptions[i].m_bAllocated )
+			//{
 				HMIDIIN hMIDIIn;
 				DWORD ThId;
 
@@ -287,7 +287,7 @@ ElaborationUnit* InputOutputFactory::getMidiIn(int instanceIndex)
 				{
 					//Object created successfully
 					pMidiIn->SetMIDIInHandle(hMIDIIn);
-					m_MIDIInDescriptions[i].m_bAllocated = true;
+					//m_MIDIInDescriptions[i].m_bAllocated = true;
 					addElaborationUnit(pMidiIn);
 					return pMidiIn;
 				}
@@ -300,7 +300,7 @@ ElaborationUnit* InputOutputFactory::getMidiIn(int instanceIndex)
 
 					return NULL;
 				}
-			}
+			//}
 		}
 		delete pMidiIn;
 		return NULL;				
