@@ -41,6 +41,8 @@ namespace BasicEUSynthFactory
 			ReleaseRate.setOwner(this);
 			AttackLevel.setOwner(this);
 			SustainLevel.setOwner(this);
+			LFOAmpOnOff.SetOwner(this);
+			LFOFreqOnOff.SetOwner(this);
 			this.facilities = facilities;
 			AttackRate.MaxLevel = 200;
 			DecayRate.MaxLevel = 200;
@@ -58,6 +60,9 @@ namespace BasicEUSynthFactory
 			SustainLevel.SliderChangedEvent += new BasicSlider.SliderChanged(SustainLevel_SliderChangedEvent);
 
 			WaveButton.WaveChangedEvent += new WaveButton.WaveChanged(WaveButton_ChangedEvent);
+
+			LFOAmpOnOff.SwitchChangeEvent += new OnOffLedButton.SwitchChanged(LFOAmp_ChangedEvent);
+			LFOFreqOnOff.SwitchChangeEvent += new OnOffLedButton.SwitchChanged(LFOFreq_ChangedEvent);
 
             this.id = id;
         }
@@ -86,6 +91,20 @@ namespace BasicEUSynthFactory
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
 			oscPanel.writeIProp(oscPanel.id, WAVE_PROPERTY_INDEX, wave);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
+		}
+
+		public static void LFOAmp_ChangedEvent(Object o, bool on)
+		{
+			OscillatorPanel oscPanel = (OscillatorPanel)o;
+			oscPanel.writeIProp(oscPanel.id, AMP_LFO_ENABLE_INDEX, on ? 1 : 0);
+			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
+		}
+
+		public static void LFOFreq_ChangedEvent(Object o, bool on)
+		{
+			OscillatorPanel oscPanel = (OscillatorPanel)o;
+			oscPanel.writeIProp(oscPanel.id, FREQ_LFO_ENABLE_INDEX, on ? 1 : 0);
 			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
@@ -130,5 +149,6 @@ namespace BasicEUSynthFactory
 		internal static int FREQ_LFO_LEVEL_INDEX = 10;
 		internal static int AMP_LFO_FREQ_INDEX = 11;
 		internal static int FREQ_LFO_FREQ_INDEX = 12;
+
     }
 }

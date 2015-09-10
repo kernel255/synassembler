@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300" Loaded="UserControl_Loaded">
     <Canvas Name="MainCanvas">
         <Rectangle Name="ButtonSpace" Width="60" Height="30" Fill="Gray"></Rectangle>
         <Rectangle Name="Led" Width="30" Height="20" Fill="Red" Canvas.Left="15" Canvas.Top="5" MouseDown="Led_MouseDown"></Rectangle>

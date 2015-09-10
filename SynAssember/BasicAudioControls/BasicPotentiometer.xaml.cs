@@ -24,8 +24,16 @@ namespace BasicAudioControls
 
 		static BasicPotentiometer()
 		{
-			LabelProperty = DependencyProperty.Register("Label", typeof(String), typeof(BasicPotentiometer),
-				new FrameworkPropertyMetadata("", new PropertyChangedCallback(OnLabelChanged)));
+			String dummy = "Dummy";
+			FrameworkPropertyMetadata metadata = new FrameworkPropertyMetadata(dummy, FrameworkPropertyMetadataOptions.AffectsMeasure, new PropertyChangedCallback(OnLabelChanged));
+			LabelProperty = DependencyProperty.Register("LabelString", typeof(String), typeof(BasicPotentiometer),
+				metadata);
+		}
+
+		public String LabelString
+		{
+			set { SetValue(LabelProperty, value); }
+			get { return (String)GetValue(LabelProperty); }
 		}
 
 		private static void OnLabelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)

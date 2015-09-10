@@ -30,7 +30,16 @@ namespace BasicAudioControls
 			WidthProperty = DependencyProperty.Register("Width", typeof(Double), typeof(OnOffLedButton), metadata1);
 			FrameworkPropertyMetadata metadata2 = new FrameworkPropertyMetadata(new Double(), FrameworkPropertyMetadataOptions.AffectsMeasure);
 			HeightProperty = DependencyProperty.Register("Height", typeof(Double), typeof(OnOffLedButton), metadata2);
+		}
 
+		public delegate void SwitchChanged(Object sender, bool value);
+
+		public event SwitchChanged SwitchChangeEvent;
+
+		object owner;
+		public void SetOwner(object _owner)
+		{
+			owner = _owner;
 		}
 
 		public Double Width
@@ -45,13 +54,22 @@ namespace BasicAudioControls
 			get { return (Double)GetValue(HeightProperty); }
 		}
 
-
 		public static readonly DependencyProperty WidthProperty;
 		public static readonly DependencyProperty HeightProperty;
 
 		bool bLedOn = false;
 
-		private void Led_MouseDown(object sender, MouseButtonEventArgs e)
+		public bool SwitchOn
+		{
+			set 
+			{ 
+				bLedOn = value;
+				PressButton();
+			}
+			get { return bLedOn; }
+		}
+
+		private void PressButton()
 		{
 			if (bLedOn)
 			{
@@ -63,9 +81,15 @@ namespace BasicAudioControls
 				Led.Fill = Brushes.Green;
 				bLedOn = true;
 			}
+			SwitchChangeEvent(owner, bLedOn);
 		}
 
-		const double WHRatio = 0.80;
+		private void Led_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			PressButton();
+		}
+
+		const double WHRatio = 0.40;
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
@@ -77,6 +101,7 @@ namespace BasicAudioControls
 			Led.Height = ledHeight;
 			Canvas.SetTop(Led, (Height - ledHeight) / 2.0);
 			Canvas.SetLeft(Led, (Width - ledWidth) / 2.0);
+
 		}
 
 
