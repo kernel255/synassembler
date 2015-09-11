@@ -15,6 +15,10 @@ namespace SynthPanels
 
 	public delegate int ReadEUIntegerProperty(int id, int propertyIndex);
 
+	public delegate int WriteEUBoolProperty(int id, int propertyIndex, bool val);
+
+	public delegate bool ReadEUBoolProperty(int id, int propertyIndex);
+
 	public interface DelegateFactoryInterface
 	{
 		WriteEUDoubleProperty getWriteEUDubleProperty();

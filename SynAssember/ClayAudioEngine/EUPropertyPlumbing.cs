@@ -23,6 +23,11 @@ namespace ClayAudioEngine
 			return AudioEngineWrapper.getDefault().writeEUIProperty(euId, propertyIndex, value);
 		}
 
+		public static int writeEUBoolProperty(int euId, int propertyIndex, bool value)
+		{
+			return AudioEngineWrapper.getDefault().writeEUBProperty(euId, propertyIndex, value);
+		}
+
 		public static double readEUDoubleProperty(int euId, int propertyIndex)
 		{
 			return AudioEngineWrapper.getDefault().readEUDProperty(euId, propertyIndex);
@@ -31,6 +36,11 @@ namespace ClayAudioEngine
 		public static int readEUIntegerProperty(int euId, int propertyIndex)
 		{
 			return AudioEngineWrapper.getDefault().readEUIProperty(euId, propertyIndex);
+		}
+
+		public static bool readEUBoolProperty(int euId, int propertyIndex)
+		{
+			return AudioEngineWrapper.getDefault().readEUBProperty(euId, propertyIndex);
 		}
     }
 }

@@ -244,12 +244,15 @@ namespace ClayAudioEngine
         private static extern int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern int setEUIProperty(int elaborationUnitIndex, int propertyIndex, int value);
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+		private static extern int setEUBProperty(int elaborationUnitIndex, int propertyIndex, bool value);
 
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
 		unsafe private static extern int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double* value);
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
 		unsafe private static extern int getEUIProperty(int elaborationUnitIndex, int propertyIndex, int* value);
-
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+		unsafe private static extern int getEUBProperty(int elaborationUnitIndex, int propertyIndex, bool* value);
     }
 
 }

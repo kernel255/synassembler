@@ -27,6 +27,9 @@ namespace BasicEUSynthFactory
 		WriteEUIntegerProperty writeIProp;
 		ReadEUDoubleProperty readDProp;
 		ReadEUIntegerProperty readIProp;
+		WriteEUBoolProperty writeBProp;
+		ReadEUBoolProperty readBProp;
+		
 		Facilities facilities;
 
         int id;
@@ -49,8 +52,11 @@ namespace BasicEUSynthFactory
 			ReleaseRate.MaxLevel = 500;
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
+			writeBProp = deleHolder.writeEUBProp;
 			readDProp = deleHolder.readEUDprop;
 			readIProp = deleHolder.readEUIProp;
+			readBProp = deleHolder.readEUBProp;
+			
             OutputLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangedEvent);
 
 			AttackRate.SliderChangedEvent += new BasicSlider.SliderChanged(AttackTime_SliderChangedEvent);
@@ -97,14 +103,14 @@ namespace BasicEUSynthFactory
 		public static void LFOAmp_ChangedEvent(Object o, bool on)
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
-			oscPanel.writeIProp(oscPanel.id, AMP_LFO_ENABLE_INDEX, on ? 1 : 0);
+			oscPanel  .writeBProp(oscPanel.id, AMP_LFO_ENABLE_INDEX, on);
 			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
 		public static void LFOFreq_ChangedEvent(Object o, bool on)
 		{
 			OscillatorPanel oscPanel = (OscillatorPanel)o;
-			oscPanel.writeIProp(oscPanel.id, FREQ_LFO_ENABLE_INDEX, on ? 1 : 0);
+			oscPanel.writeBProp(oscPanel.id, FREQ_LFO_ENABLE_INDEX, on);
 			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 

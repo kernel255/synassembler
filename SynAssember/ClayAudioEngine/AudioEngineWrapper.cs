@@ -25,8 +25,10 @@ namespace ClayAudioEngine
 			deleHolder = new SynthDelegateHolder();
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 			deleHolder.writeEUIProp = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
+			deleHolder.writeEUBProp = new WriteEUBoolProperty(EUPropertyPlumbing.writeEUBoolProperty);
 			deleHolder.readEUDprop = new ReadEUDoubleProperty(EUPropertyPlumbing.readEUDoubleProperty);
 			deleHolder.readEUIProp = new ReadEUIntegerProperty(EUPropertyPlumbing.readEUIntegerProperty);
+			deleHolder.readEUBProp = new ReadEUBoolProperty(EUPropertyPlumbing.readEUBoolProperty);
 			String currentFolder = Directory.GetCurrentDirectory();
 			// Try to init engine
 			int result = -1;
@@ -179,6 +181,11 @@ namespace ClayAudioEngine
 			return setEUIProperty(elaborationUnitIndex, propertyIndex, value);
 		}
 
+		internal int writeEUBProperty(int elaborationUnitIndex, int propertyIndex, bool value)
+		{
+			return setEUBProperty(elaborationUnitIndex, propertyIndex, value);
+		}
+
 		internal double readEUDProperty(int elaborationUnitIndex, int propertyIndex)
 		{
 			//return getEUDProperty(elaborationUnitIndex, propertyIndex);
@@ -208,6 +215,24 @@ namespace ClayAudioEngine
 
 			}
 			return -1;
+		}
+
+		internal bool readEUBProperty(int elaborationUnitIndex, int propertyIndex)
+		{
+			bool val = false;
+			try
+			{
+				unsafe
+				{
+					int result = getEUBProperty(elaborationUnitIndex, propertyIndex, &val);
+				}
+				return val;
+			}
+			catch(Exception ex)
+			{
+
+			}
+			return false;
 		}
 
 		public EUPropertyPlumbing euPlumbing;
