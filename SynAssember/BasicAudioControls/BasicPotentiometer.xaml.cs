@@ -21,6 +21,7 @@ namespace BasicAudioControls
     public partial class BasicPotentiometer : UserControl
     {
 		public static DependencyProperty LabelProperty;
+		public static DependencyProperty MaxLevelProperty;
 
 		static BasicPotentiometer()
 		{
@@ -28,6 +29,9 @@ namespace BasicAudioControls
 			FrameworkPropertyMetadata metadata = new FrameworkPropertyMetadata(dummy, FrameworkPropertyMetadataOptions.AffectsMeasure, new PropertyChangedCallback(OnLabelChanged));
 			LabelProperty = DependencyProperty.Register("LabelString", typeof(String), typeof(BasicPotentiometer),
 				metadata);
+
+			MaxLevelProperty = DependencyProperty.Register("MaxLevel", typeof(Double), typeof(BasicPotentiometer));
+
 		}
 
 		public String LabelString
@@ -35,6 +39,19 @@ namespace BasicAudioControls
 			set { SetValue(LabelProperty, value); }
 			get { return (String)GetValue(LabelProperty); }
 		}
+
+		public Double MaxLevel
+		{
+			set { SetValue(MaxLevelProperty, value); }
+			get { return (Double)GetValue(MaxLevelProperty); }
+		}
+
+		/*
+		public Double CurrentLevel
+		{
+
+		}
+		*/
 
 		private static void OnLabelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{

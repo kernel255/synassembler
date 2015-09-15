@@ -41,6 +41,12 @@ namespace BasicEUSynthFactory
 		static string XML_RT = "ReleaseTime";
 		static string XML_AL = "AttackLevel";
 		static string XML_SL = "SustainLevel";
+		static string XML_LFOAMP_ENA = "LFOAmpEnable";
+		static string XML_LFOAMP_AMP = "LFOAmp_Amp";
+		static string XML_LFOAMP_FREQ = "LFOAmp_Freq";
+		static string XML_LFOFREQ_ENA = "LFOFreqEnable";
+		static string XML_LFOFREQ_AMP = "LFOFreq_Amp";
+		static string XML_LFOFREQ_FREQ = "LFOFreq_Freq";
 
         public override void write(XmlTextWriter writer)
         {
@@ -71,7 +77,20 @@ namespace BasicEUSynthFactory
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.SL_PROPERTY_INDEX);
 			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_SL, str);
-        }
+			// Write LFOs
+			bool enaLFOAmp = delegateHolder.readEUBProp(m_EUId, OscillatorPanel.AMP_LFO_ENABLE_INDEX);
+			writer.WriteAttributeString(XML_LFOAMP_ENA, enaLFOAmp.ToString());
+			double lfoAmpAmp = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX);
+			writer.WriteAttributeString(XML_LFOAMP_AMP, lfoAmpAmp.ToString());
+			double lfoAmpFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AMP_LFO_FREQ_INDEX);
+			writer.WriteAttributeString(XML_LFOAMP_FREQ, lfoAmpFreq.ToString());
+			bool enaLFOFreq = delegateHolder.readEUBProp(m_EUId, OscillatorPanel.FREQ_LFO_ENABLE_INDEX);
+			writer.WriteAttributeString(XML_LFOFREQ_ENA, enaLFOFreq.ToString());
+			double lfoFreqAmp = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_LEVEL_INDEX);
+			writer.WriteAttributeString(XML_LFOAMP_AMP, lfoFreqAmp.ToString());
+			double lfoFreqFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX);
+			writer.WriteAttributeString(XML_LFOFREQ_FREQ, lfoFreqFreq.ToString());
+		}
 
         public override void read(XmlTextReader reader)
         {
@@ -105,6 +124,26 @@ namespace BasicEUSynthFactory
 			str = reader.GetAttribute(XML_SL);
 			d = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.SL_PROPERTY_INDEX, d);
+			// Write LFOs
+			str = reader.GetAttribute(XML_LFOAMP_ENA);
+			bool b = Boolean.Parse(str);
+			delegateHolder.writeEUBProp(m_EUId, OscillatorPanel.AMP_LFO_ENABLE_INDEX, b);
+			str = reader.GetAttribute(XML_LFOAMP_AMP);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX, d);
+			str = reader.GetAttribute(XML_LFOAMP_FREQ);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AMP_LFO_FREQ_INDEX, d);
+
+			str = reader.GetAttribute(XML_LFOFREQ_ENA);
+			b = Boolean.Parse(str);
+			delegateHolder.writeEUBProp(m_EUId, OscillatorPanel.FREQ_LFO_ENABLE_INDEX, b);
+			str = reader.GetAttribute(XML_LFOFREQ_AMP);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.FREQ_LFO_LEVEL_INDEX, d);
+			str = reader.GetAttribute(XML_LFOFREQ_FREQ);
+			d = Double.Parse(str, cInfo);
+			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX, d);
 
 			// Now update the view to the model
 			//m_OscillatorPanel.readParametersFromEngine();
