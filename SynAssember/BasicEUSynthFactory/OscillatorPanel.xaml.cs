@@ -136,13 +136,17 @@ namespace BasicEUSynthFactory
 			AttackLevel.LevelValue = al;
 			double sl = readDProp(id, SL_PROPERTY_INDEX);
 			SustainLevel.LevelValue = sl;
-			
+			bool enaLFOAmp = readBProp(id, AMP_LFO_ENABLE_INDEX);
+			LFOAmpOnOff.SwitchOn = enaLFOAmp;
+			double lfoAmpAmp = readDProp(id, AMP_LFO_LEVEL_INDEX);
+			double lfoAmpFreq = readDProp(id, AMP_LFO_FREQ_INDEX);
+			bool enaLFOFreq = readBProp(id, FREQ_LFO_ENABLE_INDEX);
+			LFOFreqOnOff.SwitchOn = enaLFOFreq;
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
 
 		internal static int WAVE_PROPERTY_INDEX = 1;
-
 		internal static int AT_PROPERTY_INDEX = 2;
 		internal static int DT_PROPERTY_INDEX = 3;
 		internal static int RT_PROPERTY_INDEX = 4;
