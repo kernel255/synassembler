@@ -22,6 +22,7 @@ namespace BasicAudioControls
     {
 		public static DependencyProperty LabelProperty;
 		public static DependencyProperty MaxLevelProperty;
+		public static DependencyProperty CurrentLevelProperty;
 
 		static BasicPotentiometer()
 		{
@@ -29,9 +30,8 @@ namespace BasicAudioControls
 			FrameworkPropertyMetadata metadata = new FrameworkPropertyMetadata(dummy, FrameworkPropertyMetadataOptions.AffectsMeasure, new PropertyChangedCallback(OnLabelChanged));
 			LabelProperty = DependencyProperty.Register("LabelString", typeof(String), typeof(BasicPotentiometer),
 				metadata);
-
 			MaxLevelProperty = DependencyProperty.Register("MaxLevel", typeof(Double), typeof(BasicPotentiometer));
-
+			CurrentLevelProperty = DependencyProperty.Register("CurrentLevel", typeof(Double), typeof(BasicPotentiometer));
 		}
 
 		public String LabelString
@@ -46,12 +46,33 @@ namespace BasicAudioControls
 			get { return (Double)GetValue(MaxLevelProperty); }
 		}
 
-		/*
 		public Double CurrentLevel
 		{
-
+			set { SetValue(CurrentLevelProperty, value); }
+			get { return (Double)GetValue(CurrentLevelProperty); }
 		}
-		*/
+
+		double GetNormalizedLevel(double angle)
+		{
+			double max = (Double)GetValue(MaxLevelProperty);
+			if(max>0.0)
+			{
+				double level = (angle / 360.0) * max;
+				return level;
+			}
+			return 0.0;
+		}
+
+		double GetUnormalizedLevel(double level)
+		{
+			double max = (Double)GetValue(MaxLevelProperty);
+			if(max>0.0)
+			{
+				double angle = level / max * 360.0;
+				return angle;
+			}
+			return 0.0;
+		}
 
 		private static void OnLabelChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
 		{
@@ -143,7 +164,9 @@ namespace BasicAudioControls
                 Point p = e.GetPosition(potentiometerSpace);
                 double angle = getDegreeByPoint(p);
                 rotate.Angle = angle;
-                //Trace.Write("Angle=" + angle+"\n");
+                Debug.WriteLine("Angle=" + angle+"\n");
+				double level = GetNormalizedLevel(angle);
+				SetValue(CurrentLevelProperty, level);
             }
         }
 

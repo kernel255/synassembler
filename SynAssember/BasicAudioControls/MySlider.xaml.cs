@@ -88,8 +88,8 @@ namespace BasicAudioControls
 
         public String Label
         {
-            get { return (String)GetValue(ValueProperty); }
-            set { SetValue(ValueProperty, value); }
+            get { return (String)GetValue(LabelProperty); }
+            set { SetValue(LabelProperty, value); }
         }
 
         private const Double LEVEL_DEFAULT_VALUE = 0.0;
