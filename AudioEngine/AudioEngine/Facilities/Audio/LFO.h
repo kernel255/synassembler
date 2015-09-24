@@ -8,6 +8,7 @@
 class LFO : public TimeAccumulatedVoice
 {
 public:
+	LFO();
 	double getTimeAccumulated();
 	double getPeriod();
 
@@ -22,7 +23,7 @@ public:
 	double m_Delay = 0.0;
 	WaveKind m_WaveKind = WaveKind::e_Sine;
 	bool m_Enable = false;
-	double m_Frequency = 20;
+	double m_Frequency = 0.1;
 
 private:
 	double m_TimeAccumulated;

@@ -141,7 +141,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
-	::setEUIProperty(oscId, 1, 1);
+	::setEUIProperty(oscId, 1, 0);
 
 	::setEUDProperty(oscId, 0, 0.5);
 
@@ -217,7 +217,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//::Sleep(1000);
 
 
-	::Sleep(1000);
+	::Sleep(15000);
 
 
 	::stopAlgorithm(algoId);

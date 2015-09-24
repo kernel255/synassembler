@@ -1,6 +1,13 @@
 
+#include <stddef.h>
 #include "LFO.h"
 #include "WaveGeneratorFacilities.h"
+
+LFO::LFO()
+{
+	m_Enable = true;
+	m_TimeAccumulated = 0.0;
+}
 
 double LFO::getTimeAccumulated()
 {
@@ -11,7 +18,7 @@ EAG_SAMPLE_TYPE LFO::getSample(double samplingFrequency)
 {
 	if (m_TimeAccumulated > m_Delay)
 	{
-		return WaveGeneratorFacilities::getSample(this, m_WaveKind, samplingFrequency);
+		return WaveGeneratorFacilities::getSample(this, m_WaveKind, samplingFrequency, NULL);
 	}
 	else
 	{

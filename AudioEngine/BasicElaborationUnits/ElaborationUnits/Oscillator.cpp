@@ -48,12 +48,6 @@ MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,Elabor
 
 void Oscillator::initVoices(EAG_SAMPLE_TYPE updatePeriod)
 {
-	/*
-	for(int i=0;i<MIDIChannelMessage::NumMIDINotes;i++)
-	{
-		m_pVoices[i] = new OscillatorVoice(updatePeriod);
-	}
-	*/
 }
 
 Oscillator::~Oscillator()
@@ -71,82 +65,12 @@ Oscillator::~Oscillator()
 	this->m_pModuleServices->pLogger->writeLine("Oscillator destructor id=%d", iId);
 }
 
-EAG_SAMPLE_TYPE getSineSample(SimpleVoice& simpleVoice)
-{
-	return sin( simpleVoice.m_TimeAccumulator * 2.0 * 3.14159265358979323846 / simpleVoice.m_Period );
-}
-
-EAG_SAMPLE_TYPE getSquareSample(SimpleVoice& simpleVoice)
-{
-	double currentAccu = simpleVoice.m_TimeAccumulator - ((int)(simpleVoice.m_TimeAccumulator / simpleVoice.m_Period))*simpleVoice.m_Period;
-	if (currentAccu >= (simpleVoice.m_Period / 2.0))
-		return +1.0;
-	else
-		return -1.0;
-}
-
-EAG_SAMPLE_TYPE getSawSample(SimpleVoice& simpleVoice, double samplingFrequence)
-{
-	EAG_SAMPLE_TYPE increment = 1.0 / (samplingFrequence / simpleVoice.m_Period);
-	EAG_SAMPLE_TYPE level = simpleVoice.m_TimeAccumulator * increment;
-
-	return level;
-}
-
-EAG_SAMPLE_TYPE getTriangleSample(SimpleVoice& simpleVoice, double samplingFrequence)
-{
-	double currentAccu = simpleVoice.m_TimeAccumulator - ((int)(simpleVoice.m_TimeAccumulator / simpleVoice.m_Period))*simpleVoice.m_Period;
-	EAG_SAMPLE_TYPE increment = 1.0 / (2 * samplingFrequence / simpleVoice.m_Period);
-	EAG_SAMPLE_TYPE level = simpleVoice.m_TimeAccumulator * increment;
-	if (currentAccu >= (simpleVoice.m_Period / 2.0))
-	{
-		// Growing
-		return level;
-	}
-	else
-	{
-		// De-Growing
-		return 1.0 - level;
-	}
-}
-
 #define POLYPHONIC_ATTENUATION .5
 
 SimpleGenerator::SampleCalculationResult Oscillator::calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice)
 {
-	result = WaveGeneratorFacilities::getSample(&simpleVoice, m_WaveKind, m_pModuleServices->getEngineSettings()->samplingFrequence);
-
-	/*
-		switch( m_WaveKind )
-	{
-	case WaveKind::e_Sine:
-		{
-			result = getSineSample(simpleVoice);
-			break;
-		}
-	case WaveKind::e_Square:
-		{
-			result = getSquareSample(simpleVoice);
-			break;
-		}
-	case WaveKind::e_Triangle:
-		{
-			result = getTriangleSample(simpleVoice, m_pModuleServices->getEngineSettings()->samplingFrequence);
-			break;
-		}
-	case WaveKind::e_Saw:
-		{
-			result = getSawSample(simpleVoice, m_pModuleServices->getEngineSettings()->samplingFrequence);
-			break;
-		}
-	default:
-		this->m_pModuleServices->pLogger->writeLine("Undefined waveform!");
-	}
-	*/
-
-
+	result = WaveGeneratorFacilities::getSample(&simpleVoice, m_WaveKind, m_pModuleServices->getEngineSettings()->samplingFrequence, &m_FrequencyLFO);
 	result *= POLYPHONIC_ATTENUATION;
-	//this->m_pModuleServices->pLogger->writeLine("Wave=%f", result);
 
 	return CALCULATION_CONTINUE;
 }
@@ -303,5 +227,3 @@ const EUKind* Oscillator::s_GetKind(void)
 {
 	return (EUKind *) &kinna;
 }
-
-

@@ -1,16 +1,19 @@
 
 
 #include "WaveGeneratorFacilities.h"
+#include "LFO.h"
+#include <stddef.h>
 #include <math.h>
 
-EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice, WaveKind kind, double samplingFrequence)
+EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice, WaveKind kind, double samplingFrequence, LFO* freqLFO)
 {
+	double lfo = (freqLFO != NULL && freqLFO->m_Enable) ? freqLFO->getSample(samplingFrequence) : 0.0;
 	switch (kind)
 	{
 		case WaveKind::e_Sine:
 		{
 			double period = pVoice->getPeriod();
-			return sin(pVoice->getTimeAccumulated() * 2.0 * 3.14159265358979323846 / period);
+			return sin((pVoice->getTimeAccumulated() * 2.0 * 3.14159265358979323846 + lfo * 1.0) / period);
 		}
 		case WaveKind::e_Square:
 		{
