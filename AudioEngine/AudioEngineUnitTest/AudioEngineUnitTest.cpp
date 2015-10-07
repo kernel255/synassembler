@@ -217,7 +217,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//::Sleep(1000);
 
 
-	::Sleep(15000);
+	::Sleep(5000);
 
 
 	::stopAlgorithm(algoId);

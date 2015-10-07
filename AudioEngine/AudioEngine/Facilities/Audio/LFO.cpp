@@ -3,10 +3,11 @@
 #include "LFO.h"
 #include "WaveGeneratorFacilities.h"
 
-LFO::LFO()
+LFO::LFO(ModuleServices* pService)
 {
-	m_Enable = true;
+	m_Enable = false;
 	m_TimeAccumulated = 0.0;
+	m_pModuleServices = pService;
 }
 
 double LFO::getTimeAccumulated()
@@ -33,5 +34,16 @@ void LFO::increaseAccumulatedTime(double time)
 
 double LFO::getPeriod()
 {
-	return 1.0 / m_Frequency;
+	if (m_FixRatio)
+	{
+		
+		return 1.0 / (0.002 * m_CarrFreq);
+	}
+	else
+		return 1.0 / m_Frequency;
+}
+
+void LFO::setCarrierFrequence(double freq) {
+	m_pModuleServices->pLogger->writeLine("LFO Freq: %f", freq);
+	m_CarrFreq = freq;
 }

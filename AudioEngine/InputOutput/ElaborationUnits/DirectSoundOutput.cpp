@@ -3,6 +3,8 @@
 #include "DirectSoundOutput.h"
 #include "DirectSoundOutputKind.h" 
 
+//#define USE_WAVELOGGER 1
+
 const DirectSoundOutputKind DirectSoundOutput::kinna;
 const int DirectSoundOutput::C_MainInIndex = 0;
 int DirectSoundOutput::m_SamplingFrequency;
@@ -46,9 +48,11 @@ MainInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::AUDIO_PORT,Elabo
 
 	MainInPort.setName(DirectSoundOutputKind::MAIN_IN_PORT_NAME);
 	
+#ifdef USE_WAVELOGGER
 	waveLogger = new WaveLogger();
 	waveLogger->open("dsoundoutput",DirectSoundOutput::m_SamplingFrequency,DirectSoundOutput::m_NumChannels,DirectSoundOutput::m_BitsResolution,
 		this->m_pModuleServices->pLogger);
+#endif //USE_WAVELOGGER
 
 #ifdef DEBUG_BUFFER_WITH_STREAM
 	// DEBUG WAVE BUFFER WITH STREAMING
@@ -85,8 +89,10 @@ DirectSoundOutput::~DirectSoundOutput()
 	hr = m_pDirectSound8->Release();
 	//delete [] m_SamplesBuffer;
 	delete [] m_pSamplesBuffer;
+#ifdef USE_WAVELOGGER
 	waveLogger->close();
 	delete waveLogger;
+#endif //USE_WAVELOGGER
 }
 
 bool DirectSoundOutput::createSoundBuffers(DirectSoundOutput* pdirectsoundoutput, LPDIRECTSOUND8 pDSound8)
@@ -259,7 +265,9 @@ bool DirectSoundOutput::UpdateSoundBuffer(int numsection)
 					*psample = sample;
 					psample++;
 				}
+#ifdef USE_WAVELOGGER
 				waveLogger->write((char *) LockPtr1,m_SoundBufferNumSamples);
+#endif //USE_WAVELOGGER
 #endif //(!defined(DEBUG_BUFFER_WITH_STREAM) && !defined(DEBUG_WITH_SQUARE_WAVE))
 #ifdef DEBUG_WITH_SQUARE_WAVE
 				static int env = 0;

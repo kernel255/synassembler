@@ -13,7 +13,8 @@ EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice,
 		case WaveKind::e_Sine:
 		{
 			double period = pVoice->getPeriod();
-			return sin((pVoice->getTimeAccumulated() * 2.0 * 3.14159265358979323846 + lfo * 1.0) / period);
+			//return sin((pVoice->getTimeAccumulated() * 2.0 * 3.14159265358979323846 + lfo * 1.0) / period);
+			return sin(((pVoice->getTimeAccumulated() + lfo) * 2.0 * 3.14159265358979323846) / period);
 		}
 		case WaveKind::e_Square:
 		{

@@ -46,6 +46,10 @@ namespace BasicEUSynthFactory
 			SustainLevel.setOwner(this);
 			LFOAmpOnOff.SetOwner(this);
 			LFOFreqOnOff.SetOwner(this);
+			LFOAmplitudeAmp.setOwner(this);
+			LFOAmplitudeFreq.setOwner(this);
+			LFOFrequencyAmp.setOwner(this);
+			LFOFrequencyFreq.setOwner(this);
 			this.facilities = facilities;
 			AttackRate.MaxLevel = 200;
 			DecayRate.MaxLevel = 200;
@@ -69,6 +73,11 @@ namespace BasicEUSynthFactory
 
 			LFOAmpOnOff.SwitchChangeEvent += new OnOffLedButton.SwitchChanged(LFOAmp_ChangedEvent);
 			LFOFreqOnOff.SwitchChangeEvent += new OnOffLedButton.SwitchChanged(LFOFreq_ChangedEvent);
+
+			LFOAmplitudeAmp.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOAmpAmp_ChangedEvent);
+			LFOAmplitudeFreq.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOAmpFreq_ChangedEvent);
+			LFOFrequencyAmp.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqAmp_ChangedEvent);
+			LFOFrequencyFreq.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqFreq_ChangedEvent);
 
             this.id = id;
         }
@@ -113,6 +122,11 @@ namespace BasicEUSynthFactory
 			oscPanel.writeBProp(oscPanel.id, FREQ_LFO_ENABLE_INDEX, on);
 			oscPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
+
+		public static void LFOAmpAmp_ChangedEvent(Object o, double val) { SetChangedProperty(o, val, AMP_LFO_LEVEL_INDEX); }
+		public static void LFOAmpFreq_ChangedEvent(Object o, double val) { SetChangedProperty(o, val, AMP_LFO_FREQ_INDEX); }
+		public static void LFOFreqAmp_ChangedEvent(Object o, double val) { SetChangedProperty(o, val, FREQ_LFO_LEVEL_INDEX); }
+		public static void LFOFreqFreq_ChangedEvent(Object o, double val) { SetChangedProperty(o, val, FREQ_LFO_FREQ_INDEX); }
 
         internal System.Drawing.Rectangle getRectangle()
         {

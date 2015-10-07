@@ -16,6 +16,8 @@ MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,Elabor
 	initVoices(m_SamplingTime);
 	lastVoiceActNumber = 0;
 	playing = false;
+	m_pAmplitudeLFO = new LFO(pService);
+	m_pFrequencyLFO = new LFO(pService);
 }
 
 SimpleGenerator::~SimpleGenerator()
@@ -214,11 +216,13 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 			}
 			else
 			{
+				//This is a true NoteOn
 				m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
 				int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
-				//This is a true NoteOn
 				m_pModuleServices->pLogger->writeLine("Note On %d", midimsg.data.NoteMessage.Note);
+				m_pAmplitudeLFO->setCarrierFrequence(midimsg.data.NoteMessage.Frequency);
+				m_pFrequencyLFO->setCarrierFrequence(midimsg.data.NoteMessage.Frequency);
 				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency, adsr);
 				m_MutexProxy->ReleaseMutex();
 			}
@@ -302,15 +306,15 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						if (envLevel < 0.0)
 							envLevel = 0.0;
 						double lfoAmpl = 1.0;
-						if (m_AmplitudeLFO.m_Enable)
-							lfoAmpl = m_AmplitudeLFO.getSample(m_SamplingFrequency);
-						m_AmplitudeLFO.increaseAccumulatedTime(m_SamplingTime);
+						if (m_pAmplitudeLFO->m_Enable)
+							lfoAmpl = m_pAmplitudeLFO->getSample(m_SamplingFrequency);
+						m_pAmplitudeLFO->increaseAccumulatedTime(m_SamplingTime);
 						/*
 						double lfoFreq = 0.0;
 						if (m_FrequencyLFO.m_Enable)
 							lfoFreq = m_FrequencyLFO.getSample(m_SamplingFrequency);
 						*/
-						m_FrequencyLFO.increaseAccumulatedTime(m_SamplingTime);
+						m_pFrequencyLFO->increaseAccumulatedTime(m_SamplingTime);
 						pSamplesBuffer[sampleIndex] += m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * lfoAmpl * currSample;
 						//voiceIterator->simpleVoice.m_TimeAccumulator += m_SamplingTime;
 						voiceIterator->simpleVoice.increaseAccumulatedTime(m_SamplingTime);

@@ -69,7 +69,7 @@ Oscillator::~Oscillator()
 
 SimpleGenerator::SampleCalculationResult Oscillator::calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice)
 {
-	result = WaveGeneratorFacilities::getSample(&simpleVoice, m_WaveKind, m_pModuleServices->getEngineSettings()->samplingFrequence, &m_FrequencyLFO);
+	result = WaveGeneratorFacilities::getSample(&simpleVoice, m_WaveKind, m_pModuleServices->getEngineSettings()->samplingFrequence, m_pFrequencyLFO);
 	result *= POLYPHONIC_ATTENUATION;
 
 	return CALCULATION_CONTINUE;

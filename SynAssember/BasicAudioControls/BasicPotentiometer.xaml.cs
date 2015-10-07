@@ -34,6 +34,10 @@ namespace BasicAudioControls
 			CurrentLevelProperty = DependencyProperty.Register("CurrentLevel", typeof(Double), typeof(BasicPotentiometer));
 		}
 
+		public delegate void PotentiometerChanged(Object sender, Double value);
+
+		public event PotentiometerChanged PotentiometerChangedEvent;
+
 		public String LabelString
 		{
 			set { SetValue(LabelProperty, value); }
@@ -100,7 +104,7 @@ namespace BasicAudioControls
             if (dragging)
             {
                 Mouse.Capture(potentiometer);
-                Trace.Write("Capturing\n");
+				Console.WriteLine("Capturing\n");
             }
         }
 
@@ -110,9 +114,9 @@ namespace BasicAudioControls
         private void potentiometer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             dragging = true;
-            //rotate.Angle = 90;
-            rotate.Angle = getDegreeByPoint(e.GetPosition(potentiometerSpace));
-            Trace.Write("Started dragging\n");
+            double angle = getDegreeByPoint(e.GetPosition(potentiometerSpace));
+            rotate.Angle = angle;
+			Console.WriteLine("Started dragging Angle=" + angle);
         }
 
         private double getDegreeByPoint(Point p)
@@ -153,9 +157,15 @@ namespace BasicAudioControls
         {
             dragging = false;
             Mouse.Capture(null);
-            Trace.Write("Stopped Dragging\n");
+            Console.WriteLine("Stopped Dragging\n");
 
         }
+
+		private Object owner;
+		public void setOwner(Object _owner)
+		{
+			this.owner = _owner;
+		}
 
         private void potentiometer_MouseMove(object sender, MouseEventArgs e)
         {
@@ -167,6 +177,10 @@ namespace BasicAudioControls
                 Debug.WriteLine("Angle=" + angle+"\n");
 				double level = GetNormalizedLevel(angle);
 				SetValue(CurrentLevelProperty, level);
+				if(PotentiometerChangedEvent!=null)
+				{
+					PotentiometerChangedEvent(owner, level);
+				}
             }
         }
 
