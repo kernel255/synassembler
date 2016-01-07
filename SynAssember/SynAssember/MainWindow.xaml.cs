@@ -602,6 +602,8 @@ namespace SynAssember
 				MessageBox.Show("Error while playing algorithm: " + res);
 				return;
 			}
+			PlayButton.IsEnabled = false;
+			StopButton.IsEnabled = true;
 			StopButton.IsChecked = false;
 		}
 
@@ -613,6 +615,8 @@ namespace SynAssember
 				MessageBox.Show("Error while stopping algorithm: " + res);
 				return;
 			}
+			PlayButton.IsEnabled = true;
+			StopButton.IsEnabled = false;
 			PlayButton.IsChecked = false;
 		}
 

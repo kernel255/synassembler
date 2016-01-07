@@ -104,7 +104,7 @@ namespace BasicAudioControls
             if (dragging)
             {
                 Mouse.Capture(potentiometer);
-				Console.WriteLine("Capturing\n");
+				//Console.WriteLine("Capturing\n");
             }
         }
 
@@ -127,6 +127,7 @@ namespace BasicAudioControls
                 centerY = potentiometerSpace.ActualHeight / 2;
                 rotate = new RotateTransform(0, centerX, centerY);
                 potentiometerPointer.RenderTransform = rotate;
+				Console.WriteLine("Inside if");
             }
             double px = p.X - centerX;
             double py = p.Y - centerY;
@@ -134,20 +135,28 @@ namespace BasicAudioControls
             if (px != 0.0)
             {
                 angle = Math.Atan(py / px);
-                if (px < 0.0)
-                    angle += Math.PI;
+				if (px < 0.0)
+				{
+					Console.WriteLine("To be corrected angle=" + angle);
+					angle += Math.PI;
+					Console.WriteLine("Corrected angle=" + angle);
+				}
             }
             else
             {
+				Console.WriteLine("Zero");
+
                 if (py > 0.0)
-                    angle = 90.0;
+					angle = HALF_PI;
                 else if (py == 0.0)
                     angle = lastAngle;
                 else
-                    angle = -90.0;
+					angle = -HALF_PI;
             }
             lastAngle = angle;
+			// Convert to degrees
             angle = 90.0 + angle * 180 / Math.PI;
+			Console.WriteLine("p.x="+p.X+" p.y="+p.Y+" Angle=" + angle);
             return angle;
         }
 
@@ -157,7 +166,7 @@ namespace BasicAudioControls
         {
             dragging = false;
             Mouse.Capture(null);
-            Console.WriteLine("Stopped Dragging\n");
+            //Console.WriteLine("Stopped Dragging\n");
 
         }
 
@@ -174,7 +183,7 @@ namespace BasicAudioControls
                 Point p = e.GetPosition(potentiometerSpace);
                 double angle = getDegreeByPoint(p);
                 rotate.Angle = angle;
-                Debug.WriteLine("Angle=" + angle+"\n");
+                
 				double level = GetNormalizedLevel(angle);
 				SetValue(CurrentLevelProperty, level);
 				if(PotentiometerChangedEvent!=null)
@@ -183,6 +192,8 @@ namespace BasicAudioControls
 				}
             }
         }
+
+		const double HALF_PI = Math.PI / 2.0;
 
     }
 }
