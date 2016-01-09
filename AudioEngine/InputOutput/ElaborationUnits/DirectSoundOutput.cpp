@@ -3,7 +3,7 @@
 #include "DirectSoundOutput.h"
 #include "DirectSoundOutputKind.h" 
 
-//#define USE_WAVELOGGER 1
+#define USE_WAVELOGGER 1
 
 const DirectSoundOutputKind DirectSoundOutput::kinna;
 const int DirectSoundOutput::C_MainInIndex = 0;

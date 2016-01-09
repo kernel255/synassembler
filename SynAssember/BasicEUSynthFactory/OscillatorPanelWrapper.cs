@@ -87,7 +87,7 @@ namespace BasicEUSynthFactory
 			bool enaLFOFreq = delegateHolder.readEUBProp(m_EUId, OscillatorPanel.FREQ_LFO_ENABLE_INDEX);
 			writer.WriteAttributeString(XML_LFOFREQ_ENA, enaLFOFreq.ToString());
 			double lfoFreqAmp = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_LEVEL_INDEX);
-			writer.WriteAttributeString(XML_LFOAMP_AMP, lfoFreqAmp.ToString());
+			writer.WriteAttributeString(XML_LFOFREQ_AMP, lfoFreqAmp.ToString());
 			double lfoFreqFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX);
 			writer.WriteAttributeString(XML_LFOFREQ_FREQ, lfoFreqFreq.ToString());
 		}

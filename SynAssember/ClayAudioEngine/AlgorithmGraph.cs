@@ -350,6 +350,10 @@ namespace ClayAudioEngine
 			{
 				return m_Changed;
 			}
+			set
+			{
+				m_Changed = value;
+			}
 		}
     }
 }

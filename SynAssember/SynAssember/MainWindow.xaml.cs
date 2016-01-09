@@ -120,23 +120,22 @@ namespace SynAssember
 
 		private void saveExecuted(object sender, ExecutedRoutedEventArgs e)
 		{
-			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Title = "Save a synthesizer";
-			dlg.ShowDialog(this);
-			String filename = dlg.FileName;
-			if (filename.Length != 0)
+			if(CurrentSynthFilename.Length==0)
+			{
+				saveAsExecute(sender, e);
+			}
+			else
 			{
 				try
 				{
-					currentAlgorithm.write(filename);
+					currentAlgorithm.write(CurrentSynthFilename);
 				}
-				catch (Exception ex) 
+				catch (Exception ex)
 				{
 					string msg = "Error while saving algorithm:\n" + ex.Message;
 					MessageBox.Show(msg);
 					return;
 				}
-				MessageBox.Show("File saved successfully.");
 			}
 		}
 
@@ -148,7 +147,7 @@ namespace SynAssember
 		private void saveAsExecute(object sender, ExecutedRoutedEventArgs e)
 		{
 			SaveFileDialog dlg = new SaveFileDialog();
-			dlg.Title = "Save a synthesizer";
+			dlg.Title = "Save a Synthesizer";
 			dlg.ShowDialog(this);
 			String filename = dlg.FileName;
 			if (filename.Length != 0)
@@ -156,6 +155,7 @@ namespace SynAssember
 				try
 				{
 					currentAlgorithm.write(filename);
+					CurrentSynthFilename = filename;
 				}
 				catch(Exception ex)
 				{
@@ -186,8 +186,6 @@ namespace SynAssember
 				CleanUpLayout();
 				InitLayout();
 				SynthPanelManager.getDefault().CleanUp();
-
-
                 XmlTextReader reader = new XmlTextReader(dlg.FileName);
 				currentAlgorithm = new AlgorithmGraph(RightPanel);
 				//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
@@ -196,6 +194,7 @@ namespace SynAssember
                 try {
 					currentAlgorithm.read(reader);
 					currentAlgorithm.updateSynthPanels();
+					CurrentSynthFilename = dlg.FileName;
                 }
                 catch (Exception ex)
                 {
@@ -230,7 +229,8 @@ namespace SynAssember
 					{
 						currentAlgorithm.read(reader);
 						lastSynthLoaded = true;
-						
+						CurrentSynthFilename = filename;
+						currentAlgorithm.Changed = false;
 					}
 					catch (Exception ex)
 					{
@@ -561,6 +561,7 @@ namespace SynAssember
 				new Action(()=>
 					{
 						updateLastSynth();
+						currentAlgorithm.Changed = false;
 					}
 					),
 				DispatcherPriority.ContextIdle,
@@ -619,6 +620,22 @@ namespace SynAssember
 			StopButton.IsEnabled = false;
 			PlayButton.IsChecked = false;
 		}
+
+		private string _m_CurrentSynthFilename;
+		private string CurrentSynthFilename
+		{
+			get
+			{
+				return _m_CurrentSynthFilename;
+			}
+			set
+			{
+				_m_CurrentSynthFilename = value;
+				this.Title = WINDOW_TITLE + value;
+			}
+		}
+
+		const String WINDOW_TITLE = "SynAssembler - ";
 
     }
 }
