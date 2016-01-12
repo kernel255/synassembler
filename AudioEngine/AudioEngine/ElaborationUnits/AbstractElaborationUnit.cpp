@@ -108,14 +108,14 @@ int AbstractElaborationUnit::getBProperty(int propertyIndex, bool* value)
 {
 	switch (getKind()->getPropertyType(propertyIndex))
 	{
-		case C_Integer:
+		case C_Boolean:
 		{
 			m_ValuesHolder.getBValue(propertyIndex, value);
 			break;
 		}
 		default:
 		{
-			m_pModuleServices->pLogger->writeLine("getIProperty: property not available propertyIndex=%d", propertyIndex);
+			m_pModuleServices->pLogger->writeLine("getBProperty: property not available propertyIndex=%d", propertyIndex);
 			return UNAVAILABLE_PROPERTY;
 		}
 	}
