@@ -147,9 +147,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	::setEUBProperty(oscId, 7, false);
 
+	bool val;
+	::getEUBProperty(oscId, 7, &val);
+	printf("val= %b\n", val);
+
 	double oVal;
 	::getEUDProperty(oscId, 0, &oVal);
 	printf("Read value: %f\n", oVal);
+
+
 
 
 #ifdef PCMWAVEFORM
