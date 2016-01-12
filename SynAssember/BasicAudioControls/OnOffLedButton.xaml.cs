@@ -64,29 +64,34 @@ namespace BasicAudioControls
 			set 
 			{ 
 				bLedOn = value;
-				PressButton();
+				UpdateButtonColor();
 			}
 			get { return bLedOn; }
 		}
 
-		private void PressButton()
+		private void UpdateButtonColor()
 		{
 			if (bLedOn)
 			{
-				Led.Fill = Brushes.Red;
-				bLedOn = false;
+				Led.Fill = Brushes.Green;
 			}
 			else
 			{
-				Led.Fill = Brushes.Green;
-				bLedOn = true;
+				
+				Led.Fill = Brushes.Red;
 			}
+		}
+
+		private void ToggleButton()
+		{
+			bLedOn = !bLedOn;
+			UpdateButtonColor();
 			SwitchChangeEvent(owner, bLedOn);
 		}
 
 		private void Led_MouseDown(object sender, MouseButtonEventArgs e)
 		{
-			PressButton();
+			ToggleButton();
 		}
 
 		const double WHRatio = 0.40;
