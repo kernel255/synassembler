@@ -290,7 +290,7 @@ namespace ClayAudioEngine
                         }
                 }
             }
-
+			reader.Close();
 			SynthPanelManager.getDefault().UpdateBusySpace();
         }
 
