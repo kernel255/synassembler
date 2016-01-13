@@ -23,6 +23,7 @@ namespace BasicAudioControls
 		public static DependencyProperty LabelProperty;
 		public static DependencyProperty MaxLevelProperty;
 		public static DependencyProperty CurrentLevelProperty;
+		public static DependencyProperty CurrentAngleProperty;
 
 		static BasicPotentiometer()
 		{
@@ -32,6 +33,7 @@ namespace BasicAudioControls
 				metadata);
 			MaxLevelProperty = DependencyProperty.Register("MaxLevel", typeof(Double), typeof(BasicPotentiometer));
 			CurrentLevelProperty = DependencyProperty.Register("CurrentLevel", typeof(Double), typeof(BasicPotentiometer));
+			CurrentAngleProperty = DependencyProperty.Register("CurrentAngle", typeof(Double), typeof(BasicPotentiometer));
 		}
 
 		public delegate void PotentiometerChanged(Object sender, Double value);
@@ -54,6 +56,12 @@ namespace BasicAudioControls
 		{
 			set { SetValue(CurrentLevelProperty, value); }
 			get { return (Double)GetValue(CurrentLevelProperty); }
+		}
+
+		public Double CurrentAngle
+		{
+			set { SetValue(CurrentAngleProperty, value); }
+			get { return (Double)GetValue(CurrentAngleProperty); }
 		}
 
 		double GetNormalizedLevel(double angle)
@@ -96,6 +104,10 @@ namespace BasicAudioControls
 
             rotate = new RotateTransform(0, 0 + potentiometerSpace.ActualWidth / 2, 0 + potentiometerSpace.ActualHeight / 2);
             potentiometerPointer.RenderTransform = rotate;
+			if (!DebugTextBoxOn)
+			{
+				DebugTextBox.Visibility = Visibility.Hidden;
+			}
 
         }
 
@@ -176,6 +188,18 @@ namespace BasicAudioControls
 			this.owner = _owner;
 		}
 
+		private double RemapAngle(double angle)
+		{
+			if(angle>MaxAngle)
+			{
+				return angle - MaxAngle;
+			}
+			else
+			{
+				return angle + MinAngle;
+			}
+		}
+
         private void potentiometer_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
@@ -189,6 +213,7 @@ namespace BasicAudioControls
 					rotate.Angle = angle;
 					double level = GetNormalizedLevel(angle);
 					SetValue(CurrentLevelProperty, level);
+					SetValue(CurrentAngleProperty, RemapAngle(angle));
 					if (PotentiometerChangedEvent != null)
 					{
 						PotentiometerChangedEvent(owner, level);
@@ -202,5 +227,6 @@ namespace BasicAudioControls
 		double MinAngle = 135;
 		double MaxAngle = 225;
 
+		const bool DebugTextBoxOn = true;
     }
 }
