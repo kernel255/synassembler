@@ -182,18 +182,25 @@ namespace BasicAudioControls
             {
                 Point p = e.GetPosition(potentiometerSpace);
                 double angle = getDegreeByPoint(p);
-                rotate.Angle = angle;
-                
-				double level = GetNormalizedLevel(angle);
-				SetValue(CurrentLevelProperty, level);
-				if(PotentiometerChangedEvent!=null)
+				
+				Console.WriteLine("Angle=" + angle);
+				if (angle < MinAngle || angle > MaxAngle)
 				{
-					PotentiometerChangedEvent(owner, level);
+					rotate.Angle = angle;
+					double level = GetNormalizedLevel(angle);
+					SetValue(CurrentLevelProperty, level);
+					if (PotentiometerChangedEvent != null)
+					{
+						PotentiometerChangedEvent(owner, level);
+					}
 				}
             }
         }
 
 		const double HALF_PI = Math.PI / 2.0;
+
+		double MinAngle = 135;
+		double MaxAngle = 225;
 
     }
 }
