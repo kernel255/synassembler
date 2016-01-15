@@ -69,7 +69,7 @@ namespace BasicAudioControls
 			double max = (Double)GetValue(MaxLevelProperty);
 			if(max>0.0)
 			{
-				double level = (angle / 360.0) * max;
+				double level = (angle / MaxAngleInterval) * max;
 				return level;
 			}
 			return 0.0;
@@ -80,7 +80,7 @@ namespace BasicAudioControls
 			double max = (Double)GetValue(MaxLevelProperty);
 			if(max>0.0)
 			{
-				double angle = level / max * 360.0;
+				double angle = level / max * MaxAngleInterval;
 				return angle;
 			}
 			return 0.0;
@@ -211,9 +211,10 @@ namespace BasicAudioControls
 				if (angle < MinAngle || angle > MaxAngle)
 				{
 					rotate.Angle = angle;
-					double level = GetNormalizedLevel(angle);
+					double remappedAngle = RemapAngle(angle);
+					double level = GetNormalizedLevel(remappedAngle);
 					SetValue(CurrentLevelProperty, level);
-					SetValue(CurrentAngleProperty, RemapAngle(angle));
+					SetValue(CurrentAngleProperty, level);
 					if (PotentiometerChangedEvent != null)
 					{
 						PotentiometerChangedEvent(owner, level);
@@ -226,6 +227,7 @@ namespace BasicAudioControls
 
 		double MinAngle = 135;
 		double MaxAngle = 225;
+		double MaxAngleInterval = 270;
 
 		const bool DebugTextBoxOn = true;
     }

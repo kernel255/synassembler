@@ -244,11 +244,17 @@ namespace ClayAudioEngine
 
 		internal PCKeyboardProcessor keybProcessor = new PCKeyboardProcessor();
 
+		const bool debugLFO = true;
+
 		public byte[] FirePCKeyboardEvent(KeyEventArgs args)
 		{
 			byte[] msg = keybProcessor.ProcessPCKeyboardEvent(args);
 			if(msg!=null)
 			{
+				if(debugLFO && args.IsUp)
+				{
+					return msg;
+				}
 				sendMIDIMessage(keybProcessor.EUId, msg);
 			}
 			return msg;

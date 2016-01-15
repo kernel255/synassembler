@@ -23,13 +23,13 @@
         
         <auc:WaveButton Name="WaveButton" Canvas.Top="5" Canvas.Left="5"></auc:WaveButton>
 
-        <auc:BasicPotentiometer Name="LFOFrequencyAmp" Canvas.Left="5" Canvas.Top="220" LabelString="LFO Amp Freq" MaxLevel="100.0" ></auc:BasicPotentiometer>
-        <auc:BasicPotentiometer Name="LFOFrequencyFreq" Canvas.Left="90" Canvas.Top="220" LabelString="LFO Amp Amp" MaxLevel="1.0"></auc:BasicPotentiometer>
-        <auc:BasicPotentiometer Name="LFOAmplitudeAmp" Canvas.Left="175" Canvas.Top="220" LabelString="LFO Freq Freq" MaxLevel="100.0" ></auc:BasicPotentiometer>
-        <auc:BasicPotentiometer Name="LFOAmplitudeFreq" Canvas.Left="260" Canvas.Top="220" LabelString="LFO Freq Amp" MaxLevel="1.0"></auc:BasicPotentiometer>
+        <auc:BasicPotentiometer Name="LFOFrequencyAmp" Canvas.Left="5" Canvas.Top="220" LabelString="Freq LFO Lvl" MaxLevel="1.0" ></auc:BasicPotentiometer>
+        <auc:BasicPotentiometer Name="LFOFrequencyFreq" Canvas.Left="90" Canvas.Top="220" LabelString="Freq LFO f" MaxLevel="50.0"></auc:BasicPotentiometer>
+        <auc:BasicPotentiometer Name="LFOAmplitudeAmp" Canvas.Left="175" Canvas.Top="220" LabelString="Amp LFO Lvl" MaxLevel="1.0" ></auc:BasicPotentiometer>
+        <auc:BasicPotentiometer Name="LFOAmplitudeFreq" Canvas.Left="260" Canvas.Top="220" LabelString="Amp LFO f" MaxLevel="50.0"></auc:BasicPotentiometer>
         
-        <auc:OnOffLedButton Name="LFOAmpOnOff"  Canvas.Left="5" Canvas.Top="325" Width="165" Height="15"></auc:OnOffLedButton>
-        <auc:OnOffLedButton Name="LFOFreqOnOff"  Canvas.Left="175" Canvas.Top="325" Width="165" Height="15"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="LFOFreqOnOff"  Canvas.Left="5" Canvas.Top="325" Width="165" Height="15"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="LFOAmpOnOff"  Canvas.Left="175" Canvas.Top="325" Width="165" Height="15"></auc:OnOffLedButton>
         
         <Label Canvas.Left="5" Canvas.Top="40" Foreground="Aqua">Oscillator Waveform</Label>
     </Canvas>

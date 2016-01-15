@@ -272,7 +272,6 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 	//Now It's time for processing...
 	for(int noteIndex=0;noteIndex<MIDIChannelMessage::NumMIDINotes;++noteIndex)
 	{
-		
 		//m_pModuleServices->pLogger->writeLine("Waiting mutex on updateSamples");
 		int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 		if (res!=WAIT_OBJECT_0)
@@ -307,7 +306,10 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 							envLevel = 0.0;
 						double lfoAmpl = 1.0;
 						if (m_pAmplitudeLFO->m_Enable)
+						{
 							lfoAmpl = m_pAmplitudeLFO->getSample(m_SamplingFrequency);
+							lfoAmpl *= m_pAmplitudeLFO->m_Amplitude;
+						}
 						m_pAmplitudeLFO->increaseAccumulatedTime(m_SamplingTime);
 						/*
 						double lfoFreq = 0.0;
@@ -315,8 +317,10 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 							lfoFreq = m_FrequencyLFO.getSample(m_SamplingFrequency);
 						*/
 						m_pFrequencyLFO->increaseAccumulatedTime(m_SamplingTime);
-						pSamplesBuffer[sampleIndex] += m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * lfoAmpl * currSample;
-						//voiceIterator->simpleVoice.m_TimeAccumulator += m_SamplingTime;
+						// Mixing between Amp modulated signal and normal signal
+						double currentAmplifiedSample = m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * currSample;
+						currentAmplifiedSample = (currentAmplifiedSample + lfoAmpl*currentAmplifiedSample) / 2.0;
+						pSamplesBuffer[sampleIndex] += currentAmplifiedSample;
 						voiceIterator->simpleVoice.increaseAccumulatedTime(m_SamplingTime);
 					}
 					voiceIterator = m_pVoicesLIFO[noteIndex]->getNextAllocatedVoice();
@@ -324,7 +328,6 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 				}
 			}
 		}
-
 		m_MutexProxy->ReleaseMutex();
 	}
 

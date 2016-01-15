@@ -254,7 +254,7 @@ bool DirectSoundOutput::UpdateSoundBuffer(int numsection)
 			{
 #if (!defined(DEBUG_BUFFER_WITH_STREAM) && !defined(DEBUG_WITH_SQUARE_WAVE))
 				//Require the elaboration to the EU on input
-				printf("m_SoundBufferNumSamples=%d LockSize1=%d\n",m_SoundBufferNumSamples,LockSize1);
+				//printf("m_SoundBufferNumSamples=%d LockSize1=%d\n",m_SoundBufferNumSamples,LockSize1);
 				peu->updateAudioSamples(m_pSamplesBuffer,m_SoundBufferNumSamples);
 				//Convert double samples to short int ...
 				psample = (short int *) LockPtr1;

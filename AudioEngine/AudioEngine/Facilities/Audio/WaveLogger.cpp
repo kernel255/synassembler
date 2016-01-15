@@ -120,7 +120,7 @@ void WaveLogger::write(char* samples, int numSamples)
 		case 16:
 			{
 				totSamples += numSamples;
-				printf("Wrinting %d samples %d total\n", numSamples, totSamples);
+				//printf("Wrinting %d samples %d total\n", numSamples, totSamples);
 				short* sample = (short *) samples;
 				for(int i=0;i<numSamples;i++)
 					fwrite(&sample[i],2,1,file);
