@@ -123,12 +123,26 @@ namespace BasicAudioControls
         private bool dragging = false;
         RotateTransform rotate;
 
+		private bool IsLeftAngle(double angle)
+		{
+			return angle >= 180.0;
+		}
+
         private void potentiometer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             dragging = true;
             double angle = getDegreeByPoint(e.GetPosition(potentiometerSpace));
+			if (!IsAngleInRange(angle))
+			{
+				if (IsLeftAngle(angle))
+					angle = MaxAngle;
+				else
+					angle = MinAngle;
+			}
             rotate.Angle = angle;
+			SetValue(CurrentAngleProperty, angle);
 			Console.WriteLine("Started dragging Angle=" + angle);
+			
         }
 
         private double getDegreeByPoint(Point p)
@@ -139,7 +153,6 @@ namespace BasicAudioControls
                 centerY = potentiometerSpace.ActualHeight / 2;
                 rotate = new RotateTransform(0, centerX, centerY);
                 potentiometerPointer.RenderTransform = rotate;
-				Console.WriteLine("Inside if");
             }
             double px = p.X - centerX;
             double py = p.Y - centerY;
@@ -200,6 +213,11 @@ namespace BasicAudioControls
 			}
 		}
 
+		bool IsAngleInRange(double angle)
+		{
+			return (angle < MinAngle || angle > MaxAngle);
+		}
+
         private void potentiometer_MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
@@ -208,13 +226,14 @@ namespace BasicAudioControls
                 double angle = getDegreeByPoint(p);
 				
 				Console.WriteLine("Angle=" + angle);
-				if (angle < MinAngle || angle > MaxAngle)
+				if (IsAngleInRange(angle))
 				{
 					rotate.Angle = angle;
 					double remappedAngle = RemapAngle(angle);
 					double level = GetNormalizedLevel(remappedAngle);
 					SetValue(CurrentLevelProperty, level);
-					SetValue(CurrentAngleProperty, level);
+					//SetValue(CurrentAngleProperty, level);
+					SetValue(CurrentAngleProperty, angle);
 					if (PotentiometerChangedEvent != null)
 					{
 						PotentiometerChangedEvent(owner, level);
