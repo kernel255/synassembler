@@ -25,7 +25,7 @@ public:
 	WaveKind m_WaveKind = WaveKind::e_Sine;
 	bool m_Enable = false;
 	double m_Frequency = 100.0;
-	bool m_FixRatio = true;
+	bool m_FixRatio = false;
 	double m_CarrFreq;
 	void setCarrierFrequence(double freq);
 	ModuleServices* m_pModuleServices;

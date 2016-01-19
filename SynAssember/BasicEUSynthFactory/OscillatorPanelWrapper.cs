@@ -81,15 +81,19 @@ namespace BasicEUSynthFactory
 			bool enaLFOAmp = delegateHolder.readEUBProp(m_EUId, OscillatorPanel.AMP_LFO_ENABLE_INDEX);
 			writer.WriteAttributeString(XML_LFOAMP_ENA, enaLFOAmp.ToString());
 			double lfoAmpAmp = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX);
-			writer.WriteAttributeString(XML_LFOAMP_AMP, lfoAmpAmp.ToString());
+			str = lfoAmpAmp.ToString(cInfo);
+			writer.WriteAttributeString(XML_LFOAMP_AMP, str);
 			double lfoAmpFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AMP_LFO_FREQ_INDEX);
-			writer.WriteAttributeString(XML_LFOAMP_FREQ, lfoAmpFreq.ToString());
+			str = lfoAmpFreq.ToString(cInfo);
+			writer.WriteAttributeString(XML_LFOAMP_FREQ, str);
 			bool enaLFOFreq = delegateHolder.readEUBProp(m_EUId, OscillatorPanel.FREQ_LFO_ENABLE_INDEX);
 			writer.WriteAttributeString(XML_LFOFREQ_ENA, enaLFOFreq.ToString());
 			double lfoFreqAmp = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_LEVEL_INDEX);
-			writer.WriteAttributeString(XML_LFOFREQ_AMP, lfoFreqAmp.ToString());
+			str = lfoFreqAmp.ToString(cInfo);
+			writer.WriteAttributeString(XML_LFOFREQ_AMP, str);
 			double lfoFreqFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX);
-			writer.WriteAttributeString(XML_LFOFREQ_FREQ, lfoFreqFreq.ToString());
+			str = lfoFreqFreq.ToString(cInfo);
+			writer.WriteAttributeString(XML_LFOFREQ_FREQ, str);
 		}
 
         public override void read(XmlTextReader reader)

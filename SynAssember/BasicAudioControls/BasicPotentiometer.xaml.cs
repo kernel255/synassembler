@@ -54,7 +54,23 @@ namespace BasicAudioControls
 
 		public Double CurrentLevel
 		{
-			set { SetValue(CurrentLevelProperty, value); }
+			set { 
+				SetValue(CurrentLevelProperty, value); 
+				if(!dragging)
+				{
+					double angle = GetUnormalizedLevel(value);
+					//double remappedAngle = RemapAngle(angle);
+					double remappedAngle = UnremapAngle(angle);
+					if (centerX == -1 && centerX == -1)
+					{
+						centerX = potentiometerSpace.ActualWidth / 2;
+						centerY = potentiometerSpace.ActualHeight / 2;
+						rotate = new RotateTransform(0, centerX, centerY);
+						potentiometerPointer.RenderTransform = rotate;
+					}
+					rotate.Angle = remappedAngle;
+				}
+			}
 			get { return (Double)GetValue(CurrentLevelProperty); }
 		}
 
@@ -140,7 +156,7 @@ namespace BasicAudioControls
 					angle = MinAngle;
 			}
             rotate.Angle = angle;
-			SetValue(CurrentAngleProperty, angle);
+			SetValue(CurrentLevelProperty, angle);
 			Console.WriteLine("Started dragging Angle=" + angle);
 			
         }
@@ -201,7 +217,7 @@ namespace BasicAudioControls
 			this.owner = _owner;
 		}
 
-		private double RemapAngle(double angle)
+		double RemapAngle(double angle)
 		{
 			if(angle>MaxAngle)
 			{
@@ -211,6 +227,14 @@ namespace BasicAudioControls
 			{
 				return angle + MinAngle;
 			}
+		}
+
+		double UnremapAngle(double angle)
+		{
+			if (angle < MinAngle)
+				return MaxAngle + angle;
+			else
+				return angle - MinAngle;
 		}
 
 		bool IsAngleInRange(double angle)
@@ -248,6 +272,6 @@ namespace BasicAudioControls
 		double MaxAngle = 225;
 		double MaxAngleInterval = 270;
 
-		const bool DebugTextBoxOn = true;
+		const bool DebugTextBoxOn = false;
     }
 }

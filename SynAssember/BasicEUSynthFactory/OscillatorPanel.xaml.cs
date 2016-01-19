@@ -150,12 +150,20 @@ namespace BasicEUSynthFactory
 			AttackLevel.LevelValue = al;
 			double sl = readDProp(id, SL_PROPERTY_INDEX);
 			SustainLevel.LevelValue = sl;
+
 			bool enaLFOAmp = readBProp(id, AMP_LFO_ENABLE_INDEX);
 			LFOAmpOnOff.SwitchOn = enaLFOAmp;
 			double lfoAmpAmp = readDProp(id, AMP_LFO_LEVEL_INDEX);
+			LFOAmplitudeAmp.CurrentLevel = lfoAmpAmp;
 			double lfoAmpFreq = readDProp(id, AMP_LFO_FREQ_INDEX);
+			LFOAmplitudeFreq.CurrentLevel = lfoAmpFreq;
+			
 			bool enaLFOFreq = readBProp(id, FREQ_LFO_ENABLE_INDEX);
 			LFOFreqOnOff.SwitchOn = enaLFOFreq;
+			double lfoFreqAmp = readDProp(id, FREQ_LFO_LEVEL_INDEX);
+			LFOFrequencyAmp.CurrentLevel = lfoFreqAmp;
+			double lfoFreqFreq = readDProp(id, FREQ_LFO_FREQ_INDEX);
+			LFOFrequencyFreq.CurrentLevel = lfoFreqFreq;
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
