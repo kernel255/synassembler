@@ -19,7 +19,9 @@ EAG_SAMPLE_TYPE LFO::getSample(double samplingFrequency)
 {
 	if (m_TimeAccumulated > m_Delay)
 	{
-		return WaveGeneratorFacilities::getSample(this, m_WaveKind, samplingFrequency, NULL);
+		EAG_SAMPLE_TYPE result = WaveGeneratorFacilities::getSample(this, m_WaveKind, samplingFrequency, NULL);
+		//m_pModuleServices->pLogger->writeLine("LFOSample=%f", result);
+		return result;
 	}
 	else
 	{
@@ -40,7 +42,9 @@ double LFO::getPeriod()
 		return 1.0 / (0.002 * m_CarrFreq);
 	}
 	else
+	{
 		return 1.0 / m_Frequency;
+	}
 }
 
 void LFO::setCarrierFrequence(double freq) {

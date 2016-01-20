@@ -141,21 +141,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
 
 
-	::setEUIProperty(oscId, 1, 0);
+	//::setEUIProperty(oscId, 1, 0);
 
-	::setEUDProperty(oscId, 0, 0.5);
+	//::setEUDProperty(oscId, 0, 0.5);
 
-	::setEUBProperty(oscId, 7, false);
-
-	bool val;
-	::getEUBProperty(oscId, 7, &val);
-	printf("val= %b\n", val);
-
-	double oVal;
-	::getEUDProperty(oscId, 0, &oVal);
-	printf("Read value: %f\n", oVal);
+	// Enable A and F oscillators
+	//::setEUBProperty(oscId, 7, true);
+	::setEUBProperty(oscId, 8, true);
 
 
+	::setEUDProperty(oscId, 12, 1.0);
+	::setEUDProperty(oscId, 11, 2.2);
 
 
 #ifdef PCMWAVEFORM
