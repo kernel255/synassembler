@@ -263,7 +263,6 @@ namespace SynAssember
 
         private bool initAudioEngine(string applicationFolder)
         {
-            //StringBuilder dllPath = new StringBuilder("D:\\Mine\\Audinos\\SynAssembler-Apr2010\\SynAssemblerMix\\AudioEngine\\Debug\\");
             StringBuilder dllPath = new StringBuilder(applicationFolder);
 			ClayAudioEngine.AudioEngineWrapper.getDefault().init(dllPath, 0, 48000, 16, 1, facilities);
 
@@ -562,6 +561,10 @@ namespace SynAssember
 					{
 						updateLastSynth();
 						currentAlgorithm.Changed = false;
+						if(lastSynthLoaded)
+						{
+							PlayCurrentAlgorithm();
+						}
 					}
 					),
 				DispatcherPriority.ContextIdle,
@@ -595,10 +598,10 @@ namespace SynAssember
 			}
 		}
 
-		private void PlayButton_Click(object sender, RoutedEventArgs e)
+		private void PlayCurrentAlgorithm()
 		{
 			int res = AudioEngineWrapper.getDefault().PlayAlgorithm(currentAlgorithm.algoId);
-			if(res!=0)
+			if (res != 0)
 			{
 				MessageBox.Show("Error while playing algorithm: " + res);
 				return;
@@ -606,6 +609,11 @@ namespace SynAssember
 			PlayButton.IsEnabled = false;
 			StopButton.IsEnabled = true;
 			StopButton.IsChecked = false;
+		}
+
+		private void PlayButton_Click(object sender, RoutedEventArgs e)
+		{
+			PlayCurrentAlgorithm();
 		}
 
 		private void StopButton_Click(object sender, RoutedEventArgs e)

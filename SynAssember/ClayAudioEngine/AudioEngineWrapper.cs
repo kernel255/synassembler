@@ -251,12 +251,10 @@ namespace ClayAudioEngine
 			byte[] msg = keybProcessor.ProcessPCKeyboardEvent(args);
 			if(msg!=null)
 			{
-				/*
 				if(debugLFO && args.IsUp)
 				{
 					return msg;
 				}
-				*/
 				sendMIDIMessage(keybProcessor.EUId, msg);
 			}
 			return msg;
