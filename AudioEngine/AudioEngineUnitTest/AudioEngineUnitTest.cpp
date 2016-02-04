@@ -140,6 +140,7 @@ int _tmain(int argc, _TCHAR* argv[])
 #endif //OSCILLATOR
 
 
+	::setEUIProperty(oscId, 1, 2);
 
 	//::setEUIProperty(oscId, 1, 0);
 
@@ -147,11 +148,11 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	// Enable A and F oscillators
 	//::setEUBProperty(oscId, 7, true);
-	::setEUBProperty(oscId, 8, true);
+	//::setEUBProperty(oscId, 8, true);
 
 
-	::setEUDProperty(oscId, 12, 1.0);
-	::setEUDProperty(oscId, 11, 2.2);
+	//::setEUDProperty(oscId, 12, 1.0);
+	//::setEUDProperty(oscId, 11, 2.2);
 
 
 #ifdef PCMWAVEFORM
@@ -219,7 +220,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//::Sleep(1000);
 
 
-	::Sleep(5000);
+	::Sleep(2000);
 
 
 	::stopAlgorithm(algoId);

@@ -25,24 +25,25 @@ EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice,
 				return +1.0;
 			else
 				return -1.0;
-
+			break;
 		}
 		case WaveKind::e_Saw:
 		{
 			double time = pVoice->getTimeAccumulated();
 			double period = pVoice->getPeriod();
 
-			EAG_SAMPLE_TYPE increment = 1.0 / (samplingFrequence / period);
-			EAG_SAMPLE_TYPE level = time * increment;
-
+			double currentAccu = time - ((int)(time / period))*period;
+			EAG_SAMPLE_TYPE level = (currentAccu/period) * 2.0 - 1.0;
+			return level;
+			break;
 		}
 		case WaveKind::e_Triangle:
 		{
 			double time = pVoice->getTimeAccumulated();
 			double period = pVoice->getPeriod();
 			double currentAccu = time - ((int)(time / period))*period;
-			EAG_SAMPLE_TYPE increment = 1.0 / (2 * samplingFrequence / period);
-			EAG_SAMPLE_TYPE level = time * increment;
+			EAG_SAMPLE_TYPE level = (currentAccu / (period)) * 2.0 - 1.0;
+			/*
 			if (currentAccu >= (period / 2.0))
 			{
 				// Growing
@@ -51,9 +52,11 @@ EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice,
 			else
 			{
 				// De-Growing
-				return 1.0 - level;
+				return 2.0 - level;
 			}
-
+			break;
+			*/
+			return level;
 		}
 		default:
 		{
