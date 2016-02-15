@@ -53,12 +53,12 @@ EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice,
 				if (currentAccu >= (period*3.0) / 4.0)
 				{
 					// Final grow up
-					level = -1.0 + (currentAccu / (period))*4.0;
+					level = -1.0 + ( (currentAccu - (3.0/4.0*period)) / (period))*4.0;
 				}
 				else
 				{
 					// Go down
-					level = 2.0 - (currentAccu / (period))*4.0;
+					level = 1.0 - ((currentAccu - (1.0/4.0*period)) / (period))*4.0;
 				}
 			}
 			return level;
