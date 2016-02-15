@@ -42,20 +42,25 @@ EAG_SAMPLE_TYPE WaveGeneratorFacilities::getSample(TimeAccumulatedVoice* pVoice,
 			double time = pVoice->getTimeAccumulated();
 			double period = pVoice->getPeriod();
 			double currentAccu = time - ((int)(time / period))*period;
-			EAG_SAMPLE_TYPE level = (currentAccu / (period)) * 2.0 - 1.0;
-			/*
-			if (currentAccu >= (period / 2.0))
+			EAG_SAMPLE_TYPE level;
+			if (currentAccu < period / 4.0)
 			{
-				// Growing
-				return level;
+				// First grow up
+				level = (currentAccu / (period))*4.0;
 			}
 			else
 			{
-				// De-Growing
-				return 2.0 - level;
+				if (currentAccu >= (period*3.0) / 4.0)
+				{
+					// Final grow up
+					level = -1.0 + (currentAccu / (period))*4.0;
+				}
+				else
+				{
+					// Go down
+					level = 2.0 - (currentAccu / (period))*4.0;
+				}
 			}
-			break;
-			*/
 			return level;
 		}
 		default:
