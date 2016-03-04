@@ -191,13 +191,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	::playAlgorithm(algoId);
 
 	/// STUDY SENDING MIDI MSG
-	//unsigned char buffer[3];
+	unsigned char buffer[3];
 
-	//buffer[0] = 0x90;
-	//buffer[1] = 0x41;
-	//buffer[2] = 0x7F;
-	//::sendMIDIMessage(pcKId, buffer);
-	//::Sleep(1000);
+	buffer[0] = 144;// 0x90;
+	buffer[1] = 255;// 0x41;
+	buffer[2] = 127;// 0x7F;
+	::sendMIDIMessage(pcKId, buffer);
+	::Sleep(100000);
 
 	/* 
 	buffer[0] = 0x90;

@@ -20,26 +20,28 @@ namespace ClayAudioEngine
 			if (e.IsRepeat)
 				return null;
 			byte[] result = TranslateKeyToMIDIMsg(e);
-
-			if(e.IsDown)
+			if (result != null)
 			{
-				if (activeKeyMap.ContainsKey(e.Key))
+				if (e.IsDown)
 				{
-					if (!activeKeyMap[e.Key])
+					if (activeKeyMap.ContainsKey(e.Key))
 					{
-						activeKeyMap[e.Key] = true;
+						if (!activeKeyMap[e.Key])
+						{
+							activeKeyMap[e.Key] = true;
+						}
+						else
+							return null;
 					}
 					else
-						return null;
+						activeKeyMap[e.Key] = true;
 				}
-				else
-					activeKeyMap[e.Key] = true;
-			}
-			if(e.IsUp)
-			{
-				if(activeKeyMap.ContainsKey(e.Key))
+				if (e.IsUp)
 				{
-					activeKeyMap[e.Key] = false;
+					if (activeKeyMap.ContainsKey(e.Key))
+					{
+						activeKeyMap[e.Key] = false;
+					}
 				}
 			}
 			return result;
@@ -89,6 +91,8 @@ namespace ClayAudioEngine
 		{
 			byte[] result = new byte[3];
 			byte note = GetMIDINoteByKey(e.Key);
+			if (note == 0xFF)
+				return null;
 			if (e.IsDown)
 				result[0] = MIDI_NOTE_ON | MIDI_CHANNEL;
 			if (e.IsUp)

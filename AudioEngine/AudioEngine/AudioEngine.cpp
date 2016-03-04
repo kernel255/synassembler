@@ -1046,6 +1046,8 @@ MIDIChannelMessage* AudioEngine::getMIDIMsgByBytes(unsigned char* buffer)
 		msg->channel = ch;
 		msg->Kind = MIDIChannelMessage::e_NoteOn;
 		int key = buffer[1];
+		// Filter any strange value received
+		key = key & 0x7F;
 		msg->data.NoteMessage.Note = key;
 		int vel = buffer[2];
 		msg->data.NoteMessage.Velocity = vel;

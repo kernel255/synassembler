@@ -120,7 +120,7 @@ namespace SynAssember
 
 		private void saveExecuted(object sender, ExecutedRoutedEventArgs e)
 		{
-			if(CurrentSynthFilename.Length==0)
+			if(CurrentSynthFilename==null || CurrentSynthFilename.Length==0)
 			{
 				saveAsExecute(sender, e);
 			}
@@ -506,9 +506,6 @@ namespace SynAssember
 					saveAsExecute(this, null);
 				}
 			}
-
-
-
 			AudioEngineWrapper.getDefault().release();
 			StoreSettings();
             App.Current.Shutdown();
