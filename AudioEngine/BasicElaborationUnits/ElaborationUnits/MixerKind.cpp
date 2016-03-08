@@ -10,6 +10,21 @@ MixerKind::MixerKind()
 	gain->setGetter(Mixer::getOutput);
 	gain->setSetter(Mixer::setOutput);
 	addProperty(gain);
+
+
+	static const char* PREFIX = "Input ";
+	for (int i = 0; i < MIXER_INPUT_PORT_NUMBER; i++)
+	{
+		char* buffer = new char[30];
+		memset(&buffer, 0, 30);
+		sprintf(buffer, "Input %d", i);
+		InputPortNames[i] = buffer;
+		gain = new GainProperty(buffer);
+		gain->setGetter(Mixer::getOutput);
+		gain->setSetter(Mixer::setOutput);
+		addProperty(gain);
+	}
+
 	// TODO: Add input ports maybe in a parametrizable way
 }
 
@@ -93,4 +108,5 @@ bool MixerKind::isFinalElaborationUnit() const
 
 const char MixerKind::OutputPortName[] = "Output";
 
-char* MixerKind::InputPortNames;
+char* MixerKind::InputPortNames[MIXER_INPUT_PORT_NUMBER];
+

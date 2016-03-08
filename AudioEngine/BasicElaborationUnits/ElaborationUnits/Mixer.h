@@ -34,6 +34,10 @@ public:
 	virtual const EUKind* getKind(void);
 	static const EUKind* s_GetKind(void);
 
+	virtual void receiveMIDIMessage(MIDIChannelMessage& midimsg);
+	virtual void updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples);
+	void setSamplesBufferMaximumSize(int size);
+
 	static void* getOutput(void* pEU)
 	{
 		Mixer* pMix = (Mixer*)pEU;
@@ -51,7 +55,10 @@ public:
 		return true;
 	}
 
+	static const MixerKind kinna;
+
 	double m_OutputLevel;
+	double m_InputLevel[MixerKind::C_NumInputPorts];
 
 	static const MixerKind kinna;
 

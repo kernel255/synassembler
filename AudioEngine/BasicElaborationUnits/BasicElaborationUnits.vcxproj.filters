@@ -153,10 +153,10 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\BooleanProperty.cpp">
       <Filter>Facilities\General</Filter>
     </ClCompile>
-    <ClCompile Include="MixerKind.cpp">
+    <ClCompile Include="ElaborationUnits\Mixer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Mixer.cpp">
+    <ClCompile Include="ElaborationUnits\MixerKind.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -199,12 +199,6 @@
     </ClInclude>
     <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceProxy.h">
       <Filter>Facilities</Filter>
-    </ClInclude>
-    <ClInclude Include="Mixer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MixerKind.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

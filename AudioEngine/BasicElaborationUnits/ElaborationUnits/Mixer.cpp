@@ -88,3 +88,18 @@ const EUKind* Mixer::s_GetKind(void)
 {
 	return (EUKind *)&kinna;
 }
+
+void Mixer::receiveMIDIMessage(MIDIChannelMessage& midimsg) 
+{
+
+}
+
+void Mixer::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples)
+{
+
+}
+
+void Mixer::setSamplesBufferMaximumSize(int size)
+{
+
+}

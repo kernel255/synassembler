@@ -113,6 +113,8 @@
     <ClCompile Include="BasicEUFactory.cpp" />
     <ClCompile Include="ElaborationUnits\MIDISequencePlayer.cpp" />
     <ClCompile Include="ElaborationUnits\MIDISequencePlayerKind.cpp" />
+    <ClCompile Include="ElaborationUnits\Mixer.cpp" />
+    <ClCompile Include="ElaborationUnits\MixerKind.cpp" />
     <ClCompile Include="ElaborationUnits\Oscillator.cpp" />
     <ClCompile Include="ElaborationUnits\OscillatorKind.cpp" />
     <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractElaborationUnit.cpp" />
@@ -131,8 +133,6 @@
     <ClCompile Include="..\AudioEngine\ElaborationUnits\VirtualElaborationUnit.cpp" />
     <ClCompile Include="ElaborationUnits\PCMWaveform.cpp" />
     <ClCompile Include="ElaborationUnits\PCMWaveformKind.cpp" />
-    <ClCompile Include="Mixer.cpp" />
-    <ClCompile Include="MixerKind.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.h" />
@@ -148,8 +148,6 @@
     <ClInclude Include="ElaborationUnits\OscillatorKind.h" />
     <ClInclude Include="ElaborationUnits\PCMWaveform.h" />
     <ClInclude Include="ElaborationUnits\PCMWaveformKind.h" />
-    <ClInclude Include="Mixer.h" />
-    <ClInclude Include="MixerKind.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

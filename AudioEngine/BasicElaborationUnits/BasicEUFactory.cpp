@@ -3,10 +3,12 @@
 #include "ElaborationUnits\Oscillator.h"
 #include "ElaborationUnits\MIDISequencePlayer.h"
 #include "ElaborationUnits\PCMWaveform.h"
+#include "ElaborationUnits\Mixer.h"
 
 #define C_OscillatorIndex	0
 #define C_MIDISequenceIndex	1
 #define C_PCMWaveformIndex	2
+#define C_MixerIndex		3
 
 //GraphEUFactory* BasicEUFactory::s_pFactory = NULL;
 const int BasicEUFactory::LocalEUNumber = 3; //(Oscillator)+(MIDISequencePlayer)+(PCMWaveform)
@@ -50,6 +52,13 @@ ElaborationUnit* BasicEUFactory::createVirtualElaborationUnit(unsigned euIndex)
 				return peu;
 				break;
 			}
+		case C_MixerIndex:
+			{
+				ElaborationUnit* peu = new Mixer(moduleServices);
+				addElaborationUnit(peu);
+				return peu;
+				break;
+			}
 		default:
 			{
 				return NULL;
@@ -77,7 +86,7 @@ const char *BasicEUFactory::getName(void)
 
 unsigned int BasicEUFactory::getVirtualEUKindNumber(void)
 {
-	return 1 + 1 + 1;
+	return 1 + 1 + 1 + 1;
 }
 
 const EUKind* BasicEUFactory::getNthVirtualEUKind(int n)
@@ -97,6 +106,11 @@ const EUKind* BasicEUFactory::getNthVirtualEUKind(int n)
 	case C_PCMWaveformIndex:
 		{
 			return PCMWaveform::s_GetKind();
+			break;
+		}
+	case C_MixerIndex:
+		{
+			return Mixer::s_GetKind();
 			break;
 		}
 	default:
