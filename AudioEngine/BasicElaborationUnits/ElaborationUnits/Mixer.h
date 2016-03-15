@@ -3,6 +3,7 @@
 
 #include "VirtualElaborationUnit.h"
 #include "ConcretePort.h"
+#include "MixerKind.h"
 
 class EUKind;
 class MixerKind;
@@ -57,9 +58,44 @@ public:
 
 	static const MixerKind kinna;
 
+	ConcretePort* InputPorts[MixerKind::C_NumInputPorts];
+	ConcretePort* OutputPort;
+
 	double m_OutputLevel;
 	double m_InputLevel[MixerKind::C_NumInputPorts];
 
-	static const MixerKind kinna;
+	class InputBuffers {
+	public:
+		InputBuffers() {
+			for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+			{
+				m_pInputBuffers[port] = NULL;
+				m_LastNumSamples = 0;
+			}
+		}
+		void prepareBuffers(int nSamples)
+		{
+			//Only in case of bigger buffer the port buffers are reallocated, otherwise old ones are re-used
+			if (nSamples > m_LastNumSamples)
+			{
+				m_LastNumSamples = nSamples;
+				for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+				{
+					if (m_pInputBuffers != NULL)
+						delete m_pInputBuffers;
+					m_pInputBuffers[port] = new EAG_SAMPLE_TYPE[nSamples];
+				}
+			}
+		}
+		EAG_SAMPLE_TYPE* getNthBuffer(int port)
+		{
+			return m_pInputBuffers[port];
+		}
+	private:
+		EAG_SAMPLE_TYPE* m_pInputBuffers[MixerKind::C_NumInputPorts];
+		int m_LastNumSamples;
+	};
 
+	InputBuffers m_InputBuffers;
+	
 };

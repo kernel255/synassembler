@@ -115,6 +115,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	//####### MIDI SEQUENCE SAMPLE #######
 	//####################################
 	//Algorith build
+
+
 	int algoId, dsId, seqId;
 	algoId = ::createAlgorithm();
 #define OSCILLATOR

@@ -16,7 +16,7 @@ MixerKind::MixerKind()
 	for (int i = 0; i < MIXER_INPUT_PORT_NUMBER; i++)
 	{
 		char* buffer = new char[30];
-		memset(&buffer, 0, 30);
+		memset(buffer, 0, 30);
 		sprintf(buffer, "Input %d", i);
 		InputPortNames[i] = buffer;
 		gain = new GainProperty(buffer);
@@ -40,12 +40,12 @@ bool MixerKind::isPhysical(void) const
 
 int MixerKind::getInputPortNumber(void) const
 {
-	return C_NumOutputPorts;
+	return C_NumInputPorts;
 }
 
 int MixerKind::getOutputPortNumber(void) const
 {
-	return C_NumInputPorts;
+	return C_NumOutputPorts;
 }
 
 const char* MixerKind::getNthInputPortName(int portIndex) const
