@@ -12,6 +12,7 @@ namespace BasicEUSynthFactory
         private const String OSC_NAME = "Oscillator";
         private const String PCMWAVE_NAME = "PCM Waveform";
         private const String MIDISEQ_NAME = "MIDI Sequence Player";
+		private const String MIXER_NAME = "Mixer";
 
 		public override void init(SynthDelegateHolder deleHold, Facilities facilities)
         {
@@ -38,6 +39,8 @@ namespace BasicEUSynthFactory
 					return new PCMWaveformWrapper(id, base.deleHolder, facilities);
 				case MIDISEQ_NAME:
 					return new MIDISequencePlayerWrapper(id, base.deleHolder, facilities);
+				case MIXER_NAME:
+					return new MixerWrapper(id, base.deleHolder, facilities);
 				default:
 					return null;
 			}

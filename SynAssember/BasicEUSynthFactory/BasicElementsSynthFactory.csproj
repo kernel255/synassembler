@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MixerPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OscillatorPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,6 +78,10 @@
       <DependentUpon>MIDISequencePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MIDISequencePlayerWrapper.cs" />
+    <Compile Include="MixerPanel.xaml.cs">
+      <DependentUpon>MixerPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MixerWrapper.cs" />
     <Compile Include="OscillatorPanel.xaml.cs">
       <DependentUpon>OscillatorPanel.xaml</DependentUpon>
     </Compile>

@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="BasicEUSynthFactory.MixerPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="160" d:DesignWidth="280">
+    <Canvas>
+        <Rectangle Width="280" Height="160" Fill="#FFD19121" Canvas.Top="-1"></Rectangle>
+        <auc:BasicSlider Name="In0" Canvas.Top="5" Canvas.Left="5" Label="Input 1"></auc:BasicSlider>
+        <auc:BasicSlider Name="In1" Canvas.Top="5" Canvas.Left="60" Label="Input 2"></auc:BasicSlider>
+        <auc:BasicSlider Name="In2" Canvas.Top="5" Canvas.Left="115" Label="Input 3"></auc:BasicSlider>
+        <auc:BasicSlider Name="In3" Canvas.Top="5" Canvas.Left="170" Label="Input 4"></auc:BasicSlider>
+        <auc:BasicSlider Name="Out" Canvas.Top="5" Canvas.Left="225" Label="Output"></auc:BasicSlider>
+        <auc:OnOffLedButton Name="MuteI0" Width="50" Height="15" Canvas.Top="135" Canvas.Left="5"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI1" Width="50" Height="15" Canvas.Top="135" Canvas.Left="60"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI2" Width="50" Height="15" Canvas.Top="135" Canvas.Left="115"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI3" Width="50" Height="15" Canvas.Top="135" Canvas.Left="170"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteO0" Width="50" Height="15" Canvas.Top="135" Canvas.Left="225"></auc:OnOffLedButton>
+    </Canvas>
+</UserControl>
