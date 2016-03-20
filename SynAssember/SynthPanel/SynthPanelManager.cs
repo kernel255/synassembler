@@ -143,7 +143,7 @@ namespace SynthPanels
 		private double m_VirtBusyX = 0.0;
 		private double m_VirtBusyY = 0.0;
 
-        private double m_MaxPanelWidth = 640;
+        private double m_MaxPanelWidth = 1200;
         //private double m_MaxPanelHeight = 300;
 
 
@@ -260,6 +260,8 @@ namespace SynthPanels
 				m_Canvas.Children.Remove(uiElem);
 			}
 			m_PanelList.Clear();
+			m_CurrentBusyX = 0.0;
+			m_CurrentBusyY = 0.0;
 		}
 
         public const string XML_PANEL = "SynthPanel";

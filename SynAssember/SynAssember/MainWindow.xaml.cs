@@ -77,7 +77,6 @@ namespace SynAssember
 			currentAlgorithm = new AlgorithmGraph(RightPanel);
 			m_CurrentConnection = new EUConnection(new Point(0, 0), new Point(0, 0), RightPanel);
 			m_CurrentConnection.place();
-
 		}
 
 		public MainWindow()
