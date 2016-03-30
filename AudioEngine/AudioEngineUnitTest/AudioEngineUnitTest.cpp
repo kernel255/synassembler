@@ -199,7 +199,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	buffer[1] = 255;// 0x41;
 	buffer[2] = 127;// 0x7F;
 	::sendMIDIMessage(pcKId, buffer);
-	::Sleep(100000);
+	::Sleep(10000);
 
 	/* 
 	buffer[0] = 0x90;
@@ -221,8 +221,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	//::sendMIDIMessage(pcKId, buffer);
 	//::Sleep(1000);
 
-
-	::Sleep(2000);
 
 
 	::stopAlgorithm(algoId);
