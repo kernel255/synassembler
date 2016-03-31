@@ -8,11 +8,11 @@
              d:DesignHeight="160" d:DesignWidth="280">
     <Canvas>
         <Rectangle Width="280" Height="160" Fill="#FFD19121" Canvas.Top="-1"></Rectangle>
-        <auc:BasicSlider Name="In0" Canvas.Top="5" Canvas.Left="5" Label="Input 1"></auc:BasicSlider>
-        <auc:BasicSlider Name="In1" Canvas.Top="5" Canvas.Left="60" Label="Input 2"></auc:BasicSlider>
-        <auc:BasicSlider Name="In2" Canvas.Top="5" Canvas.Left="115" Label="Input 3"></auc:BasicSlider>
-        <auc:BasicSlider Name="In3" Canvas.Top="5" Canvas.Left="170" Label="Input 4"></auc:BasicSlider>
-        <auc:BasicSlider Name="Out" Canvas.Top="5" Canvas.Left="225" Label="Output"></auc:BasicSlider>
+        <auc:BasicSlider Name="In0Level" Canvas.Top="5" Canvas.Left="5" Label="Input 1"></auc:BasicSlider>
+        <auc:BasicSlider Name="In1Level" Canvas.Top="5" Canvas.Left="60" Label="Input 2"></auc:BasicSlider>
+        <auc:BasicSlider Name="In2Level" Canvas.Top="5" Canvas.Left="115" Label="Input 3"></auc:BasicSlider>
+        <auc:BasicSlider Name="In3Level" Canvas.Top="5" Canvas.Left="170" Label="Input 4"></auc:BasicSlider>
+        <auc:BasicSlider Name="OutLevel" Canvas.Top="5" Canvas.Left="225" Label="Output"></auc:BasicSlider>
         <auc:OnOffLedButton Name="MuteI0" Width="50" Height="15" Canvas.Top="135" Canvas.Left="5"></auc:OnOffLedButton>
         <auc:OnOffLedButton Name="MuteI1" Width="50" Height="15" Canvas.Top="135" Canvas.Left="60"></auc:OnOffLedButton>
         <auc:OnOffLedButton Name="MuteI2" Width="50" Height="15" Canvas.Top="135" Canvas.Left="115"></auc:OnOffLedButton>

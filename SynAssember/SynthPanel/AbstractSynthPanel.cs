@@ -29,7 +29,7 @@ namespace SynthPanels
 			return new Rectangle(0, 0, (int)m_UserControl.ActualWidth, (int)m_UserControl.ActualHeight);
 		}
 
-		public UserControl getUserControlPanel()
+		public virtual UserControl getUserControlPanel()
 		{
 			return m_UserControl;
 		}
@@ -67,7 +67,7 @@ namespace SynthPanels
             y = Int32.Parse(str);
         }
 
-        public bool hasChanged()
+        public virtual bool hasChanged()
         {
             return false;
         }
