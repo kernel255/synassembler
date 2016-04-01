@@ -56,6 +56,16 @@ public:
 		return true;
 	}
 
+	static void* getInput(void* pEU)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+	}
+
+	static bool setInput(void* pEU, void* value)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+	}
+
 	static const MixerKind kinna;
 
 	ConcretePort* InputPorts[MixerKind::C_NumInputPorts];
@@ -97,5 +107,5 @@ public:
 	};
 
 	InputBuffers m_InputBuffers;
-	
+	bool IsPortMine(ElaborationUnitPort* port);
 };

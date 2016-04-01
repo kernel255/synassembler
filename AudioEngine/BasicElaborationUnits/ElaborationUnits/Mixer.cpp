@@ -17,17 +17,44 @@ Mixer::Mixer(ModuleServices* pServices) : VirtualElaborationUnit(pServices, kinn
 
 Mixer::~Mixer()
 {
+	m_pModuleServices->pLogger->writeLine("Mixer destructor");
+}
 
+bool Mixer::IsPortMine(ElaborationUnitPort* port)
+{
+	if (port == OutputPort)
+		return true;
+	for (int i = 0; i < MixerKind::C_NumInputPorts; i++)
+	{
+		if (port == InputPorts[i])
+			return true;
+	}
+	return false;
 }
 
 bool Mixer::setInputEU(ElaborationUnitPort* pPort, ElaborationUnit* pInputEU, ElaborationUnitPort* pInputPort)
 {
-	return true;
+	if (!IsPortMine(pPort))
+		return false;
+	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+	{
+		OutputPort->setNthEUandPort(pInputEU, pInputPort, 0);
+		pInputEU->setSamplesBufferMaximumSize(0);
+		return true;
+	}
+	return false;
 }
 
 bool Mixer::setOutputEU(ElaborationUnitPort* pPort, ElaborationUnit* pOutputEU, ElaborationUnitPort* pOutputPort)
 {
-	return true;
+	if (!IsPortMine(pPort))
+		return false;
+	if (pPort == OutputPort)
+	{
+		OutputPort->setNthEUandPort(pOutputEU, pOutputPort, 0);
+		return true;
+	}
+	return false;
 }
 
 ElaborationUnitPort* Mixer::getNthInputPort(int n)
@@ -58,11 +85,24 @@ int Mixer::getOutputPortNumber(void)
 
 ElaborationUnitPort* Mixer::getInputPortByEU(ElaborationUnit* pEU, int& n)
 {
+	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+	{
+		if (InputPorts[port]->getNthEU(0) == pEU)
+		{
+			n = 1;
+			return InputPorts[port];
+		}
+	}
 	return NULL;
 }
 
 ElaborationUnitPort* Mixer::getOutputPortByEU(ElaborationUnit* pEU, int& n)
 {
+	if (OutputPort->getNthEU(0) == pEU)
+	{
+		n = 1;
+		return OutputPort;
+	}
 	return NULL;
 }
 

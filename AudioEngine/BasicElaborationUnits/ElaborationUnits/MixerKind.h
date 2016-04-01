@@ -4,8 +4,6 @@
 #include "EUKind.h"
 #include "..\ElaborationUnits\AbstractEUKind.h"
 
-#define MIXER_INPUT_PORT_NUMBER 4
-
 class MixerKind : public AbstractEUKind
 {
 public:
@@ -28,5 +26,5 @@ public:
 	static const int C_OutputLevelProperty = 0;
 
 	static const char OutputPortName[];
-	static char* InputPortNames[MIXER_INPUT_PORT_NUMBER];
+	static char* InputPortNames[C_NumInputPorts];
 };

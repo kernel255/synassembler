@@ -13,7 +13,7 @@ MixerKind::MixerKind()
 
 
 	static const char* PREFIX = "Input ";
-	for (int i = 0; i < MIXER_INPUT_PORT_NUMBER; i++)
+	for (int i = 0; i < C_NumInputPorts; i++)
 	{
 		char* buffer = new char[30];
 		memset(buffer, 0, 30);
@@ -108,5 +108,5 @@ bool MixerKind::isFinalElaborationUnit() const
 
 const char MixerKind::OutputPortName[] = "Output";
 
-char* MixerKind::InputPortNames[MIXER_INPUT_PORT_NUMBER];
+char* MixerKind::InputPortNames[C_NumInputPorts];
 
