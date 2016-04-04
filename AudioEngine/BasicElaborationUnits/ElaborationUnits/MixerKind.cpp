@@ -2,6 +2,7 @@
 #include "MixerKind.h"
 #include "Mixer.h"
 #include "..\Facilities\General\GainProperty.h"
+#include "..\Facilities\General\GainIndexedProperty.h"
 
 
 MixerKind::MixerKind()
@@ -11,6 +12,7 @@ MixerKind::MixerKind()
 	gain->setSetter(Mixer::setOutput);
 	addProperty(gain);
 
+	GainIndexedProperty** props = new GainIndexedProperty*[4];
 
 	static const char* PREFIX = "Input ";
 	for (int i = 0; i < C_NumInputPorts; i++)
@@ -19,10 +21,24 @@ MixerKind::MixerKind()
 		memset(buffer, 0, 30);
 		sprintf(buffer, "Input %d", i);
 		InputPortNames[i] = buffer;
-		gain = new GainProperty(buffer);
-		gain->setGetter(Mixer::getOutput);
-		gain->setSetter(Mixer::setOutput);
-		addProperty(gain);
+		GainIndexedProperty* igain = new GainIndexedProperty(buffer, i);
+		igain->setSetter(Mixer::setOutput);
+		props[i] = igain;
+	}
+	props[0]->setGetter(Mixer::GET_INPUT_NAME(0));
+	props[1]->setGetter(Mixer::GET_INPUT_NAME(1));
+	props[2]->setGetter(Mixer::GET_INPUT_NAME(2));
+	props[3]->setGetter(Mixer::GET_INPUT_NAME(3));
+
+	props[0]->setSetter(Mixer::SET_INPUT_NAME(0));
+	props[1]->setSetter(Mixer::SET_INPUT_NAME(1));
+	props[2]->setSetter(Mixer::SET_INPUT_NAME(2));
+	props[3]->setSetter(Mixer::SET_INPUT_NAME(3));
+
+
+	for (int i = 0; i < C_NumInputPorts; i++)
+	{
+		addProperty(props[i]);
 	}
 
 	// TODO: Add input ports maybe in a parametrizable way

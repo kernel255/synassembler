@@ -60,6 +60,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <SDLCheck>false</SDLCheck>
       <BufferSecurityCheck>false</BufferSecurityCheck>
+      <PreprocessToFile>false</PreprocessToFile>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -101,6 +102,7 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\AbstractProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\BooleanProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\GainIndexedProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\GainProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\IntegerProperty.cpp" />

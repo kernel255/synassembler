@@ -159,6 +159,9 @@
     <ClCompile Include="ElaborationUnits\MixerKind.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\GainIndexedProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

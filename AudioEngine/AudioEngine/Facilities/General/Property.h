@@ -32,7 +32,9 @@ typedef bool(*pfnSetIValue)(void* eu, int);
 // bool
 typedef bool(pfnGetBValue)(void* eu);
 typedef bool(pfnSetBValue)(void* eu, bool value);
-
+// indexed double
+typedef void* (pfnGetIndexedDValue)(void* eu, int index);
+typedef bool (pfnSetIndexedDValue)(void* eu, int index, void* val);
 
 class Property {
 public:

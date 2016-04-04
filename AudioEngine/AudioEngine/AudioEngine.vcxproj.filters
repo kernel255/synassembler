@@ -122,6 +122,9 @@
     <ClCompile Include="Facilities\General\BooleanProperty.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="Facilities\General\GainIndexedProperty.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h">
@@ -239,6 +242,9 @@
       <Filter>Facilities</Filter>
     </ClInclude>
     <ClInclude Include="Facilities\General\BooleanProperty.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\GainIndexedProperty.h">
       <Filter>Facilities</Filter>
     </ClInclude>
   </ItemGroup>

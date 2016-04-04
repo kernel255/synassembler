@@ -1,4 +1,5 @@
 
+
 #pragma once
 
 #include "VirtualElaborationUnit.h"
@@ -39,6 +40,23 @@ public:
 	virtual void updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples);
 	void setSamplesBufferMaximumSize(int size);
 
+#define GET_INPUT_NAME(port) getInput_##port
+#define SET_INPUT_NAME(port) setInput_##port
+
+#define GET_INPUT_DEF(x) static void* getInput_##x(void* pEU) { return getInput(pEU, x); }
+#define SET_INPUT_DEF(x) static bool setInput_##x(void* pEU, void* value) { return setInput(pEU, value, x); }
+
+	GET_INPUT_DEF(0)
+	GET_INPUT_DEF(1)
+	GET_INPUT_DEF(2)
+	GET_INPUT_DEF(3)
+	SET_INPUT_DEF(0)
+	SET_INPUT_DEF(1)
+	SET_INPUT_DEF(2)
+	SET_INPUT_DEF(3)
+
+
+
 	static void* getOutput(void* pEU)
 	{
 		Mixer* pMix = (Mixer*)pEU;
@@ -56,14 +74,20 @@ public:
 		return true;
 	}
 
-	static void* getInput(void* pEU)
+	static void* getInput(void* pEU, int index)
 	{
 		Mixer* pMix = (Mixer*)pEU;
+		pMix->m_pModuleServices->pLogger->writeLine("Read Mixer # %d Input: %f", index, pMix->m_InputLevel[index]);
+		return &(pMix->m_InputLevel[index]);
 	}
 
-	static bool setInput(void* pEU, void* value)
+	static bool setInput(void* pEU, void* value, int index)
 	{
 		Mixer* pMix = (Mixer*)pEU;
+		double* amplitude = pMix->m_InputLevel + index;
+		pMix->m_InputLevel[index] = *amplitude;
+		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer # %d Input: %f", index, *amplitude);
+		return true;
 	}
 
 	static const MixerKind kinna;
