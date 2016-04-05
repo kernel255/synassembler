@@ -13,6 +13,7 @@
 void displayAudioEngine(void);
 
 #include "Utilities.h"
+#include "UnitTests.h"
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -70,13 +71,23 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	//createAlgoAndDestroy();
+	UnitTest unitTest = MixerPlay1Osc;
 
+	//Algorith build
+	int algoId;
+	algoId = ::createAlgorithm();
 
-
-
-#define BASIC_EU_FACTORY	0
-#define INOUT_EU_FACTORY	1
+	switch (unitTest)
+	{
+	case SimpleOsc:
+		TestSimpleOsc(algoId);
+	case MixerReadWrite:
+		return TestMixerReadWriteProps(algoId);
+	case MixerPlay1Osc:
+		return TestMixer1Osc(algoId);
+	default:
+		return 0;
+	}
 
 	//#####################################
 	//####### POLY KEAYBOARD SAMPLE #######
@@ -117,7 +128,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	//Algorith build
 
 
-	int algoId, dsId, seqId;
+	int dsId, seqId;
 	algoId = ::createAlgorithm();
 #define OSCILLATOR
 //#define PCMWAVEFORM
@@ -200,28 +211,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	buffer[2] = 127;// 0x7F;
 	::sendMIDIMessage(pcKId, buffer);
 	::Sleep(10000);
-
-	/* 
-	buffer[0] = 0x90;
-	buffer[1] = 0x41;
-	buffer[2] = 0x7F;
-	::sendMIDIMessage(pcKId, buffer);
-	::Sleep(1000);
-	
-	buffer[0] = 0x80;
-	buffer[1] = 0x41;
-	buffer[2] = 0x00;
-	::sendMIDIMessage(pcKId, buffer);
-	::Sleep(2000);
-	*/
-	
-	//buffer[0] = 0x80;
-	//buffer[1] = 0x41;
-	//buffer[2] = 0x00;
-	//::sendMIDIMessage(pcKId, buffer);
-	//::Sleep(1000);
-
-
 
 	::stopAlgorithm(algoId);
 

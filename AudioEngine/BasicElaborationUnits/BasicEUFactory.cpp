@@ -11,7 +11,7 @@
 #define C_MixerIndex		3
 
 //GraphEUFactory* BasicEUFactory::s_pFactory = NULL;
-const int BasicEUFactory::LocalEUNumber = 3; //(Oscillator)+(MIDISequencePlayer)+(PCMWaveform)
+const int BasicEUFactory::LocalEUNumber = 4; //(Oscillator)+(MIDISequencePlayer)+(PCMWaveform)
 
 BasicEUFactory::BasicEUFactory(ModuleServices* pService) : AbstractElaborationUnitFactory(pService) 
 {

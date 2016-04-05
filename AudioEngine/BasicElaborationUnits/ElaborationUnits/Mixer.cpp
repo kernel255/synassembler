@@ -13,6 +13,8 @@ Mixer::Mixer(ModuleServices* pServices) : VirtualElaborationUnit(pServices, kinn
 		InputPorts[port] = new ConcretePort(ElaborationUnitPort::INPUT_PORT, ElaborationUnitPort::AUDIO_PORT, ElaborationUnitPort::SINGLE_PORT);
 	}
 	m_OutputLevel = 1.0;
+	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+		m_InputLevel[port] = 1.0;
 }
 
 Mixer::~Mixer()
@@ -38,9 +40,12 @@ bool Mixer::setInputEU(ElaborationUnitPort* pPort, ElaborationUnit* pInputEU, El
 		return false;
 	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 	{
-		OutputPort->setNthEUandPort(pInputEU, pInputPort, 0);
-		pInputEU->setSamplesBufferMaximumSize(0);
-		return true;
+		if (InputPorts[port] == pPort)
+		{
+			InputPorts[port]->setNthEUandPort(pInputEU, pInputPort, 0);
+			pInputEU->setSamplesBufferMaximumSize(0);
+			return true;
+		}
 	}
 	return false;
 }
@@ -146,17 +151,30 @@ void Mixer::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 
 }
 
+bool Mixer::IsPortConnected(int port)
+{
+	ElaborationUnitPort* pEUPort = getNthInputPort(port);
+	ElaborationUnit* pEU = pEUPort->getNthEU(0);
+	return pEU != NULL;
+}
+
+ElaborationUnit* Mixer::getConnectedEU(int port)
+{
+	ElaborationUnitPort* pEUPort = getNthInputPort(port);
+	ElaborationUnit* pEU = pEUPort->getNthEU(0);
+
+	return pEU;
+}
+
 void Mixer::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples)
 {
 	m_InputBuffers.prepareBuffers(numsamples);
 	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 	{
-		ElaborationUnitPort* pEUPort = getNthInputPort(port);
-		ElaborationUnit* pEU = pEUPort->getNthEU(0);
-		if (pEU != NULL)
+		ElaborationUnit* pEU = getConnectedEU(port);
+		if (pEU!=NULL)
 		{
-			EAG_SAMPLE_TYPE* buffer = m_InputBuffers.getNthBuffer(port);
-			pEU->updateAudioSamples(buffer, numsamples);
+			pEU->updateAudioSamples(m_InputBuffers.getNthBuffer(port), numsamples);
 		}
 	}
 
@@ -165,6 +183,7 @@ void Mixer::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples)
 		EAG_SAMPLE_TYPE acc = 0.0;
 		for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 		{
+			if(IsPortConnected(port))
 			acc += m_InputBuffers.getNthBuffer(port)[i] * m_InputLevel[port];
 		}
 		acc *= m_OutputLevel;

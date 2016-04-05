@@ -84,7 +84,7 @@ public:
 	static bool setInput(void* pEU, void* value, int index)
 	{
 		Mixer* pMix = (Mixer*)pEU;
-		double* amplitude = pMix->m_InputLevel + index;
+		double* amplitude = (double*)value;
 		pMix->m_InputLevel[index] = *amplitude;
 		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer # %d Input: %f", index, *amplitude);
 		return true;
@@ -94,6 +94,10 @@ public:
 
 	ConcretePort* InputPorts[MixerKind::C_NumInputPorts];
 	ConcretePort* OutputPort;
+private:
+
+	bool IsPortConnected(int port);
+	ElaborationUnit* getConnectedEU(int port);
 
 	double m_OutputLevel;
 	double m_InputLevel[MixerKind::C_NumInputPorts];
@@ -115,9 +119,13 @@ public:
 				m_LastNumSamples = nSamples;
 				for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 				{
-					if (m_pInputBuffers != NULL)
+					if (m_pInputBuffers[port] != NULL)
 						delete m_pInputBuffers;
 					m_pInputBuffers[port] = new EAG_SAMPLE_TYPE[nSamples];
+					for (int i = 0; i < nSamples; i++)
+					{
+						m_pInputBuffers[port][i] = EAG_SAMPLE_ZERO;
+					}
 				}
 			}
 		}
