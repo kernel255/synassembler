@@ -320,7 +320,10 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						// Mixing between Amp modulated signal and normal signal
 						double currentAmplifiedSample = m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * currSample;
 						currentAmplifiedSample = (currentAmplifiedSample + lfoAmpl*currentAmplifiedSample) / 2.0;
-						pSamplesBuffer[sampleIndex] += currentAmplifiedSample;
+						//pSamplesBuffer[sampleIndex] += currentAmplifiedSample;
+						pSamplesBuffer[sampleIndex] += currSample;
+
+
 						voiceIterator->simpleVoice.increaseAccumulatedTime(m_SamplingTime);
 					}
 					voiceIterator = m_pVoicesLIFO[noteIndex]->getNextAllocatedVoice();

@@ -168,12 +168,14 @@ ElaborationUnit* Mixer::getConnectedEU(int port)
 
 void Mixer::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples)
 {
-	m_InputBuffers.prepareBuffers(numsamples);
+	int reallocBuffer = m_InputBuffers.prepareBuffers(numsamples);
 	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 	{
 		ElaborationUnit* pEU = getConnectedEU(port);
 		if (pEU!=NULL)
 		{
+			if (reallocBuffer)
+				pEU->setSamplesBufferMaximumSize(numsamples);
 			pEU->updateAudioSamples(m_InputBuffers.getNthBuffer(port), numsamples);
 		}
 	}

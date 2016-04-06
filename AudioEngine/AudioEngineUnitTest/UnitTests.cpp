@@ -21,7 +21,7 @@ int TestSimpleOsc(int algoId)
 
 	::playAlgorithm(algoId);
 
-	::Sleep(6000);
+	::Sleep(600000);
 
 	::stopAlgorithm(algoId);
 	::destroyAlgorithm(algoId);

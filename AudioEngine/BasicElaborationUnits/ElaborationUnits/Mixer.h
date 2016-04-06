@@ -111,7 +111,7 @@ private:
 				m_LastNumSamples = 0;
 			}
 		}
-		void prepareBuffers(int nSamples)
+		int prepareBuffers(int nSamples)
 		{
 			//Only in case of bigger buffer the port buffers are reallocated, otherwise old ones are re-used
 			if (nSamples > m_LastNumSamples)
@@ -127,7 +127,9 @@ private:
 						m_pInputBuffers[port][i] = EAG_SAMPLE_ZERO;
 					}
 				}
+				return 1;
 			}
+			return 0;
 		}
 		EAG_SAMPLE_TYPE* getNthBuffer(int port)
 		{

@@ -44,6 +44,17 @@ EngineSettings* ModuleServices::getEngineSettings()
 	return m_pEngineSettings;
 }
 
+void ModuleServices::dumpSampleBlock(double* buffer, int numSamples)
+{
+	int lineElems = 4;
+	for (int i = 0; i < numSamples;i++)
+	{
+		printf("[%f]", buffer[i]);
+		if (i%lineElems == 0 && i != 0)
+			printf("\n");
+	}
+}
+
 /*
 ModuleServices::ModuleServices(SpecificOSData* specData)
 {

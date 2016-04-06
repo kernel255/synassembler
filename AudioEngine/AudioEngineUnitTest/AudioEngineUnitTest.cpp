@@ -71,8 +71,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	UnitTest unitTest = MixerPlay1Osc;
-
+	//UnitTest unitTest = MixerPlay1Osc;
+	UnitTest unitTest = SimpleOsc;
 	//Algorith build
 	int algoId;
 	algoId = ::createAlgorithm();

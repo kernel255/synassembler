@@ -41,6 +41,7 @@ public:
 	virtual ~ModuleServices();
 	ModuleServices(char* logFilename, EngineSettings* pEngineSettings);
 	EngineSettings* getEngineSettings();
+	void dumpSampleBlock(double* buffer, int numSamples);
 private:
 	AbstractModuleInfo* m_pModuleInfo;
 	EngineSettings* m_pEngineSettings;
