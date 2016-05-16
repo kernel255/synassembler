@@ -96,7 +96,7 @@ namespace ClayAudioEngine
                             StringBuilder portType = new StringBuilder(1000);
                             int len = getNthElaborationUnitInputPortType(factoryIndex, categoryIndex, euIndex, portIndex, portType, 1000);
                             //String type = getNthElaborationUnitInputPortType(factoryIndex, categoryIndex, euIndex, portIndex);
-                            Port port = new Port(portName.ToString(), portIndex, Port.getTypeByString(portType.ToString()));
+                            Port port = new Port(portName.ToString(), portIndex, Port.getTypeByString(portType.ToString()), Port.PortDirection.IN);
                             eu.addInputPort(port);
                         }
                         numPorts = getNthElaborationUnitOutputPortNumber(factoryIndex, categoryIndex, euIndex);
@@ -107,7 +107,7 @@ namespace ClayAudioEngine
                             getNthElaborationUnitOutputPortNameEx(factoryIndex, categoryIndex, euIndex, portIndex, portName, 2000);
                             StringBuilder portType = new StringBuilder(1000);
                             getNthElaborationUnitOutputPortType(factoryIndex, categoryIndex, euIndex, portIndex, portType, 1000);
-                            Port port = new Port(portName.ToString(), portIndex, Port.getTypeByString(portType.ToString()));
+                            Port port = new Port(portName.ToString(), portIndex, Port.getTypeByString(portType.ToString()), Port.PortDirection.OUT);
                             eu.addOutputPort(port);
                         }
 

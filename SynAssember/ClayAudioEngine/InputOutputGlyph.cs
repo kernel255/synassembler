@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 
 using EUShelves;
 using BasicAudioControls;
+using System.Windows;
 
 namespace ClayAudioEngine
 {
@@ -54,7 +55,11 @@ namespace ClayAudioEngine
         {
             String name = getCombinedIOName(m_IsInput, id.ToString(), m_Port.m_Id.ToString(), m_Port.Type.ToString());
             //m_MainEllipse.Name = name;
-            m_IOShape.Name = name;
+            //m_IOShape.Name = name;
+			foreach(Shape shape in m_Shapes)
+			{
+				shape.Name = name;
+			}
         }
 
         public bool isInputByCombined(String str)
@@ -104,6 +109,11 @@ namespace ClayAudioEngine
             return Port.getTypeByString(elems[2]);
         }
 
+		public static bool IsOutputByCombibed(String str)
+		{
+			return str.StartsWith("O");
+		}
+
         public static bool areIOCompatible(String src, String dst)
         {
             if ( (src[0].Equals(OUTPUT_SYMBOL) && dst[0].Equals(INPUT_SYMBOL)) || (src[0].Equals(INPUT_SYMBOL) && dst[0].Equals(OUTPUT_SYMBOL)) )
@@ -138,29 +148,63 @@ namespace ClayAudioEngine
             get { return DIAMETER + TEXT_OFFSET + TEXT_WIDTH; }
         }
 
-        private Shape createIO(double x, double y, Port port)
+		internal static List<Shape> getMIDIGlyph(double x, double y, Port port)
+		{
+			List<Shape> result = new List<Shape>();
+			Brush brush = Brushes.LightGray;
+			if (port.Direction.Equals(Port.PortDirection.IN))
+				brush = Brushes.Black;
+			Polygon hex = DrawUtils.createHexagon(x, y, DIAMETER / 2, brush, Brushes.DarkGray, 3);
+			result.Add(hex);
+			return result;
+		}
+
+		internal static List<Shape> getAudioGlyph(double x, double y, Port port)
+		{
+			List<Shape> result = new List<Shape>();
+			Ellipse ellipse = new Ellipse();
+			ellipse.Width = DIAMETER;
+			ellipse.Height = DIAMETER;
+			ellipse.StrokeThickness = 3;
+			if (port.Direction.Equals(Port.PortDirection.IN))
+			{
+				ellipse.Fill = Brushes.Black;
+				ellipse.Stroke = Brushes.Gray;
+			}
+			if (port.Direction.Equals(Port.PortDirection.OUT))
+			{
+				ellipse.Fill = Brushes.DarkGray;
+				ellipse.Stroke = Brushes.Gray;
+			}
+			Canvas.SetTop(ellipse, y);
+			Canvas.SetLeft(ellipse, x);
+			result.Add(ellipse);
+			return result;
+		}
+
+		internal void setInputConnected()
+		{
+			foreach(Shape shape in m_Shapes)
+			{
+				shape.Fill = Brushes.DarkGray;
+			}
+		}
+
+		private List<Shape> createIO(double x, double y, Port port)
         {
+			List<Shape> result = new List<Shape>();
             switch(port.Type)
             {
                 case Port.PortType.AUDIO:
-                    Polygon hex = DrawUtils.createHexagon(x, y, DIAMETER / 2);
-                    Ellipse innerEllipse = new Ellipse();
-
-
-                    return hex;
+					result.AddRange(getAudioGlyph(x, y, port));
+					break;
                 case Port.PortType.MIDI:
-                    Ellipse ellipse = new Ellipse();
-                    ellipse.Width = DIAMETER;
-                    ellipse.Height = DIAMETER;
-                    ellipse.Fill = Brushes.Black;
-                    Canvas.SetTop(ellipse, y);
-                    Canvas.SetLeft(ellipse, x);
-
-                    return ellipse;
+					result.AddRange(getMIDIGlyph(x, y, port));
+					break;
                 default:
                     return null;
             }
-            
+			return result;
         }
 
         private TextBlock createTextBlock(double x, double y, String name)
@@ -175,9 +219,9 @@ namespace ClayAudioEngine
             return label;
         }
 
-        private Shape m_IOShape;
+        //private Shape m_IOShape;
 
-        private Shape[] m_IOShapes;
+		private List<Shape> m_Shapes = new List<Shape>();
 
         public InputOutputGlyph(double x, double y, bool input, Port port)
         {
@@ -185,21 +229,35 @@ namespace ClayAudioEngine
             m_Port = port;
             m_x = x;
             m_y = y;
-            //m_MainEllipse = createMainEllipse(x, y, port);
+			//m_MainEllipse = createMainEllipse(x, y, port);
 
-            m_IOShape = createIO(x, y, port);
-            m_IOShape.Name = "X";
-            this.addShape(m_IOShape);
-            m_Label = createTextBlock(x, y, m_Port.Name);
-            this.addShape(m_Label);
-            
-        }
+			//m_Label = createTextBlock(x, y, m_Port.Name);
+			//this.addShape(m_Label);
+			//m_IOShape = createIO(x, y, port);
+			List<Shape> shapes = createIO(x, y, port);
+			m_Shapes = shapes;
+			foreach(Shape shape in shapes)
+			{
+				this.addShape(shape);
+			}
 
-        public void removeFromPanel(Canvas panel)
+			//m_IOShape.Name = "X";
+			//this.addShape(m_IOShape);
+
+
+		}
+
+		public void removeFromPanel(Canvas panel)
         {
-            panel.Children.Remove(m_IOShape);
+            //panel.Children.Remove(m_IOShape);
+			foreach(Shape shape in m_Shapes)
+			{
+				panel.Children.Remove(shape);
+			}
+
+
             //panel.Children.Remove(m_MainEllipse);
-            panel.Children.Remove(m_Label);
+            //panel.Children.Remove(m_Label);
         }
 
         public void write(System.Xml.XmlTextWriter writer)
@@ -225,15 +283,44 @@ namespace ClayAudioEngine
             return XML_ELEMENT_NAME;
         }
 
+		internal Point GetCenter()
+		{
+			double maxW = 0.0, maxH = 0.0;
+			double centX = 0.0, centY = 0.0;
+			Shape biggerShape = null;
+			foreach(Shape shape in m_Shapes)
+			{
+				if (shape.Width > maxW)
+				{
+					maxW = shape.Width;
+					biggerShape = shape;
+				}
+				if (shape.Height > maxH)
+				{
+					maxH = shape.Height;
+					biggerShape = shape;
+				}
+			}
+			if(biggerShape!=null)
+			{
+				centX = Canvas.GetLeft(biggerShape);
+				centY = Canvas.GetTop(biggerShape);
+				centX = centX + maxW / 2;
+				centY = centY + maxH / 2;
+			}
+			return new Point(centX, centY); ;
+		}
+
         private static readonly String XML_ELEMENT_NAME = "IO";
 
         private bool m_Changed = false;
-        private static double DIAMETER = 12;
+		private static double DIAMETER = 12;
+		private static double INTERNAL_DIAMETER = 10;
         private static double TEXT_OFFSET = 5;
         private static double TEXT_WIDTH = 30;
         private bool m_IsInput = false;
         //Ellipse m_MainEllipse;
-        TextBlock m_Label;
+        //TextBlock m_Label;
         double m_x;
         double m_y;
 

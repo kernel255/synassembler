@@ -15,6 +15,7 @@ AmplitudeInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::AUDIO_PORT,
 MainOutPort(ElaborationUnitPort::OUTPUT_PORT,ElaborationUnitPort::AUDIO_PORT,ElaborationUnitPort::MULTI_PORT),
 MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,ElaborationUnitPort::SINGLE_PORT)
 {
+	pService->pLogger->writeLine("Oscillator constructor");
 	iNumInput = 3;
 	iNumOutput = 1;
 	PhaseInPort.setName(OscillatorKind::PhasePortName);

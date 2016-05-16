@@ -112,6 +112,8 @@ ElaborationUnit* AudioEngine::getElaborationUnitById(int id)
 	std::map<int, ElaborationUnit*>::iterator it;
 
 	it = mapIdToElaborationUnits.find(id);
+	if (it == mapIdToElaborationUnits.end())
+		return NULL;
 	/*
 	if(it==NULL)
 		return NULL;

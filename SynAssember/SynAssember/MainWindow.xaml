@@ -50,10 +50,7 @@
                 </Canvas>
             </Grid>
             <GridSplitter Grid.Row="1" Height="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.RowSpan="1" Background="DarkGray"></GridSplitter>
-            
-            <Canvas Name="SynthPanelArea" Grid.Row="2" Background="Gray" KeyDown="SynthPanelArea_KeyDown">
-            </Canvas>
-            
+            <Canvas Name="SynthPanelArea" Grid.Row="2" Background="Gray" KeyDown="SynthPanelArea_KeyDown"></Canvas>
         </Grid>
         <!--
         <StatusBar DockPanel.Dock="Bottom">

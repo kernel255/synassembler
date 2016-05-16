@@ -76,7 +76,7 @@ namespace BasicAudioControls
             return extLine;
         }
 
-        public static Polygon createHexagon(double x, double y, double radius)
+        public static Polygon createHexagon(double x, double y, double radius, Brush fillBrush, Brush strokeBrush, double thickness)
         {
             Polygon hex = new Polygon();
             double angle = 0, centerX = x + radius, centerY = y + radius;
@@ -85,12 +85,36 @@ namespace BasicAudioControls
             {
                 Point p = createCirclePoint(centerX, centerY, radius, angle);
                 hex.Points.Add(p);
+		
                 angle += step;
             }
-            hex.Fill = Brushes.LightSlateGray;
+            hex.Fill = fillBrush;
+			hex.Stroke = strokeBrush;
+			hex.StrokeThickness = thickness;
 
             return hex;
         }
 
-    }
+		public static Polyline createHexagonContour(double x, double y, double radius, Brush brush)
+		{
+			Polyline hex = new Polyline();
+			PointCollection points = new PointCollection();
+			double angle = 0, centerX = x + radius, centerY = y + radius;
+			double step = Math.PI * 2 / 6;
+			for (int i = 0; i < 6; i++)
+			{
+				Point p = createCirclePoint(centerX, centerY, radius, angle);
+				points.Add(p);
+				hex.Points = points;
+
+				angle += step;
+			}
+			hex.Fill = Brushes.Transparent;
+
+
+			return hex;
+		}
+
+
+	}
 }

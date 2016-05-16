@@ -8,11 +8,13 @@ namespace ClayAudioEngine
     public class Port
     {
         public enum PortType { AUDIO, MIDI, UNKNOWN };
-        public Port(String name, int id, PortType type)
+		public enum PortDirection { IN, OUT, INOUT, UNKNOWN };
+        public Port(String name, int id, PortType type, PortDirection dir)
         {
             m_Name = name;
             m_Id = id;
             m_Type = type;
+			m_Dir = dir;
         }
         public int m_Id;
         private String m_Name;
@@ -25,6 +27,11 @@ namespace ClayAudioEngine
         {
             get { return m_Type; }
         }
+		private PortDirection m_Dir;
+		public PortDirection Direction
+		{
+			get { return m_Dir; }
+		}
         public static PortType getTypeByString(String str)
         {
             switch (str)

@@ -64,7 +64,7 @@ void displayAudioElements(void)
 				{
 					wchar_t* pBuffer = new wchar_t[1000];
 					::getNthEUPropertyName(factoryIndex, categoryIndex, elaborationUnitIndex, propIndex, pBuffer, 1000);
-					printf("Property name: %s\n", pBuffer);
+					printf("Property name: %ls\n", pBuffer);
 				}
 
 				printf("-------------------------------------------------------------\n");

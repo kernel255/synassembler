@@ -63,18 +63,18 @@ namespace ClayAudioEngine
             m_MainRect = createMainRect(x, y, name);
             this.addShape(m_MainRect);
 
-            // IO creation
-            m_NumInputs = euDescr.getInputPorts().Count;
+			// Label creation
+			m_Label = createLabel(x, y, euDescr.Name);
+			this.addShape(m_Label);
+
+			// IO creation
+			m_NumInputs = euDescr.getInputPorts().Count;
             m_NumOutputs = euDescr.getOuputPorts().Count;
             inputGlyphs = new InputOutputGlyph[m_NumInputs];
             outputGlyphs = new InputOutputGlyph[m_NumOutputs];
             double alpha = getAlpha(EU_WIDTH, InputOutputGlyph.Diameter, m_NumInputs);
             for (int i = 0; i < m_NumInputs; i++)
             {
-                /*
-                InputOutputGlyph inputGlyph = new InputOutputGlyph(FIRST_INPUT_SPACE + x + alpha * i + PIN_HEIGHT * i,
-                    y + EU_HEIGHT - INPUT_BOTTOM_DISTANCE - InputOutputGlyph.Diameter, true, euDescr.getInputPorts().ElementAt(i));
-                 */
                 InputOutputGlyph inputGlyph = new InputOutputGlyph(getXIOByMainAchor(x, i, true, alpha),
                     getYIOByMainAnchor(y, i, true, alpha), true, euDescr.getInputPorts().ElementAt(i));
                 inputGlyphs[i] = inputGlyph;
@@ -94,9 +94,6 @@ namespace ClayAudioEngine
                 outputGlyphs[i] = outputGlyph;
                 this.addGroup(outputGlyph);
             }
-            // Label creation
-            m_Label = createLabel(x, y, euDescr.Name);
-            this.addShape(m_Label);
         }
         // Special version for PhysicalElaborationUnit
         public ElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, String physicalInstanceName, int physicalInstanceIndex)

@@ -40,6 +40,51 @@ public:
 	virtual void updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer, int numsamples);
 	void setSamplesBufferMaximumSize(int size);
 
+#define GET_INPUTMUTE_NAME(port) getInputMute_##port
+#define SET_INPUTMUTE_NAME(port) setInputMute_##port
+
+#define GET_INPUTMUTE_DEF(port) static void* getInputMute_##port(void* pEU) { return getInputMute(pEU, port); }
+#define SET_INPUTMUTE_DEF(port) static bool setInputMute_##port(void* pEU, void* value) { return setInputMute(pEU, value, port); }
+
+	GET_INPUTMUTE_DEF(0)
+	GET_INPUTMUTE_DEF(1)
+	GET_INPUTMUTE_DEF(2)
+	GET_INPUTMUTE_DEF(3)
+	SET_INPUTMUTE_DEF(0)
+	SET_INPUTMUTE_DEF(1)
+	SET_INPUTMUTE_DEF(2)
+	SET_INPUTMUTE_DEF(3)
+
+	static void* getInputMute(void* pEU, int index)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		pMix->m_pModuleServices->pLogger->writeLine("Read Mixer # %d Input Mute: %s", index, pMix->m_InputMute[index] ? "on" : "off");
+		return &(pMix->m_InputMute[index]);
+	}
+	static bool setInputMute(void* pEU, void* value, int index)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		bool* mute = (bool*)value;
+		pMix->m_InputMute[index] = *mute;
+		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer # %d Input Mute: %s", index, *mute ? "on" : "off");
+		return true;
+	}
+
+	static void* getOutputMute(void* pEU)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		pMix->m_pModuleServices->pLogger->writeLine("Read Mixer Output Mute: %s", pMix->m_OutputMute ? "on" : "off");
+		return &(pMix->m_OutputMute);
+	}
+	static bool setOutputMute(void* pEU, void* value)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		bool* mute = (bool*)value;
+		pMix->m_OutputMute = *mute;
+		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer Output Mute: %s", *mute ? "on" : "off");
+		return true;
+	}
+
 #define GET_INPUT_NAME(port) getInput_##port
 #define SET_INPUT_NAME(port) setInput_##port
 
@@ -55,7 +100,21 @@ public:
 	SET_INPUT_DEF(2)
 	SET_INPUT_DEF(3)
 
+	static void* getInput(void* pEU, int index)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		pMix->m_pModuleServices->pLogger->writeLine("Read Mixer # %d Input: %f", index, pMix->m_InputLevel[index]);
+		return &(pMix->m_InputLevel[index]);
+	}
 
+	static bool setInput(void* pEU, void* value, int index)
+	{
+		Mixer* pMix = (Mixer*)pEU;
+		double* amplitude = (double*)value;
+		pMix->m_InputLevel[index] = *amplitude;
+		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer # %d Input: %f", index, *amplitude);
+		return true;
+	}
 
 	static void* getOutput(void* pEU)
 	{
@@ -74,22 +133,6 @@ public:
 		return true;
 	}
 
-	static void* getInput(void* pEU, int index)
-	{
-		Mixer* pMix = (Mixer*)pEU;
-		pMix->m_pModuleServices->pLogger->writeLine("Read Mixer # %d Input: %f", index, pMix->m_InputLevel[index]);
-		return &(pMix->m_InputLevel[index]);
-	}
-
-	static bool setInput(void* pEU, void* value, int index)
-	{
-		Mixer* pMix = (Mixer*)pEU;
-		double* amplitude = (double*)value;
-		pMix->m_InputLevel[index] = *amplitude;
-		pMix->m_pModuleServices->pLogger->writeLine("Write Mixer # %d Input: %f", index, *amplitude);
-		return true;
-	}
-
 	static const MixerKind kinna;
 
 	ConcretePort* InputPorts[MixerKind::C_NumInputPorts];
@@ -101,6 +144,9 @@ private:
 
 	double m_OutputLevel;
 	double m_InputLevel[MixerKind::C_NumInputPorts];
+
+	bool m_InputMute[MixerKind::C_NumInputPorts];
+	bool m_OutputMute;
 
 	class InputBuffers {
 	public:
@@ -120,7 +166,7 @@ private:
 				for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
 				{
 					if (m_pInputBuffers[port] != NULL)
-						delete m_pInputBuffers;
+						delete [] m_pInputBuffers;
 					m_pInputBuffers[port] = new EAG_SAMPLE_TYPE[nSamples];
 					for (int i = 0; i < nSamples; i++)
 					{

@@ -3,7 +3,7 @@
 #include "Mixer.h"
 #include "..\Facilities\General\GainProperty.h"
 #include "..\Facilities\General\GainIndexedProperty.h"
-
+#include "..\Facilities\General\BooleanProperty.h"
 
 MixerKind::MixerKind()
 {
@@ -12,7 +12,7 @@ MixerKind::MixerKind()
 	gain->setSetter(Mixer::setOutput);
 	addProperty(gain);
 
-	GainIndexedProperty** props = new GainIndexedProperty*[4];
+	GainIndexedProperty** props = new GainIndexedProperty*[C_NumInputPorts];
 
 	static const char* PREFIX = "Input ";
 	for (int i = 0; i < C_NumInputPorts; i++)
@@ -29,16 +29,42 @@ MixerKind::MixerKind()
 	props[1]->setGetter(Mixer::GET_INPUT_NAME(1));
 	props[2]->setGetter(Mixer::GET_INPUT_NAME(2));
 	props[3]->setGetter(Mixer::GET_INPUT_NAME(3));
-
 	props[0]->setSetter(Mixer::SET_INPUT_NAME(0));
 	props[1]->setSetter(Mixer::SET_INPUT_NAME(1));
 	props[2]->setSetter(Mixer::SET_INPUT_NAME(2));
 	props[3]->setSetter(Mixer::SET_INPUT_NAME(3));
-
-
 	for (int i = 0; i < C_NumInputPorts; i++)
 	{
 		addProperty(props[i]);
+	}
+
+	BooleanProperty* bProp = new BooleanProperty("Output Mute");
+	bProp->setSetter(Mixer::setOutputMute);
+	bProp->setGetter(Mixer::getOutputMute);
+	addProperty(bProp);
+
+	BooleanProperty** bProps = new BooleanProperty*[C_NumInputPorts];
+	static const char* BPREFIX = "Mute ";
+	for (int i = 0; i < C_NumInputPorts; i++)
+	{
+		char* buffer = new char[30];
+		memset(buffer, 0, 30);
+		sprintf(buffer, "%s %d", BPREFIX, i);
+		//TODO
+		BooleanProperty* bMute = new BooleanProperty(buffer);
+		bProps[i] = bMute;
+	}
+	bProps[0]->setGetter(Mixer::GET_INPUTMUTE_NAME(0));
+	bProps[1]->setGetter(Mixer::GET_INPUTMUTE_NAME(1));
+	bProps[2]->setGetter(Mixer::GET_INPUTMUTE_NAME(2));
+	bProps[3]->setGetter(Mixer::GET_INPUTMUTE_NAME(3));
+	bProps[0]->setSetter(Mixer::SET_INPUTMUTE_NAME(0));
+	bProps[1]->setSetter(Mixer::SET_INPUTMUTE_NAME(1));
+	bProps[2]->setSetter(Mixer::SET_INPUTMUTE_NAME(2));
+	bProps[3]->setSetter(Mixer::SET_INPUTMUTE_NAME(3));
+	for (int i = 0; i < C_NumInputPorts; i++)
+	{
+		addProperty(bProps[i]);
 	}
 
 	// TODO: Add input ports maybe in a parametrizable way

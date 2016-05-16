@@ -74,11 +74,12 @@ namespace ClayAudioEngine
             }
             m_EUGlyphs.Add(euInst);
             euInst.addToCanvas(m_Canvas);
-            //euInst.addToPanel(m_Canvas);
+			//euInst.addToPanel(m_Canvas);
 
-			AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euDesc.Id);
+			//AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euDesc.Id);
+			AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);
 
-            // Create synth panel
+			// Create synth panel
 			ISynthPanel synPanel = AudioEngineWrapper.getDefault().createNewPanel(euFactory.getName(), euDesc.Name, euInst.AudioEngineId);
 			
             euInst.m_SynthPanel = synPanel;

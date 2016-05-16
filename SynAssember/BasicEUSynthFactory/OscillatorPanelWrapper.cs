@@ -16,7 +16,6 @@ namespace BasicEUSynthFactory
     {
 
         OscillatorPanel m_OscillatorPanel = null;
-		Facilities facilities;
 
 		public OscillatorPanelWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities) : base(new OscillatorPanel(id, deleHolder, facilities), id, deleHolder, facilities)
 		{
@@ -24,7 +23,7 @@ namespace BasicEUSynthFactory
 			this.facilities = facilities;
         }
 
-        public UserControl getUserControlPanel()
+        public override UserControl getUserControlPanel()
         {
             return m_OscillatorPanel;
         }
@@ -153,7 +152,7 @@ namespace BasicEUSynthFactory
 			//m_OscillatorPanel.readParametersFromEngine();
         }
 
-        public bool hasChanged()
+        public override bool hasChanged()
         {
             return false;
         }

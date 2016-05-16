@@ -22,6 +22,7 @@ using System.Diagnostics;
 using ClayAudioEngine;
 using SynthPanels;
 using GeneralUtils;
+using ClayAudioEngine.Layout;
 
 namespace SynAssember
 {
@@ -70,13 +71,14 @@ namespace SynAssember
 			RightPanel.Children.Clear();
 		}
 
+		AlgorithmPanel m_AlgorithmPanel;
+
 		void InitLayout()
 		{
 			m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
 			m_Shelf.addToPanel(LeftPanel);
+			m_AlgorithmPanel = new AlgorithmPanel(RightPanel, m_Shelf);
 			currentAlgorithm = new AlgorithmGraph(RightPanel);
-			m_CurrentConnection = new EUConnection(new Point(0, 0), new Point(0, 0), RightPanel);
-			m_CurrentConnection.place();
 		}
 
 		public MainWindow()
@@ -318,55 +320,15 @@ namespace SynAssember
 
         private void RightPanel_Drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetDataPresent(System.Windows.DataFormats.Text))
-            {
-                object draggedData = e.Data.GetData(System.Windows.DataFormats.Text);
-                if (draggedData is String)
-                {
-                    String draggedEUCombinedStr = (String)draggedData;
-                    String factoryIndexStr = ElaborationUnitGlyph.getFactoryIndexByCombined(draggedEUCombinedStr);
-                    String euIndexStr = ElaborationUnitGlyph.getEUIndexByCombined(draggedEUCombinedStr);
-                    int factoryIndex = Convert.ToInt32(factoryIndexStr);
-                    int euIndex = Convert.ToInt32(euIndexStr);
-                    Point p = e.GetPosition(RightPanel);
-                    int physicalInstanceId = -1;
-
-					ElaborationUnitFactory fact = AudioEngineWrapper.getDefault().getFactoryById(factoryIndex);
-                    ElaborationUnitDescription euDescr = AudioEngineWrapper.getEUDescriptionById(fact, euIndex);
-                    if (euDescr.Physical)
-                    {
-                        if (euDescr.InstancesCount == 0)
-                        {
-                            string msg = String.Format("The Elaboration Unit: {0} is not available", euDescr.Name);
-                            MessageBox.Show(this, msg);
-                            return;
-                        }
-                        else
-						{
-							String physInstId = ElaborationUnitGlyph.getPhysicalInstaceByCombined(draggedEUCombinedStr);
-							physicalInstanceId = Int32.Parse(physInstId);
-							m_Shelf.removePhysicalEUInstance(factoryIndex, euIndex, physicalInstanceId);
-						}
-					}
-
-                    try
-                    {
-                        Int32 hWnd = (Int32) getWindowHwnd();
-						AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
-
-                        currentAlgorithm.addElaborationUnitGlyph(p.X, p.Y, euDescr, fact, physicalInstanceId);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                        return;
-                    }
-
-                    //ISynthPanel synPanel = AudioEngineWrapper.createNewPanel(fact.getName(), euDescr.Name, euIndex);
-                    //SynthPanelManager.getDefault().AddSynthPanel(synPanel);
-                    //SynthPanelArea.Children.Add(synPanel);
-                }
-            }
+			Int32 hWnd = (Int32)getWindowHwnd();
+			try
+			{
+				m_AlgorithmPanel.Drop(sender, e, hWnd);
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(this, ex.Message);
+			}
         }
 
         private AlgorithmGraph m_CurrentAlgorithGraph;
@@ -376,123 +338,40 @@ namespace SynAssember
 			{
 				m_CurrentAlgorithGraph = value;
 				facilities.ChangedAlgorithm = m_CurrentAlgorithGraph;
+				m_AlgorithmPanel.setCurrentAlgorithmGraph(m_CurrentAlgorithGraph);
 			}
 			get
 			{
 				return m_CurrentAlgorithGraph;
 			}
 		}
-
-        private bool m_IsConnecting = false;
-        private String m_SourceEUStringDescr = null;
         //private Polyline m_CurrentConnection;
-        private EUConnection m_CurrentConnection;
 
         private void activateConnection(bool enable)
         {
-            m_CurrentConnection.setTransparent(!enable);
+			m_AlgorithmPanel.activateConnection(enable);
         }
-
-        private Point m_ConnectionStartPoint;
 
         private void RightPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.LeftButton == MouseButtonState.Pressed && !m_IsConnecting)
-            {
-                m_IsConnecting = true;
-                if (e.Source is Shape)
-                {
-                    String name = (e.Source as Shape).Name;
-                    int euIndex = InputOutputGlyph.getEUAudioEngineIdByCombined(name);
-					ElaborationUnitGlyphInstance euSrc = currentAlgorithm.getEUInstanceByAudioEngineId(euIndex);
-                    int portIndex = InputOutputGlyph.getPortIndexByCombined(name);
-                    m_CurrentConnection.setSourceEU(euSrc, portIndex);
-                    m_SourceEUStringDescr = name;
-                    m_ConnectionStartPoint = e.GetPosition(this.RightPanel);
-                    PointCollection coll = new PointCollection();
-                    coll.Add(m_ConnectionStartPoint);
-                    activateConnection(true);
-                    m_CurrentConnection.StartPoint = m_ConnectionStartPoint;
-                }
-            }
+			m_AlgorithmPanel.MouseDown(sender, e);
         }
 
-        //private String lastFoundEllispeName = "";
-
-        public static HitTestResultBehavior testResultCallback(HitTestResult res)
-        {
-            if (res.VisualHit is Shape)
-            {
-                Shape shape = res.VisualHit as Shape;
-                String name = shape.Name;
-                if (InputOutputGlyph.IsShapeNameIO(name))
-                {
-                    String pippo = name + "C";
-                    ioConnectionFound = true;
-                    m_CurrentIOShape = res.VisualHit as Shape;
-                    return HitTestResultBehavior.Stop;
-                }
-            }
-            ioConnectionFound = false;
-            return HitTestResultBehavior.Continue;
-        }
 
         private class PointReader
         {
 
         }
 
-        private static bool ioConnectionFound = false;
-        private static Shape m_CurrentIOShape;
-
-        private void resetIOSearch()
-        {
-            ioConnectionFound = false;
-            m_CurrentIOShape = null;
-        }
-
         private void RightPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (m_SourceEUStringDescr != null)
-            {
-                if (m_IsConnecting)
-                {
-                    Point p = e.GetPosition((UIElement)sender);
-                    resetIOSearch();
-                    VisualTreeHelper.HitTest(this.RightPanel,null,new HitTestResultCallback(testResultCallback),
-                        new PointHitTestParameters(p));
-
-                    if(ioConnectionFound)
-                    {
-
-                        String dstName = m_CurrentIOShape.Name;
-                        m_CurrentConnection.EndPoint = p;
-                        if(InputOutputGlyph.areIOCompatible(m_SourceEUStringDescr, dstName))
-                        {
-                            EUConnection conn = new EUConnection(m_CurrentConnection);
-                            int euIndex = InputOutputGlyph.getEUAudioEngineIdByCombined(dstName);
-							ElaborationUnitGlyphInstance euDst = currentAlgorithm.getEUInstanceByAudioEngineId(euIndex);
-                            int portIndex = InputOutputGlyph.getPortIndexByCombined(dstName);
-                            conn.setDestinationEU(euDst, portIndex);
-							currentAlgorithm.addConnection(conn);
-                            resetIOSearch();
-                        }
-                    }
-                }
-            }
-            m_SourceEUStringDescr = null;
-            m_IsConnecting = false;
-            activateConnection(false);
+			m_AlgorithmPanel.MouseLeftButtonUp(sender, e);
         }
 
 
         private void RightPanel_PreviewMouseMove(object sender, MouseEventArgs e)
         {
-            if (m_IsConnecting)
-            {
-                Point endPoint = e.GetPosition(RightPanel);
-                m_CurrentConnection.EndPoint = endPoint;
-            }
+			m_AlgorithmPanel.PreviewMouseMove(sender, e);
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

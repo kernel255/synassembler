@@ -6,6 +6,7 @@ const MixerKind Mixer::kinna;
 
 Mixer::Mixer(ModuleServices* pServices) : VirtualElaborationUnit(pServices, kinna.getPropertyNumber(), &Mixer::kinna)
 {
+	m_pModuleServices->pLogger->writeLine("Mixer Constructor");
 	// Init ports
 	OutputPort = new ConcretePort(ElaborationUnitPort::OUTPUT_PORT, ElaborationUnitPort::AUDIO_PORT, ElaborationUnitPort::SINGLE_PORT);
 	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
@@ -14,7 +15,14 @@ Mixer::Mixer(ModuleServices* pServices) : VirtualElaborationUnit(pServices, kinn
 	}
 	m_OutputLevel = 1.0;
 	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+	{
 		m_InputLevel[port] = 1.0;
+	}
+	m_OutputMute = false;
+	for (int port = 0; port < MixerKind::C_NumInputPorts; port++)
+	{
+		m_InputMute[port] = false;
+	}
 }
 
 Mixer::~Mixer()

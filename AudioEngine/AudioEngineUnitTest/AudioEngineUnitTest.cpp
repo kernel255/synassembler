@@ -71,8 +71,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	//UnitTest unitTest = MixerPlay1Osc;
-	UnitTest unitTest = SimpleOsc;
+	UnitTest unitTest = MixerReadWrite;
+	//UnitTest unitTest = SimpleOsc;
+	//UnitTest unitTest = WrongEUAddedToAlgo;
 	//Algorith build
 	int algoId;
 	algoId = ::createAlgorithm();
@@ -85,6 +86,10 @@ int _tmain(int argc, _TCHAR* argv[])
 		return TestMixerReadWriteProps(algoId);
 	case MixerPlay1Osc:
 		return TestMixer1Osc(algoId);
+	case MixerPlay2OSc:
+		return TestMixer2Osc(algoId);
+	case WrongEUAddedToAlgo:
+		return TestWrongIdAddedToAlgo(algoId);
 	default:
 		return 0;
 	}

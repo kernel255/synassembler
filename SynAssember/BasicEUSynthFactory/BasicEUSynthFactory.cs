@@ -40,7 +40,7 @@ namespace BasicEUSynthFactory
 				case MIDISEQ_NAME:
 					return new MIDISequencePlayerWrapper(id, base.deleHolder, facilities);
 				case MIXER_NAME:
-					return new MixerWrapper(id, base.deleHolder, facilities);
+					return new MixerPanelWrapper(id, base.deleHolder, facilities);
 				default:
 					return null;
 			}

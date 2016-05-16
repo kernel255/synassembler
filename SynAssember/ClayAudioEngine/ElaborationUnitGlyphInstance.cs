@@ -1,11 +1,12 @@
-﻿	using SynthPanels;
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Text;
-	using System.Xml;
+﻿using SynthPanels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Windows;
+using System.Xml;
 
-	namespace ClayAudioEngine
+namespace ClayAudioEngine
 	{
 	public class ElaborationUnitGlyphInstance : ElaborationUnitGlyph , IXMLAble
 	{
@@ -35,6 +36,30 @@
 			foreach (InputOutputGlyph outGlyph in base.outputGlyphs)
 			{
 				outGlyph.setCombinedName(audioEngineId);
+			}
+		}
+
+		public void setInputConnected(int inIndex)
+		{
+			if(inIndex>=base.inputGlyphs.Count<InputOutputGlyph>())
+			{
+				throw new Exception("Input index bigger than available EU entries");
+			}
+			else
+			{
+				base.inputGlyphs[inIndex].setInputConnected();
+			}
+		}
+
+		public Point GetInputCenter(int index)
+		{
+			if (index >= base.inputGlyphs.Count<InputOutputGlyph>())
+			{
+				throw new Exception("Input index bigger than available EU entries");
+			}
+			else
+			{
+				return base.inputGlyphs[index].GetCenter();
 			}
 		}
 
