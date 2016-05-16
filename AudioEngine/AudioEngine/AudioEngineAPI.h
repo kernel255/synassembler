@@ -1,6 +1,4 @@
 
-PIPPO
-
 #ifndef AUDIOENGINE_API
 #define AUDIOENGINE_API 1
 
