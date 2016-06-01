@@ -266,5 +266,15 @@ namespace SynthPanels
 
         public const string XML_PANEL = "SynthPanel";
 
+		public double GetWidth()
+		{
+			return m_MaxPanelWidth;
+		}
+
+		public double GetHeight()
+		{
+			return 800;
+		}
+
 	}
 }

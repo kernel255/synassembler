@@ -72,6 +72,7 @@ namespace SynAssember
 		}
 
 		AlgorithmPanel m_AlgorithmPanel;
+		ShelvesPanel m_ShelvesPanel;
 
 		void InitLayout()
 		{
@@ -79,6 +80,7 @@ namespace SynAssember
 			m_Shelf.addToPanel(LeftPanel);
 			m_AlgorithmPanel = new AlgorithmPanel(RightPanel, m_Shelf);
 			currentAlgorithm = new AlgorithmGraph(RightPanel);
+			m_ShelvesPanel = new ShelvesPanel(LeftPanel);
 		}
 
 		public MainWindow()
@@ -444,6 +446,9 @@ namespace SynAssember
 					),
 				DispatcherPriority.ContextIdle,
 				null);
+
+			SynthPanelArea.Width = SynthPanelContainer.Width;
+			SynthPanelArea.Height = SynthPanelContainer.Height;
 		}
 
 		private void DockPanel_KeyDown(object sender, KeyEventArgs e)
@@ -520,6 +525,15 @@ namespace SynAssember
 
 		const String WINDOW_TITLE = "SynAssembler - ";
 
-    }
+		private void SynthPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			m_AlgorithmPanel.SizeChanged(sender, e);
+		}
+
+		private void LeftPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			m_ShelvesPanel.SizeChanged(sender, e);
+		}
+	}
 }
 

@@ -61,6 +61,7 @@
     <Compile Include="EUShelf.cs" />
     <Compile Include="InputOutputGlyph.cs" />
     <Compile Include="Layout\AlgorithmPanel.cs" />
+    <Compile Include="Layout\ShelvesPanel.cs" />
     <Compile Include="MoveableInputOutputGliph.cs" />
     <Compile Include="PCKeyboardProcessor.cs" />
     <Compile Include="Synthesizer.cs" />
