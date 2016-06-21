@@ -143,7 +143,7 @@ namespace SynthPanels
 		private double m_VirtBusyX = 0.0;
 		private double m_VirtBusyY = 0.0;
 
-        private double m_MaxPanelWidth = 1200;
+        private double m_MaxPanelWidth = 1500;
         //private double m_MaxPanelHeight = 300;
 
 
@@ -273,8 +273,15 @@ namespace SynthPanels
 
 		public double GetHeight()
 		{
-			return 800;
+			return 1800;
 		}
+
+		public void SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			try { m_Canvas.Width = SynthPanelManager.getDefault().GetWidth(); } catch {}
+			try	{ m_Canvas.Height = SynthPanelManager.getDefault().GetHeight();	} catch {}
+		}
+
 
 	}
 }

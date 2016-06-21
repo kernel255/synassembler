@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:SynAssember"
         Title="SynAssembler" WindowState="Maximized" WindowStartupLocation="CenterScreen" mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" d:DesignHeight="350" d:DesignWidth="705" Closing="Window_Closing" Loaded="Window_Loaded" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
-    <DockPanel KeyDown="DockPanel_KeyDown">
+    <DockPanel >
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="New Synthesizer" Command="New"></MenuItem>
@@ -29,7 +29,7 @@
             <ToggleButton Name="PlayButton" Content="Play" Click="PlayButton_Click"></ToggleButton>
             <ToggleButton Name="StopButton" Content="Stop" Click="StopButton_Click"></ToggleButton>
         </ToolBar>
-        <Grid DockPanel.Dock="Left">
+        <Grid DockPanel.Dock="Left" Margin="0,1,0,-1">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
@@ -45,7 +45,7 @@
                 <Grid Grid.Column="0">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid Name="LeftPanelContainer" SizeChanged="LeftPanelContainer_SizeChanged">
-                            <Canvas Name="LeftPanel" Background="#FF79E69C" PreviewMouseDown="LeftPanel_PreviewMouseDown" PreviewMouseMove="LeftPanel_PreviewMouseMove" Grid.ColumnSpan="2" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.CanContentScroll="True"/>
+                            <Canvas Name="LeftPanel" Background="#FF79E69C" PreviewMouseDown="LeftPanel_PreviewMouseDown" PreviewMouseMove="LeftPanel_PreviewMouseMove" Grid.ColumnSpan="2" />
                         </Grid>
                     </ScrollViewer>
                 </Grid>
@@ -54,7 +54,7 @@
                 <!--####### RIGHT PANEL #######-->
                 <Grid Grid.Column="2">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-                        <Grid Name="RightPanelContainer">
+                        <Grid Name="RightPanelContainer" SizeChanged="RightPanelContainer_SizeChanged">
                             <Canvas Name="RightPanel" Background="#FFF1A487" AllowDrop="True" Drop="RightPanel_Drop" MouseDown="RightPanel_MouseDown" MouseLeftButtonUp="RightPanel_MouseLeftButtonUp" PreviewMouseMove="RightPanel_PreviewMouseMove">
                             </Canvas>
                         </Grid>
@@ -64,28 +64,15 @@
             <GridSplitter Grid.Row="1" Height="5" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.RowSpan="1" Background="DarkGray"></GridSplitter>
 
 
-
+            <!--####### Synth Panel #######-->
 
             <Grid Grid.Row="2">
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <Grid Name="SynthPanelContainer" SizeChanged="SynthPanelContainer_SizeChanged">
-                        <Canvas Name="SynthPanelArea" Background="Gray" KeyDown="SynthPanelArea_KeyDown" Height="3400" Width="3400"></Canvas>
+                        <Canvas Name="SynthPanelArea" Background="Gray" Height="400" Width="400"></Canvas>
                     </Grid>
                 </ScrollViewer>
             </Grid>
-
-
-
-
-
-
         </Grid>
-        <!--
-        <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem>
-                <TextBlock>Pippo</TextBlock>
-            </StatusBarItem>
-        </StatusBar>
-        -->
     </DockPanel>
 </Window>

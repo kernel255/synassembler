@@ -59,16 +59,14 @@ namespace SynAssember
 			CommandBindings.Add(saveAsBind);
 		}
 
-		EUShelf m_Shelf;
-
 		Options options;
 
 		Facilities facilities;
 
 		void CleanUpLayout()
 		{
-			LeftPanel.Children.Clear();
-			RightPanel.Children.Clear();
+			m_ShelvesPanel.CleanUp();
+			m_AlgorithmPanel.CleanUp();
 		}
 
 		AlgorithmPanel m_AlgorithmPanel;
@@ -76,11 +74,9 @@ namespace SynAssember
 
 		void InitLayout()
 		{
-			m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
-			m_Shelf.addToPanel(LeftPanel);
-			m_AlgorithmPanel = new AlgorithmPanel(RightPanel, m_Shelf);
-			currentAlgorithm = new AlgorithmGraph(RightPanel);
 			m_ShelvesPanel = new ShelvesPanel(LeftPanel);
+			m_AlgorithmPanel = new AlgorithmPanel(RightPanel, m_ShelvesPanel.Shelf);
+			currentAlgorithm = new AlgorithmGraph(RightPanel);
 		}
 
 		public MainWindow()
@@ -191,7 +187,6 @@ namespace SynAssember
 				SynthPanelManager.getDefault().CleanUp();
                 XmlTextReader reader = new XmlTextReader(dlg.FileName);
 				currentAlgorithm = new AlgorithmGraph(RightPanel);
-				//facilities.setCurrentChangeAlgorithm(m_CurrentAlgorithGraph);
                 Int32 hWnd = (Int32)getWindowHwnd();
 				AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
                 try {
@@ -225,7 +220,6 @@ namespace SynAssember
 				if (filename != null && filename.Length > 0)
 				{
 					XmlTextReader reader = new XmlTextReader(filename);
-					//currentAlgorithm = new AlgorithmGraph(RightPanel);
 					Int32 hWnd = (Int32)getWindowHwnd();
 					AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
 					try
@@ -272,41 +266,8 @@ namespace SynAssember
             return true;
         }
 
-        private Point m_DragStartPoint;
-        private bool m_IsDragging = false;
-
-
-        private void LeftPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            m_DragStartPoint = e.GetPosition(null);
-        }
-
-        private void LeftPanel_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed && !m_IsDragging)
-            {
-                Point position = e.GetPosition(null);
-                if (Math.Abs(position.X - m_DragStartPoint.X) > SystemParameters.MinimumHorizontalDragDistance ||
-                                    Math.Abs(position.Y - m_DragStartPoint.Y) > SystemParameters.MinimumVerticalDragDistance)
-                {
-                    StartDrag(e);
-                }
-            }
-        }
-
-        private void StartDrag(MouseEventArgs e)
-        {
-            m_IsDragging = true;
-            if (e.Source is Rectangle)
-            {
-                Rectangle rect = (Rectangle) e.Source;
-                String name = rect.Name;
-                DataObject data = new DataObject(System.Windows.DataFormats.Text.ToString(), name);
-                DragDropEffects de = DragDrop.DoDragDrop(this.LeftPanel, data, DragDropEffects.Move);
-            }
-            m_IsDragging = false;
-        }
-
+        private void LeftPanel_PreviewMouseDown(object sender, MouseButtonEventArgs e) { m_ShelvesPanel.PreviewButtonDown(e); }
+        private void LeftPanel_PreviewMouseMove(object sender, MouseEventArgs e) { m_ShelvesPanel.PreviewMouseMove(sender, e); }
 
         private IntPtr windowHwnd;
         private IntPtr getWindowHwnd()
@@ -347,34 +308,11 @@ namespace SynAssember
 				return m_CurrentAlgorithGraph;
 			}
 		}
-        //private Polyline m_CurrentConnection;
 
-        private void activateConnection(bool enable)
-        {
-			m_AlgorithmPanel.activateConnection(enable);
-        }
-
-        private void RightPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-			m_AlgorithmPanel.MouseDown(sender, e);
-        }
-
-
-        private class PointReader
-        {
-
-        }
-
-        private void RightPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-			m_AlgorithmPanel.MouseLeftButtonUp(sender, e);
-        }
-
-
-        private void RightPanel_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-			m_AlgorithmPanel.PreviewMouseMove(sender, e);
-        }
+        private void activateConnection(bool enable) { m_AlgorithmPanel.activateConnection(enable); }
+        private void RightPanel_MouseDown(object sender, MouseButtonEventArgs e) { m_AlgorithmPanel.MouseDown(sender, e); }
+        private void RightPanel_MouseLeftButtonUp(object sender, MouseButtonEventArgs e) { m_AlgorithmPanel.MouseLeftButtonUp(sender, e); }
+        private void RightPanel_PreviewMouseMove(object sender, MouseEventArgs e) {	m_AlgorithmPanel.PreviewMouseMove(sender, e); }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -423,9 +361,6 @@ namespace SynAssember
 
         private void StoreSettings()
         {
-            //Properties.Settings.Default.LoadAtStartUp = LoadAtStratupLastUseedSynth;
-            //Properties.Settings.Default.LoadAtStartUpPath = loadAtStartUpPath;
-
 			Properties.Settings.Default.Save();
         }
 
@@ -449,14 +384,6 @@ namespace SynAssember
 
 			SynthPanelArea.Width = SynthPanelContainer.Width;
 			SynthPanelArea.Height = SynthPanelContainer.Height;
-		}
-
-		private void DockPanel_KeyDown(object sender, KeyEventArgs e)
-		{
-		}
-
-		private void SynthPanelArea_KeyDown(object sender, KeyEventArgs e)
-		{
 		}
 
 		private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -525,15 +452,9 @@ namespace SynAssember
 
 		const String WINDOW_TITLE = "SynAssembler - ";
 
-		private void SynthPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)
-		{
-			m_AlgorithmPanel.SizeChanged(sender, e);
-		}
+		private void SynthPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)	{ SynthPanelManager.getDefault().SizeChanged(sender, e); }
+		private void LeftPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e) { m_ShelvesPanel.SizeChanged(sender, e);	}
+		private void RightPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)	{ m_AlgorithmPanel.SizeChanged(sender, e); }
 
-		private void LeftPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)
-		{
-			m_ShelvesPanel.SizeChanged(sender, e);
-		}
 	}
 }
-

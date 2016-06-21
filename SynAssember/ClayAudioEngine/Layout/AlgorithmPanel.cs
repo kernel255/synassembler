@@ -195,8 +195,21 @@ namespace ClayAudioEngine.Layout
 
 		public void SizeChanged(object sender, SizeChangedEventArgs e)
 		{
-			try { m_CanvasPanel.Width = SynthPanelManager.getDefault().GetWidth(); } catch { }
-			try { m_CanvasPanel.Height = SynthPanelManager.getDefault().GetHeight(); } catch { }
+			try {
+				m_CanvasPanel.Width = SynthPanelManager.getDefault().GetWidth();
+			} catch {
+				int i = 0;
+			}
+			try {
+				m_CanvasPanel.Height = SynthPanelManager.getDefault().GetHeight();
+			} catch {
+				int i = 0;
+			}
+		}
+
+		public void CleanUp()
+		{
+			m_CanvasPanel.Children.Clear();
 		}
 
 		Canvas m_CanvasPanel;
