@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
 using ClayAudioEngine;
 
 namespace EUShelves
@@ -46,7 +47,16 @@ namespace EUShelves
             m_TopLedge.Fill = Brushes.Green;
             Canvas.SetTop(m_TopLedge, 0);
             Canvas.SetLeft(m_TopLedge, m_LateralWidth);
+
+			size = new Size(width + m_LateralWidth * 2, m_Factories.Count * (room + EULedge.Height) + EULedge.Height);
         }
+
+		Size size;
+
+		internal Size GetSize()
+		{
+			return size;
+		}
 
         public void addToPanel(Canvas panel)
         {

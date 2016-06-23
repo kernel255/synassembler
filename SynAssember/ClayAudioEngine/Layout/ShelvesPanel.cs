@@ -33,12 +33,12 @@ namespace ClayAudioEngine.Layout
 
 		double GetWidth()
 		{
-			return 400;
+			return m_Shelf.GetSize().Width;
 		}
 
 		double GetHeight()
 		{
-			return 400;
+			return m_Shelf.GetSize().Height;
 		}
 
 		Canvas canvas;
