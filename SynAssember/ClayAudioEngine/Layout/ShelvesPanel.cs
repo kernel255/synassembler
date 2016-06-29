@@ -16,7 +16,7 @@ namespace ClayAudioEngine.Layout
 		public ShelvesPanel(Canvas canvas)
 		{
 			this.canvas = canvas;
-			m_Shelf = new EUShelf(10, 800, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
+			m_Shelf = new EUShelf(6, 1000, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
 			m_Shelf.addToPanel(canvas);
 		}
 

@@ -56,7 +56,7 @@ namespace EUShelves
 
         private double m_Width;
         // This is the height of the ledge itself
-        private static double m_Height = 20;
+        private static double m_Height = 10;
         // This is the space available over the ledge
         private double m_RoomHeight;
         Rectangle m_BaseRect;
@@ -80,7 +80,7 @@ namespace EUShelves
         /**
          * Build a EULedge, one EULedge represent a factory
          */
-        public EULedge(double width, double room, double x, double y, ElaborationUnitFactory factory)
+        public EULedge(double width, double room, double x, double y, ElaborationUnitFactory factory, Brush brush)
         {
             m_X = x;
             m_Y = y;
@@ -131,7 +131,7 @@ namespace EUShelves
             m_BaseRect = new Rectangle();
             m_BaseRect.Width = m_Width;
             m_BaseRect.Height = m_Height;
-            m_BaseRect.Fill = Brushes.Green;
+            m_BaseRect.Fill = brush;
             m_RoomHeight = room;
             Canvas.SetTop(m_BaseRect, y);
             Canvas.SetLeft(m_BaseRect, x);
