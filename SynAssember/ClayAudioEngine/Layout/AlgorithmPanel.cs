@@ -14,12 +14,17 @@ namespace ClayAudioEngine.Layout
 {
 	public class AlgorithmPanel
 	{
-		public AlgorithmPanel(Canvas canvas, EUShelf shelf)
+		EUShelf m_LocalShelf;
+
+		public AlgorithmPanel(Canvas canvas, EUShelf storeShelf)
 		{
 			m_CanvasPanel = canvas;
 			m_CurrentConnection = new EUConnection(new Point(0, 0), new Point(0, 0), canvas);
 			m_CurrentConnection.place();
-			m_Shelf = shelf;
+			m_StoreShelf = storeShelf;
+
+			m_LocalShelf = new EUShelf(6, 1000, 200, 0, 0, 4);
+			m_LocalShelf.addToPanel(m_CanvasPanel);
 		}
 
 		private AlgorithmGraph m_currentAlgorithmGraph;
@@ -109,7 +114,7 @@ namespace ClayAudioEngine.Layout
 						{
 							String physInstId = ElaborationUnitGlyph.getPhysicalInstaceByCombined(draggedEUCombinedStr);
 							physicalInstanceId = Int32.Parse(physInstId);
-							m_Shelf.removePhysicalEUInstance(factoryIndex, euIndex, physicalInstanceId);
+							m_StoreShelf.removePhysicalEUInstance(factoryIndex, euIndex, physicalInstanceId);
 						}
 					}
 
@@ -220,7 +225,7 @@ namespace ClayAudioEngine.Layout
 		private Point m_ConnectionStartPoint;
 		private static bool ioConnectionFound = false;
 		private static Shape m_CurrentIOShape;
-		private EUShelf m_Shelf;
+		private EUShelf m_StoreShelf;
 
 		const double C_DefaultWidth = 800;
 		const double C_DefaultHeight = 500;

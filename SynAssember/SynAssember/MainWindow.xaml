@@ -45,7 +45,7 @@
                 <Grid Grid.Column="0">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid Name="LeftPanelContainer" SizeChanged="LeftPanelContainer_SizeChanged">
-                            <Canvas Name="LeftPanel" Background="#FF79E69C" PreviewMouseDown="LeftPanel_PreviewMouseDown" PreviewMouseMove="LeftPanel_PreviewMouseMove" Grid.ColumnSpan="2" />
+                            <Canvas Name="LeftPanel" Background="#FF2A97A8" PreviewMouseDown="LeftPanel_PreviewMouseDown" PreviewMouseMove="LeftPanel_PreviewMouseMove" Grid.ColumnSpan="2" />
                         </Grid>
                     </ScrollViewer>
                 </Grid>
@@ -55,7 +55,7 @@
                 <Grid Grid.Column="2">
                     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                         <Grid Name="RightPanelContainer" SizeChanged="RightPanelContainer_SizeChanged">
-                            <Canvas Name="RightPanel" Background="#FFF1A487" AllowDrop="True" Drop="RightPanel_Drop" MouseDown="RightPanel_MouseDown" MouseLeftButtonUp="RightPanel_MouseLeftButtonUp" PreviewMouseMove="RightPanel_PreviewMouseMove">
+                            <Canvas Name="RightPanel" Background="#FF36168B" AllowDrop="True" Drop="RightPanel_Drop" MouseDown="RightPanel_MouseDown" MouseLeftButtonUp="RightPanel_MouseLeftButtonUp" PreviewMouseMove="RightPanel_PreviewMouseMove">
                             </Canvas>
                         </Grid>
                     </ScrollViewer>

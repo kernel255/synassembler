@@ -53,14 +53,42 @@ namespace ClayAudioEngine
             return physInstLabel;
         }
 
+		const int NUM_SHADED_RECT = 10;
+
+		void drawShadedRects(double x, double y, ElaborationUnitDescription euDescr)
+		{
+			for(int i=0;i<NUM_SHADED_RECT;i++)
+			{
+				Rectangle rect = new Rectangle();
+				rect.Width = EU_WIDTH;
+				rect.Height = EU_HEIGHT;
+				rect.RadiusX = 10;
+				rect.RadiusY = 10;
+				Canvas.SetTop(rect, y - i * 5);
+				Canvas.SetLeft(rect, x);
+				Color color = new Color();
+				color.R = 0;
+				color.G = 60;
+				byte b = (byte)(255 - i * 20);
+				color.B = 180;
+				color.A = b;
+				SolidColorBrush brush = new SolidColorBrush(color);
+				rect.Fill = brush;
+				this.addShape(rect);
+
+			}
+		}
+
         // Standard version for Virtual ElaborationUnits
-        public ElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory)
+        public ElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, bool drawShades)
         {
             m_EUDescr = euDescr;
             m_EUFact = factory;
 
             string name = getCombinedFactoryEUName(factory, euDescr);
             m_MainRect = createMainRect(x, y, name);
+			if(drawShades)
+				drawShadedRects(x, y, euDescr);
             this.addShape(m_MainRect);
 
 			// Label creation
@@ -96,8 +124,8 @@ namespace ClayAudioEngine
             }
         }
         // Special version for PhysicalElaborationUnit
-        public ElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, String physicalInstanceName, int physicalInstanceIndex)
-            : this(x, y, euDescr, factory)
+        public ElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, String physicalInstanceName, int physicalInstanceIndex, bool drawShades)
+            : this(x, y, euDescr, factory, drawShades)
         {
             m_PhysicalInstanceName = physicalInstanceName;
             m_PhysicalInstanceIndex = physicalInstanceIndex;

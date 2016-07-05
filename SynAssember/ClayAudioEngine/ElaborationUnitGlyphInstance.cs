@@ -63,13 +63,13 @@ namespace ClayAudioEngine
 			}
 		}
 
-		public ElaborationUnitGlyphInstance(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, int audioEngineId) : base(x,y,euDescr,factory)
+		public ElaborationUnitGlyphInstance(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, int audioEngineId, bool drawShades) : base(x,y,euDescr,factory, drawShades)
 		{
 			init(x, y, audioEngineId);
 		}
 
-		public ElaborationUnitGlyphInstance(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, int audioEngineId, string physInstName, int physInstId)
-			: base(x, y, euDescr, factory, physInstName, physInstId)
+		public ElaborationUnitGlyphInstance(double x, double y, ElaborationUnitDescription euDescr, ElaborationUnitFactory factory, int audioEngineId, string physInstName, int physInstId, bool drawShades)
+			: base(x, y, euDescr, factory, physInstName, physInstId, drawShades)
 		{
 			init(x, y, audioEngineId);
 		}

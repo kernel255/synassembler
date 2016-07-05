@@ -18,7 +18,41 @@ namespace EUShelves
         private Rectangle m_RightRect = new Rectangle();
         private Rectangle m_TopLedge = new Rectangle();
         private IList<ElaborationUnitFactory> m_Factories;
-        public EUShelf(double ledgeHeight, double width, double room, double x, double y, IList<ElaborationUnitFactory> factories)
+
+		public EUShelf(double ledgeHeight, double width, double room, double x, double y, int numEmptyLedges)
+		{
+			m_Ledges = new List<EULedge>();
+			double pos = room + EULedge.Height;
+			for (int i = 0; i < numEmptyLedges; i++)
+			{
+				EULedge ledge = new EULedge(width, room, x + m_LateralWidth, pos, GetShelfColor());
+				pos += room + EULedge.Height;
+				m_Ledges.Add(ledge);
+			}
+
+			m_LeftRect.Width = m_LateralWidth;
+			m_LeftRect.Height = m_Ledges[0].TotalHeight * numEmptyLedges + EULedge.Height;
+			m_LeftRect.Fill = GetShelfColor();
+			Canvas.SetTop(m_LeftRect, 0);
+			Canvas.SetLeft(m_LeftRect, 0);
+
+			m_RightRect.Width = m_LateralWidth;
+			m_RightRect.Height = m_Ledges[0].TotalHeight * numEmptyLedges + EULedge.Height;
+			m_RightRect.Fill = GetShelfColor();
+			Canvas.SetTop(m_RightRect, 0);
+			Canvas.SetLeft(m_RightRect, m_LateralWidth + width);
+
+			m_TopLedge.Width = width;
+			m_TopLedge.Height = EULedge.Height;
+			m_TopLedge.Fill = GetShelfColor();
+			Canvas.SetTop(m_TopLedge, 0);
+			Canvas.SetLeft(m_TopLedge, m_LateralWidth);
+
+			size = new Size(width + m_LateralWidth * 2, numEmptyLedges * (room + EULedge.Height) + EULedge.Height);
+		}
+
+
+		public EUShelf(double ledgeHeight, double width, double room, double x, double y, IList<ElaborationUnitFactory> factories)
         {
             m_Factories = factories;
             m_Ledges = new List<EULedge>();

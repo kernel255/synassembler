@@ -52,9 +52,9 @@ namespace ClayAudioEngine
             }
             ElaborationUnitGlyphInstance euInst;
             if (euDesc.Physical)
-                euInst = new ElaborationUnitGlyphInstance(x, y, euDesc, euFactory, id, physInstName, physicalInstanceId);
+                euInst = new ElaborationUnitGlyphInstance(x, y, euDesc, euFactory, id, physInstName, physicalInstanceId, false);
             else
-                euInst = new ElaborationUnitGlyphInstance(x, y, euDesc, euFactory, id);
+                euInst = new ElaborationUnitGlyphInstance(x, y, euDesc, euFactory, id, false);
 
             return euInst;
         }
@@ -74,7 +74,6 @@ namespace ClayAudioEngine
             }
             m_EUGlyphs.Add(euInst);
             euInst.addToCanvas(m_Canvas);
-			//euInst.addToPanel(m_Canvas);
 
 			//AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euDesc.Id);
 			AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);

@@ -77,15 +77,31 @@ namespace EUShelves
 
         private List<ElaborationUnitGlyph> euGlyphs = new List<ElaborationUnitGlyph>();
 
-        /**
+		public EULedge(double width, double room, double x, double y, Brush brush)
+		{
+			m_X = x;
+			m_Y = y;
+
+			m_Width = width;
+			m_BaseRect = new Rectangle();
+			m_BaseRect.Width = m_Width;
+			m_BaseRect.Height = m_Height;
+			m_BaseRect.Fill = brush;
+			m_RoomHeight = room;
+			Canvas.SetTop(m_BaseRect, y);
+			Canvas.SetLeft(m_BaseRect, x);
+		}
+
+
+		/**
          * Build a EULedge, one EULedge represent a factory
          */
-        public EULedge(double width, double room, double x, double y, ElaborationUnitFactory factory, Brush brush)
-        {
-            m_X = x;
-            m_Y = y;
-            int numEU = factory.getEUList().Count;
+		public EULedge(double width, double room, double x, double y, ElaborationUnitFactory factory, Brush brush) : this(width, room, x, y, brush)
+		{
+
+			int numEU = factory.getEUList().Count;
             m_Factory = factory;
+
             // Fill the Ledge with the available EU
             for (int i = 0; i < numEU; i++)
             {
@@ -100,7 +116,7 @@ namespace EUShelves
                     {
                         
                         //euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), m_Y - ElaborationUnitGlyph.Height, euDescr, factory);
-                        euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(0), euDescr, factory);
+                        euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(0), euDescr, factory, false);
                         euGlyph.setUnavailable();
                         euGlyphs.Add(euGlyph);
                     }
@@ -111,7 +127,7 @@ namespace EUShelves
                         {
                             ElaborationUnitPhysicalInstance inst = insts.ElementAt(physicalInstanceIndex);
                             string instName = inst.m_Name;
-                            euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(physicalInstanceIndex), euDescr, factory, instName, physicalInstanceIndex);
+                            euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(physicalInstanceIndex), euDescr, factory, instName, physicalInstanceIndex, false);
                             localHeight += ElaborationUnitGlyph.Height;
                             euGlyphs.Add(euGlyph);
                             stack.push(euGlyph);
@@ -120,21 +136,13 @@ namespace EUShelves
                 }
                 else
                 {
-                    euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(0), euDescr, factory);
+                    euGlyph = new ElaborationUnitGlyph(getXByEUIndex(i), getYByPhysIndex(0), euDescr, factory, true);
                     euGlyphs.Add(euGlyph);
                 }
                 
                 //pos += SPACE_BETWEEN_EU + ElaborationUnitGlyph.Width;
             }
 
-            m_Width = width;
-            m_BaseRect = new Rectangle();
-            m_BaseRect.Width = m_Width;
-            m_BaseRect.Height = m_Height;
-            m_BaseRect.Fill = brush;
-            m_RoomHeight = room;
-            Canvas.SetTop(m_BaseRect, y);
-            Canvas.SetLeft(m_BaseRect, x);
         }
 
         private double getXByEUIndex(int index)
@@ -150,10 +158,13 @@ namespace EUShelves
         public void addToPanel(Canvas panel)
         {
             m_Panel = panel;
-            int numEU = m_Factory.getEUList().Count;
-            for (int i = 0; i < numEU; i++)
-                //euGlyphs[i].addToPanel(m_Panel);
-                euGlyphs[i].addToCanvas(m_Panel);
+			if (m_Factory != null)
+			{
+				int numEU = m_Factory.getEUList().Count;
+				for (int i = 0; i < numEU; i++)
+					//euGlyphs[i].addToPanel(m_Panel);
+					euGlyphs[i].addToCanvas(m_Panel);
+			}
             m_Panel.Children.Add(m_BaseRect);
         }
 
