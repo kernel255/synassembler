@@ -197,5 +197,32 @@ namespace EUShelves
                 }
             }
         }
+
+		List<Rectangle> m_RectPlaceholders;
+		const int PLACEHOLDER_SPACE = 10;
+
+		int GetNumHorzPlaceholders()
+		{
+			return (int) (m_Width / (ElaborationUnitGlyph.Width + PLACEHOLDER_SPACE));
+		}
+
+		int GetNumVertPlaceholders()
+		{
+			return (int)(m_Height / (ElaborationUnitGlyph.Height + PLACEHOLDER_SPACE));
+		}
+
+		void DrawEUPlaceholders()
+		{
+			m_RectPlaceholders = new List<Rectangle>();
+			int numHorzPlaceholders = GetNumHorzPlaceholders();
+			int numVertPlaceholders = GetNumVertPlaceholders();
+			for(int i=0;i<numHorzPlaceholders;i++)
+			{
+				for(int j=0;j<numVertPlaceholders;j++)
+				{
+
+				}
+			}
+		}
     }
 }
