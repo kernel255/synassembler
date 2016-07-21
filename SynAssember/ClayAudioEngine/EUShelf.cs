@@ -51,7 +51,6 @@ namespace EUShelves
 			size = new Size(width + m_LateralWidth * 2, numEmptyLedges * (room + EULedge.Height) + EULedge.Height);
 		}
 
-
 		public EUShelf(double ledgeHeight, double width, double room, double x, double y, IList<ElaborationUnitFactory> factories)
         {
             m_Factories = factories;
@@ -121,5 +120,13 @@ namespace EUShelves
             EULedge ledge = m_Ledges[factoryIndex];
             ledge.removePhysicalEUGlyph(euIndex, physicalEUIndex);
         }
+
+		public void DrawLedgePlaceHolders()
+		{
+			foreach(EULedge ledge in m_Ledges)
+			{
+				ledge.DrawEUPlaceholders();
+			}
+		}
     }
 }

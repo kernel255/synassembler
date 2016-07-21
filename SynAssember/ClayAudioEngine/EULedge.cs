@@ -208,20 +208,31 @@ namespace EUShelves
 
 		int GetNumVertPlaceholders()
 		{
-			return (int)(m_Height / (ElaborationUnitGlyph.Height + PLACEHOLDER_SPACE));
+			return (int)(m_RoomHeight / (ElaborationUnitGlyph.Height + PLACEHOLDER_SPACE));
 		}
 
-		void DrawEUPlaceholders()
+		public void DrawEUPlaceholders()
 		{
 			m_RectPlaceholders = new List<Rectangle>();
 			int numHorzPlaceholders = GetNumHorzPlaceholders();
 			int numVertPlaceholders = GetNumVertPlaceholders();
+			double xPos = PLACEHOLDER_SPACE, yPos = PLACEHOLDER_SPACE;
 			for(int i=0;i<numHorzPlaceholders;i++)
 			{
 				for(int j=0;j<numVertPlaceholders;j++)
 				{
-
+					Rectangle rect = new Rectangle();
+					rect.Fill = Brushes.Black;
+					rect.Width = ElaborationUnitGlyph.Width;
+					rect.Height = ElaborationUnitGlyph.Height;
+					Canvas.SetLeft(rect, xPos);
+					Canvas.SetTop(rect, yPos);
+					m_Panel.Children.Add(rect);
+					m_RectPlaceholders.Add(rect);
+					yPos += ElaborationUnitGlyph.Height;
 				}
+				xPos += PLACEHOLDER_SPACE + ElaborationUnitGlyph.Width;
+				yPos = PLACEHOLDER_SPACE;
 			}
 		}
     }

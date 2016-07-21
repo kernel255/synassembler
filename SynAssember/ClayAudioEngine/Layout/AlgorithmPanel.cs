@@ -25,6 +25,7 @@ namespace ClayAudioEngine.Layout
 
 			m_LocalShelf = new EUShelf(6, 1000, 200, 0, 0, 4);
 			m_LocalShelf.addToPanel(m_CanvasPanel);
+			m_LocalShelf.DrawLedgePlaceHolders();
 		}
 
 		private AlgorithmGraph m_currentAlgorithmGraph;
