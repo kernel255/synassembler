@@ -59,7 +59,7 @@ namespace ClayAudioEngine
             return euInst;
         }
 
-        public void addElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDesc, ElaborationUnitFactory euFactory, int physicalInstanceId = -1)
+        public ElaborationUnitGlyphInstance addElaborationUnitGlyph(double x, double y, ElaborationUnitDescription euDesc, ElaborationUnitFactory euFactory, int physicalInstanceId = -1)
         {
             ElaborationUnitGlyphInstance euInst;
             String euPhysInstName = "";
@@ -75,16 +75,18 @@ namespace ClayAudioEngine
             m_EUGlyphs.Add(euInst);
             euInst.addToCanvas(m_Canvas);
 
+			
+
 			//AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euDesc.Id);
 			AudioEngineWrapper.getDefault().addElaborationUnit(algoId, euInst.AudioEngineId);
 
-			// Create synth panel
+			// Create synth panel and add to main panel
 			ISynthPanel synPanel = AudioEngineWrapper.getDefault().createNewPanel(euFactory.getName(), euDesc.Name, euInst.AudioEngineId);
-			
             euInst.m_SynthPanel = synPanel;
             SynthPanelManager.getDefault().AddSynthPanel(synPanel, true);
 
             m_Changed = true;
+			return euInst;
         }
 
         public void addConnection(EUConnection euConn)

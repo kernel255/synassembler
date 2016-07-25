@@ -6,6 +6,7 @@ using System.Windows.Shapes;
 using System.Windows.Controls;
 using System.Windows.Media;
 using ClayAudioEngine;
+using System.Windows;
 
 namespace EUShelves
 {
@@ -210,6 +211,57 @@ namespace EUShelves
 		{
 			return (int)(m_RoomHeight / (ElaborationUnitGlyph.Height + PLACEHOLDER_SPACE));
 		}
+
+		double GetDistance(Point p, double x, double y)
+		{
+			return Math.Sqrt(Math.Pow((p.X - x), 2) + Math.Pow(p.Y - y, 2));
+		}
+
+		static double GetDistance(Point pa, Point pb)
+		{
+			return Math.Sqrt(Math.Pow(pa.X - pb.X, 2) + Math.Pow(pa.Y - pb.Y, 2));
+		}
+
+		static Point GetRectangleCenter(Rectangle rect)
+		{
+			double x = Canvas.GetLeft(rect) + rect.ActualWidth / 2;
+			double y = Canvas.GetTop(rect) + rect.ActualHeight / 2;
+
+			return new Point(x, y);
+		}
+
+		internal static Rectangle GetNearestRect(Rectangle ra, Rectangle rb, Point p)
+		{
+			double da, db;
+			da = GetDistance(GetRectangleCenter(ra), p);
+			db = GetDistance(GetRectangleCenter(rb), p);
+			if (da > db)
+				return rb;
+			else
+				return ra;
+		}
+
+
+		Rectangle lastRect = null;
+
+		internal Rectangle GetNearesRect(Point p)
+		{
+			Rectangle result = null;
+			double dist = Double.MaxValue;
+			foreach (Rectangle rect in m_RectPlaceholders)
+			{
+				double x = Canvas.GetLeft(rect) + rect.ActualWidth / 2;
+				double y = Canvas.GetTop(rect) + rect.ActualHeight / 2;
+				double d = GetDistance(p, x, y);
+				if (d < dist)
+				{
+					dist = d;
+					result = rect;
+				}
+			}
+			return result;
+		}
+
 
 		public void DrawEUPlaceholders()
 		{

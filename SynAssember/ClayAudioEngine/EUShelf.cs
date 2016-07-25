@@ -128,5 +128,30 @@ namespace EUShelves
 				ledge.DrawEUPlaceholders();
 			}
 		}
-    }
+
+		internal Rectangle GetNearestRect(Point p)
+		{
+			List<Rectangle> rects = new List<Rectangle>();
+			foreach (EULedge ledge in m_Ledges)
+			{
+				Rectangle rect = ledge.GetNearesRect(p);
+				if (rect != null)
+					rects.Add(rect);
+			}
+			if (rects.Count == 0)
+				return null;
+			else
+			{
+				Rectangle nearest = rects[0];
+				for(int i=1;i<rects.Count;i++)
+				foreach(Rectangle rect in rects)
+				{
+					nearest = EULedge.GetNearestRect(nearest, rect, p);
+				}
+				return nearest;
+			}
+		}
+
+
+	}
 }
