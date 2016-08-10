@@ -123,12 +123,15 @@ namespace ClayAudioEngine.Layout
 					{
 						
 						AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
-						ElaborationUnitGlyphInstance euInst = m_currentAlgorithmGraph.addElaborationUnitGlyph(p.X, p.Y, euDescr, fact, physicalInstanceId);
+
 
 						Rectangle rect = m_LocalShelf.GetNearestRect(p);
-						if(rect!=null)
+						if (rect != null)
 						{
-
+							double x = Canvas.GetLeft(rect);
+							double y = Canvas.GetTop(rect);
+							ElaborationUnitGlyphInstance euInst = m_currentAlgorithmGraph.addElaborationUnitGlyph(x, y, euDescr, fact, physicalInstanceId);
+							rect.Fill = Brushes.Red;
 						}
 
 

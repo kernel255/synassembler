@@ -175,13 +175,19 @@ namespace ClayAudioEngine
         public void moveX(double x)
         {
             Canvas.SetLeft(m_MainRect, x);
-            Canvas.SetLeft(m_PhysInstLabel, getXLabelByMainAchor(x));
+			if(m_PhysInstLabel!=null)
+			{
+				Canvas.SetLeft(m_PhysInstLabel, getXLabelByMainAchor(x));
+			}
         }
 
         public void moveY(double y)
         {
             Canvas.SetTop(m_MainRect, y);
-            Canvas.SetLeft(m_PhysInstLabel, getYLabelByMainAchor(y));
+			if (m_PhysInstLabel != null)
+			{
+				Canvas.SetLeft(m_PhysInstLabel, getYLabelByMainAchor(y));
+			}
         }
 
         public void moveXBy(double step)
