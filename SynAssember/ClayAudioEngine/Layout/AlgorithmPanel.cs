@@ -121,17 +121,13 @@ namespace ClayAudioEngine.Layout
 
 					try
 					{
-						
 						AudioEngineWrapper.getDefault()._setHwnd((int)hWnd);
-
-
 						Rectangle rect = m_LocalShelf.GetNearestRect(p);
 						if (rect != null)
 						{
 							double x = Canvas.GetLeft(rect);
 							double y = Canvas.GetTop(rect);
 							ElaborationUnitGlyphInstance euInst = m_currentAlgorithmGraph.addElaborationUnitGlyph(x, y, euDescr, fact, physicalInstanceId);
-							rect.Fill = Brushes.Red;
 						}
 
 
@@ -200,9 +196,10 @@ namespace ClayAudioEngine.Layout
 							conn.EndPoint = euDst.GetInputCenter(portIndex);
 							m_currentAlgorithmGraph.addConnection(conn);
 							resetIOSearch();
-							moveableInOut.Hide();
+							
 						}
 					}
+					moveableInOut.Hide();
 				}
 			}
 			m_SourceEUStringDescr = null;
@@ -215,12 +212,10 @@ namespace ClayAudioEngine.Layout
 			try {
 				m_CanvasPanel.Width = SynthPanelManager.getDefault().GetWidth();
 			} catch {
-				int i = 0;
 			}
 			try {
 				m_CanvasPanel.Height = SynthPanelManager.getDefault().GetHeight();
 			} catch {
-				int i = 0;
 			}
 		}
 
