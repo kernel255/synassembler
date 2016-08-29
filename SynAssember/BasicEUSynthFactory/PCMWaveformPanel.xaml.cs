@@ -23,5 +23,10 @@ namespace BasicEUSynthFactory
         {
             InitializeComponent();
         }
-    }
+
+		private void BrowseButton_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }

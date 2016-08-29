@@ -4,8 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+             d:DesignHeight="80" d:DesignWidth="280">
+    <Canvas>
+        <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="280" Height="80"/>
+        <Button Name="BrowseButton" Canvas.Top="10" Canvas.Left="5" Width="120" Height="30" Click="BrowseButton_Click" >Browse...</Button>
+        <TextBox Name="WaveNameTextBox" Canvas.Top="50" Canvas.Left="5" Width="120"></TextBox>
+        <Rectangle Name="WavePlace" Canvas.Top="10" Canvas.Left="130" Width="140" Height="62" Fill="Black"></Rectangle>
+    </Canvas>
 </UserControl>

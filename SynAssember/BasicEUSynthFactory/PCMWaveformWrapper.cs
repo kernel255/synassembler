@@ -23,7 +23,7 @@ namespace BasicEUSynthFactory
 
         public override Rectangle getRect()
         {
-            return new Rectangle(0, 0, 300, 300);
+            return new Rectangle(0, 0, 280, 80);
         }
     }
 }
