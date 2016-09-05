@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -26,6 +28,16 @@ namespace BasicEUSynthFactory
 
 		private void BrowseButton_Click(object sender, RoutedEventArgs e)
 		{
+			OpenFileDialog dlg = new OpenFileDialog();
+
+			dlg.CheckFileExists = true;
+			dlg.Multiselect = false;
+			dlg.Title = "Open a waveform file";
+			dlg.ShowDialog();
+			if(dlg.FileName.Length!=0)
+			{
+				
+			}
 
 		}
 	}
