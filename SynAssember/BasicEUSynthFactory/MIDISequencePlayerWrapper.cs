@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using SynthPanels;
 using GeneralUtils;
+using System.Drawing;
 
 namespace BasicEUSynthFactory
 {
@@ -14,6 +15,18 @@ namespace BasicEUSynthFactory
         {
 
         }
-        
-    }
+
+		public override System.Windows.Controls.UserControl getUserControlPanel()
+		{
+			return new MIDISequencePanel();
+		}
+
+
+		public override Rectangle getRect()
+		{
+			return new Rectangle(0, 0, 280, 80);
+		}
+
+
+	}
 }

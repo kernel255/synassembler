@@ -2,13 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="280">
+             d:DesignHeight="160" d:DesignWidth="280">
     <Canvas>
-        <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="280" Height="80"/>
+        <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="280" Height="160"/>
         <Button Name="BrowseButton" Canvas.Top="10" Canvas.Left="5" Width="120" Height="30" Click="BrowseButton_Click" >Browse...</Button>
         <TextBox Name="WaveNameTextBox" Canvas.Top="50" Canvas.Left="5" Width="120"></TextBox>
-        <Rectangle Name="WavePlace" Canvas.Top="10" Canvas.Left="130" Width="140" Height="62" Fill="Black"></Rectangle>
+        <auc:BasicSlider Name="OutLevel" Label="Output" Canvas.Left="180" Canvas.Top="10"></auc:BasicSlider>
+        <Label Canvas.Top="90" Canvas.Left="10" Foreground="White">Pitch</Label>
+        <ComboBox Name="PitchComboBox" Canvas.Top="90" Canvas.Left="60" Width="60"></ComboBox>
+        <!--<Rectangle Name="WavePlace" Canvas.Top="10" Canvas.Left="130" Width="140" Height="62" Fill="Black"></Rectangle>-->
     </Canvas>
 </UserControl>
