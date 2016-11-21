@@ -6,7 +6,13 @@ SynAssember is an application to create software syntesizer written in C# for th
 
 ### How do I get set up? ###
 
-The project requires VisualStudio 2013
+Steps to setup the project:
+
+1. Install VisualStudio 2015 Community
+2. Clone SynAssembler repository
+3. Open from Visual Studio the solution: AudioEngine\AudioEngine.sln and compile it
+4. Open from Visual Studio the solution: SynAssembler\SynAssember.sln and compile it
+Now you can run SynAssembler from IDE
 
 ### Contribution guidelines ###
 
@@ -16,5 +22,4 @@ The project requires VisualStudio 2013
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
-* Other community or team contact
+* For any question contact kernel255@gmail.com
