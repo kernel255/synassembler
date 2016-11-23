@@ -8,11 +8,11 @@
              d:DesignHeight="160" d:DesignWidth="280">
     <Canvas>
         <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="280" Height="160"/>
-        <Button Name="BrowseButton" Canvas.Top="10" Canvas.Left="5" Width="120" Height="30" Click="BrowseButton_Click" >Browse...</Button>
-        <TextBox Name="WaveNameTextBox" Canvas.Top="50" Canvas.Left="5" Width="120"></TextBox>
-        <auc:BasicSlider Name="OutLevel" Label="Output" Canvas.Left="180" Canvas.Top="10"></auc:BasicSlider>
-        <Label Canvas.Top="90" Canvas.Left="10" Foreground="White">Pitch</Label>
-        <ComboBox Name="PitchComboBox" Canvas.Top="90" Canvas.Left="60" Width="60"></ComboBox>
+        <Label Canvas.Left="15" Canvas.Top="15" Foreground="White">Waveform</Label>
+        <ComboBox Name="WaveSelection" Canvas.Left="85" Canvas.Top="15" Width="40"></ComboBox>
+        <auc:BasicSlider Name="OutLevel" Label="Output" Canvas.Left="215" Canvas.Top="15"></auc:BasicSlider>
+        <Label Canvas.Left="15" Canvas.Top="50" Foreground="White">Pitch</Label>
+        <ComboBox Name="PitchComboBox" Canvas.Top="50" Canvas.Left="85" Width="60"></ComboBox>
         <!--<Rectangle Name="WavePlace" Canvas.Top="10" Canvas.Left="130" Width="140" Height="62" Fill="Black"></Rectangle>-->
     </Canvas>
 </UserControl>
