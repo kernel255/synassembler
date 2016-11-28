@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignHeight="345" d:DesignWidth="400" HorizontalAlignment="Center">
+             d:DesignWidth="450" d:DesignHeight="400" HorizontalAlignment="Center">
     <Canvas >
-        <Rectangle Name="BaseRect" Height="345" Width="400" Fill="#FF106CA0"></Rectangle>
+        <Rectangle Name="BaseRect" Width="450" Height="400" Fill="#FF106CA0"></Rectangle>
         
         <Rectangle Name="LevelBackground" Height="145" Width="120" Fill="#50a000a0" Canvas.Top="70" Canvas.Left="5"></Rectangle>
         <auc:BasicSlider Name="AttackLevel" Label="Attack" Canvas.Left="10" Canvas.Top="80"></auc:BasicSlider>

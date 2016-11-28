@@ -167,7 +167,7 @@ namespace BasicEUSynthFactory
 
 		internal System.Drawing.Rectangle getRectangle()
 		{
-			return new System.Drawing.Rectangle(0, 0, 280, 160);
+			return new System.Drawing.Rectangle(0, 0, 300, 200);
 		}
 
 		internal static int OUT_LEVEL_PROPERTY_INDEX = 0;

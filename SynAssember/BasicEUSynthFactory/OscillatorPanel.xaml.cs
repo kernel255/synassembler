@@ -130,7 +130,7 @@ namespace BasicEUSynthFactory
 
         internal System.Drawing.Rectangle getRectangle()
         {
-            return new System.Drawing.Rectangle(0, 0, 400, 345);
+            return new System.Drawing.Rectangle(0, 0, 450, 400);
         }
 
 		internal void readParametersFromEngine()
