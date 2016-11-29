@@ -17,7 +17,7 @@ namespace InputOutputSynthFactory
 
 		public System.Drawing.Rectangle getRectangle()
 		{
-			return new System.Drawing.Rectangle(0, 0, 300, 200);
+			return new System.Drawing.Rectangle(0, 0, 150, 100);
 		}
 
 

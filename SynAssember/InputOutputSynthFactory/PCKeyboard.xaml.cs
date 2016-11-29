@@ -34,7 +34,7 @@ namespace InputOutputSynthFactory
 
 		internal System.Drawing.Rectangle getRectangle()
 		{
-			return new System.Drawing.Rectangle(0, 0, 180, 220);
+			return new System.Drawing.Rectangle(0, 0, 150, 200);
 		}
 
 		void DrawKeyboard(int numKeys)

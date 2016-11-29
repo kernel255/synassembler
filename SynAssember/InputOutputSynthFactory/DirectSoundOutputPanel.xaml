@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignHeight="165" d:DesignWidth="80" Background="Red" HorizontalAlignment="Center">
-    <Canvas Background="Red" HorizontalAlignment="Center" MaxWidth="80" MinWidth="80">
-        <Rectangle Width="80" Height="160" Fill="Red"></Rectangle>
+             d:DesignWidth="150" d:DesignHeight="200" Background="Red" HorizontalAlignment="Center">
+    <Canvas Background="Red" HorizontalAlignment="Center">
+        <Rectangle Width="150" Height="200" Fill="Red"></Rectangle>
         <auc:VuMeter Canvas.Left="20" Canvas.Top="6"></auc:VuMeter>
         <Label Canvas.Top="140">Direct Sound</Label>
     </Canvas>

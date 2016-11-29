@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Yellow">
+             d:DesignHeight="200" d:DesignWidth="300">
+    <Canvas Background="Yellow">
+        <Rectangle Width="300" Height="200" Fill="Yellow"></Rectangle>
         <Label>PolyTrack Keyboard</Label>
-    </Grid>
+    </Canvas>
 </UserControl>
