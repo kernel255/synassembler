@@ -19,6 +19,7 @@ namespace SynthPanels
         private static double SPACE_Y_BETWEENPANELS = 7;
 
         private static SynthPanelManager m_Instance = new SynthPanelManager();
+		private SynthLayoutManager layoutManager = new SynthLayoutManager();
 
         private SynthPanelManager()
         {

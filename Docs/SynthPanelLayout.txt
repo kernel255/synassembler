@@ -1,0 +1,16 @@
+EU					Width		Height			HSpan	VSpan
+
+Oscillator			345			400
+					450			400		OK		3		4
+PCMWaveform			280			160
+					300			200		OK		2		2
+Mixer				280			160
+					300			200		OK		2		2
+MIDISequencePanel	280			80
+					150			100		OK		1		1
+MIDIInput			300			300
+					150			100				1		1
+
+BASE UNITS
+Base width=150
+Base Height=100

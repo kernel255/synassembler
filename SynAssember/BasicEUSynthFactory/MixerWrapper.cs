@@ -112,6 +112,16 @@ namespace BasicEUSynthFactory
 			return m_MixerPanel.getRectangle();
 		}
 
+		int GetHorizontalSpan()
+		{
+			return 2;
+		}
+		int GetVerticalSpan()
+		{
+			return 2;
+		}
+
+
 		static string XML_OUTPUT_LVL = "OutputLevel";
 		static string XML_IN_LVL = "InLevel";
 		static string XML_OUTPUT_MUTE = "OutputMute";

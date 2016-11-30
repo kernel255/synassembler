@@ -15,6 +15,8 @@ namespace SynthPanels
         int GetX();
         int GetY();
 		void readParametersFromEngine();
-    }
+		int GetHorizontalSpan();
+		int GetVerticalSpan();
+	}
    
 }

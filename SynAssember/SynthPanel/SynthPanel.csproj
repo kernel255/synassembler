@@ -52,6 +52,7 @@
     <Compile Include="ISynthPanelFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynthDelegateHolder.cs" />
+    <Compile Include="SynthLayoutManager.cs" />
     <Compile Include="SynthPanelManager.cs" />
   </ItemGroup>
   <ItemGroup>

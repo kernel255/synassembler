@@ -76,5 +76,14 @@ namespace SynthPanels
 		{
 			// By default does nothing
 		}
-    }
+
+		int GetHorizontalSpan()
+		{
+			return 1;
+		}
+		int GetVerticalSpan()
+		{
+			return 1;
+		}
+	}
 }
