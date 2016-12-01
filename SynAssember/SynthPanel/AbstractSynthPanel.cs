@@ -48,16 +48,19 @@ namespace SynthPanels
         protected static string XML_PANEL_X = "PanelX";
         protected static string XML_PANEL_Y = "PanelY";
 
-        int x;
-        public int GetX()
-        {
-            return x;
-        }
-        int y;
-        public int GetY()
-        {
-            return y;
-        }
+		private int m_x;
+		public int x
+		{
+			get { return m_x; }
+			set { m_x = value; }
+		}
+		private int m_y;
+		public int y
+		{
+			get { return m_y; }
+			set { m_y = value; }
+		}
+
         public virtual void read(XmlTextReader reader)
         {
             string str;
@@ -77,11 +80,11 @@ namespace SynthPanels
 			// By default does nothing
 		}
 
-		int GetHorizontalSpan()
+		public virtual int GetHorizontalSpan()
 		{
 			return 1;
 		}
-		int GetVerticalSpan()
+		public virtual int GetVerticalSpan()
 		{
 			return 1;
 		}

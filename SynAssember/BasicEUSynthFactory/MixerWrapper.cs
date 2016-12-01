@@ -112,11 +112,11 @@ namespace BasicEUSynthFactory
 			return m_MixerPanel.getRectangle();
 		}
 
-		int GetHorizontalSpan()
+		override public int GetHorizontalSpan()
 		{
 			return 2;
 		}
-		int GetVerticalSpan()
+		override public int GetVerticalSpan()
 		{
 			return 2;
 		}

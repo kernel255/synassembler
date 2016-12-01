@@ -210,7 +210,7 @@ namespace ClayAudioEngine
 				}
 				return val;
 			}
-			catch(Exception ex)
+			catch(Exception)
 			{
 
 			}
@@ -228,7 +228,7 @@ namespace ClayAudioEngine
 				}
 				return val;
 			}
-			catch(Exception ex)
+			catch(Exception)
 			{
 
 			}

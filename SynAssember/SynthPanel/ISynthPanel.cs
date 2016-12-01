@@ -12,11 +12,19 @@ namespace SynthPanels
     {
         UserControl getUserControlPanel();
         Rectangle getRect();
-        int GetX();
-        int GetY();
 		void readParametersFromEngine();
 		int GetHorizontalSpan();
 		int GetVerticalSpan();
+		int x
+		{
+			get;
+			set;
+		}
+		int y
+		{
+			get;
+			set;
+		}
 	}
-   
+
 }
