@@ -21,6 +21,15 @@ namespace InputOutputSynthFactory
 			return m_DSPanel.getRectangle();
 		}
 
+		override public int GetHorizontalSpan()
+		{
+			return 1;
+		}
+		override public int GetVerticalSpan()
+		{
+			return 1;
+		}
+
 		DirectSoundOutputPanel m_DSPanel;
     }
 }

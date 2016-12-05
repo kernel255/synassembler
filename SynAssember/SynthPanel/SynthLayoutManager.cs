@@ -89,16 +89,18 @@ namespace SynthPanels
 
 
 
-		public SynthLayoutManager()
+		public SynthLayoutManager(double maxWidth, double maxHeight)
 		{
 			Init();
+			MAX_WIDTH = (int) Math .Round(maxWidth / 150.0);
+			MAX_HEIGHT = (int)Math.Round(maxHeight / 100.0);
+			m_PanelMatrix = new SynthPanelWrapper[MAX_WIDTH, MAX_HEIGHT];
 		}
 
+		public int MAX_WIDTH;
+		public int MAX_HEIGHT;
 
-		public const int MAX_WIDTH = 4;
-		public const int MAX_EIGHT = 8;
-
-		SynthPanelWrapper[,] m_PanelMatrix = new SynthPanelWrapper[MAX_WIDTH,MAX_EIGHT];
+		SynthPanelWrapper[,] m_PanelMatrix;
 
 		private int m_FirstFree_X = 0;
 		private int m_FirstFree_Y = 0;
@@ -108,7 +110,7 @@ namespace SynthPanels
 			m_FirstFree_X = 0;
 			m_FirstFree_Y = 0;
 			for (int i = 0; i < MAX_WIDTH; i++)
-				for (int j = 0; j < MAX_EIGHT; j++)
+				for (int j = 0; j < MAX_HEIGHT; j++)
 					m_PanelMatrix[i, j] = null;
 		}
 
@@ -125,18 +127,13 @@ namespace SynthPanels
 				throw new Exception(UNALLOCABLE_SYNTH);
 			Fill(allocablePos.i, allocablePos.j, xSpan, ySpan, synWrapper);
 
-			int xPos = (allocablePos.i + 1) * SPACE_X_BETWEENPANELS + allocablePos.i * BASE_WIDTH_UNIT;
-			int yPos = (allocablePos.j + 1) * SPACE_Y_BETWEENPANELS + allocablePos.j * BASE_HEIGHT_UNIT;
+			int xPos = SPACE_X_BETWEENPANELS + allocablePos.i * BASE_WIDTH_UNIT;
+			int yPos =  + allocablePos.j * BASE_HEIGHT_UNIT;
 			panel.x = xPos;
 			panel.y = yPos;
 
-
 			m_FirstFree_X = allocablePos.nextAllocablei;
 			m_FirstFree_Y = allocablePos.nextAllocablej;
-
-
-
-
 
 		}
 

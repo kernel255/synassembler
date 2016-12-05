@@ -52,13 +52,19 @@ namespace SynthPanels
 		public int x
 		{
 			get { return m_x; }
-			set { m_x = value; }
+			set {
+				m_x = value;
+				Canvas.SetLeft(m_UserControl, m_x);
+			}
 		}
 		private int m_y;
 		public int y
 		{
 			get { return m_y; }
-			set { m_y = value; }
+			set {
+				m_y = value;
+				Canvas.SetTop(m_UserControl, m_y);
+			}
 		}
 
         public virtual void read(XmlTextReader reader)

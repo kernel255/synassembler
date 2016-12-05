@@ -17,12 +17,13 @@ namespace SynthPanels
 
 
         private static SynthPanelManager m_Instance = new SynthPanelManager();
-		private SynthLayoutManager layoutManager = new SynthLayoutManager();
+		private SynthLayoutManager layoutManager;
 
         private SynthPanelManager()
         {
-            //m_CurrentBusyY = SPACE_Y_BETWEENPANELS;
-        }
+			//m_CurrentBusyY = SPACE_Y_BETWEENPANELS;
+			layoutManager = new SynthLayoutManager(GetWidth(), GetHeight());
+		}
 
         public static SynthPanelManager getDefault()
         {

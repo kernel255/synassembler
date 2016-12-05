@@ -10,21 +10,33 @@ namespace BasicEUSynthFactory
 {
     class MIDISequencePlayerWrapper : AbstractSynthPanel
     {
+		MIDISequencePanel m_MIDIPanel;
+
 		public MIDISequencePlayerWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
 			: base(new MIDISequencePanel(), id, deleHolder, facilities)
         {
+			m_MIDIPanel = (MIDISequencePanel)m_UserControl;
 
-        }
+		}
 
 		public override System.Windows.Controls.UserControl getUserControlPanel()
 		{
-			return new MIDISequencePanel();
+			return m_MIDIPanel;
 		}
 
 
 		public override Rectangle getRect()
 		{
 			return new Rectangle(0, 0, 150, 100);
+		}
+
+		override public int GetHorizontalSpan()
+		{
+			return 1;
+		}
+		override public int GetVerticalSpan()
+		{
+			return 1;
 		}
 
 

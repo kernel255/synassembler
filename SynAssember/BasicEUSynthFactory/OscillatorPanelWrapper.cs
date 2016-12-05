@@ -163,5 +163,15 @@ namespace BasicEUSynthFactory
 			m_OscillatorPanel.readParametersFromEngine();
 		}
 
-    }
+		override public int GetHorizontalSpan()
+		{
+			return 3;
+		}
+		override public int GetVerticalSpan()
+		{
+			return 4;
+		}
+
+
+	}
 }
