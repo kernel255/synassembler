@@ -27,7 +27,7 @@ namespace InputOutputSynthFactory
 		}
 		override public int GetVerticalSpan()
 		{
-			return 1;
+			return 2;
 		}
 
 		DirectSoundOutputPanel m_DSPanel;

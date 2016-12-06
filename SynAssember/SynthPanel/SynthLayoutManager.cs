@@ -127,7 +127,7 @@ namespace SynthPanels
 				throw new Exception(UNALLOCABLE_SYNTH);
 			Fill(allocablePos.i, allocablePos.j, xSpan, ySpan, synWrapper);
 
-			int xPos = SPACE_X_BETWEENPANELS + allocablePos.i * BASE_WIDTH_UNIT;
+			int xPos = /*SPACE_X_BETWEENPANELS + */allocablePos.i * BASE_WIDTH_UNIT;
 			int yPos =  + allocablePos.j * BASE_HEIGHT_UNIT;
 			panel.x = xPos;
 			panel.y = yPos;

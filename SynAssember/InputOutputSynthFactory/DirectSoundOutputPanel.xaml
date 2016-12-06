@@ -6,10 +6,10 @@
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
              d:DesignWidth="150" d:DesignHeight="200" Background="Red" HorizontalAlignment="Center">
-    <Canvas Background="Red" HorizontalAlignment="Center">
+    <Canvas Background="Red">
         <Rectangle Width="150" Height="200" Fill="Red"></Rectangle>
-        <auc:VuMeter Canvas.Left="20" Canvas.Top="6"></auc:VuMeter>
-        <Label Canvas.Top="140">Direct Sound</Label>
+        <auc:VuMeter Canvas.Left="55" Canvas.Top="20"></auc:VuMeter>
+        <Label Canvas.Top="160" Canvas.Left="35">Direct Sound</Label>
     </Canvas>
 
 </UserControl>

@@ -7,16 +7,16 @@
              mc:Ignorable="d" 
              d:DesignWidth="300" d:DesignHeight="200">
     <Canvas>
-        <Rectangle Width="300" Height="200" Fill="#FFD19121" Canvas.Top="-1"></Rectangle>
-        <auc:BasicSlider Name="In0Level" Canvas.Top="5" Canvas.Left="5" Label="Input 1"></auc:BasicSlider>
-        <auc:BasicSlider Name="In1Level" Canvas.Top="5" Canvas.Left="60" Label="Input 2"></auc:BasicSlider>
-        <auc:BasicSlider Name="In2Level" Canvas.Top="5" Canvas.Left="115" Label="Input 3"></auc:BasicSlider>
-        <auc:BasicSlider Name="In3Level" Canvas.Top="5" Canvas.Left="170" Label="Input 4"></auc:BasicSlider>
-        <auc:BasicSlider Name="OutLevel" Canvas.Top="5" Canvas.Left="225" Label="Output"></auc:BasicSlider>
-        <auc:OnOffLedButton Name="MuteI0" Width="50" Height="15" Canvas.Top="135" Canvas.Left="5"></auc:OnOffLedButton>
-        <auc:OnOffLedButton Name="MuteI1" Width="50" Height="15" Canvas.Top="135" Canvas.Left="60"></auc:OnOffLedButton>
-        <auc:OnOffLedButton Name="MuteI2" Width="50" Height="15" Canvas.Top="135" Canvas.Left="115"></auc:OnOffLedButton>
-        <auc:OnOffLedButton Name="MuteI3" Width="50" Height="15" Canvas.Top="135" Canvas.Left="170"></auc:OnOffLedButton>
-        <auc:OnOffLedButton Name="MuteO0" Width="50" Height="15" Canvas.Top="135" Canvas.Left="225"></auc:OnOffLedButton>
+        <Rectangle Width="300" Height="200" Fill="#FFD19121" Canvas.Top="-1" StrokeThickness="5" Stroke="#FF993300"></Rectangle>
+        <auc:BasicSlider Name="In0Level" Canvas.Top="25" Canvas.Left="10" Label="Input 1"></auc:BasicSlider>
+        <auc:BasicSlider Name="In1Level" Canvas.Top="25" Canvas.Left="65" Label="Input 2"></auc:BasicSlider>
+        <auc:BasicSlider Name="In2Level" Canvas.Top="25" Canvas.Left="120" Label="Input 3"></auc:BasicSlider>
+        <auc:BasicSlider Name="In3Level" Canvas.Top="25" Canvas.Left="175" Label="Input 4"></auc:BasicSlider>
+        <auc:BasicSlider Name="OutLevel" Canvas.Top="25" Canvas.Left="235" Label="Output"></auc:BasicSlider>
+        <auc:OnOffLedButton Name="MuteI0" Width="50" Height="15" Canvas.Top="170" Canvas.Left="10"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI1" Width="50" Height="15" Canvas.Top="170" Canvas.Left="65"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI2" Width="50" Height="15" Canvas.Top="170" Canvas.Left="120"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteI3" Width="50" Height="15" Canvas.Top="170" Canvas.Left="175"></auc:OnOffLedButton>
+        <auc:OnOffLedButton Name="MuteO0" Width="50" Height="15" Canvas.Top="170" Canvas.Left="235"></auc:OnOffLedButton>
     </Canvas>
 </UserControl>
