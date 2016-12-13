@@ -27,12 +27,12 @@ namespace BasicEUSynthFactory
 
 		public override Rectangle getRect()
 		{
-			return new Rectangle(0, 0, 150, 100);
+			return new Rectangle(0, 0, 300, 100);
 		}
 
 		override public int GetHorizontalSpan()
 		{
-			return 1;
+			return 2;
 		}
 		override public int GetVerticalSpan()
 		{

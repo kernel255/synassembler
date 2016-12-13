@@ -24,7 +24,16 @@ namespace InputOutputSynthFactory
 
 		public override System.Drawing.Rectangle getRect()
 		{
-			return new Rectangle(0, 0, 150, 200);
+			return new Rectangle(0, 0, 150, 100);
+		}
+
+		override public int GetHorizontalSpan()
+		{
+			return 1;
+		}
+		override public int GetVerticalSpan()
+		{
+			return 2;
 		}
 
 		PolyTrackKeyboardPanel m_PTKPanel;

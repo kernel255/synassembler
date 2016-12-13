@@ -9,7 +9,10 @@ Mixer				280			160
 MIDISequencePanel	280			80
 					150			100		OK		1		1
 MIDIInput			300			300
-					150			100				1		1
+					150			100		OK		1		1
+DirectSoundOutput	150			200				1		2
+PCKeyboard			150			100				1		1
+					
 
 BASE UNITS
 Base width=150

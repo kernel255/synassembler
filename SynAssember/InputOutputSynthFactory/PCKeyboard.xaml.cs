@@ -23,7 +23,7 @@ namespace InputOutputSynthFactory
 		public PCKeyboard()
 		{
 			InitializeComponent();
-			DrawKeyboard(23);
+			//DrawKeyboard(23);
 		}
 
 		static int BLACKKEY_HEIGHT = 90;

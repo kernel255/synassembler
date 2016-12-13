@@ -5,11 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignWidth="150" d:DesignHeight="200" Background="Red" HorizontalAlignment="Center">
+             d:DesignWidth="300" d:DesignHeight="100" Background="Red" HorizontalAlignment="Center">
     <Canvas Background="Red">
-        <Rectangle Width="150" Height="200" Fill="Red"></Rectangle>
-        <auc:VuMeter Canvas.Left="55" Canvas.Top="20"></auc:VuMeter>
-        <Label Canvas.Top="160" Canvas.Left="35">Direct Sound</Label>
+        <Rectangle Width="300" Height="100" Fill="Red"></Rectangle>
+        <auc:VuMeter Canvas.Left="195" Canvas.Top="15"></auc:VuMeter>
+        <Label Canvas.Top="15" Canvas.Left="15">Direct Sound</Label>
     </Canvas>
 
 </UserControl>
