@@ -37,6 +37,21 @@ namespace BasicEUSynthFactory
 			}
 		}
 
+		private class WaveFilenameItem
+		{
+			public String name;
+			public String filename;
+			public WaveFilenameItem(String name, String filename)
+			{
+				this.name = name;
+				this.filename = filename;
+			}
+			public override string ToString()
+			{
+				return name;
+			}
+		}
+
 		PitchItem Zero;
 
 		const int MAX_PITCH_OFFSET = 5;
@@ -51,6 +66,15 @@ namespace BasicEUSynthFactory
 				if (item.value == 0)
 					Zero = item;
 				PitchComboBox.Items.Add(item);
+			}
+		}
+
+		void AddAllWaveforms(List<String> names)
+		{
+			foreach(String n in names)
+			{
+				WaveFilenameItem item = new WaveFilenameItem(n, n);
+				WaveSelectionComboBox.Items.Add(item);
 			}
 		}
 
@@ -75,5 +99,12 @@ namespace BasicEUSynthFactory
 			}
 
 		}
+
+		String _wavesFolder;
+		public String WavesFolder
+		{
+			get { return _wavesFolder; }
+		}
+
 	}
 }
