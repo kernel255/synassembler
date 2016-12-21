@@ -82,23 +82,9 @@ namespace BasicEUSynthFactory
         {
             InitializeComponent();
 			AddAllPitchItems();
+			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
 			PitchComboBox.SelectedItem = Zero;
         }
-
-		private void BrowseButton_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog dlg = new OpenFileDialog();
-
-			dlg.CheckFileExists = true;
-			dlg.Multiselect = false;
-			dlg.Title = "Open a waveform file";
-			dlg.ShowDialog();
-			if(dlg.FileName.Length!=0)
-			{
-				
-			}
-
-		}
 
 		String _wavesFolder;
 		public String WavesFolder

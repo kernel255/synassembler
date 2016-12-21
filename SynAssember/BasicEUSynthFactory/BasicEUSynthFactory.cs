@@ -17,6 +17,7 @@ namespace BasicEUSynthFactory
 		public override void init(SynthDelegateHolder deleHold, Facilities facilities)
         {
 			base.init(deleHold, facilities);
+			PCMWaveformWrapper.InitWaveNames(facilities.ResourcesFolder);
         }
 
 		public override string getEUFactoryName()

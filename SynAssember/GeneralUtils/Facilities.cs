@@ -19,6 +19,12 @@ namespace GeneralUtils
 				changedAlgorithm = value;
 			}
 		}
+		private String _resourcesFolder;
+		public String ResourcesFolder
+		{
+			set { _resourcesFolder = value; }
+			get { return _resourcesFolder; }
+		}
 	}
 }
 

@@ -79,6 +79,8 @@ namespace SynAssember
 			currentAlgorithm = new AlgorithmGraph(RightPanel);
 		}
 
+		const String RESOURCES_FOLDER_NAME = "Resources";
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -86,6 +88,7 @@ namespace SynAssember
 			facilities = new Facilities();
 			String currentFolder = Directory.GetCurrentDirectory();
 			Trace.Write("Current folder=" + currentFolder);
+			facilities.ResourcesFolder = currentFolder + "\\" + RESOURCES_FOLDER_NAME;
 
 			if (!initAudioEngine(currentFolder))
 			{
