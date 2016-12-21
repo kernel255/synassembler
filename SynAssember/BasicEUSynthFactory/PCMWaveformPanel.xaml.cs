@@ -84,6 +84,7 @@ namespace BasicEUSynthFactory
 			AddAllPitchItems();
 			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
 			PitchComboBox.SelectedItem = Zero;
+			WaveSelectionComboBox.SelectedIndex = 0;
         }
 
 		String _wavesFolder;
@@ -91,6 +92,10 @@ namespace BasicEUSynthFactory
 		{
 			get { return _wavesFolder; }
 		}
+
+		internal static int OUTPUT_LEVEL_INDEX = 0;
+		internal static int WAVE_NAME_INDEX = 1;
+		internal static int PITCH_INDEX = 2;
 
 	}
 }
