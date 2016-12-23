@@ -151,3 +151,18 @@ int TestWrongIdAddedToAlgo(int algoId)
 	
 	return res;
 }
+
+int TestMixerWAV(int algoId)
+{
+	int wavId1 = ::createElaborationUnit(BASIC_EU_FACTORY, VIRTUAL_EU_CATEGORY, 2, -1);
+	int dsId = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 0, 0);
+	int res = ::addElaborationUnitToAlgorithm(algoId, wavId1);
+	res = ::addElaborationUnitToAlgorithm(algoId, dsId);
+	res = ::connectElaboratioUnits(algoId, wavId1, 0, dsId, 0);
+	
+	::Sleep(100);
+
+	::setEUProperty(wavId1, 1, "pippo");
+
+	return 0;
+}

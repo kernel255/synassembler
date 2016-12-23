@@ -71,7 +71,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	UnitTest unitTest = MixerReadWrite;
+	UnitTest unitTest = MixerWAV;
 	//UnitTest unitTest = SimpleOsc;
 	//UnitTest unitTest = WrongEUAddedToAlgo;
 	//Algorith build
@@ -90,6 +90,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		return TestMixer2Osc(algoId);
 	case WrongEUAddedToAlgo:
 		return TestWrongIdAddedToAlgo(algoId);
+	case MixerWAV:
+		return TestMixerWAV(algoId);
 	default:
 		return 0;
 	}
