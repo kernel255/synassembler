@@ -23,3 +23,11 @@ Now you can run SynAssembler from IDE
 ### Who do I talk to? ###
 
 * For any question contact kernel255@gmail.com
+
+### Appendix ###
+
+Files organization
+
+Some ElaborationUnits requires some files to work like PCMWaveform and MIDISequencer.
+These files need to reside in dedicated folders under <main_execultable_folder>\Resources\.
+During build this folder is created and files in Waves folder are copied.
