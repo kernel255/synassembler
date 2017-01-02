@@ -315,7 +315,7 @@ namespace ClayAudioEngine
 
         private bool m_Changed = false;
 		private static double DIAMETER = 12;
-		private static double INTERNAL_DIAMETER = 10;
+		//private static double INTERNAL_DIAMETER = 10;
         private static double TEXT_OFFSET = 5;
         private static double TEXT_WIDTH = 30;
         private bool m_IsInput = false;

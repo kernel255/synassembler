@@ -23,9 +23,11 @@ namespace ClayAudioEngine
 		{
 			this.facilities = facilities;
 			deleHolder = new SynthDelegateHolder();
+			deleHolder.writeEUProp = new WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
 			deleHolder.writeEUIProp = new WriteEUIntegerProperty(EUPropertyPlumbing.writeEUIntegerProperty);
 			deleHolder.writeEUBProp = new WriteEUBoolProperty(EUPropertyPlumbing.writeEUBoolProperty);
+			deleHolder.readEUProp = new ReadEUProperty(EUPropertyPlumbing.readEUProperty);
 			deleHolder.readEUDprop = new ReadEUDoubleProperty(EUPropertyPlumbing.readEUDoubleProperty);
 			deleHolder.readEUIProp = new ReadEUIntegerProperty(EUPropertyPlumbing.readEUIntegerProperty);
 			deleHolder.readEUBProp = new ReadEUBoolProperty(EUPropertyPlumbing.readEUBoolProperty);
@@ -169,6 +171,17 @@ namespace ClayAudioEngine
 		{
 			setEUProperty(elaborationUnitIndex, propertyIndex, valueStr);
 			return 0;
+		}
+
+		internal String readEUProperty(int elaborationUnitIndex, int propertyIndex)
+		{
+			String result = null;
+			unsafe
+			{
+				String str ="";
+				int res = getEUProperty(elaborationUnitIndex, propertyIndex, str, 1000);
+			}
+			return result;
 		}
 
 		internal int writeEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)

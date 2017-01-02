@@ -59,8 +59,33 @@ namespace BasicEUSynthFactory
 		public override void write(XmlTextWriter writer)
 		{
 			base.write(writer);
+			// Output Level [0]
 			double dOutLvl = delegateHolder.readEUDprop(m_EUId, PCMWaveformPanel.OUTPUT_LEVEL_INDEX);
 			writer.WriteAttributeString(XML_OUTPUT_LEVEL, dOutLvl.ToString());
+			// Waveform Name [1]
+			String waveName = delegateHolder.readEUProp(m_EUId, PCMWaveformPanel.WAVE_NAME_INDEX);
+			writer.WriteAttributeString(XML_WAVEFILE_NAME, waveName);
+			// Pitch [2]
+			int pitch = delegateHolder.readEUIProp(m_EUId, PCMWaveformPanel.PITCH_INDEX);
+			writer.WriteAttributeString(XML_PITCH, pitch.ToString());
+		}
+
+		public override void read(XmlTextReader reader)
+		{
+			String str;
+			// Read and write inside model (AudioEngine)
+			base.read(reader);
+			// Output Level [0]
+			str = reader.GetAttribute(XML_OUTPUT_LEVEL);
+			double lvl = Double.Parse(str);
+			delegateHolder.writeEUDProp(m_EUId, PCMWaveformPanel.OUTPUT_LEVEL_INDEX, lvl);
+			// Waveform Name [1]
+			String waveName = reader.GetAttribute(XML_WAVEFILE_NAME);
+			delegateHolder.writeEUProp(m_EUId, PCMWaveformPanel.WAVE_NAME_INDEX, waveName);
+			// Pitch [2]
+			str = reader.GetAttribute(XML_PITCH);
+			int pitch = Int32.Parse(str);
+			delegateHolder.writeEUIProp(m_EUId, PCMWaveformPanel.PITCH_INDEX, pitch);
 		}
 
 	}

@@ -15,5 +15,8 @@ namespace SynthPanels
 
 		public WriteEUBoolProperty writeEUBProp;
 		public ReadEUBoolProperty readEUBProp;
+
+		public WriteEUProperty writeEUProp;
+		public ReadEUProperty readEUProp;
 	}
 }

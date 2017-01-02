@@ -8,10 +8,15 @@ namespace ClayAudioEngine
 {
     public class EUPropertyPlumbing
     {
-        public static bool writeEUProperty(Int32 euId, String propertyName, String value)
+        public static int writeEUProperty(int euId, int propertyIndex, String value)
         {
-            return false;
+			return AudioEngineWrapper.getDefault().writeEUProperty(euId, propertyIndex, value);
         }
+
+		public static String readEUProperty(int euId, int propertyIndex)
+		{
+			return AudioEngineWrapper.getDefault().readEUProperty(euId, propertyIndex);
+		}
 
         public static int writeEUDoubleProperty(int euId, int propertyIndex, Double value)
         {
