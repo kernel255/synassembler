@@ -7,7 +7,7 @@ PCMWaveform::PCMWaveform(ModuleServices *pService) : SimpleGenerator(pService, P
 	m_cSampleBuffer = NULL;
 	m_siSampleBuffer = NULL;
 	m_SampleBuffer = NULL;
-
+	m_pModuleServices->pLogger->writeLine("PCMWaveform constructor");
 }
 
 PCMWaveform::~PCMWaveform()
@@ -214,6 +214,7 @@ int PCMWaveform::setProperty(int propertyIndex, const char* value)
 		}
 	case PCMWaveformKind::C_WaveFilename:
 		{
+		m_pModuleServices->pLogger->writeLine("WaveFilename selected: %s", value);
 			int res = readWaveform(value);
 			if(!res)
 				m_WaveFilename.assign(value);
