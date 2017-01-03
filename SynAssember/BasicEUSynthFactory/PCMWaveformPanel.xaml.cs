@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SynthPanels;
+using BasicAudioControls;
+using GeneralUtils;
 
 namespace BasicEUSynthFactory
 {
@@ -78,9 +81,16 @@ namespace BasicEUSynthFactory
 			}
 		}
 
-        public PCMWaveformPanel()
+		int id;
+		Facilities facilities;
+		SynthDelegateHolder synDeleHolder;
+
+        public PCMWaveformPanel(int id, SynthDelegateHolder deleHolder, Facilities facilities)
         {
             InitializeComponent();
+			this.id = id;
+			this.facilities = facilities;
+			this.synDeleHolder = deleHolder;
 			AddAllPitchItems();
 			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
 			PitchComboBox.SelectedItem = Zero;
@@ -97,5 +107,14 @@ namespace BasicEUSynthFactory
 		internal static int WAVE_NAME_INDEX = 1;
 		internal static int PITCH_INDEX = 2;
 
+		private void WaveSelectionComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			WaveFilenameItem selectedItem = (WaveFilenameItem) WaveSelectionComboBox.SelectedItem;
+			if (selectedItem != null)
+			{
+				String waveName = selectedItem.name;
+				synDeleHolder.writeEUProp(id, WAVE_NAME_INDEX, waveName);
+			}
+		}
 	}
 }

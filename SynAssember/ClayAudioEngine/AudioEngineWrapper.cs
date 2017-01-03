@@ -135,7 +135,7 @@ namespace ClayAudioEngine
 
 		public int createNewVirtualElaborationUnit(int factoryIndex, int euIndex)
 		{
-			return createNewElaborationUnit(factoryIndex, VIRTUAL_CATEGORY, euIndex, -1);
+			return createNewElaborationUnit(factoryIndex, euIndex, VIRTUAL_CATEGORY, -1);
 		}
 
 		public int createNewPhysicalElaborationUnit(int factoryIndex, int euIndex, int euInstance, int physicalInstanceId)

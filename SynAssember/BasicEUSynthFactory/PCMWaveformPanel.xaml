@@ -9,7 +9,7 @@
     <Canvas>
         <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="300" Height="200" StrokeThickness="5" Stroke="#FF0A186E"/>
         <Label Canvas.Left="15" Canvas.Top="45" Foreground="White">Waveform</Label>
-        <ComboBox Name="WaveSelectionComboBox" Canvas.Left="15" Canvas.Top="85" Width="190"></ComboBox>
+        <ComboBox Name="WaveSelectionComboBox" Canvas.Left="15" Canvas.Top="85" Width="190" SelectionChanged="WaveSelectionComboBox_SelectionChanged"></ComboBox>
         <Label Canvas.Left="15" Canvas.Top="125" Foreground="White">Pitch</Label>
         <ComboBox Name="PitchComboBox" Canvas.Top="125" Canvas.Left="165" Width="40"></ComboBox>
         <auc:BasicSlider Name="OutLevel" Label="Output" Canvas.Left="225" Canvas.Top="35"></auc:BasicSlider>        

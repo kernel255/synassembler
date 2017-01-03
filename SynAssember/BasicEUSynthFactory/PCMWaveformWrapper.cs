@@ -18,7 +18,7 @@ namespace BasicEUSynthFactory
 		PCMWaveformPanel m_WaveformPanel;
 
 		public PCMWaveformWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
-			: base(new PCMWaveformPanel(), id, deleHolder, facilities)
+			: base(new PCMWaveformPanel(id, deleHolder, facilities), id, deleHolder, facilities)
 		{
 			m_WaveformPanel = (PCMWaveformPanel)m_UserControl;
 		}
