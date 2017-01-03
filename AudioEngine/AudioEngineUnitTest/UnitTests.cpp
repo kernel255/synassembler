@@ -99,10 +99,6 @@ int TestMixer1Osc(int algoId)
 
 	::Sleep(600000);
 
-	::stopAlgorithm(algoId);
-	::destroyAlgorithm(algoId);
-
-
 	return 0;
 }
 
@@ -134,20 +130,13 @@ int TestMixer2Osc(int algoId)
 
 	::Sleep(600000);
 
-	::stopAlgorithm(algoId);
-	::destroyAlgorithm(algoId);
-
-
 	return 0;
 
 }
 
 int TestWrongIdAddedToAlgo(int algoId)
 {
-
 	int res = ::addElaborationUnitToAlgorithm(algoId, 1);
-	::stopAlgorithm(algoId);
-	::destroyAlgorithm(algoId);
 	
 	return res;
 }
