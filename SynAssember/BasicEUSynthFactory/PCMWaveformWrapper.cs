@@ -88,5 +88,9 @@ namespace BasicEUSynthFactory
 			delegateHolder.writeEUIProp(m_EUId, PCMWaveformPanel.PITCH_INDEX, pitch);
 		}
 
+		public override void readParametersFromEngine()
+		{
+			m_WaveformPanel.readParametersFromEngine();
+		}
 	}
 }

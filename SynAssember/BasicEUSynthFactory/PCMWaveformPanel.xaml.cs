@@ -53,6 +53,7 @@ namespace BasicEUSynthFactory
 			{
 				return name;
 			}
+
 		}
 
 		PitchItem Zero;
@@ -115,6 +116,24 @@ namespace BasicEUSynthFactory
 				String waveName = selectedItem.name;
 				synDeleHolder.writeEUProp(id, WAVE_NAME_INDEX, waveName);
 			}
+		}
+
+		internal void readParametersFromEngine()
+		{
+			double lvl = synDeleHolder.readEUDprop(id, OUTPUT_LEVEL_INDEX);
+			OutLevel.NormalizedLevelValue = lvl;
+			String waveName = synDeleHolder.readEUProp(id, WAVE_NAME_INDEX);
+			ItemCollection waves = WaveSelectionComboBox.Items;
+			foreach(ItemsControl item in waves)
+			{
+				if(waveName.Equals(item.ToString()))
+				{
+					WaveSelectionComboBox.SelectedItem = item;
+				}
+			}
+			int iPitch = synDeleHolder.readEUIProp(id, PITCH_INDEX);
+			PitchItem pitch = new PitchItem(iPitch.ToString(), iPitch);
+			PitchComboBox.SelectedItem = pitch;
 		}
 	}
 }

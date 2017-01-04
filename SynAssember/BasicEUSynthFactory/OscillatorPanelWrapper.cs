@@ -158,7 +158,6 @@ namespace BasicEUSynthFactory
         }
 
 		public override void readParametersFromEngine()
-
 		{
 			m_OscillatorPanel.readParametersFromEngine();
 		}
