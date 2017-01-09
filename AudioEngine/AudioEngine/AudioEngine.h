@@ -49,8 +49,8 @@ public:
 	int playAlgorithm(int algorithmId);
 	int stopAlgorithm(int algorithmId);
 
-	int setEUProperty(int elaborationUnitIndex, int propertyIndex, char* valueStr);
-	int getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize);
+	int setEUProperty(int elaborationUnitIndex, int propertyIndex, const wchar_t* value);
+	int getEUProperty(int elaborationUnitIndex, int propertyIndex, wchar_t* value, int bufferSize);
 
 	int getEUDProperty(int elaborationUnitIndex, int propertyIndex, double *value);
 	int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value);

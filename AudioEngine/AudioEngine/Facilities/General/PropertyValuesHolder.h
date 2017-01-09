@@ -17,8 +17,8 @@ class PropertyValuesHolder
 {
 public:
 	PropertyValuesHolder(ModuleServices* pServices, int numProperties, const EUKind* kind, ElaborationUnit* eu);
-	int setValue(int propertyIndex, const char* value);
-	int getValue(int propertyIndex, char* value, int bufferSize);
+	int setValue(int propertyIndex, const wchar_t* value);
+	int getValue(int propertyIndex, wchar_t* value, int bufferSize);
 	int setDValue(int propertyIndex, double value);
 	int getDValue(int propertyIndex, double* value);
 	int setIValue(int propertyIndex, int value);
@@ -29,7 +29,7 @@ private:
 	class ValueHolder
 	{
 	public:
-		std::string strValue;
+		std::wstring wstrValue;
 	};
 	std::vector<ValueHolder> m_Values;
 

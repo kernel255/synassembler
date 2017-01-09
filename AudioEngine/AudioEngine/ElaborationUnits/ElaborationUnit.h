@@ -98,11 +98,11 @@ public:
 	/**
 	 * @fn Set the Nth property
 	 */
-	virtual int setProperty(int propertyIndex, const char* value) = 0;
+	virtual int setProperty(int propertyIndex, const wchar_t* value) = 0;
 	/**
 	 * @fn Get the Nth property
 	 */
-	virtual int getProperty(int propertyIndex, char* value, int bufferSize) = 0;
+	virtual int getProperty(int propertyIndex, wchar_t* value, int bufferSize) = 0;
 
 	/**
 	 * @fn Set the Nth double property

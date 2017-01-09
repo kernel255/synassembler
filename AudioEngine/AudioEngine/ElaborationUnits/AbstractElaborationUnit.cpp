@@ -40,12 +40,12 @@ bool AbstractElaborationUnit::isPlaying()
 	return playing;
 }
 
-int AbstractElaborationUnit::getProperty(int propertyIndex, char* value, int bufferSize)
+int AbstractElaborationUnit::getProperty(int propertyIndex, wchar_t* value, int bufferSize)
 {
 	//PropertyValuesHolder holder = m_ValuesHolder
 	switch(this->getKind()->getPropertyType(propertyIndex))
 	{
-	case C_Gain:
+	case C_String:
 		{
 			this->m_ValuesHolder.getValue(propertyIndex,value,bufferSize);
 			break;
@@ -55,11 +55,11 @@ int AbstractElaborationUnit::getProperty(int propertyIndex, char* value, int buf
 	return 0;
 }
 
-int AbstractElaborationUnit::setProperty(int propertyIndex, const char* value)
+int AbstractElaborationUnit::setProperty(int propertyIndex, const wchar_t* value)
 {
 	switch(getKind()->getPropertyType(propertyIndex))
 	{
-	case C_Gain:
+	case C_String:
 		{
 			m_ValuesHolder.setValue(propertyIndex, value);
 			break;

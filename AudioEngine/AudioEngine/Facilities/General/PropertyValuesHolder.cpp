@@ -16,15 +16,16 @@ PropertyValuesHolder::PropertyValuesHolder(ModuleServices* pServices, int numPro
 	m_pServices = pServices;
 }
 
-int PropertyValuesHolder::setValue(int propertyIndex, const char* value)
+int PropertyValuesHolder::setValue(int propertyIndex, const wchar_t* value)
 {
 	//TODO: add some semaphore here!
-	m_Values[propertyIndex].strValue.assign(value);
+	//m_Values[propertyIndex].wstrValue.assign(value);
 
 	Property* prop = m_pKind->getProperty(propertyIndex);
 	pfnSetValue pfn = m_pKind->getProperty(propertyIndex)->getSetter();
 	switch(prop->getType())
 	{
+		/*
 	case C_Gain:
 		static float fVal;
 		static double dVal;
@@ -37,6 +38,10 @@ int PropertyValuesHolder::setValue(int propertyIndex, const char* value)
 		pfn(m_pEU,&(dVal));
 		m_pServices->pLogger->writeLine("Setted value");
 			break;
+			*/
+	case C_String:
+		m_Values[propertyIndex].wstrValue.assign(value);
+		break;
 	default:
 		return -2;
 			break;
@@ -90,11 +95,14 @@ int PropertyValuesHolder::getDValue(int propertyIndex, double* value)
 	return 0;
 }
 
-int PropertyValuesHolder::getValue(int propertyIndex, char* value, int bufferSize)
+int PropertyValuesHolder::getValue(int propertyIndex, wchar_t* value, int bufferSize)
 {
 	Property* prop = m_pKind->getProperty(propertyIndex);
 	switch(prop->getType())
 	{
+	case C_String:
+		break;
+		/*
 	case C_Gain:
 		static double *pdVal;
 		pdVal = (double*) prop->getGetter()(m_pEU);
@@ -111,13 +119,16 @@ int PropertyValuesHolder::getValue(int propertyIndex, char* value, int bufferSiz
 			return 1;
 		}
 		break;
+	*/
 	default:
 		break;
 	}
-	if(m_Values[propertyIndex].strValue.size()<=(unsigned int) bufferSize)
+	/*
+	if(m_Values[propertyIndex].wstrValue.size()<=(unsigned int) bufferSize)
 	{
-		strncpy(value,m_Values[propertyIndex].strValue.c_str(),m_Values[propertyIndex].strValue.size());
+		strncpy(value,m_Values[propertyIndex].wstrValue.c_str(),m_Values[propertyIndex].wstrValue.size());
 	}
+	*/
 
 	return 0;
 }

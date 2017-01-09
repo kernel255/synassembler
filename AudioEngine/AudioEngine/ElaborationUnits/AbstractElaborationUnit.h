@@ -31,8 +31,8 @@ public:
 	void play(void);
 	void stop(void);
 	bool isPlaying();
-	virtual int getProperty(int propertyIndex, char* value, int bufferSize);
-	virtual int setProperty(int propertyIndex, const char* value);
+	virtual int getProperty(int propertyIndex, wchar_t* value, int bufferSize);
+	virtual int setProperty(int propertyIndex, const wchar_t* value);
 
 	virtual int setDProperty(int propertyIndex, double value);
 	virtual int getDProperty(int propertyIndex, double* value);

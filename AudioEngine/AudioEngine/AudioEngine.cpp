@@ -304,12 +304,12 @@ const char* AudioEngine::getPropertyByName(int factoryIndex, int categoryIndex, 
 	return NULL;
 }
 
-int AudioEngine::setEUProperty(int elaborationUnitIndex, int propertyIndex, char* valueStr)
+int AudioEngine::setEUProperty(int elaborationUnitIndex, int propertyIndex, const wchar_t* value)
 {
 	ElaborationUnit* pEU = getElaborationUnitById(elaborationUnitIndex);
 	if(pEU!=NULL)
 	{
-		return pEU->setProperty(propertyIndex, valueStr);
+		return pEU->setProperty(propertyIndex, value);
 	}
 	else
 		return 0;
@@ -389,7 +389,7 @@ int AudioEngine::getEUBProperty(int elaborationUnitIndex, int propertyIndex, boo
 	}
 }
 
-int AudioEngine::getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize)
+int AudioEngine::getEUProperty(int elaborationUnitIndex, int propertyIndex, wchar_t* value, int bufferSize)
 {
 	ElaborationUnit* pEU = getElaborationUnitById(elaborationUnitIndex);
 	if(pEU!=NULL)
@@ -891,9 +891,9 @@ extern "C" __declspec( dllexport ) int getNthEUPropertyName(int factoryIndex, in
 		
 }
 
-extern "C" __declspec( dllexport ) int setEUProperty(int elaborationUnitIndex,	int propertyIndex, char* valueStr)
+extern "C" __declspec( dllexport ) int setEUProperty(int elaborationUnitIndex,	int propertyIndex, const wchar_t* value)
 {
-	return audioEngine->setEUProperty(elaborationUnitIndex, propertyIndex, valueStr);
+	return audioEngine->setEUProperty(elaborationUnitIndex, propertyIndex, value);
 }
 
 extern "C" __declspec( dllexport ) int setEUDProperty(int elaborationUnitIndex, int propertyIndex, double value)
@@ -926,7 +926,7 @@ extern "C" __declspec(dllexport) int getEUBProperty(int elaborationUnitIndex, in
 	return audioEngine->getEUBProperty(elaborationUnitIndex, propertyIndex, value);
 }
 
-extern "C" __declspec( dllexport ) int getEUProperty(int elaborationUnitIndex, int propertyIndex, char* value, int bufferSize)
+extern "C" __declspec( dllexport ) int getEUProperty(int elaborationUnitIndex, int propertyIndex, wchar_t* value, int bufferSize)
 {
 	return audioEngine->getEUProperty(elaborationUnitIndex, propertyIndex, value, bufferSize);
 }

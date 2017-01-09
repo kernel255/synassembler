@@ -151,7 +151,11 @@ int TestMixerWAV(int algoId)
 	
 	::Sleep(100);
 
-	::setEUProperty(wavId1, 1, "pippo");
+	::setEUProperty(wavId1, 1, L"pippo.wav");
+	wchar_t* buffer = new wchar_t[100];
+	memset(buffer, 0, 100);
+
+	res = ::getEUProperty(wavId1, 1, buffer, 100);
 
 	return 0;
 }
