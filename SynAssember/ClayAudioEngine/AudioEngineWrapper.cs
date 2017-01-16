@@ -178,8 +178,9 @@ namespace ClayAudioEngine
 			String result = null;
 			unsafe
 			{
-				String str ="";
-				int res = getEUProperty(elaborationUnitIndex, propertyIndex, str, 1000);
+				StringBuilder strBuilder = new StringBuilder(1000);
+				int res = getEUProperty(elaborationUnitIndex, propertyIndex, strBuilder, 1000);
+				result = strBuilder.ToString();
 			}
 			return result;
 		}

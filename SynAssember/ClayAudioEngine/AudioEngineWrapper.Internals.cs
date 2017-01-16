@@ -232,10 +232,10 @@ namespace ClayAudioEngine
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int getNthEUPropertyName(int factoryIndex, int categoryIndex, int elaborationUnitIndex,int propertyIndex, StringBuilder buffer, int bufferSize);
         
-        [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+        [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
         private static extern int setEUProperty(int elaborationUnitIndex,	int propertyIndex, String valueStr);
-        [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
-        private static extern int getEUProperty(int elaborationUnitIndex, int propertyIndex, String value, int bufferSize);
+        [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+        private static extern int getEUProperty(int elaborationUnitIndex, int propertyIndex, StringBuilder value, int bufferSize);
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int getPropertyType(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex);
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
