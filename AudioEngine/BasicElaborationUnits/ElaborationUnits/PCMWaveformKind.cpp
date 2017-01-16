@@ -3,12 +3,29 @@
 
 #include "ElaborationUnitProperty.h"
 #include "PCMWaveformKind.h"
+#include "PCMWaveform.h"
 #include "..\Facilities\General\GainProperty.h"
+#include "..\Facilities\General\IntegerProperty.h"
+#include "..\Facilities\General\StringProperty.h"
 
 PCMWaveformKind::PCMWaveformKind()
 {
-	//GainProperty* gain = new GainProperty("Output level");
-	//addProperty(gain);
+	// #0 Gain
+	GainProperty* gain = new GainProperty("Output Level");
+	gain->setGetter(PCMWaveform::getAmplitude);
+	gain->setSetter(PCMWaveform::setAmplitude);
+	addProperty(gain);
+	// #1 Waveform Name
+	StringProperty* waveName = new StringProperty("Waveform name");
+
+
+	addProperty(waveName);
+	// #2 Pitch
+	IntegerProperty* wavePitch = new IntegerProperty("Pitch");
+	wavePitch->setGetter(PCMWaveform::getPitch);
+	wavePitch->setSetter(PCMWaveform::setPitch);
+	addProperty(wavePitch);
+
 }
 
 PCMWaveformKind::~PCMWaveformKind()

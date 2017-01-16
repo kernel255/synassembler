@@ -109,6 +109,7 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\MutexProxy.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\StringProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\textfile.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\TimeBase.cpp" />
     <ClCompile Include="BasicElaborationUnits.cpp" />

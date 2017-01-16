@@ -18,9 +18,10 @@ class PropertyValuesHolder
 public:
 	PropertyValuesHolder(ModuleServices* pServices, int numProperties, const EUKind* kind, ElaborationUnit* eu);
 	int setValue(int propertyIndex, const wchar_t* value);
-	int getValue(int propertyIndex, wchar_t* value, int bufferSize);
+	//int getValue(int propertyIndex, wchar_t** value, int bufferSize);
 	int setDValue(int propertyIndex, double value);
 	int getDValue(int propertyIndex, double* value);
+	int getValue(int propertyIndex, const wchar_t ** value, int bufferSize);
 	int setIValue(int propertyIndex, int value);
 	int getIValue(int propertyIndex, int* value);
 	int setBValue(int propertyIndex, bool value);

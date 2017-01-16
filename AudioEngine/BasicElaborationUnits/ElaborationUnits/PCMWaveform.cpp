@@ -7,6 +7,8 @@ PCMWaveform::PCMWaveform(ModuleServices *pService) : SimpleGenerator(pService, P
 	m_cSampleBuffer = NULL;
 	m_siSampleBuffer = NULL;
 	m_SampleBuffer = NULL;
+	m_OutputLevel = 1.0;
+	m_Pitch = 0;
 	m_pModuleServices->pLogger->writeLine("PCMWaveform constructor");
 }
 
@@ -193,6 +195,7 @@ SimpleGenerator::SampleCalculationResult PCMWaveform::calculateSample(EAG_SAMPLE
 		EAG_SAMPLE_TYPE H1 = getNthSampleFrom(samplePointer, +2);
 			
 		result = thirdSplineInterp(x,L1,L0,H0,H1);
+		result *= m_Amplitude;
 		return SampleCalculationResult::CALCULATION_CONTINUE;
 #endif //SPLINE
 	}
@@ -216,11 +219,13 @@ int PCMWaveform::setProperty(int propertyIndex, const char* value)
 		{
 		m_pModuleServices->pLogger->writeLine("WaveFilename selected: %s", value);
 			int res = readWaveform(value);
+			/*
 			if(!res)
 				m_WaveFilename.assign(value);
 			else
 			{
 			}
+			*/
 			break;
 		}
 	case PCMWaveformKind::C_WavePitch:
@@ -260,7 +265,7 @@ int PCMWaveform::getProperty(int propertyIndex, char* value, int bufferSize)
 				return C_PropertyGetFailure;
 			else
 			{
-				strncpy(value, m_WaveFilename.c_str(),bufferSize);
+				//strncpy(value, m_WaveFilename.c_str(),bufferSize);
 				return C_PropertyGetSucceess;
 			}
 			break;

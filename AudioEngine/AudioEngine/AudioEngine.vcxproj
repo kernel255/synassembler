@@ -118,6 +118,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClCompile Include="Facilities\General\Logger.cpp" />
     <ClCompile Include="Facilities\General\MutexProxy.cpp" />
     <ClCompile Include="Facilities\General\PropertyValuesHolder.cpp" />
+    <ClCompile Include="Facilities\General\StringProperty.cpp" />
     <ClCompile Include="Facilities\General\textfile.cpp" />
     <ClCompile Include="Facilities\General\TimeBase.cpp" />
     <ClCompile Include="FactoryRetriever.cpp" />
@@ -157,6 +158,7 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="Facilities\General\MutexProxy.h" />
     <ClInclude Include="Facilities\General\Property.h" />
     <ClInclude Include="Facilities\General\PropertyValuesHolder.h" />
+    <ClInclude Include="Facilities\General\StringProperty.h" />
     <ClInclude Include="Facilities\General\textfile.h" />
     <ClInclude Include="FactoryRetriever.h" />
     <ClInclude Include="stdafx.h" />

@@ -162,6 +162,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\GainIndexedProperty.cpp">
       <Filter>Facilities\General</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\StringProperty.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

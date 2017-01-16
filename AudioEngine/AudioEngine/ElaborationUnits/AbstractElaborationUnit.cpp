@@ -47,7 +47,9 @@ int AbstractElaborationUnit::getProperty(int propertyIndex, wchar_t* value, int 
 	{
 	case C_String:
 		{
-			this->m_ValuesHolder.getValue(propertyIndex,value,bufferSize);
+		const wchar_t* pwString;
+			this->m_ValuesHolder.getValue(propertyIndex,&pwString,bufferSize);
+			swprintf(value, bufferSize, pwString);
 			break;
 		}
 	}

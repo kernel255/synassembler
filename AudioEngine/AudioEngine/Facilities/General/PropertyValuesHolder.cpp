@@ -25,22 +25,9 @@ int PropertyValuesHolder::setValue(int propertyIndex, const wchar_t* value)
 	pfnSetValue pfn = m_pKind->getProperty(propertyIndex)->getSetter();
 	switch(prop->getType())
 	{
-		/*
-	case C_Gain:
-		static float fVal;
-		static double dVal;
-		if(sscanf(value,"%f",&fVal)!=1)
-		{
-			m_pServices->pLogger->writeLine("setValue: Unable to convert: %s", value);
-			return -1;
-		}
-		dVal = fVal;
-		pfn(m_pEU,&(dVal));
-		m_pServices->pLogger->writeLine("Setted value");
-			break;
-			*/
 	case C_String:
 		m_Values[propertyIndex].wstrValue.assign(value);
+		//m_pServices->pLogger->writeLine("Written StringValue propIndex=%d value=%s", propertyIndex, value);
 		break;
 	default:
 		return -2;
@@ -95,40 +82,22 @@ int PropertyValuesHolder::getDValue(int propertyIndex, double* value)
 	return 0;
 }
 
-int PropertyValuesHolder::getValue(int propertyIndex, wchar_t* value, int bufferSize)
+int PropertyValuesHolder::getValue(int propertyIndex, const wchar_t** value, int bufferSize)
 {
 	Property* prop = m_pKind->getProperty(propertyIndex);
 	switch(prop->getType())
 	{
 	case C_String:
-		break;
-		/*
-	case C_Gain:
-		static double *pdVal;
-		pdVal = (double*) prop->getGetter()(m_pEU);
-		if(sprintf(value,"%f",*pdVal)==1)
 		{
-			return 1;
+			unsigned int len = m_Values[propertyIndex].wstrValue.length();
+			if (len > ((unsigned int)bufferSize))
+				return -1;
+			*value = m_Values[propertyIndex].wstrValue.c_str();
 		}
 		break;
-	case C_Integer:
-		static int *piVal;
-		piVal = (int*)prop->getGetter()(m_pEU);
-		if (sprintf(value, "%d", *piVal) == 1)
-		{
-			return 1;
-		}
-		break;
-	*/
 	default:
 		break;
 	}
-	/*
-	if(m_Values[propertyIndex].wstrValue.size()<=(unsigned int) bufferSize)
-	{
-		strncpy(value,m_Values[propertyIndex].wstrValue.c_str(),m_Values[propertyIndex].wstrValue.size());
-	}
-	*/
 
 	return 0;
 }
