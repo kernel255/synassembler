@@ -1,0 +1,14 @@
+SynAssembler Development Logger
+#########2017#########
+4 Jan
+Problems on saving of PCMWaveform, trying to approach from AudioEngineUnitTest need a wave with just 1 channel to test the problem.
+9 Jan
+Changing AudioEngine in order to support string type, need to use the wchar_t type, several modifications required.
+Page where passing from C++ to C# is explained:
+http://stackoverflow.com/questions/16571020/passing-string-from-c-to-c-sharp
+For C# to C++ just copy what done in initEngine(...)
+16 Jan
+Save of PCM Waveform OK
+Found 2 problems:
+1. Load of PCMWaveform causes crash
+2. Connection of MIDI does not work
