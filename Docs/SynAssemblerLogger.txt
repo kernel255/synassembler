@@ -9,6 +9,16 @@ http://stackoverflow.com/questions/16571020/passing-string-from-c-to-c-sharp
 For C# to C++ just copy what done in initEngine(...)
 16 Jan
 Save of PCM Waveform OK
+
+ComboBox still with problems: Fixed, now values are read
+
 Found 2 problems:
-1. Load of PCMWaveform causes crash
+
+
+
+1. Load of PCMWaveform causes crash: OK
 2. Connection of MIDI does not work
+
+reading of old files has crash here:
+
+delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX, d); => Read a bad file but there is no protection!
