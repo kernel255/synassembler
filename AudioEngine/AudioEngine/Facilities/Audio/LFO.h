@@ -17,7 +17,7 @@ public:
 
 	void increaseAccumulatedTime(double time);
 
-	double m_Amplitude;
+	double m_Amplitude = 1.0;
 	/**
 	* Delay before starting to oscillate
 	*/
@@ -26,7 +26,7 @@ public:
 	bool m_Enable = false;
 	double m_Frequency = 100.0;
 	bool m_FixRatio = false;
-	double m_CarrFreq;
+	double m_CarrFreq = 1.0;
 	void setCarrierFrequence(double freq);
 	ModuleServices* m_pModuleServices;
 private:
