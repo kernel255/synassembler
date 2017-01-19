@@ -44,6 +44,9 @@ private:
 	/**
 	 @var MIDI note number of the original sample
 	 */
+	int m_iMIDIPitch;
+	/**
+	*/
 	double m_Pitch;
 	/**
 	 @var Number of samples in the wave
@@ -78,18 +81,15 @@ public:
 	{
 		PCMWaveform* pWav = (PCMWaveform*)pEU;
 		pWav->m_pModuleServices->pLogger->writeLine("getPicth: %d", pWav->m_Pitch);
-		return &(pWav->m_Pitch);
+		return &(pWav->m_iMIDIPitch);
 	}
 	static bool setPitch(void* pEU, void* value)
 	{
-		PCMWaveform* pWav = (PCMWaveform *)pWav;
+		PCMWaveform* pWav = (PCMWaveform *)pEU;
 		int* pitch = (int*)value;
 		pWav->m_pModuleServices->pLogger->writeLine("setPitch: %d", *pitch);
-		pWav->m_Pitch = (*pitch);
-		char buf[50];
-		memset(buf, 0, 50);
-		sprintf(buf, "PCMWave Pitch: %d", *pitch);
-		pWav->m_pModuleServices->pLogger->writeLine(buf);
+		pWav->m_iMIDIPitch = (*pitch);
+		pWav->m_Pitch = MIDIChannelMessage::GetFreqByMIDINote(pWav->m_iMIDIPitch);
 		return true;
 	}
 

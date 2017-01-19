@@ -8,7 +8,8 @@ PCMWaveform::PCMWaveform(ModuleServices *pService) : SimpleGenerator(pService, P
 	m_siSampleBuffer = NULL;
 	m_SampleBuffer = NULL;
 	m_OutputLevel = 1.0;
-	m_Pitch = 0;
+	m_iMIDIPitch = 48; // C3 as default note
+	m_Pitch = MIDIChannelMessage::GetFreqByMIDINote(m_iMIDIPitch);
 	m_pModuleServices->pLogger->writeLine("PCMWaveform constructor");
 }
 
