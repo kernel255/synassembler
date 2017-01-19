@@ -11,7 +11,7 @@
         <Label Canvas.Left="15" Canvas.Top="45" Foreground="White">Waveform</Label>
         <ComboBox Name="WaveSelectionComboBox" Canvas.Left="15" Canvas.Top="85" Width="190" SelectionChanged="WaveSelectionComboBox_SelectionChanged"></ComboBox>
         <Label Canvas.Left="15" Canvas.Top="125" Foreground="White">Pitch</Label>
-        <ComboBox Name="PitchComboBox" Canvas.Top="125" Canvas.Left="165" Width="40"></ComboBox>
+        <ComboBox Name="PitchComboBox" Canvas.Top="125" Canvas.Left="155" Width="50" SelectionChanged="PitchComboBox_SelectionChanged"></ComboBox>
         <auc:BasicSlider Name="OutLevel" Label="Output" Canvas.Left="225" Canvas.Top="35"></auc:BasicSlider>        
         <!--<Rectangle Name="WavePlace" Canvas.Top="10" Canvas.Left="130" Width="140" Height="62" Fill="Black"></Rectangle>-->
     </Canvas>

@@ -24,13 +24,40 @@ namespace BasicEUSynthFactory
     /// </summary>
     public partial class PCMWaveformPanel : UserControl
     {
+		const int NUM_NOTES = 128;
+
+		static String GetNoteNameById(int noteId)
+		{
+			int note = noteId % 12;
+			int octave = (noteId / 12) - 1;
+			String strNote = "";
+			switch(note)
+			{
+				case 0: strNote = "C "; break;
+				case 1:	strNote = "C#"; break;
+				case 2: strNote = "D "; break;
+				case 3: strNote = "D#"; break;
+				case 4: strNote = "E "; break;
+				case 5: strNote = "F "; break;
+				case 6: strNote = "F#"; break;
+				case 7: strNote = "G "; break;
+				case 8: strNote = "G#"; break;
+				case 9: strNote = "A "; break;
+				case 10: strNote = "A#"; break;
+				case 11: strNote = "B "; break;
+			}
+
+			return strNote + " " + octave.ToString();
+		}
+
+
 		private class PitchItem
 		{
 			public String name;
 			public int value;
 			public PitchItem(String name, int value)
 			{
-				this.name = (value > 0 ? "+" : "") + name;
+				this.name = name;
 				this.value = value;
 			}
 
@@ -56,21 +83,15 @@ namespace BasicEUSynthFactory
 
 		}
 
-		PitchItem Zero;
-
-		const int MAX_PITCH_OFFSET = 5;
-
 		void AddAllPitchItems()
 		{
-			int totalRange = MAX_PITCH_OFFSET*2 + 1;
-			for (int i=0;i<totalRange;i++)
+			for(int i=0;i<NUM_NOTES;i++)
 			{
-				int index = i - MAX_PITCH_OFFSET;
-				PitchItem item = new PitchItem(index.ToString(), index);
-				if (item.value == 0)
-					Zero = item;
+				String noteName = GetNoteNameById(i);
+				PitchItem item = new PitchItem(noteName, i);
 				PitchComboBox.Items.Add(item);
 			}
+
 		}
 
 		void AddAllWaveforms(List<String> names)
@@ -94,8 +115,9 @@ namespace BasicEUSynthFactory
 			this.synDeleHolder = deleHolder;
 			AddAllPitchItems();
 			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
-			PitchComboBox.SelectedItem = Zero;
 			WaveSelectionComboBox.SelectedIndex = 0;
+
+			//readParametersFromEngine();
         }
 
 		String _wavesFolder;
@@ -116,6 +138,8 @@ namespace BasicEUSynthFactory
 				String waveName = selectedItem.name;
 				synDeleHolder.writeEUProp(id, WAVE_NAME_INDEX, waveName);
 			}
+			//PCMWaveformPanel wavPanel = (PCMWaveformPanel)sender;
+			facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
 		internal void readParametersFromEngine()
@@ -124,16 +148,24 @@ namespace BasicEUSynthFactory
 			OutLevel.NormalizedLevelValue = lvl;
 			String waveName = synDeleHolder.readEUProp(id, WAVE_NAME_INDEX);
 			ItemCollection waves = WaveSelectionComboBox.Items;
-			foreach(ItemsControl item in waves)
+			
+			for(int i=0;i<waves.Count;i++)
+			//foreach(ItemsControl item in waves)
 			{
-				if(waveName.Equals(item.ToString()))
+				WaveFilenameItem item = (WaveFilenameItem) waves.GetItemAt(i);
+				if (waveName.Equals(item.ToString()))
 				{
 					WaveSelectionComboBox.SelectedItem = item;
+					break;
 				}
 			}
 			int iPitch = synDeleHolder.readEUIProp(id, PITCH_INDEX);
-			PitchItem pitch = new PitchItem(iPitch.ToString(), iPitch);
-			PitchComboBox.SelectedItem = pitch;
+			PitchComboBox.SelectedIndex = iPitch;
+		}
+
+		private void PitchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			facilities.ChangedAlgorithm.algorithmChanged();
 		}
 	}
 }
