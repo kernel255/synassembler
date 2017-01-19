@@ -1,6 +1,7 @@
 
 #include "UnitTests.h"
 #include "Utilities.h"
+#include <stdio.h>
 #include "AudioEngineAPI.h"
 
 int TestSimpleOsc(int algoId)
@@ -156,6 +157,12 @@ int TestMixerWAV(int algoId)
 	memset(buffer, 0, 100);
 
 	res = ::getEUProperty(wavId1, 1, buffer, 100);
+
+	::setEUIProperty(wavId1, 2, 3);
+	int pitch;
+	res = ::getEUIProperty(wavId1, 2, &pitch);
+
+	printf("Wave pitch: %d\n", pitch);
 
 	return 0;
 }
