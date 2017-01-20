@@ -21,4 +21,8 @@ Found 2 problems:
 
 reading of old files has crash here:
 
-delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX, d); => Read a bad file but there is no protection!
+delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.AMP_LFO_LEVEL_INDEX, d); => Read a bad file but there is no protection! Maybe the "bad" value has been placed by the uninitialized AudioEngine
+
+20 Jan
+
+Add extension to files: .sya

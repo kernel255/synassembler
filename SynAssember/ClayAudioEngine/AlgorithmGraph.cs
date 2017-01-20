@@ -103,8 +103,11 @@ namespace ClayAudioEngine
 		static string BUSYX_ATTR = "CurrentBusyX";
 		static string BUSYY_ATTR = "CurrentBusyY";
 
-		static string EUS = "ElaborationUnits";
-		static string EUCONNS = "EUConnections";
+		const String EU_START_TAG = "ElaborationUnits";
+		const String EUCONNS = "EUConnections";
+		const String VERSION = "Version";
+
+		const int STORAGE_VERSION_NUMBER = 1;
 
         public void write(string filename)
         {
@@ -115,8 +118,9 @@ namespace ClayAudioEngine
 			Point p = SynthPanelManager.getDefault().GetLastBusyPoint();
 			writer.WriteAttributeString(BUSYX_ATTR, p.X.ToString());
 			writer.WriteAttributeString(BUSYY_ATTR, p.Y.ToString());
+			writer.WriteAttributeString(VERSION, STORAGE_VERSION_NUMBER.ToString());
 
-			writer.WriteStartElement(EUS);
+			writer.WriteStartElement(EU_START_TAG);
             int numEU = m_EUGlyphs.Count();
             // Write all the EUs
             for (int euIndex = 0; euIndex < numEU; euIndex++)
@@ -188,6 +192,26 @@ namespace ClayAudioEngine
                                 case XML_ALGO_ELEMENT_NAME:
                                 {
                                     foundAlgorithm = true;
+
+									string version = reader.GetAttribute(VERSION);
+										int iVersion = 0;
+									if(version==null)
+									{
+										throw new Exception("Version number not found");
+									}
+									try
+									{
+										iVersion = Int32.Parse(version);
+									}
+									catch(Exception ex)
+									{
+										throw new Exception("Cannot read file version");
+									}
+									if(iVersion>STORAGE_VERSION_NUMBER)
+									{
+										throw new Exception("Version number too new: " + iVersion + "(Current version: " + STORAGE_VERSION_NUMBER + ")");
+									}
+
 									SynthPanelManager.getDefault().reset();
 									string strX = reader.GetAttribute(BUSYX_ATTR);
 									string strY = reader.GetAttribute(BUSYY_ATTR);
