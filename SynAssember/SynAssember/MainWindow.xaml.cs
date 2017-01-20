@@ -150,6 +150,9 @@ namespace SynAssember
 		{
 			SaveFileDialog dlg = new SaveFileDialog();
 			dlg.Title = "Save a Synthesizer";
+			dlg.Filter = SYNASSEMBLER_EXTENSION_DIALOG;
+			dlg.DefaultExt = SYNASSEMBLER_EXTENSION;
+			dlg.AddExtension = true;
 			dlg.ShowDialog(this);
 			String filename = dlg.FileName;
 			if (filename.Length != 0)
@@ -181,6 +184,7 @@ namespace SynAssember
             dlg.CheckFileExists = true;
             dlg.Multiselect = false;
             dlg.Title = "Open a Synthesizer";
+			dlg.Filter = SYNASSEMBLER_EXTENSION_DIALOG;
             dlg.ShowDialog(this);
             if(dlg.FileName.Length!=0)
             {
@@ -459,6 +463,8 @@ namespace SynAssember
 		}
 
 		const String WINDOW_TITLE = "SynAssembler - ";
+		const String SYNASSEMBLER_EXTENSION_DIALOG = "SynAssembler Synthesizer (sya)|*sya";
+		const String SYNASSEMBLER_EXTENSION = "sya";
 
 		private void SynthPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)	{ SynthPanelManager.getDefault().SizeChanged(sender, e); }
 		private void LeftPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e) { m_ShelvesPanel.SizeChanged(sender, e);	}

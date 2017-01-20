@@ -109,8 +109,15 @@ namespace ClayAudioEngine
 
 		const int STORAGE_VERSION_NUMBER = 1;
 
-        public void write(string filename)
+		const String ALGORITHM_EXTENSION = ".sya";
+
+		public void write(string filename)
         {
+			if(!filename.EndsWith(ALGORITHM_EXTENSION))
+			{
+				filename = filename + ALGORITHM_EXTENSION;
+			}
+
             XmlTextWriter writer = new XmlTextWriter(filename, Encoding.UTF8);
 
             writer.WriteStartDocument();
@@ -370,6 +377,7 @@ namespace ClayAudioEngine
         private List<EUConnection> m_EUConnections;
         private Canvas m_Canvas;
         private bool m_Changed = false;
+
 		public bool Changed
 		{
 			get
