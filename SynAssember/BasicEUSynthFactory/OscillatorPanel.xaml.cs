@@ -155,9 +155,9 @@ namespace BasicEUSynthFactory
 			bool enaLFOAmp = readBProp(id, AMP_LFO_ENABLE_INDEX);
 			LFOAmpOnOff.SwitchOn = enaLFOAmp;
 			double lfoAmpAmp = readDProp(id, AMP_LFO_LEVEL_INDEX);
-			LFOAmplitudeAmp.CurrentLevel = lfoAmpAmp;
+			//LFOAmplitudeAmp.CurrentLevel = lfoAmpAmp;
 			double lfoAmpFreq = readDProp(id, AMP_LFO_FREQ_INDEX);
-			LFOAmplitudeFreq.CurrentLevel = lfoAmpFreq;
+			//LFOAmplitudeFreq.CurrentLevel = lfoAmpFreq;
 			
 			bool enaLFOFreq = readBProp(id, FREQ_LFO_ENABLE_INDEX);
 			LFOFreqOnOff.SwitchOn = enaLFOFreq;
@@ -183,5 +183,10 @@ namespace BasicEUSynthFactory
 		internal static int AMP_LFO_FREQ_INDEX = 11;
 		internal static int FREQ_LFO_FREQ_INDEX = 12;
 
-    }
+		private void UserControl_Loaded(object sender, RoutedEventArgs e)
+		{
+			double x = LFOFrequencyAmp.ActualWidth;
+			double y = LFOFrequencyAmp.ActualHeight;
+		}
+	}
 }

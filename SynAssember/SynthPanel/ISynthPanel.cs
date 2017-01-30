@@ -15,12 +15,28 @@ namespace SynthPanels
 		void readParametersFromEngine();
 		int GetHorizontalSpan();
 		int GetVerticalSpan();
+		/**
+		 * Absolute position in container elements coordinates
+		 */
 		int x
 		{
 			get;
 			set;
 		}
 		int y
+		{
+			get;
+			set;
+		}
+		/**
+		 * Position mapped in SynthLayoutManager (integers)
+		 */
+		int i
+		{
+			get;
+			set;
+		}
+		int j
 		{
 			get;
 			set;

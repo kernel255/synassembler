@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="80" d:DesignWidth="80" Background="#ffd0d0d0">
+             d:DesignHeight="80" d:DesignWidth="80" Background="#ffd0d0d0" Loaded="MyPotentiometer_Loaded" >
     <Canvas Name="potentiometerSpace" VerticalAlignment="Top" Width="80" Height="80">
         <TextBox Name="DebugTextBox" Width="60" Text="{Binding ElementName=MyPotentiometer, Path=CurrentAngle}"></TextBox>
         <Ellipse Name="potentiometer"  Width="60" Height="60" Canvas.Top="10" Canvas.Left="10" MouseLeave="Ellipse_MouseLeave" MouseDown="potentiometer_MouseDown" MouseUp="potentiometer_MouseUp" MouseMove="potentiometer_MouseMove">

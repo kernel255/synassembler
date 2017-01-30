@@ -115,7 +115,9 @@ namespace SynthPanels
 		}
 
 		const String UNALLOCABLE_SYNTH = "Unable to allocate Synth";
-
+		/**
+		 * Used to allocate position with Drag'N'Drop, the (eventually) available position is calculted by the method
+		 */
 		public void AllocSynthPanel(ISynthPanel panel)
 		{
 			SynthPanelWrapper synWrapper = new SynthPanelWrapper(panel);
@@ -123,11 +125,15 @@ namespace SynthPanels
 			int ySpan = panel.GetVerticalSpan();
 
 			AllocablePosition allocablePos = CalculateAllocablePosition(m_FirstFree_X, m_FirstFree_Y, xSpan, ySpan);
-			if(!allocablePos.allocable)
+			if (!allocablePos.allocable)
+			{
+				// Should happen only when there is no more space available
 				throw new Exception(UNALLOCABLE_SYNTH);
+			}
 			Fill(allocablePos.i, allocablePos.j, xSpan, ySpan, synWrapper);
-
-			int xPos = /*SPACE_X_BETWEENPANELS + */allocablePos.i * BASE_WIDTH_UNIT;
+			panel.i = allocablePos.i;
+			panel.j = allocablePos.j;
+			int xPos = allocablePos.i * BASE_WIDTH_UNIT;
 			int yPos =  + allocablePos.j * BASE_HEIGHT_UNIT;
 			panel.x = xPos;
 			panel.y = yPos;
@@ -135,6 +141,27 @@ namespace SynthPanels
 			m_FirstFree_X = allocablePos.nextAllocablei;
 			m_FirstFree_Y = allocablePos.nextAllocablej;
 
+		}
+		/**
+		 * Used to allocate the Synth panel position when the available position is already known. 
+		 * e.g. during algo load
+		 **/ 
+		public void AllocSynthPanel(ISynthPanel panel, int i, int j)
+		{
+			SynthPanelWrapper synWrapper = new SynthPanelWrapper(panel);
+			int hSpan = panel.GetHorizontalSpan();
+			int vSpan = panel.GetVerticalSpan();
+			Fill(i, j, hSpan, vSpan, synWrapper);
+			MoveToPosition(panel, i, j);
+			m_FirstFree_X = m_FirstFree_X + hSpan;
+		}
+
+		public void MoveToPosition(ISynthPanel panel, int i, int j)
+		{
+			int xPos = i * BASE_WIDTH_UNIT;
+			int yPos = j * BASE_HEIGHT_UNIT;
+			panel.x = xPos;
+			panel.y = yPos;
 		}
 
 		bool CanAllocateWidth(int xPos, int yPos, int hSpan, int ySpan)

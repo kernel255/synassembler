@@ -61,6 +61,7 @@ namespace BasicAudioControls
 					double angle = GetUnormalizedLevel(value);
 					//double remappedAngle = RemapAngle(angle);
 					double remappedAngle = UnremapAngle(angle);
+					/*
 					if (centerX == -1 && centerX == -1)
 					{
 						centerX = potentiometerSpace.ActualWidth / 2;
@@ -69,6 +70,7 @@ namespace BasicAudioControls
 						potentiometerPointer.RenderTransform = rotate;
 					}
 					rotate.Angle = remappedAngle;
+					*/
 				}
 			}
 			get { return (Double)GetValue(CurrentLevelProperty); }
@@ -270,6 +272,24 @@ namespace BasicAudioControls
 
 		double MinAngle = 135;
 		double MaxAngle = 225;
+
+		private void MyPotentiometer_Loaded(object sender, RoutedEventArgs e)
+		{
+			double value = (Double) GetValue(CurrentLevelProperty);
+			double angle = GetUnormalizedLevel(value);
+			//double remappedAngle = RemapAngle(angle);
+			double remappedAngle = UnremapAngle(angle);
+			if (centerX == -1 && centerX == -1)
+			{
+				centerX = potentiometerSpace.ActualWidth / 2;
+				centerY = potentiometerSpace.ActualHeight / 2;
+				rotate = new RotateTransform(0, centerX, centerY);
+				potentiometerPointer.RenderTransform = rotate;
+			}
+			rotate.Angle = remappedAngle;
+
+		}
+
 		double MaxAngleInterval = 270;
 
 		const bool DebugTextBoxOn = false;

@@ -1,35 +1,37 @@
-Ôªø17:16:53:062 AudioEngine library started
-17:16:53:062 Folder name:
-17:16:53:062 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\DebugÏ∑çÔ∑ΩÔ∑ΩÌ∑ùÌ∑ùÓÜìÓ•ªÏ≤ë
-17:16:53:063 Find file=00318fe8
-17:16:53:063 Trying to open library: ¬∞√¥)
-17:16:53:063 Library is not an ElaborationUnitFactory
-17:16:53:063 Library open failure
-17:16:53:063 FindNextFile=1
-17:16:53:063 Trying to open library: ¬∞√¥)
-17:16:53:093 Basic EU factory constructor
-17:16:53:093 Library open successful
-17:16:53:093 FindNextFile=1
-17:16:53:093 Trying to open library: ¬∞√¥)
-17:16:53:533 InputOutputFactory constructor
-17:16:53:930 Library open successful
-17:16:53:930 FindNextFile=0
-17:16:53:930 FindNextFile failure = 18
-17:16:53:930 Factories=2
-17:16:53:971 PCMWaveform constructor
-17:16:53:971 Creating DirectSound output
-17:16:54:024 HWND=0x00470b3c
-17:17:01:432 Written StringValue propIndex=1 value=p
-17:17:02:188 Stopped timebase
-17:17:02:188 Stopping DirectSoundOutput
-17:17:02:190 Stopping algorithm
-17:17:02:191 Algorithm destructor
-17:17:02:191 PCM Waveform destructor
-17:17:02:196 Simple generator destructor
-17:17:02:197 DirectSoundOutput destructor id=-842150451
-17:17:02:197 Stopping DirectSoundOutput
-17:17:02:215 File size=0
-17:17:02:215 Releasing factories
-17:17:02:215 Basic EU factory destructor
-17:17:02:215 InputOutputFactory: destructor
-17:17:02:215 Closing library
+Ôªø17:26:41:423 AudioEngine library started
+17:26:41:423 Folder name:
+17:26:41:423 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\DebugÏ∑çÔ∑ΩÔ∑ΩÌ∑ùÌ∑ùÊ±π‡†ëÁΩ©
+17:26:41:423 Find file=0081c8b0
+17:26:41:423 Trying to open library: √ØC
+17:26:41:423 Library is not an ElaborationUnitFactory
+17:26:41:423 Library open failure
+17:26:41:423 FindNextFile=1
+17:26:41:423 Trying to open library: √ØC
+17:26:41:449 Basic EU factory constructor
+17:26:41:449 Library open successful
+17:26:41:449 FindNextFile=1
+17:26:41:449 Trying to open library: √ØC
+17:26:41:778 InputOutputFactory constructor
+17:26:41:990 Library open successful
+17:26:41:990 FindNextFile=0
+17:26:41:990 FindNextFile failure = 18
+17:26:41:990 Factories=2
+17:26:42:039 PCMWaveform constructor
+17:26:42:039 Creating DirectSound output
+17:26:42:100 HWND=0x00050de4
+17:27:02:166 setPitch: 3
+17:27:40:669 Written IValue propIndex=2 value=3
+17:28:05:716 getPicth: 538269527
+17:28:30:666 Stopped timebase
+17:28:30:666 Stopping DirectSoundOutput
+17:28:30:666 Stopping algorithm
+17:28:30:666 Algorithm destructor
+17:28:30:666 PCM Waveform destructor
+17:28:30:668 Simple generator destructor
+17:28:30:668 DirectSoundOutput destructor id=-842150451
+17:28:30:668 Stopping DirectSoundOutput
+17:28:30:672 File size=0
+17:28:30:672 Releasing factories
+17:28:30:672 Basic EU factory destructor
+17:28:30:673 InputOutputFactory: destructor
+17:28:30:673 Closing library

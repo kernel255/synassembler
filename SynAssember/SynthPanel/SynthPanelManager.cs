@@ -161,38 +161,14 @@ namespace SynthPanels
             if (automaticPlace)
             {
 				layoutManager.AllocSynthPanel(panel);
-
-
-
-
-				/*
-                double nextPosition = m_CurrentBusyX + panel.getRect().Width;
-                if (nextPosition > m_MaxPanelWidth)
-                {
-                    // Go to next line
-                    m_CurrentBusyX = SPACE_X_BETWEENPANELS;
-                    m_CurrentBusyY += SPACE_Y_BETWEENPANELS;
-                    Canvas.SetLeft(uiElem, m_CurrentBusyX);
-                    m_CurrentBusyY += panel.getRect().Height;
-                    m_CurrentBusyX += panel.getRect().Width;
-                    Canvas.SetTop(uiElem, m_CurrentBusyY);
-                }
-                else
-                {
-                    // Continue on the current line
-                    m_CurrentBusyX += SPACE_X_BETWEENPANELS;
-                    Canvas.SetLeft(uiElem, m_CurrentBusyX);
-                    Canvas.SetTop(uiElem, m_CurrentBusyY);
-                    m_CurrentBusyX += panel.getRect().Width;
-                }
-				*/
             } 
             else
             {
-                Canvas.SetLeft(uiElem, panel.x);
-                Canvas.SetTop(uiElem, panel.y);
-				m_VirtBusyX = panel.x + panel.getRect().Width + SynthLayoutManager.SPACE_X_BETWEENPANELS;
-				m_VirtBusyY = panel.y + panel.getRect().Height + SynthLayoutManager.SPACE_Y_BETWEENPANELS;
+				layoutManager.AllocSynthPanel(panel, panel.i, panel.j);
+                //Canvas.SetLeft(uiElem, panel.x);
+                //Canvas.SetTop(uiElem, panel.y);
+				//m_VirtBusyX = panel.x + panel.getRect().Width + SynthLayoutManager.SPACE_X_BETWEENPANELS;
+				//m_VirtBusyY = panel.y + panel.getRect().Height + SynthLayoutManager.SPACE_Y_BETWEENPANELS;
             }
 
 			m_PanelList.Add(panel);

@@ -39,10 +39,10 @@ namespace SynthPanels
 		public virtual void write(XmlTextWriter writer)
 		{
 			// Write Panel position
-			x = (int)Canvas.GetLeft(m_UserControl);
-			y = (int)Canvas.GetTop(m_UserControl);
-			writer.WriteAttributeString(XML_PANEL_X, x.ToString());
-			writer.WriteAttributeString(XML_PANEL_Y, y.ToString());
+			//x = (int)Canvas.GetLeft(m_UserControl);
+			//y = (int)Canvas.GetTop(m_UserControl);
+			writer.WriteAttributeString(XML_PANEL_X, i.ToString());
+			writer.WriteAttributeString(XML_PANEL_Y, j.ToString());
 		}
 
         protected static string XML_PANEL_X = "PanelX";
@@ -66,14 +66,26 @@ namespace SynthPanels
 				Canvas.SetTop(m_UserControl, m_y);
 			}
 		}
+		private int m_i;
+		public int i
+		{
+			get { return m_i; }
+			set { m_i = value; }
+		}
+		private int m_j;
+		public int j
+		{
+			get { return m_j; }
+			set { m_j = value; }
+		}
 
         public virtual void read(XmlTextReader reader)
         {
             string str;
             str = reader.GetAttribute(XML_PANEL_X);
-            x = Int32.Parse(str);
+            i = Int32.Parse(str);
             str = reader.GetAttribute(XML_PANEL_Y);
-            y = Int32.Parse(str);
+            j = Int32.Parse(str);
         }
 
         public virtual bool hasChanged()
