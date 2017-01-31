@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using GeneralUtils;
 
 namespace BasicAudioControls
 {
@@ -275,6 +276,7 @@ namespace BasicAudioControls
 
 		private void MyPotentiometer_Loaded(object sender, RoutedEventArgs e)
 		{
+			Facilities.Log("Potentiometer loaded");
 			double value = (Double) GetValue(CurrentLevelProperty);
 			double angle = GetUnormalizedLevel(value);
 			//double remappedAngle = RemapAngle(angle);

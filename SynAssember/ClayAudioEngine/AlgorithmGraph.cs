@@ -113,6 +113,7 @@ namespace ClayAudioEngine
 
 		public void write(string filename)
         {
+			GeneralUtils.Facilities.Log("Writing algorithm: {0}", filename);
 			if(!filename.EndsWith(ALGORITHM_EXTENSION))
 			{
 				filename = filename + ALGORITHM_EXTENSION;
@@ -175,6 +176,7 @@ namespace ClayAudioEngine
 
         public void read(System.Xml.XmlTextReader reader)
         {
+			GeneralUtils.Facilities.Log("Reading algorithm");
 			Dictionary<int, int> mapFileIdToId = new Dictionary<int, int>();
 			reader.WhitespaceHandling = WhitespaceHandling.None;
             bool foundAlgorithm = false;

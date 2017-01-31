@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Xml;
 using System.Globalization;
 
+
 using GeneralUtils;
 
 namespace BasicEUSynthFactory
@@ -97,6 +98,7 @@ namespace BasicEUSynthFactory
 
         public override void read(XmlTextReader reader)
         {
+			GeneralUtils.Facilities.Log("Reading algorithm");
 			// Read and write inside model (AudioEngine)
 			base.read(reader);
 			String str;

@@ -25,6 +25,18 @@ namespace GeneralUtils
 			set { _resourcesFolder = value; }
 			get { return _resourcesFolder; }
 		}
+
+		public static void Log(String logLine)
+		{
+			Console.WriteLine(logLine);
+		}
+
+		public static void Log(string format, params object[] arg)
+		{
+			Console.WriteLine(format, arg);
+		}
+
 	}
+
 }
 

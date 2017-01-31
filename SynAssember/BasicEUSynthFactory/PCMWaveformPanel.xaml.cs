@@ -119,13 +119,13 @@ namespace BasicEUSynthFactory
 
 			//readParametersFromEngine();
         }
-
+		/*
 		String _wavesFolder;
 		public String WavesFolder
 		{
 			get { return _wavesFolder; }
 		}
-
+		*/
 		internal static int OUTPUT_LEVEL_INDEX = 0;
 		internal static int WAVE_NAME_INDEX = 1;
 		internal static int PITCH_INDEX = 2;

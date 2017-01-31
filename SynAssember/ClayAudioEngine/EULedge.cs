@@ -241,9 +241,6 @@ namespace EUShelves
 				return ra;
 		}
 
-
-		Rectangle lastRect = null;
-
 		internal Rectangle GetNearesRect(Point p)
 		{
 			Rectangle result = null;
