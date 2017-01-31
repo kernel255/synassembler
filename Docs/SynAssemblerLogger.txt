@@ -32,5 +32,7 @@ Add extension to files: .sya OK
 Problems found while loading oscillator:
 
 1. Position of the needle is wrong once loaded, seems the problem is due to rotation operation after setting of read values
-(When the read value is not set, the needle looks OK) The root cause is not the ActualSize=0 in Potentiomenter
-2. Allocation of blocks is not done on load
+(When the read value is not set, the needle looks OK) The root cause is not the ActualSize=0 in Potentiomenter Fixed problem with Loading method, where the value is != 0, NEED TO RE-CHECK TO REMOVE DEBRIS...not OK! Still problems in loading...The problems are present ONLY when there are some breakpoints
+2. Allocation of blocks is not done on load: Need to save position with integers OK
+3. Values of sliders not saved...Problem present both in PCMWaveform and Oscillator
+4. Problems on detection of modified Synthesizer
