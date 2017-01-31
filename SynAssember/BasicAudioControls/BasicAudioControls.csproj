@@ -105,6 +105,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneralUtils\GeneralUtils.csproj">
+      <Project>{5834fddb-ed35-458b-92a1-3bf7393fc170}</Project>
+      <Name>GeneralUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy $(TargetPath) "$(SolutionDir)SynAssember\bin\Release"</PostBuildEvent>
