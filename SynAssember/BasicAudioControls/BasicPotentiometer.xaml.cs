@@ -281,12 +281,17 @@ namespace BasicAudioControls
 			double angle = GetUnormalizedLevel(value);
 			//double remappedAngle = RemapAngle(angle);
 			double remappedAngle = UnremapAngle(angle);
-			if (centerX == -1 && centerX == -1)
+			if(potentiometerSpace.ActualWidth!=0 && potentiometerSpace.ActualHeight!=0)
+			//if (centerX == -1 && centerX == -1)
 			{
+				Facilities.Log("Potentiometer: Actual dimensions available");
 				centerX = potentiometerSpace.ActualWidth / 2;
 				centerY = potentiometerSpace.ActualHeight / 2;
 				rotate = new RotateTransform(0, centerX, centerY);
 				potentiometerPointer.RenderTransform = rotate;
+			} else
+			{
+				Facilities.Log("Potentiometer: Actual dimensions NOT available");
 			}
 			rotate.Angle = remappedAngle;
 

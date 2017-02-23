@@ -63,7 +63,7 @@ namespace BasicEUSynthFactory
 			double d;
 			String str;
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.AT_PROPERTY_INDEX);
-			str = level.ToString(cInfo);
+			str = d.ToString(cInfo);
 			writer.WriteAttributeString(XML_AT, str);
 			d = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.DT_PROPERTY_INDEX);
 			str = d.ToString(cInfo);
@@ -98,7 +98,7 @@ namespace BasicEUSynthFactory
 
         public override void read(XmlTextReader reader)
         {
-			GeneralUtils.Facilities.Log("Reading algorithm");
+			GeneralUtils.Facilities.Log("Reading Oscillator");
 			// Read and write inside model (AudioEngine)
 			base.read(reader);
 			String str;

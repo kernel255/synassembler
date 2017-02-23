@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="130" d:DesignWidth="50" Background="#ffd0d0d0">
+             d:DesignHeight="130" d:DesignWidth="50" Background="#ffd0d0d0" Loaded="UserControl_Loaded">
     <WrapPanel Orientation="Vertical">
     <Canvas Name="SliderPanel" Background="#ffd0d0d0" VerticalAlignment="Bottom" Width="50" Height="100">
         <Rectangle Name="SliderBackground" Canvas.Top="0" Canvas.Left="10" Width="30" Height="100">

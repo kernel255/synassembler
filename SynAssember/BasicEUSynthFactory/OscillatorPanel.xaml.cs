@@ -142,12 +142,14 @@ namespace BasicEUSynthFactory
 			OutputLevel.NormalizedLevelValue = outLevel;
 			// ADSR
 			double at = readDProp(id, AT_PROPERTY_INDEX);
+			Facilities.Log("OscillatorPanel readParameters AR {0}", at);
 			AttackRate.LevelValue = at;
 			double dt = readDProp(id, DT_PROPERTY_INDEX);
 			DecayRate.LevelValue = dt;
 			double rt = readDProp(id, RT_PROPERTY_INDEX);
 			ReleaseRate.LevelValue = rt;
 			double al = readDProp(id, AL_PROPERTY_INDEX);
+			Facilities.Log("OscillatorPanel readParameters AL {0}", al);
 			AttackLevel.LevelValue = al;
 			double sl = readDProp(id, SL_PROPERTY_INDEX);
 			SustainLevel.LevelValue = sl;

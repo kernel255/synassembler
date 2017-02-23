@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using GeneralUtils;
 
 namespace BasicAudioControls
 {
@@ -80,6 +81,7 @@ namespace BasicAudioControls
 			double min = getCursorMin();
 			double max = getCursorMax();
 			double ext = getCursorExtension();
+			Facilities.Log("MySlider: val {0} min {1} max {2}", val, min, max);
 			val = 1 - val;
 			double pos = min + ext * val - SliderCursor.ActualHeight/2;
 
@@ -211,18 +213,21 @@ namespace BasicAudioControls
                     Canvas.SetTop(SliderCursor, p.Y - delta);
 					sliderChanging = true;
                     NormalizedLevelValue = normalizeLevelToUI(estimatedCursorCenter - cursorMin);
+					double d = -9999;
                     if (NormalizedLevelValue != previousValue)
                     {
                         // Raise an event
 						if (SliderChangedEvent != null)
 						{
-							double d = getDenormalizedLevel(NormalizedLevelValue);
+							d = getDenormalizedLevel(NormalizedLevelValue);
 							SliderChangedEvent(owner, d);
 						}
                     }
 					sliderChanging = false;
                     previousValue = NormalizedLevelValue;
-                    Trace.Write("Level = " + NormalizedLevelValue + "\n");
+					StringBuilder msg = new StringBuilder();
+					msg.AppendFormat("MySlider.SliderCursor_MouseMove: Denormalized {0} Normalized {1}\n", d, NormalizedLevelValue);
+					Facilities.Log(msg.ToString());
                 }
             }
         }
@@ -235,5 +240,22 @@ namespace BasicAudioControls
                 Mouse.Capture(SliderCursor);
             }
         }
-    }
+
+		private void UserControl_Loaded(object sender, RoutedEventArgs e)
+		{
+			string label = (string)GetValue(LabelProperty);
+			Facilities.Log("Slider Loaded label={0}", label);
+			double value = (Double)GetValue(ValueProperty);
+			Facilities.Log("Level = {0}", value);
+			double lvl = unNormalizeLevelFromUI(value);
+			double min = getCursorMin();
+			if(min!=0)
+			{
+				double offset = Canvas.GetTop(SliderPanel);
+				//double max = getCursorMax();
+				//double lvl = value * (max - min);
+				Canvas.SetTop(SliderCursor, offset + lvl);
+			}
+		}
+	}
 }

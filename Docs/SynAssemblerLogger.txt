@@ -35,4 +35,8 @@ Problems found while loading oscillator:
 (When the read value is not set, the needle looks OK) The root cause is not the ActualSize=0 in Potentiomenter Fixed problem with Loading method, where the value is != 0, NEED TO RE-CHECK TO REMOVE DEBRIS...not OK! Still problems in loading...The problems are present ONLY when there are some breakpoints
 2. Allocation of blocks is not done on load: Need to save position with integers OK
 3. Values of sliders not saved...Problem present both in PCMWaveform and Oscillator
+	The value read from file and saved there looks working: but the slider is not placed in the right place!!!!
+	Need to study the max levels and the normalize/un-normalize functions
+
+
 4. Problems on detection of modified Synthesizer

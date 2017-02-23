@@ -203,7 +203,7 @@ namespace ClayAudioEngine
                                     foundAlgorithm = true;
 
 									string version = reader.GetAttribute(VERSION);
-										int iVersion = 0;
+									int iVersion = 0;
 									if(version==null)
 									{
 										throw new Exception("Version number not found");
@@ -211,6 +211,7 @@ namespace ClayAudioEngine
 									try
 									{
 										iVersion = Int32.Parse(version);
+										GeneralUtils.Facilities.Log("Algorithm file version: {0}", iVersion);
 									}
 									catch(Exception ex)
 									{
@@ -315,6 +316,7 @@ namespace ClayAudioEngine
                                 {
                                     if(foundAlgorithm)
                                     {
+										Facilities.Log("Reading panel Factory:{0} EU:{1} Id:{2}", lastEUFact, lastEUName, lastId);
 										ISynthPanel panel = SynthPanelManager.getDefault().ReadPanel(reader, lastEUFact, lastEUName, lastId);
 										lastEUInst.m_SynthPanel = panel;
 									}
@@ -372,6 +374,7 @@ namespace ClayAudioEngine
 
 		public void updateSynthPanels()
 		{
+			Facilities.Log("Updating SynthPanels");
 			SynthPanelManager.getDefault().updateSynthPanels();
 		}
 
