@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BasicEUSynthFactory.Properties
+namespace BasicEUFact.Properties
 {
 
 

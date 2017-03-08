@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     /// <summary>
     /// Interaction logic for MIDISequencePanel.xaml

@@ -6,7 +6,7 @@ using SynthPanels;
 using GeneralUtils;
 using System.Drawing;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     class MIDISequencePlayerWrapper : AbstractSynthPanel
     {

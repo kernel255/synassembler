@@ -17,7 +17,7 @@ using BasicAudioControls;
 using GeneralUtils;
 
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     /// <summary>
     /// Interaction logic for OscillatorPanel.xaml
@@ -55,6 +55,8 @@ namespace BasicEUSynthFactory
 			AttackRate.MaxLevel = 200;
 			DecayRate.MaxLevel = 200;
 			ReleaseRate.MaxLevel = 500;
+			// Other sliders not set while using default = 1.0
+
 			writeDProp = deleHolder.writeEUDProp;
 			writeIProp = deleHolder.writeEUIProp;
 			writeBProp = deleHolder.writeEUBProp;
@@ -145,27 +147,38 @@ namespace BasicEUSynthFactory
 			Facilities.Log("OscillatorPanel readParameters AR {0}", at);
 			AttackRate.LevelValue = at;
 			double dt = readDProp(id, DT_PROPERTY_INDEX);
+			Facilities.Log("OscillatorPanel readParameters DR {0}", dt);
 			DecayRate.LevelValue = dt;
 			double rt = readDProp(id, RT_PROPERTY_INDEX);
+			Facilities.Log("OscillatorPanel readParameters RR {0}", rt);
 			ReleaseRate.LevelValue = rt;
 			double al = readDProp(id, AL_PROPERTY_INDEX);
 			Facilities.Log("OscillatorPanel readParameters AL {0}", al);
 			AttackLevel.LevelValue = al;
 			double sl = readDProp(id, SL_PROPERTY_INDEX);
+			Facilities.Log("OscillatorPanel readParameters SL {0}", sl);
 			SustainLevel.LevelValue = sl;
 
 			bool enaLFOAmp = readBProp(id, AMP_LFO_ENABLE_INDEX);
 			LFOAmpOnOff.SwitchOn = enaLFOAmp;
+
 			double lfoAmpAmp = readDProp(id, AMP_LFO_LEVEL_INDEX);
-			//LFOAmplitudeAmp.CurrentLevel = lfoAmpAmp;
+			Facilities.Log("OscillatorPanel readParameters LFOAMPAMP {0}", lfoAmpAmp);
+			LFOAmplitudeAmp.CurrentLevel = lfoAmpAmp;
+
 			double lfoAmpFreq = readDProp(id, AMP_LFO_FREQ_INDEX);
-			//LFOAmplitudeFreq.CurrentLevel = lfoAmpFreq;
+			Facilities.Log("OscillatorPanel readParameters LFOAMPFRE {0}", lfoAmpFreq);
+			LFOAmplitudeFreq.CurrentLevel = lfoAmpFreq;
 			
 			bool enaLFOFreq = readBProp(id, FREQ_LFO_ENABLE_INDEX);
 			LFOFreqOnOff.SwitchOn = enaLFOFreq;
+
 			double lfoFreqAmp = readDProp(id, FREQ_LFO_LEVEL_INDEX);
+			Facilities.Log("OscillatorPanel readParameters LFOFREAMP {0}", lfoFreqAmp);
 			LFOFrequencyAmp.CurrentLevel = lfoFreqAmp;
+
 			double lfoFreqFreq = readDProp(id, FREQ_LFO_FREQ_INDEX);
+			Facilities.Log("OscillatorPanel readParameters LFOFREFRE {0}", lfoFreqFreq);
 			LFOFrequencyFreq.CurrentLevel = lfoFreqFreq;
 		}
 
@@ -187,8 +200,7 @@ namespace BasicEUSynthFactory
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
-			double x = LFOFrequencyAmp.ActualWidth;
-			double y = LFOFrequencyAmp.ActualHeight;
+			readParametersFromEngine();
 		}
 	}
 }

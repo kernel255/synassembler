@@ -38,6 +38,7 @@ namespace BasicAudioControls
 				SetValue(ValueProperty, value);
 				if (!sliderChanging)
 				{
+					Facilities.Log("Setting ValueProperty={0}", value);
 					setPosition(value);
 					// Change does not come from slider: update cursor position
 					//double min = getCursorMin();
@@ -172,6 +173,11 @@ namespace BasicAudioControls
             return 0 + (SliderSpace.ActualHeight - getCursorExtension()) / 2;
         }
 
+		private bool DimensionsAvailable()
+		{
+			return (SliderSpace.ActualHeight != 0 && SliderSpace.ActualHeight != 0);
+		}
+
         private double getCursorMax()
         {
             return getCursorMin() + getCursorExtension();
@@ -247,14 +253,19 @@ namespace BasicAudioControls
 			Facilities.Log("Slider Loaded label={0}", label);
 			double value = (Double)GetValue(ValueProperty);
 			Facilities.Log("Level = {0}", value);
-			double lvl = unNormalizeLevelFromUI(value);
-			double min = getCursorMin();
-			if(min!=0)
+			if(DimensionsAvailable())
 			{
-				double offset = Canvas.GetTop(SliderPanel);
+				double lvl = unNormalizeLevelFromUI(value);
+				//double offset = Canvas.GetTop(SliderPanel);
+				Facilities.Log("MySlider loaded: Dimensions Available lvl={0}", lvl);
 				//double max = getCursorMax();
 				//double lvl = value * (max - min);
-				Canvas.SetTop(SliderCursor, offset + lvl);
+				//Canvas.SetTop(SliderCursor, offset + lvl);
+				//setPosition(lvl);
+			}
+			else
+			{
+				Facilities.Log("MySlider loaded: Dimensions NOT Available");
 			}
 		}
 	}

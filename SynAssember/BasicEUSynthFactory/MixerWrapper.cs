@@ -10,7 +10,7 @@ using GeneralUtils;
 using System.Globalization;
 using System.Drawing;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
 	class MixerPanelWrapper : AbstractSynthPanel
 	{

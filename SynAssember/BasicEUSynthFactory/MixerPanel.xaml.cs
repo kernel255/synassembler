@@ -16,7 +16,7 @@ using SynthPanels;
 using BasicAudioControls;
 using GeneralUtils;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
 	/// <summary>
 	/// Interaction logic for MixerPanel.xaml

@@ -8,7 +8,7 @@ using GeneralUtils;
 using System.IO;
 using System.Xml;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
 	class PCMWaveformWrapper : AbstractSynthPanel
 	{

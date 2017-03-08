@@ -29,11 +29,21 @@ namespace SynAssember
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+	/// 
+
+	internal static class NativeMethods
+	{
+		[DllImport("kernel32.dll", ExactSpelling = true)]
+		internal static extern IntPtr GetConsoleWindow();
+
+	}
+
+	public partial class MainWindow : Window
     {
+		/*
         [DllImport("kernel32.dll", ExactSpelling = true)]
         private static extern IntPtr GetConsoleWindow();
-
+		*/
 
         //private bool m_SynthNew = false;
         private bool m_SynthSaved = true;

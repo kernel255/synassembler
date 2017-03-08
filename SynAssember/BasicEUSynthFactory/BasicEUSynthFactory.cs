@@ -5,7 +5,7 @@ using System.Text;
 using SynthPanels;
 using GeneralUtils;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     class BasicEUSynthFactory : AbstractSynthPanelFactory, ISynthPanelFactory
     {

@@ -11,7 +11,7 @@ using System.Globalization;
 
 using GeneralUtils;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     class OscillatorPanelWrapper : AbstractSynthPanel
     {

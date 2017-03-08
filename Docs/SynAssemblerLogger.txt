@@ -34,9 +34,24 @@ Problems found while loading oscillator:
 1. Position of the needle is wrong once loaded, seems the problem is due to rotation operation after setting of read values
 (When the read value is not set, the needle looks OK) The root cause is not the ActualSize=0 in Potentiomenter Fixed problem with Loading method, where the value is != 0, NEED TO RE-CHECK TO REMOVE DEBRIS...not OK! Still problems in loading...The problems are present ONLY when there are some breakpoints
 2. Allocation of blocks is not done on load: Need to save position with integers OK
-3. Values of sliders not saved...Problem present both in PCMWaveform and Oscillator
+3. Values of sliders not saved...Problem present both in PCMWaveform and Oscillator. Fixed AttackTime is now saved with denormalized level
 	The value read from file and saved there looks working: but the slider is not placed in the right place!!!!
-	Need to study the max levels and the normalize/un-normalize functions
-
+	Need to study the max levels and the normalize/un-normalize functions OK
+3.1 Problems on Potentiometer: the position once saved is different from the read one (Set all the needle up, save once read needle are in wrong positions)
+	Hint=>Seems like the max value is managed by the AudioEngine, conversely from slider where the max is managed in UI...verified in AudioEngine: seems there are no modifications in values written!
+	Need a realtime check of the values written in AudioEngine. The LFOFreqLevel and LFOAmpLevel seems ok, while the LFOFreqf and LFOAmpf are not at the max level when they're set to 100. =>
+	The property MaxLevel is set to 50 inside the OscillatorPanel.xml. Now seems Potentiometers are Ok.
+	Still problems in slider: only load at launch works, loading from menu does not work: all sliders are at maximum level! Tried with setPosition but it does not work. Seems like there is still the problem of dimensions not yet available!
+	FIXED! Implemented load of control with read of parameters
+	=> Check PCMWaveform, does not works too...to be fixed in the same way
+	
 
 4. Problems on detection of modified Synthesizer
+
+*******#######
+MSP430
+*******#######
+
+Useful tutorial
+
+http://43oh.com/2010/08/10-beginner-msp430-tutorials-and-counting/

@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Shapes;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
 	class WaveManager
 	{

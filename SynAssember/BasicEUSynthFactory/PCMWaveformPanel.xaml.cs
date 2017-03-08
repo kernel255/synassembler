@@ -17,7 +17,7 @@ using SynthPanels;
 using BasicAudioControls;
 using GeneralUtils;
 
-namespace BasicEUSynthFactory
+namespace BasicEUFact
 {
     /// <summary>
     /// Interaction logic for PCMWaveformPanel.xaml
@@ -166,6 +166,11 @@ namespace BasicEUSynthFactory
 		private void PitchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			facilities.ChangedAlgorithm.algorithmChanged();
+		}
+
+		private void UserControl_Loaded(object sender, RoutedEventArgs e)
+		{
+			readParametersFromEngine();
 		}
 	}
 }

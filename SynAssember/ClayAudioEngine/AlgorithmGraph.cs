@@ -215,6 +215,7 @@ namespace ClayAudioEngine
 									}
 									catch(Exception ex)
 									{
+										Facilities.Log("Exception: \n{0}", ex.Message);
 										throw new Exception("Cannot read file version");
 									}
 									if(iVersion>STORAGE_VERSION_NUMBER)

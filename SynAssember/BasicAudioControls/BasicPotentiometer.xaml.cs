@@ -49,7 +49,11 @@ namespace BasicAudioControls
 
 		public Double MaxLevel
 		{
-			set { SetValue(MaxLevelProperty, value); }
+			set
+			{
+				Facilities.Log("Potentiometer: Max Level {0} Label {1}", value, (String)GetValue(LabelProperty));
+				SetValue(MaxLevelProperty, value);
+			}
 			get { return (Double)GetValue(MaxLevelProperty); }
 		}
 
@@ -72,6 +76,7 @@ namespace BasicAudioControls
 					}
 					rotate.Angle = remappedAngle;
 					*/
+					rotate.Angle = remappedAngle;
 				}
 			}
 			get { return (Double)GetValue(CurrentLevelProperty); }
@@ -252,7 +257,7 @@ namespace BasicAudioControls
                 Point p = e.GetPosition(potentiometerSpace);
                 double angle = getDegreeByPoint(p);
 				
-				Console.WriteLine("Angle=" + angle);
+				//Console.WriteLine("Angle=" + angle);
 				if (IsAngleInRange(angle))
 				{
 					rotate.Angle = angle;
@@ -265,33 +270,40 @@ namespace BasicAudioControls
 					{
 						PotentiometerChangedEvent(owner, level);
 					}
+					//Facilities.Log("Angle=" + angle);
+					//Facilities.Log("Level=" + level);
 				}
+				
             }
         }
 
 		const double HALF_PI = Math.PI / 2.0;
 
-		double MinAngle = 135;
-		double MaxAngle = 225;
+		const double MinAngle = 135;
+		const double MaxAngle = 225;
+
+		private bool DimensionsAvailable()
+		{
+			return potentiometerSpace.ActualWidth != 0 && potentiometerSpace.ActualHeight != 0;
+		}
 
 		private void MyPotentiometer_Loaded(object sender, RoutedEventArgs e)
 		{
-			Facilities.Log("Potentiometer loaded");
+			//Facilities.Log("Potentiometer loaded");
 			double value = (Double) GetValue(CurrentLevelProperty);
 			double angle = GetUnormalizedLevel(value);
 			//double remappedAngle = RemapAngle(angle);
 			double remappedAngle = UnremapAngle(angle);
-			if(potentiometerSpace.ActualWidth!=0 && potentiometerSpace.ActualHeight!=0)
-			//if (centerX == -1 && centerX == -1)
+			if(DimensionsAvailable())
 			{
-				Facilities.Log("Potentiometer: Actual dimensions available");
+				//Facilities.Log("Potentiometer: Actual dimensions available");
 				centerX = potentiometerSpace.ActualWidth / 2;
 				centerY = potentiometerSpace.ActualHeight / 2;
 				rotate = new RotateTransform(0, centerX, centerY);
 				potentiometerPointer.RenderTransform = rotate;
 			} else
 			{
-				Facilities.Log("Potentiometer: Actual dimensions NOT available");
+				//Facilities.Log("Potentiometer: Actual dimensions NOT available");
 			}
 			rotate.Angle = remappedAngle;
 
