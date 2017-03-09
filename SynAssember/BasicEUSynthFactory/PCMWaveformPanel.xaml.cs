@@ -24,6 +24,23 @@ namespace BasicEUFact
     /// </summary>
     public partial class PCMWaveformPanel : UserControl
     {
+
+		public PCMWaveformPanel(int id, SynthDelegateHolder deleHolder, Facilities facilities)
+		{
+			InitializeComponent();
+			this.id = id;
+			this.facilities = facilities;
+			synDeleHolder = deleHolder;
+			AddAllPitchItems();
+			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
+			WaveSelectionComboBox.SelectedIndex = 0;
+
+			//readParametersFromEngine();
+			OutLevel.setOwner(this);
+			OutLevel.SliderChangedEvent += new BasicSlider.SliderChanged(OutputLevel_SliderChangeEvent);
+		}
+
+		private bool loadCompleted = false;
 		const int NUM_NOTES = 128;
 
 		static String GetNoteNameById(int noteId)
@@ -107,18 +124,6 @@ namespace BasicEUFact
 		Facilities facilities;
 		SynthDelegateHolder synDeleHolder;
 
-        public PCMWaveformPanel(int id, SynthDelegateHolder deleHolder, Facilities facilities)
-        {
-            InitializeComponent();
-			this.id = id;
-			this.facilities = facilities;
-			this.synDeleHolder = deleHolder;
-			AddAllPitchItems();
-			AddAllWaveforms(PCMWaveformWrapper.s_WaveNames);
-			WaveSelectionComboBox.SelectedIndex = 0;
-
-			//readParametersFromEngine();
-        }
 		/*
 		String _wavesFolder;
 		public String WavesFolder
@@ -138,13 +143,16 @@ namespace BasicEUFact
 				String waveName = selectedItem.name;
 				synDeleHolder.writeEUProp(id, WAVE_NAME_INDEX, waveName);
 			}
-			//PCMWaveformPanel wavPanel = (PCMWaveformPanel)sender;
-			facilities.ChangedAlgorithm.algorithmChanged();
+			if (loadCompleted)
+			{
+				facilities.ChangedAlgorithm.algorithmChanged();
+			}
 		}
 
 		internal void readParametersFromEngine()
 		{
 			double lvl = synDeleHolder.readEUDprop(id, OUTPUT_LEVEL_INDEX);
+			Facilities.Log("PCMWaveformPanel: readParametersFromEngine: lvl={0}", lvl);
 			OutLevel.NormalizedLevelValue = lvl;
 			String waveName = synDeleHolder.readEUProp(id, WAVE_NAME_INDEX);
 			ItemCollection waves = WaveSelectionComboBox.Items;
@@ -165,12 +173,26 @@ namespace BasicEUFact
 
 		private void PitchComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			facilities.ChangedAlgorithm.algorithmChanged();
+			if (loadCompleted)
+			{
+				facilities.ChangedAlgorithm.algorithmChanged();
+			}
+		}
+
+		public static void OutputLevel_SliderChangeEvent(Object o, double level) { SetChangedProperty(o, level, OUTPUT_LEVEL_INDEX); }
+
+		static void SetChangedProperty(Object o, Double level, int index)
+		{
+			PCMWaveformPanel pcmPanel = (PCMWaveformPanel)o;
+			pcmPanel.synDeleHolder.writeEUDProp(pcmPanel.id, index, level);
+			pcmPanel.facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
+			Facilities.Log("PCMWaveformPanel: UserControl_Loaded");
 			readParametersFromEngine();
+			loadCompleted = true;
 		}
 	}
 }

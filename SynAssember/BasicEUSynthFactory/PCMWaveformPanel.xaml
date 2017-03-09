@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
              mc:Ignorable="d" 
-             d:DesignWidth="300" d:DesignHeight="200">
+             d:DesignWidth="300" d:DesignHeight="200" Loaded="UserControl_Loaded">
     <Canvas>
         <Rectangle Name="BaseRect" Fill="#FF1E1E9B" Width="300" Height="200" StrokeThickness="5" Stroke="#FF0A186E"/>
         <Label Canvas.Left="15" Canvas.Top="45" Foreground="White">Waveform</Label>

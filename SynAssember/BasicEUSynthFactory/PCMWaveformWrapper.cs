@@ -7,6 +7,7 @@ using System.Drawing;
 using GeneralUtils;
 using System.IO;
 using System.Xml;
+using System.Globalization;
 
 namespace BasicEUFact
 {
@@ -59,9 +60,10 @@ namespace BasicEUFact
 		public override void write(XmlTextWriter writer)
 		{
 			base.write(writer);
+			CultureInfo cInfo = new System.Globalization.CultureInfo("en-US");
 			// Output Level [0]
 			double dOutLvl = delegateHolder.readEUDprop(m_EUId, PCMWaveformPanel.OUTPUT_LEVEL_INDEX);
-			writer.WriteAttributeString(XML_OUTPUT_LEVEL, dOutLvl.ToString());
+			writer.WriteAttributeString(XML_OUTPUT_LEVEL, dOutLvl.ToString(cInfo));
 			// Waveform Name [1]
 			String waveName = delegateHolder.readEUProp(m_EUId, PCMWaveformPanel.WAVE_NAME_INDEX);
 			writer.WriteAttributeString(XML_WAVEFILE_NAME, waveName);
@@ -77,7 +79,8 @@ namespace BasicEUFact
 			base.read(reader);
 			// Output Level [0]
 			str = reader.GetAttribute(XML_OUTPUT_LEVEL);
-			double lvl = Double.Parse(str);
+			CultureInfo cInfo = new System.Globalization.CultureInfo("en-US");
+			double lvl = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, PCMWaveformPanel.OUTPUT_LEVEL_INDEX, lvl);
 			// Waveform Name [1]
 			String waveName = reader.GetAttribute(XML_WAVEFILE_NAME);

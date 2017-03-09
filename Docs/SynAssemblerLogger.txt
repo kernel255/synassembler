@@ -43,7 +43,8 @@ Problems found while loading oscillator:
 	The property MaxLevel is set to 50 inside the OscillatorPanel.xml. Now seems Potentiometers are Ok.
 	Still problems in slider: only load at launch works, loading from menu does not work: all sliders are at maximum level! Tried with setPosition but it does not work. Seems like there is still the problem of dimensions not yet available!
 	FIXED! Implemented load of control with read of parameters
-	=> Check PCMWaveform, does not works too...to be fixed in the same way
+	=> Check PCMWaveform, does not works too...to be fixed in the same way. Fixed loading, but the modified level is not saved. The slider change is not detected too! Does not require the save
+	Fixed several things, still missing the update after load as done in Oscillator. Now fixed PCMWaveform too
 	
 
 4. Problems on detection of modified Synthesizer
