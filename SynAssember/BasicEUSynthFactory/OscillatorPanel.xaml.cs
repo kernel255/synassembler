@@ -82,7 +82,8 @@ namespace BasicEUFact
 			LFOFrequencyAmp.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqAmp_ChangedEvent);
 			LFOFrequencyFreq.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqFreq_ChangedEvent);
 
-            this.id = id;
+
+			this.id = id;
         }
 
 		static void SetChangedProperty(Object o, Double level, int index)
@@ -198,9 +199,65 @@ namespace BasicEUFact
 		internal static int AMP_LFO_FREQ_INDEX = 11;
 		internal static int FREQ_LFO_FREQ_INDEX = 12;
 
+		internal static int PITCH_INDEX = 13;
+		internal static int TUNE_INDEX = 14;
+
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
 			readParametersFromEngine();
+		}
+
+		private class TransposeItem
+		{
+			public String name;
+			public int value;
+			public TransposeItem(String name, int value)
+			{
+				this.name = name;
+				this.value = value;
+			}
+			public override string ToString()
+			{
+				return name;
+			}
+		}
+
+		internal const int TRANSPOSE_RANGE = 12;
+
+		int transpose = 0;
+
+		private void TransposeSpinner_Spin(object sender, Xceed.Wpf.Toolkit.SpinEventArgs e)
+		{
+			if (e.Direction == Xceed.Wpf.Toolkit.SpinDirection.Increase)
+			{
+				if (transpose < TRANSPOSE_RANGE)
+					transpose++;
+			}
+			else
+			{
+				if (transpose > -TRANSPOSE_RANGE)
+					transpose--;
+			}
+			TransposeSpinner.Content = transpose.ToString();
+		}
+
+		internal const int PITCH_RANGE = 100;
+
+		int pitch = 0;
+
+		private void TuneSpinner_Spin(object sender, Xceed.Wpf.Toolkit.SpinEventArgs e)
+		{
+			if (e.Direction == Xceed.Wpf.Toolkit.SpinDirection.Increase)
+			{
+				if (pitch < PITCH_RANGE)
+					pitch++;
+			}
+			else
+			{
+				if (pitch > -PITCH_RANGE)
+					pitch--;
+			}
+			TuneSpinner.Content = pitch.ToString();
 		}
 	}
 }

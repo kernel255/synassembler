@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:auc="clr-namespace:BasicAudioControls;assembly=BasicAudioControls"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignWidth="450" d:DesignHeight="400" HorizontalAlignment="Center" Loaded="UserControl_Loaded">
     <Canvas >
@@ -31,11 +32,16 @@
         <auc:OnOffLedButton Name="LFOFreqOnOff"  Canvas.Left="20" Canvas.Top="365" Width="165" Height="15"></auc:OnOffLedButton>
         <auc:OnOffLedButton Name="LFOAmpOnOff"  Canvas.Left="210" Canvas.Top="365" Width="165" Height="15"></auc:OnOffLedButton>
 
-        <Label Canvas.Left="390" Canvas.Top="245" Foreground="Aqua">Pitch</Label>
-        <ComboBox Name="TransposeComboBox" Canvas.Left="390" Canvas.Top="275" Width="40"></ComboBox>
-        <Label Canvas.Left="390" Canvas.Top="300" Foreground="Aqua">Tune</Label>
-        <ComboBox Name="TuneComboBox" Canvas.Left="390" Canvas.Top="330" Width="40"></ComboBox>
+        <Label Canvas.Left="385" Canvas.Top="245" Foreground="Aqua">Pitch</Label>
+        <xctk:ButtonSpinner Name="TransposeSpinner" Canvas.Left="385" Canvas.Top="275" Width="50" Height="20" Spin="TransposeSpinner_Spin">
+            <TextBox HorizontalAlignment="Right"></TextBox>
+        </xctk:ButtonSpinner>
+        <Label Canvas.Left="385" Canvas.Top="300" Foreground="Aqua">Tune</Label>
+        <xctk:ButtonSpinner Name="TuneSpinner" Canvas.Left="385" Canvas.Top="330" Width="50" Height="20" Spin="TuneSpinner_Spin">
+            <TextBox HorizontalAlignment="Right"></TextBox>
+        </xctk:ButtonSpinner>
+        
 
-        <Label Canvas.Left="5" Canvas.Top="40" Foreground="Aqua">Oscillator Waveform</Label>
+            <Label Canvas.Left="5" Canvas.Top="40" Foreground="Aqua">Oscillator Waveform</Label>
     </Canvas>
 </UserControl>
