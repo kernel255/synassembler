@@ -83,6 +83,45 @@ public:
 		return true;
 	}
 
+	static void* getTranspose(void* pEU)
+	{
+		Oscillator* pOsc = (Oscillator*)pEU;
+		pOsc->m_pModuleServices->pLogger->writeLine("getTranspose: %d", pOsc->m_WaveKind);
+		return &(pOsc->transpose);
+	}
+	static bool setTranspose(void* pEU, void* value)
+	{
+		Oscillator* pOsc = (Oscillator *)pEU;
+		int* tr = (int*)value;
+		pOsc->m_pModuleServices->pLogger->writeLine("setTranspose: %d", *tr);
+		pOsc->transpose = *tr;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Transpose: %d", *tr);
+		pOsc->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	static void* getTune(void* pEU)
+	{
+		Oscillator* pOsc = (Oscillator*)pEU;
+		pOsc->m_pModuleServices->pLogger->writeLine("getTune: %d", pOsc->m_WaveKind);
+		return &(pOsc->tune);
+	}
+	static bool setTune(void* pEU, void* value)
+	{
+		Oscillator* pOsc = (Oscillator *)pEU;
+		int* tu = (int*)value;
+		pOsc->m_pModuleServices->pLogger->writeLine("setTune: %d", *tr);
+		pOsc->tune = *tu;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Tune: %d", *tu);
+		pOsc->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+
 protected:
 	SimpleGenerator::SampleCalculationResult calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice);
 
@@ -109,6 +148,8 @@ protected:
 	int m_SamplesBufferMaxSize;
 	EAG_SAMPLE_TYPE* m_pPhaseInBuffer;
 	EAG_SAMPLE_TYPE* m_pAmplitudeInBuffer;
+	int transpose;
+	int tune;
 
 	static const OscillatorKind kinna;
 private:

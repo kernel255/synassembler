@@ -76,6 +76,16 @@ OscillatorKind::OscillatorKind()
 	gain->setGetter(SimpleGenerator::getFreqLFOFreq);
 	gain->setSetter(SimpleGenerator::setFreqLFOFreq);
 	addProperty(gain);
+	// #13 Transpose
+	IntegerProperty* transpose = new IntegerProperty("Transpose");
+	transpose->setSetter(Oscillator::setTranspose);
+	transpose->setGetter(Oscillator::getTranspose);
+	addProperty(transpose);
+	// #14 Tune
+	IntegerProperty* tune = new IntegerProperty("Tune");
+	tune->setSetter(Oscillator::setTune);
+	tune->setGetter(Oscillator::getTune);
+	addProperty(tune);
 }
 
 

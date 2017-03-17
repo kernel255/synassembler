@@ -42,6 +42,9 @@ MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,Elabor
 
 	m_SamplesBufferMaxSize = 0;
 
+	transpose = 0;
+	tune = 0;
+
 	EngineSettings* engineSettings = m_pModuleServices->getEngineSettings();
 	double samplingPeriod = 1.0 / engineSettings->samplingFrequence;
 	initVoices(samplingPeriod);
