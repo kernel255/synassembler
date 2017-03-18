@@ -67,10 +67,10 @@ int TestMixerReadWriteProps(int algoId)
 	bool muted;
 	::getEUBProperty(mixId, 7, &muted);
 
-	if (lvl != res)
-	{
-		return -1;
-	}
+	int transp;
+	::getEUIProperty(oscId, 13, &transp);
+	transp++;
+
 
 	return 0;
 }

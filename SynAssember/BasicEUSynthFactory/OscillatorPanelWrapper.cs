@@ -47,6 +47,8 @@ namespace BasicEUFact
 		static string XML_LFOFREQ_ENA = "LFOFreqEnable";
 		static string XML_LFOFREQ_AMP = "LFOFreq_Amp";
 		static string XML_LFOFREQ_FREQ = "LFOFreq_Freq";
+		static string XML_TRANSPOSE = "Transpose";
+		static string XML_TUNE = "Tune";
 
         public override void write(XmlTextWriter writer)
         {
@@ -94,6 +96,12 @@ namespace BasicEUFact
 			double lfoFreqFreq = delegateHolder.readEUDprop(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX);
 			str = lfoFreqFreq.ToString(cInfo);
 			writer.WriteAttributeString(XML_LFOFREQ_FREQ, str);
+			int transpose = delegateHolder.readEUIProp(m_EUId, OscillatorPanel.TRANSPOSE_INDEX);
+			str = transpose.ToString();
+			writer.WriteAttributeString(XML_TRANSPOSE, str);
+			int tune = delegateHolder.readEUIProp(m_EUId, OscillatorPanel.TUNE_INDEX);
+			str = tune.ToString();
+			writer.WriteAttributeString(XML_TUNE, str);
 		}
 
         public override void read(XmlTextReader reader)
@@ -149,6 +157,13 @@ namespace BasicEUFact
 			str = reader.GetAttribute(XML_LFOFREQ_FREQ);
 			d = Double.Parse(str, cInfo);
 			delegateHolder.writeEUDProp(m_EUId, OscillatorPanel.FREQ_LFO_FREQ_INDEX, d);
+
+			str = reader.GetAttribute(XML_TRANSPOSE);
+			int transpose = Int32.Parse(str);
+			delegateHolder.writeEUIProp(m_EUId, OscillatorPanel.TRANSPOSE_INDEX, transpose);
+			str = reader.GetAttribute(XML_TUNE);
+			int tune = Int32.Parse(str);
+			delegateHolder.writeEUIProp(m_EUId, OscillatorPanel.TUNE_INDEX, tune);
 
 			// Now update the view to the model
 			//m_OscillatorPanel.readParametersFromEngine();

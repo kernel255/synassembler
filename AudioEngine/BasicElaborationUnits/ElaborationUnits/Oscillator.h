@@ -112,7 +112,7 @@ public:
 	{
 		Oscillator* pOsc = (Oscillator *)pEU;
 		int* tu = (int*)value;
-		pOsc->m_pModuleServices->pLogger->writeLine("setTune: %d", *tr);
+		pOsc->m_pModuleServices->pLogger->writeLine("setTune: %d", *tu);
 		pOsc->tune = *tu;
 		char buf[50];
 		memset(buf, 0, 50);

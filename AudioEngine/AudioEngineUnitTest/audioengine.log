@@ -1,37 +1,743 @@
-Ôªø17:26:41:423 AudioEngine library started
-17:26:41:423 Folder name:
-17:26:41:423 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\DebugÏ∑çÔ∑ΩÔ∑ΩÌ∑ùÌ∑ùÊ±π‡†ëÁΩ©
-17:26:41:423 Find file=0081c8b0
-17:26:41:423 Trying to open library: √ØC
-17:26:41:423 Library is not an ElaborationUnitFactory
-17:26:41:423 Library open failure
-17:26:41:423 FindNextFile=1
-17:26:41:423 Trying to open library: √ØC
-17:26:41:449 Basic EU factory constructor
-17:26:41:449 Library open successful
-17:26:41:449 FindNextFile=1
-17:26:41:449 Trying to open library: √ØC
-17:26:41:778 InputOutputFactory constructor
-17:26:41:990 Library open successful
-17:26:41:990 FindNextFile=0
-17:26:41:990 FindNextFile failure = 18
-17:26:41:990 Factories=2
-17:26:42:039 PCMWaveform constructor
-17:26:42:039 Creating DirectSound output
-17:26:42:100 HWND=0x00050de4
-17:27:02:166 setPitch: 3
-17:27:40:669 Written IValue propIndex=2 value=3
-17:28:05:716 getPicth: 538269527
-17:28:30:666 Stopped timebase
-17:28:30:666 Stopping DirectSoundOutput
-17:28:30:666 Stopping algorithm
-17:28:30:666 Algorithm destructor
-17:28:30:666 PCM Waveform destructor
-17:28:30:668 Simple generator destructor
-17:28:30:668 DirectSoundOutput destructor id=-842150451
-17:28:30:668 Stopping DirectSoundOutput
-17:28:30:672 File size=0
-17:28:30:672 Releasing factories
-17:28:30:672 Basic EU factory destructor
-17:28:30:673 InputOutputFactory: destructor
-17:28:30:673 Closing library
+Ôªø23:29:48:890 AudioEngine library started
+23:29:48:890 Folder name:
+23:29:48:890 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\DebugÏ∑çÔ∑ΩÔ∑ΩÌ∑ùÌ∑ùÂ∂ÆÈ±íÍ±Ñ
+23:29:48:890 Find file=00549130
+23:29:48:890 Trying to open library: √±2
+23:29:48:890 Library is not an ElaborationUnitFactory
+23:29:48:890 Library open failure
+23:29:48:890 FindNextFile=1
+23:29:48:890 Trying to open library: √±2
+23:29:48:982 Basic EU factory constructor
+23:29:48:982 Library open successful
+23:29:48:982 FindNextFile=1
+23:29:48:982 Trying to open library: √±2
+23:29:49:270 InputOutputFactory constructor
+23:29:49:478 Library open successful
+23:29:49:478 FindNextFile=0
+23:29:49:478 FindNextFile failure = 18
+23:29:49:478 Factories=2
+23:29:49:526 Oscillator constructor
+23:29:49:526 Creating DirectSound output
+23:29:49:562 HWND=0x00180718
+23:29:49:565 Started timebase
+23:29:49:566 Started timebase thread
+23:29:49:586 Started MIDISequencer
+23:29:49:586 Playing algorithm
+23:29:49:596 Playing note On
+23:29:49:596 Frequency=293.665 Note=50
+23:29:49:596 Waiting Mutex # 1
+23:29:49:596 Elapsed: 0
+23:29:49:596 Note On 50
+23:29:49:596 LFO Freq: 293.664768
+23:29:49:596 LFO Freq: 293.664768
+23:29:49:596 VoiceProxy.allocate#0
+23:29:49:596 First voice allocated
+23:29:49:596 Started Voice #0
+23:29:49:596 Env State: Attack
+23:29:49:596 VoiceProxy.activate#0
+23:29:49:596 Voices allocated: 1
+23:29:49:654 Env State: Decay
+23:29:49:705 Env State: Sustain
+23:29:50:606 Playing note Off
+23:29:50:606 Waiting Mutex # 1
+23:29:50:606 Note Off 50
+23:29:50:606 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:50:606 Env State: Release
+23:29:50:606 Ended Voice #0
+23:29:50:606 VoiceProxy.deactivate#0
+23:29:50:606 Elapsed: 1
+23:29:50:716 Playing note On
+23:29:50:716 Frequency=369.994 Note=54
+23:29:50:716 Waiting Mutex # 1
+23:29:50:716 Elapsed: 0
+23:29:50:716 Note On 54
+23:29:50:716 LFO Freq: 369.994423
+23:29:50:716 LFO Freq: 369.994423
+23:29:50:716 VoiceProxy.allocate#0
+23:29:50:716 First voice allocated
+23:29:50:716 Started Voice #0
+23:29:50:716 Env State: Attack
+23:29:50:716 VoiceProxy.activate#0
+23:29:50:716 Voices allocated: 1
+23:29:50:796 Env State: Decay
+23:29:50:847 Env State: Sustain
+23:29:50:979 Env State: Completed
+23:29:50:979 Disposed Voice 0
+23:29:50:979 Deallocate #0
+23:29:50:979 Voices allocated: 0
+23:29:51:750 Playing note Off
+23:29:51:750 Waiting Mutex # 1
+23:29:51:750 Note Off 54
+23:29:51:750 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:51:750 Env State: Release
+23:29:51:750 Ended Voice #0
+23:29:51:750 VoiceProxy.deactivate#0
+23:29:51:750 Elapsed: 1
+23:29:51:864 Playing note On
+23:29:51:864 Frequency=440 Note=57
+23:29:51:864 Waiting Mutex # 1
+23:29:51:864 Elapsed: 0
+23:29:51:864 Note On 57
+23:29:51:864 LFO Freq: 440.000000
+23:29:51:864 LFO Freq: 440.000000
+23:29:51:864 VoiceProxy.allocate#0
+23:29:51:864 First voice allocated
+23:29:51:864 Started Voice #0
+23:29:51:864 Env State: Attack
+23:29:51:864 VoiceProxy.activate#0
+23:29:51:864 Voices allocated: 1
+23:29:51:932 Env State: Decay
+23:29:51:973 Env State: Sustain
+23:29:52:144 Env State: Completed
+23:29:52:144 Disposed Voice 0
+23:29:52:144 Deallocate #0
+23:29:52:144 Voices allocated: 0
+23:29:52:874 Playing note Off
+23:29:52:874 Waiting Mutex # 1
+23:29:52:874 Note Off 57
+23:29:52:874 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:52:874 Env State: Release
+23:29:52:874 Ended Voice #0
+23:29:52:874 VoiceProxy.deactivate#0
+23:29:52:874 Elapsed: 1
+23:29:52:984 Playing note On
+23:29:52:984 Frequency=587.33 Note=62
+23:29:52:984 Waiting Mutex # 1
+23:29:52:984 Elapsed: 0
+23:29:52:984 Note On 62
+23:29:52:984 LFO Freq: 587.329536
+23:29:52:984 LFO Freq: 587.329536
+23:29:52:984 VoiceProxy.allocate#0
+23:29:52:984 First voice allocated
+23:29:52:984 Started Voice #0
+23:29:52:984 Env State: Attack
+23:29:52:984 VoiceProxy.activate#0
+23:29:52:984 Voices allocated: 1
+23:29:53:059 Env State: Decay
+23:29:53:114 Env State: Sustain
+23:29:53:242 Env State: Completed
+23:29:53:243 Disposed Voice 0
+23:29:53:243 Deallocate #0
+23:29:53:243 Voices allocated: 0
+23:29:54:016 Playing note Off
+23:29:54:016 Waiting Mutex # 1
+23:29:54:016 Note Off 62
+23:29:54:016 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:54:016 Env State: Release
+23:29:54:016 Ended Voice #0
+23:29:54:016 VoiceProxy.deactivate#0
+23:29:54:016 Elapsed: 1
+23:29:54:130 Playing note On
+23:29:54:130 Frequency=293.665 Note=50
+23:29:54:130 Waiting Mutex # 1
+23:29:54:130 Elapsed: 0
+23:29:54:130 Note On 50
+23:29:54:130 LFO Freq: 293.664768
+23:29:54:130 LFO Freq: 293.664768
+23:29:54:130 VoiceProxy.allocate#0
+23:29:54:130 First voice allocated
+23:29:54:130 Started Voice #0
+23:29:54:130 Env State: Attack
+23:29:54:130 VoiceProxy.activate#0
+23:29:54:130 Voices allocated: 1
+23:29:54:195 Env State: Decay
+23:29:54:237 Env State: Sustain
+23:29:54:424 Env State: Completed
+23:29:54:425 Disposed Voice 0
+23:29:54:425 Deallocate #0
+23:29:54:425 Voices allocated: 0
+23:29:55:144 Playing note Off
+23:29:55:144 Waiting Mutex # 1
+23:29:55:144 Note Off 50
+23:29:55:144 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:55:144 Env State: Release
+23:29:55:144 Ended Voice #0
+23:29:55:144 VoiceProxy.deactivate#0
+23:29:55:144 Elapsed: 1
+23:29:55:255 Playing note On
+23:29:55:255 Frequency=369.994 Note=54
+23:29:55:255 Waiting Mutex # 1
+23:29:55:255 Elapsed: 0
+23:29:55:255 Note On 54
+23:29:55:255 LFO Freq: 369.994423
+23:29:55:255 LFO Freq: 369.994423
+23:29:55:255 VoiceProxy.allocate#0
+23:29:55:255 First voice allocated
+23:29:55:255 Started Voice #0
+23:29:55:255 Env State: Attack
+23:29:55:255 VoiceProxy.activate#0
+23:29:55:255 Voices allocated: 1
+23:29:55:333 Env State: Decay
+23:29:55:365 Env State: Sustain
+23:29:55:507 Env State: Completed
+23:29:55:507 Disposed Voice 0
+23:29:55:507 Deallocate #0
+23:29:55:507 Voices allocated: 0
+23:29:56:265 Playing note Off
+23:29:56:265 Waiting Mutex # 1
+23:29:56:265 Note Off 54
+23:29:56:265 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:56:265 Env State: Release
+23:29:56:265 Ended Voice #0
+23:29:56:265 VoiceProxy.deactivate#0
+23:29:56:265 Elapsed: 1
+23:29:56:375 Playing note On
+23:29:56:375 Frequency=440 Note=57
+23:29:56:375 Waiting Mutex # 1
+23:29:56:375 Elapsed: 0
+23:29:56:375 Note On 57
+23:29:56:375 LFO Freq: 440.000000
+23:29:56:375 LFO Freq: 440.000000
+23:29:56:375 VoiceProxy.allocate#0
+23:29:56:375 First voice allocated
+23:29:56:375 Started Voice #0
+23:29:56:375 Env State: Attack
+23:29:56:375 VoiceProxy.activate#0
+23:29:56:375 Voices allocated: 1
+23:29:56:463 Env State: Decay
+23:29:56:513 Env State: Sustain
+23:29:56:636 Env State: Completed
+23:29:56:636 Disposed Voice 0
+23:29:56:636 Deallocate #0
+23:29:56:636 Voices allocated: 0
+23:29:57:385 Playing note Off
+23:29:57:385 Waiting Mutex # 1
+23:29:57:385 Note Off 57
+23:29:57:385 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:57:385 Env State: Release
+23:29:57:385 Ended Voice #0
+23:29:57:385 VoiceProxy.deactivate#0
+23:29:57:385 Elapsed: 1
+23:29:57:495 Playing note On
+23:29:57:495 Frequency=587.33 Note=62
+23:29:57:495 Waiting Mutex # 1
+23:29:57:495 Elapsed: 0
+23:29:57:495 Note On 62
+23:29:57:495 LFO Freq: 587.329536
+23:29:57:495 LFO Freq: 587.329536
+23:29:57:495 VoiceProxy.allocate#0
+23:29:57:495 First voice allocated
+23:29:57:495 Started Voice #0
+23:29:57:495 Env State: Attack
+23:29:57:495 VoiceProxy.activate#0
+23:29:57:495 Voices allocated: 1
+23:29:57:552 Env State: Decay
+23:29:57:604 Env State: Sustain
+23:29:57:782 Env State: Completed
+23:29:57:783 Disposed Voice 0
+23:29:57:783 Deallocate #0
+23:29:57:783 Voices allocated: 0
+23:29:58:506 Playing note Off
+23:29:58:506 Waiting Mutex # 1
+23:29:58:506 Note Off 62
+23:29:58:506 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:58:506 Env State: Release
+23:29:58:506 Ended Voice #0
+23:29:58:506 VoiceProxy.deactivate#0
+23:29:58:506 Elapsed: 1
+23:29:58:617 Playing note On
+23:29:58:617 Frequency=293.665 Note=50
+23:29:58:617 Waiting Mutex # 1
+23:29:58:617 Elapsed: 0
+23:29:58:617 Note On 50
+23:29:58:617 LFO Freq: 293.664768
+23:29:58:617 LFO Freq: 293.664768
+23:29:58:617 VoiceProxy.allocate#0
+23:29:58:617 First voice allocated
+23:29:58:618 Started Voice #0
+23:29:58:618 Env State: Attack
+23:29:58:618 VoiceProxy.activate#0
+23:29:58:618 Voices allocated: 1
+23:29:58:687 Env State: Decay
+23:29:58:728 Env State: Sustain
+23:29:58:915 Env State: Completed
+23:29:58:915 Disposed Voice 0
+23:29:58:915 Deallocate #0
+23:29:58:915 Voices allocated: 0
+23:29:59:644 Playing note Off
+23:29:59:644 Waiting Mutex # 1
+23:29:59:644 Note Off 50
+23:29:59:644 VoiceLIFO::Deactivate Found deactivable: 0
+23:29:59:644 Env State: Release
+23:29:59:644 Ended Voice #0
+23:29:59:644 VoiceProxy.deactivate#0
+23:29:59:644 Elapsed: 1
+23:29:59:754 Playing note On
+23:29:59:754 Frequency=369.994 Note=54
+23:29:59:754 Waiting Mutex # 1
+23:29:59:754 Elapsed: 0
+23:29:59:754 Note On 54
+23:29:59:754 LFO Freq: 369.994423
+23:29:59:754 LFO Freq: 369.994423
+23:29:59:754 VoiceProxy.allocate#0
+23:29:59:754 First voice allocated
+23:29:59:754 Started Voice #0
+23:29:59:754 Env State: Attack
+23:29:59:754 VoiceProxy.activate#0
+23:29:59:754 Voices allocated: 1
+23:29:59:818 Env State: Decay
+23:29:59:860 Env State: Sustain
+23:30:00:049 Env State: Completed
+23:30:00:049 Disposed Voice 0
+23:30:00:049 Deallocate #0
+23:30:00:049 Voices allocated: 0
+23:30:00:771 Playing note Off
+23:30:00:771 Waiting Mutex # 1
+23:30:00:771 Note Off 54
+23:30:00:771 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:00:771 Env State: Release
+23:30:00:771 Ended Voice #0
+23:30:00:771 VoiceProxy.deactivate#0
+23:30:00:771 Elapsed: 1
+23:30:00:886 Playing note On
+23:30:00:886 Frequency=440 Note=57
+23:30:00:886 Waiting Mutex # 1
+23:30:00:886 Elapsed: 0
+23:30:00:886 Note On 57
+23:30:00:886 LFO Freq: 440.000000
+23:30:00:886 LFO Freq: 440.000000
+23:30:00:886 VoiceProxy.allocate#0
+23:30:00:886 First voice allocated
+23:30:00:886 Started Voice #0
+23:30:00:886 Env State: Attack
+23:30:00:886 VoiceProxy.activate#0
+23:30:00:886 Voices allocated: 1
+23:30:00:956 Env State: Decay
+23:30:01:008 Env State: Sustain
+23:30:01:177 Env State: Completed
+23:30:01:177 Disposed Voice 0
+23:30:01:177 Deallocate #0
+23:30:01:177 Voices allocated: 0
+23:30:01:900 Playing note Off
+23:30:01:900 Waiting Mutex # 1
+23:30:01:900 Note Off 57
+23:30:01:900 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:01:900 Env State: Release
+23:30:01:900 Ended Voice #0
+23:30:01:900 VoiceProxy.deactivate#0
+23:30:01:900 Elapsed: 1
+23:30:02:011 Playing note On
+23:30:02:011 Frequency=587.33 Note=62
+23:30:02:011 Waiting Mutex # 1
+23:30:02:011 Elapsed: 0
+23:30:02:011 Note On 62
+23:30:02:011 LFO Freq: 587.329536
+23:30:02:011 LFO Freq: 587.329536
+23:30:02:011 VoiceProxy.allocate#0
+23:30:02:011 First voice allocated
+23:30:02:011 Started Voice #0
+23:30:02:011 Env State: Attack
+23:30:02:011 VoiceProxy.activate#0
+23:30:02:011 Voices allocated: 1
+23:30:02:094 Env State: Decay
+23:30:02:138 Env State: Sustain
+23:30:02:274 Env State: Completed
+23:30:02:274 Disposed Voice 0
+23:30:02:275 Deallocate #0
+23:30:02:275 Voices allocated: 0
+23:30:03:025 Playing note Off
+23:30:03:025 Waiting Mutex # 1
+23:30:03:025 Note Off 62
+23:30:03:025 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:03:025 Env State: Release
+23:30:03:025 Ended Voice #0
+23:30:03:025 VoiceProxy.deactivate#0
+23:30:03:025 Elapsed: 1
+23:30:03:135 Playing note On
+23:30:03:135 Frequency=293.665 Note=50
+23:30:03:135 Waiting Mutex # 1
+23:30:03:135 Elapsed: 0
+23:30:03:135 Note On 50
+23:30:03:135 LFO Freq: 293.664768
+23:30:03:135 LFO Freq: 293.664768
+23:30:03:135 VoiceProxy.allocate#0
+23:30:03:135 First voice allocated
+23:30:03:135 Started Voice #0
+23:30:03:135 Env State: Attack
+23:30:03:135 VoiceProxy.activate#0
+23:30:03:135 Voices allocated: 1
+23:30:03:217 Env State: Decay
+23:30:03:268 Env State: Sustain
+23:30:03:402 Env State: Completed
+23:30:03:402 Disposed Voice 0
+23:30:03:402 Deallocate #0
+23:30:03:402 Voices allocated: 0
+23:30:04:146 Playing note Off
+23:30:04:146 Waiting Mutex # 1
+23:30:04:146 Note Off 50
+23:30:04:146 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:04:146 Env State: Release
+23:30:04:146 Ended Voice #0
+23:30:04:146 VoiceProxy.deactivate#0
+23:30:04:146 Elapsed: 1
+23:30:04:256 Playing note On
+23:30:04:256 Frequency=369.994 Note=54
+23:30:04:256 Waiting Mutex # 1
+23:30:04:256 Elapsed: 0
+23:30:04:256 Note On 54
+23:30:04:256 LFO Freq: 369.994423
+23:30:04:256 LFO Freq: 369.994423
+23:30:04:256 VoiceProxy.allocate#0
+23:30:04:256 First voice allocated
+23:30:04:256 Started Voice #0
+23:30:04:256 Env State: Attack
+23:30:04:256 VoiceProxy.activate#0
+23:30:04:256 Voices allocated: 1
+23:30:04:306 Env State: Decay
+23:30:04:347 Env State: Sustain
+23:30:04:538 Env State: Completed
+23:30:04:538 Disposed Voice 0
+23:30:04:538 Deallocate #0
+23:30:04:538 Voices allocated: 0
+23:30:05:273 Playing note Off
+23:30:05:273 Waiting Mutex # 1
+23:30:05:273 Note Off 54
+23:30:05:273 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:05:273 Env State: Release
+23:30:05:273 Ended Voice #0
+23:30:05:273 VoiceProxy.deactivate#0
+23:30:05:273 Elapsed: 1
+23:30:05:383 Playing note On
+23:30:05:383 Frequency=440 Note=57
+23:30:05:383 Waiting Mutex # 1
+23:30:05:383 Elapsed: 0
+23:30:05:383 Note On 57
+23:30:05:383 LFO Freq: 440.000000
+23:30:05:383 LFO Freq: 440.000000
+23:30:05:383 VoiceProxy.allocate#0
+23:30:05:383 First voice allocated
+23:30:05:383 Started Voice #0
+23:30:05:383 Env State: Attack
+23:30:05:383 VoiceProxy.activate#0
+23:30:05:383 Voices allocated: 1
+23:30:05:446 Env State: Decay
+23:30:05:498 Env State: Sustain
+23:30:05:668 Env State: Completed
+23:30:05:668 Disposed Voice 0
+23:30:05:668 Deallocate #0
+23:30:05:668 Voices allocated: 0
+23:30:06:395 Playing note Off
+23:30:06:395 Waiting Mutex # 1
+23:30:06:395 Note Off 57
+23:30:06:395 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:06:395 Env State: Release
+23:30:06:395 Ended Voice #0
+23:30:06:395 VoiceProxy.deactivate#0
+23:30:06:395 Elapsed: 1
+23:30:06:505 Playing note On
+23:30:06:505 Frequency=587.33 Note=62
+23:30:06:505 Waiting Mutex # 1
+23:30:06:505 Elapsed: 0
+23:30:06:505 Note On 62
+23:30:06:505 LFO Freq: 587.329536
+23:30:06:505 LFO Freq: 587.329536
+23:30:06:505 VoiceProxy.allocate#0
+23:30:06:505 First voice allocated
+23:30:06:505 Started Voice #0
+23:30:06:505 Env State: Attack
+23:30:06:505 VoiceProxy.activate#0
+23:30:06:505 Voices allocated: 1
+23:30:06:584 Env State: Decay
+23:30:06:627 Env State: Sustain
+23:30:06:764 Env State: Completed
+23:30:06:764 Disposed Voice 0
+23:30:06:764 Deallocate #0
+23:30:06:764 Voices allocated: 0
+23:30:07:518 Playing note Off
+23:30:07:518 Waiting Mutex # 1
+23:30:07:518 Note Off 62
+23:30:07:518 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:07:518 Env State: Release
+23:30:07:518 Ended Voice #0
+23:30:07:518 VoiceProxy.deactivate#0
+23:30:07:518 Elapsed: 1
+23:30:07:628 Playing note On
+23:30:07:628 Frequency=293.665 Note=50
+23:30:07:628 Waiting Mutex # 1
+23:30:07:628 Elapsed: 0
+23:30:07:628 Note On 50
+23:30:07:628 LFO Freq: 293.664768
+23:30:07:628 LFO Freq: 293.664768
+23:30:07:628 VoiceProxy.allocate#0
+23:30:07:628 First voice allocated
+23:30:07:628 Started Voice #0
+23:30:07:628 Env State: Attack
+23:30:07:628 VoiceProxy.activate#0
+23:30:07:628 Voices allocated: 1
+23:30:07:707 Env State: Decay
+23:30:07:758 Env State: Sustain
+23:30:07:895 Env State: Completed
+23:30:07:895 Disposed Voice 0
+23:30:07:895 Deallocate #0
+23:30:07:895 Voices allocated: 0
+23:30:08:640 Playing note Off
+23:30:08:640 Waiting Mutex # 1
+23:30:08:640 Note Off 50
+23:30:08:640 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:08:640 Env State: Release
+23:30:08:640 Ended Voice #0
+23:30:08:640 VoiceProxy.deactivate#0
+23:30:08:640 Elapsed: 1
+23:30:08:750 Playing note On
+23:30:08:750 Frequency=369.994 Note=54
+23:30:08:750 Waiting Mutex # 1
+23:30:08:750 Elapsed: 0
+23:30:08:750 Note On 54
+23:30:08:750 LFO Freq: 369.994423
+23:30:08:750 LFO Freq: 369.994423
+23:30:08:750 VoiceProxy.allocate#0
+23:30:08:750 First voice allocated
+23:30:08:750 Started Voice #0
+23:30:08:750 Env State: Attack
+23:30:08:750 VoiceProxy.activate#0
+23:30:08:750 Voices allocated: 1
+23:30:08:797 Env State: Decay
+23:30:08:837 Env State: Sustain
+23:30:09:029 Env State: Completed
+23:30:09:029 Disposed Voice 0
+23:30:09:029 Deallocate #0
+23:30:09:029 Voices allocated: 0
+23:30:09:766 Playing note Off
+23:30:09:766 Waiting Mutex # 1
+23:30:09:766 Note Off 54
+23:30:09:766 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:09:766 Env State: Release
+23:30:09:766 Ended Voice #0
+23:30:09:766 VoiceProxy.deactivate#0
+23:30:09:766 Elapsed: 1
+23:30:09:876 Playing note On
+23:30:09:876 Frequency=440 Note=57
+23:30:09:876 Waiting Mutex # 1
+23:30:09:876 Elapsed: 0
+23:30:09:876 Note On 57
+23:30:09:876 LFO Freq: 440.000000
+23:30:09:876 LFO Freq: 440.000000
+23:30:09:876 VoiceProxy.allocate#0
+23:30:09:876 First voice allocated
+23:30:09:876 Started Voice #0
+23:30:09:876 Env State: Attack
+23:30:09:876 VoiceProxy.activate#0
+23:30:09:876 Voices allocated: 1
+23:30:09:935 Env State: Decay
+23:30:09:989 Env State: Sustain
+23:30:10:157 Env State: Completed
+23:30:10:157 Disposed Voice 0
+23:30:10:157 Deallocate #0
+23:30:10:157 Voices allocated: 0
+23:30:10:898 Playing note Off
+23:30:10:898 Waiting Mutex # 1
+23:30:10:898 Note Off 57
+23:30:10:898 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:10:898 Env State: Release
+23:30:10:898 Ended Voice #0
+23:30:10:898 VoiceProxy.deactivate#0
+23:30:10:898 Elapsed: 1
+23:30:11:008 Playing note On
+23:30:11:008 Frequency=587.33 Note=62
+23:30:11:008 Waiting Mutex # 1
+23:30:11:008 Elapsed: 0
+23:30:11:008 Note On 62
+23:30:11:008 LFO Freq: 587.329536
+23:30:11:008 LFO Freq: 587.329536
+23:30:11:008 VoiceProxy.allocate#0
+23:30:11:008 First voice allocated
+23:30:11:008 Started Voice #0
+23:30:11:008 Env State: Attack
+23:30:11:008 VoiceProxy.activate#0
+23:30:11:008 Voices allocated: 1
+23:30:11:074 Env State: Decay
+23:30:11:116 Env State: Sustain
+23:30:11:297 Env State: Completed
+23:30:11:298 Disposed Voice 0
+23:30:11:298 Deallocate #0
+23:30:11:298 Voices allocated: 0
+23:30:12:028 Playing note Off
+23:30:12:028 Waiting Mutex # 1
+23:30:12:028 Note Off 62
+23:30:12:028 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:12:028 Env State: Release
+23:30:12:028 Ended Voice #0
+23:30:12:028 VoiceProxy.deactivate#0
+23:30:12:028 Elapsed: 1
+23:30:12:140 Playing note On
+23:30:12:140 Frequency=293.665 Note=50
+23:30:12:140 Waiting Mutex # 1
+23:30:12:140 Elapsed: 0
+23:30:12:140 Note On 50
+23:30:12:140 LFO Freq: 293.664768
+23:30:12:140 LFO Freq: 293.664768
+23:30:12:140 VoiceProxy.allocate#0
+23:30:12:140 First voice allocated
+23:30:12:140 Started Voice #0
+23:30:12:140 Env State: Attack
+23:30:12:140 VoiceProxy.activate#0
+23:30:12:140 Voices allocated: 1
+23:30:12:198 Env State: Decay
+23:30:12:249 Env State: Sustain
+23:30:12:435 Env State: Completed
+23:30:12:435 Disposed Voice 0
+23:30:12:435 Deallocate #0
+23:30:12:435 Voices allocated: 0
+23:30:13:157 Playing note Off
+23:30:13:157 Waiting Mutex # 1
+23:30:13:157 Note Off 50
+23:30:13:157 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:13:157 Env State: Release
+23:30:13:157 Ended Voice #0
+23:30:13:157 VoiceProxy.deactivate#0
+23:30:13:157 Elapsed: 1
+23:30:13:267 Playing note On
+23:30:13:267 Frequency=369.994 Note=54
+23:30:13:267 Waiting Mutex # 1
+23:30:13:267 Elapsed: 0
+23:30:13:267 Note On 54
+23:30:13:267 LFO Freq: 369.994423
+23:30:13:267 LFO Freq: 369.994423
+23:30:13:267 VoiceProxy.allocate#0
+23:30:13:267 First voice allocated
+23:30:13:267 Started Voice #0
+23:30:13:267 Env State: Attack
+23:30:13:267 VoiceProxy.activate#0
+23:30:13:267 Voices allocated: 1
+23:30:13:328 Env State: Decay
+23:30:13:379 Env State: Sustain
+23:30:13:559 Env State: Completed
+23:30:13:559 Disposed Voice 0
+23:30:13:559 Deallocate #0
+23:30:13:559 Voices allocated: 0
+23:30:14:291 Playing note Off
+23:30:14:291 Waiting Mutex # 1
+23:30:14:292 Note Off 54
+23:30:14:292 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:14:292 Env State: Release
+23:30:14:292 Ended Voice #0
+23:30:14:292 VoiceProxy.deactivate#0
+23:30:14:292 Elapsed: 1
+23:30:14:402 Playing note On
+23:30:14:402 Frequency=440 Note=57
+23:30:14:402 Waiting Mutex # 1
+23:30:14:402 Elapsed: 0
+23:30:14:402 Note On 57
+23:30:14:402 LFO Freq: 440.000000
+23:30:14:402 LFO Freq: 440.000000
+23:30:14:402 VoiceProxy.allocate#0
+23:30:14:402 First voice allocated
+23:30:14:402 Started Voice #0
+23:30:14:402 Env State: Attack
+23:30:14:402 VoiceProxy.activate#0
+23:30:14:402 Voices allocated: 1
+23:30:14:478 Env State: Decay
+23:30:14:518 Env State: Sustain
+23:30:14:689 Env State: Completed
+23:30:14:689 Disposed Voice 0
+23:30:14:689 Deallocate #0
+23:30:14:689 Voices allocated: 0
+23:30:15:415 Playing note Off
+23:30:15:415 Waiting Mutex # 1
+23:30:15:415 Note Off 57
+23:30:15:415 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:15:415 Env State: Release
+23:30:15:415 Ended Voice #0
+23:30:15:415 VoiceProxy.deactivate#0
+23:30:15:415 Elapsed: 1
+23:30:15:525 Playing note On
+23:30:15:525 Frequency=587.33 Note=62
+23:30:15:525 Waiting Mutex # 1
+23:30:15:525 Elapsed: 0
+23:30:15:525 Note On 62
+23:30:15:525 LFO Freq: 587.329536
+23:30:15:525 LFO Freq: 587.329536
+23:30:15:525 VoiceProxy.allocate#0
+23:30:15:525 First voice allocated
+23:30:15:525 Started Voice #0
+23:30:15:525 Env State: Attack
+23:30:15:525 VoiceProxy.activate#0
+23:30:15:525 Voices allocated: 1
+23:30:15:606 Env State: Decay
+23:30:15:656 Env State: Sustain
+23:30:15:786 Env State: Completed
+23:30:15:786 Disposed Voice 0
+23:30:15:786 Deallocate #0
+23:30:15:786 Voices allocated: 0
+23:30:16:538 Playing note Off
+23:30:16:538 Waiting Mutex # 1
+23:30:16:538 Note Off 62
+23:30:16:538 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:16:538 Env State: Release
+23:30:16:538 Ended Voice #0
+23:30:16:538 VoiceProxy.deactivate#0
+23:30:16:538 Elapsed: 1
+23:30:16:652 Playing note On
+23:30:16:652 Frequency=293.665 Note=50
+23:30:16:652 Waiting Mutex # 1
+23:30:16:652 Elapsed: 0
+23:30:16:652 Note On 50
+23:30:16:652 LFO Freq: 293.664768
+23:30:16:652 LFO Freq: 293.664768
+23:30:16:652 VoiceProxy.allocate#0
+23:30:16:652 First voice allocated
+23:30:16:652 Started Voice #0
+23:30:16:652 Env State: Attack
+23:30:16:652 VoiceProxy.activate#0
+23:30:16:652 Voices allocated: 1
+23:30:16:738 Env State: Decay
+23:30:16:781 Env State: Sustain
+23:30:16:925 Env State: Completed
+23:30:16:925 Disposed Voice 0
+23:30:16:926 Deallocate #0
+23:30:16:926 Voices allocated: 0
+23:30:17:672 Playing note Off
+23:30:17:672 Waiting Mutex # 1
+23:30:17:672 Note Off 50
+23:30:17:672 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:17:672 Env State: Release
+23:30:17:672 Ended Voice #0
+23:30:17:672 VoiceProxy.deactivate#0
+23:30:17:672 Elapsed: 1
+23:30:17:795 Playing note On
+23:30:17:795 Frequency=369.994 Note=54
+23:30:17:795 Waiting Mutex # 1
+23:30:17:795 Elapsed: 0
+23:30:17:795 Note On 54
+23:30:17:795 LFO Freq: 369.994423
+23:30:17:795 LFO Freq: 369.994423
+23:30:17:795 VoiceProxy.allocate#0
+23:30:17:795 First voice allocated
+23:30:17:795 Started Voice #0
+23:30:17:795 Env State: Attack
+23:30:17:795 VoiceProxy.activate#0
+23:30:17:795 Voices allocated: 1
+23:30:17:869 Env State: Decay
+23:30:17:910 Env State: Sustain
+23:30:18:050 Env State: Completed
+23:30:18:050 Disposed Voice 0
+23:30:18:050 Deallocate #0
+23:30:18:050 Voices allocated: 0
+23:30:18:808 Playing note Off
+23:30:18:808 Waiting Mutex # 1
+23:30:18:808 Note Off 54
+23:30:18:808 VoiceLIFO::Deactivate Found deactivable: 0
+23:30:18:808 Env State: Release
+23:30:18:808 Ended Voice #0
+23:30:18:808 VoiceProxy.deactivate#0
+23:30:18:808 Elapsed: 1
+23:30:18:918 Playing note On
+23:30:18:918 Frequency=440 Note=57
+23:30:18:918 Waiting Mutex # 1
+23:30:18:918 Elapsed: 0
+23:30:18:918 Note On 57
+23:30:18:918 LFO Freq: 440.000000
+23:30:18:918 LFO Freq: 440.000000
+23:30:18:918 VoiceProxy.allocate#0
+23:30:18:918 First voice allocated
+23:30:18:918 Started Voice #0
+23:30:18:918 Env State: Attack
+23:30:18:918 VoiceProxy.activate#0
+23:30:18:918 Voices allocated: 1
+23:30:19:009 Env State: Decay
+23:30:19:053 Env State: Sustain
+23:30:19:178 Env State: Completed
+23:30:19:178 Disposed Voice 0
+23:30:19:178 Deallocate #0
+23:30:19:178 Voices allocated: 0
+23:

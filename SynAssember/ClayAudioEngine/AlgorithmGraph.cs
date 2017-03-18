@@ -107,7 +107,7 @@ namespace ClayAudioEngine
 		const String EUCONNS = "EUConnections";
 		const String VERSION = "Version";
 
-		const int STORAGE_VERSION_NUMBER = 1;
+		const int STORAGE_VERSION_NUMBER = 2;
 
 		const String ALGORITHM_EXTENSION = ".sya";
 

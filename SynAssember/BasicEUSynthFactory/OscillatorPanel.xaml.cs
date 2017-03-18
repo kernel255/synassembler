@@ -82,7 +82,6 @@ namespace BasicEUFact
 			LFOFrequencyAmp.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqAmp_ChangedEvent);
 			LFOFrequencyFreq.PotentiometerChangedEvent += new BasicPotentiometer.PotentiometerChanged(LFOFreqFreq_ChangedEvent);
 
-
 			this.id = id;
         }
 
@@ -181,6 +180,14 @@ namespace BasicEUFact
 			double lfoFreqFreq = readDProp(id, FREQ_LFO_FREQ_INDEX);
 			Facilities.Log("OscillatorPanel readParameters LFOFREFRE {0}", lfoFreqFreq);
 			LFOFrequencyFreq.CurrentLevel = lfoFreqFreq;
+
+			transpose = readIProp(id, TRANSPOSE_INDEX);
+			Facilities.Log("OscillatorPanel readParameters TRASPOSE {0}", transpose);
+			TransposeSpinner.Content = transpose.ToString();
+
+			tune = readIProp(id, TUNE_INDEX);
+			Facilities.Log("OscillatorPanel readParameters TUNE {0}", tune);
+			TuneSpinner.Content = tune.ToString();
 		}
 
 		internal static int LEVEL_PROPERTY_INDEX = 0;
@@ -199,27 +206,12 @@ namespace BasicEUFact
 		internal static int AMP_LFO_FREQ_INDEX = 11;
 		internal static int FREQ_LFO_FREQ_INDEX = 12;
 
-		internal static int PITCH_INDEX = 13;
+		internal static int TRANSPOSE_INDEX = 13;
 		internal static int TUNE_INDEX = 14;
 
 		private void UserControl_Loaded(object sender, RoutedEventArgs e)
 		{
 			readParametersFromEngine();
-		}
-
-		private class TransposeItem
-		{
-			public String name;
-			public int value;
-			public TransposeItem(String name, int value)
-			{
-				this.name = name;
-				this.value = value;
-			}
-			public override string ToString()
-			{
-				return name;
-			}
 		}
 
 		internal const int TRANSPOSE_RANGE = 12;
@@ -239,25 +231,29 @@ namespace BasicEUFact
 					transpose--;
 			}
 			TransposeSpinner.Content = transpose.ToString();
+			writeIProp(id, TRANSPOSE_INDEX, transpose);
+			facilities.ChangedAlgorithm.algorithmChanged();
 		}
 
 		internal const int PITCH_RANGE = 100;
 
-		int pitch = 0;
+		int tune = 0;
 
 		private void TuneSpinner_Spin(object sender, Xceed.Wpf.Toolkit.SpinEventArgs e)
 		{
 			if (e.Direction == Xceed.Wpf.Toolkit.SpinDirection.Increase)
 			{
-				if (pitch < PITCH_RANGE)
-					pitch++;
+				if (tune < PITCH_RANGE)
+					tune++;
 			}
 			else
 			{
-				if (pitch > -PITCH_RANGE)
-					pitch--;
+				if (tune > -PITCH_RANGE)
+					tune--;
 			}
-			TuneSpinner.Content = pitch.ToString();
+			TuneSpinner.Content = tune.ToString();
+			writeIProp(id, TUNE_INDEX, tune);
+			facilities.ChangedAlgorithm.algorithmChanged();
 		}
 	}
 }

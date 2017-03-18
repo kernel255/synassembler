@@ -71,8 +71,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
-	UnitTest unitTest = MixerWAV;
-	//UnitTest unitTest = SimpleOsc;
+	//UnitTest unitTest = MixerReadWrite;
+	UnitTest unitTest = SimpleOsc;
 	//UnitTest unitTest = WrongEUAddedToAlgo;
 	//Algorith build
 	int algoId;
