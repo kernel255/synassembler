@@ -290,14 +290,14 @@ namespace ClayAudioEngine
 			Shape biggerShape = null;
 			foreach(Shape shape in m_Shapes)
 			{
-				if (shape.Width > maxW)
+				if (shape.ActualWidth > maxW)
 				{
-					maxW = shape.Width;
+					maxW = shape.ActualWidth;
 					biggerShape = shape;
 				}
-				if (shape.Height > maxH)
+				if (shape.ActualHeight > maxH)
 				{
-					maxH = shape.Height;
+					maxH = shape.ActualHeight;
 					biggerShape = shape;
 				}
 			}
