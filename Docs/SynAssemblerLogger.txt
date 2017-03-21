@@ -47,7 +47,13 @@ Problems found while loading oscillator:
 	Fixed several things, still missing the update after load as done in Oscillator. Now fixed PCMWaveform too
 	
 
-4. Problems on detection of modified Synthesizer
+4. Problems on detection of modified Synthesizer Ok
+
+Connection of MIDI: Issue #16 Problems on reading Canvas.Top/Left in hexagon, return NaN
+
+
+
+
 
 *******#######
 MSP430

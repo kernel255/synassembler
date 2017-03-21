@@ -70,6 +70,9 @@ protected:
 
 	bool playing;
 
+	int transpose;
+	int tune;
+
 	// Functions to access to ADSR
 	// AttackTime, DecayTime, ReleaseTime,
 	// AttackLevel, SustainLevel
@@ -270,6 +273,44 @@ public:
 		char buf[50];
 		memset(buf, 0, 50);
 		sprintf(buf, "Write Freq LFO Freq: %f", pSG->m_pFrequencyLFO->m_Frequency);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+	// TRANSPOSE
+	static void* getTranspose(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator*)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("getTranspose: %d", pSG->transpose);
+		return &(pSG->transpose);
+	}
+	static bool setTranspose(void* pEU, void* value)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		int* tr = (int*)value;
+		pSG->m_pModuleServices->pLogger->writeLine("setTranspose: %d", *tr);
+		pSG->transpose = *tr;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Transpose: %d", *tr);
+		pSG->m_pModuleServices->pLogger->writeLine(buf);
+		return true;
+	}
+
+	static void* getTune(void* pEU)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator*)pEU;
+		pSG->m_pModuleServices->pLogger->writeLine("getTune: %d", pSG->tune);
+		return &(pSG->tune);
+	}
+	static bool setTune(void* pEU, void* value)
+	{
+		SimpleGenerator* pSG = (SimpleGenerator *)pEU;
+		int* tu = (int*)value;
+		pSG->m_pModuleServices->pLogger->writeLine("setTune: %d", *tu);
+		pSG->tune = *tu;
+		char buf[50];
+		memset(buf, 0, 50);
+		sprintf(buf, "Tune: %d", *tu);
 		pSG->m_pModuleServices->pLogger->writeLine(buf);
 		return true;
 	}
