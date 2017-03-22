@@ -303,12 +303,38 @@ namespace ClayAudioEngine
 			}
 			if(biggerShape!=null)
 			{
-				centX = Canvas.GetLeft(biggerShape);
-				centY = Canvas.GetTop(biggerShape);
-				centX = centX + maxW / 2;
-				centY = centY + maxH / 2;
+				if (biggerShape is Polygon)
+					return GetPolygonCenter((Polygon)biggerShape);
+				else
+				{
+					centX = Canvas.GetLeft(biggerShape);
+					centY = Canvas.GetTop(biggerShape);
+					centX = centX + maxW / 2;
+					centY = centY + maxH / 2;
+				}
 			}
 			return new Point(centX, centY); ;
+		}
+
+		internal Point GetPolygonCenter(Polygon poly)
+		{
+			double maxX = 0.0, maxY = 0.0, minY = Double.MaxValue, minX = Double.MaxValue;
+			foreach(Point p in poly.Points)
+			{
+				if (p.X > maxX)
+					maxX = p.X;
+				if (p.Y > maxY)
+					maxY = p.Y;
+				if (p.X < minX)
+					minX = p.X;
+				if (p.Y < minY)
+					minY = p.Y;
+			}
+			double x = minX + (maxX - minX) / 2.0;
+			double y = minY + (maxY - minY) / 2.0;
+			Point result = new Point(x, y);
+
+			return result;
 		}
 
         private static readonly String XML_ELEMENT_NAME = "IO";
