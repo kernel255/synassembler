@@ -231,3 +231,8 @@ const EUKind* Oscillator::s_GetKind(void)
 {
 	return (EUKind *) &kinna;
 }
+
+double Oscillator::GetCurrentFrequence()
+{
+	return MIDIChannelMessage::GetFreqByMIDINote(this->iNumInput, transpose, tune);
+}

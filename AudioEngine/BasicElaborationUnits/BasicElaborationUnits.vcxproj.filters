@@ -206,5 +206,8 @@
     <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceProxy.h">
       <Filter>Facilities</Filter>
     </ClInclude>
+    <ClInclude Include="FrequencyRetriever.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

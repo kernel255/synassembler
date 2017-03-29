@@ -8,6 +8,7 @@
 #include "../../AudioEngine/Facilities/Audio/WaveGeneratorFacilities.h"
 #include "../../AudioEngine/Facilities/Audio/WaveKind.h"
 #include "../../AudioEngine/Facilities/Audio/LFO.h"
+#include "../../AudioEngine/Facilities/Audio/FrequencyRetriever.h"
 
 class EUKind;
 class OscillatorKind;
@@ -18,7 +19,7 @@ class ModuleServices;
  *	\brief Simple oscillator with preset waveforms
  */
 
-class Oscillator : public SimpleGenerator
+class Oscillator : public SimpleGenerator, FrequecyRetriever
 {
 public:
 	/**
@@ -46,6 +47,7 @@ public:
 	virtual void stop(void);
 	virtual const EUKind* getKind(void);
 	static const EUKind* s_GetKind(void);
+	virtual double GetCurrentFrequence();
 
 	static void* getAmplitude(void* pEU) 
 	{

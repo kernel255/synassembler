@@ -49,7 +49,11 @@ Problems found while loading oscillator:
 
 4. Problems on detection of modified Synthesizer Ok
 
-Connection of MIDI: Issue #16 Problems on reading Canvas.Top/Left in hexagon, return NaN
+Connection of MIDI: Issue #16 Problems on reading Canvas.Top/Left in hexagon, return NaN => Fixed in case of MIDI an hexagon was drawn, and center calculation was wrong=>Fixed
+
+27 March
+
+Transpose&Tune: Added properties and controls in UI. Still to be completed the Oscillator's frequence, added FrequencyRetriever to get instantaneous frequence
 
 
 

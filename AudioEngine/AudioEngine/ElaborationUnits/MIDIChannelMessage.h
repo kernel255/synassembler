@@ -9,24 +9,49 @@
  */
 
 #define twototwelvesqrt pow(2.0,(1.0/12.0))
+#define A3Freq 440.0
+#define TREESHOLD 57
 
 class MIDIChannelMessage
 {
-	static const int treeshold = 57;
+private:
+	static bool IsNoteOutOfRange(int note)
+	{
+		return (note < 0) || (note > 127);
+	}
+	static int GetNormalizedToA3(int note)
+	{
+		return (note >= TREESHOLD) ? (note - TREESHOLD) : (TREESHOLD - note);
+	}
 public:
 	static const int NumMIDINotes = 128;
 	static const double GetFreqByMIDINote(int note)
 	{
-		if((note<0)&&(note>127))
+		if(IsNoteOutOfRange(note))
 			return 0.0;
-		if( note >= treeshold )
+		int iA3Norm = GetNormalizedToA3(note);
+		if( note >= TREESHOLD)
 		{
-			return 440.0*pow(twototwelvesqrt,note-treeshold);
+			return 440.0*pow(twototwelvesqrt,iA3Norm);
 		}
 		else
 		{
-			return 440.0/pow(twototwelvesqrt,treeshold-note);
+			return 440.0/pow(twototwelvesqrt, iA3Norm);
 		}
+	}
+	static const double GetFreqByMIDINote(int note, int transpose, int tunecent)
+	{
+		if (IsNoteOutOfRange(note))
+			return 0.0;
+		double dNote = (double)note;
+		double dTranspose = (double)transpose;
+		double dCent = (double)tunecent;
+		double dTreeshold = (double)TREESHOLD;
+		double delta = (dNote + dTranspose + dCent / 100.0) - dTreeshold;
+
+		double result = A3Freq * pow(twototwelvesqrt, delta);
+		
+		return result;
 	}
 	/**
 	* \enum Defines all available kind of MIDI message

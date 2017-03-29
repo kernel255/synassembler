@@ -30,7 +30,7 @@ public:
 	* \var m_bFinalRelease True when the midi off has been received but the envelope is still in place
 	*/
 	bool m_bFinalRelease;
-	double m_Frequency;
+	//double m_Frequency;
 	double m_TimeAccumulator;
 	double m_Period;
 	double m_InitialFrequency;

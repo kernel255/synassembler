@@ -151,6 +151,7 @@
     <ClInclude Include="ElaborationUnits\OscillatorKind.h" />
     <ClInclude Include="ElaborationUnits\PCMWaveform.h" />
     <ClInclude Include="ElaborationUnits\PCMWaveformKind.h" />
+    <ClInclude Include="FrequencyRetriever.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
