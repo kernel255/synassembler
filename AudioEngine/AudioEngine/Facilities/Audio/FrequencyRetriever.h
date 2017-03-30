@@ -4,8 +4,8 @@
  * Class used to retrieve frequency from inside the oscillators/generators
 */
 
-class FrequecyRetriever
+class FrequencyRetriever
 {
 public:
-	virtual double GetCurrentFrequence() = 0;
+	virtual double GetCurrentFrequence(int midiNote) = 0;
 };

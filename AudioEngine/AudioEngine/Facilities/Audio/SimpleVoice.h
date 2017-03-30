@@ -4,16 +4,18 @@
 #include "../../ElaborationUnits/ModuleServices.h"
 #include "../Facilities/Audio/SimpleEnvelope.h"
 #include "../Audio/TimeAccumulatedVoice.h"
+#include "../Audio/FrequencyRetriever.h"
 
 class SimpleVoice : public TimeAccumulatedVoice
 {
 public:
-	SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
+
+	SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices);
 	virtual ~SimpleVoice();
 	/**
 	 * @fn Starts to play the sound (e.g. MIDI note on)
 	 */
-	void activate(double initialfreq, ADSR adsr);
+	void activate(double initialfreq, int initialMIDINote, ADSR adsr);
 	/**
 	 * @fn Stop to play a sound (e.g. MIDI note off)
 	 */
@@ -43,4 +45,5 @@ public:
 	virtual void increaseAccumulatedTime(double time);
 private:
 	int id;
+	FrequencyRetriever* m_FreqRetriever;
 };

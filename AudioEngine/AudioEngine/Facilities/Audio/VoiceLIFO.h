@@ -30,10 +30,10 @@ public:
 	VoiceProxy* getMyPredecessor(VoiceProxy* myVProxy);
 	VoiceProxy* getFirstDeactivable();
 public:
-	VoiceLIFO(double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
+	VoiceLIFO(double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices);
 	~VoiceLIFO();
 
-	void Activate(double initialfreq, ADSR adsr);
+	void Activate(double initialfreq, int initialMIDINote, ADSR adsr);
 	void Deactivate();
 	void Deallocate(VoiceProxy* toBeDeallocated);
 	bool isActive();

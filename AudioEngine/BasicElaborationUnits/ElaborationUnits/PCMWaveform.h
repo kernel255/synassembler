@@ -23,6 +23,7 @@ public:
 	static const EUKind* s_GetKind(void);
 	virtual int setProperty(int propertyIndex, const char* value);
 	virtual int getProperty(int propertyIndex, char* value, int bufferSize);
+	double GetCurrentFrequence(int midiNote);
 protected:
 	virtual SampleCalculationResult calculateSample(EAG_SAMPLE_TYPE& result, SimpleVoice& simpleVoice);
 private:

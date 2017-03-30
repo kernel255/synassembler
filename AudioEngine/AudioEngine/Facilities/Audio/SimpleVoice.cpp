@@ -3,12 +3,13 @@
 #include "ADSR.h"
 #include "SimpleVoice.h"
 
-SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices) : m_bActive(false)
+SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices) : m_bActive(false)
 {
 	m_pEnvelope = new SimpleEnvelope(pModuleServices, samplingPeriod);
 	m_SamplesBuffer = new EAG_SAMPLE_TYPE[samplesBufferSize];
 	m_pModuleServices = pModuleServices;
 	this->id = id;
+	m_FreqRetriever = fRetr;
 }
 
 SimpleVoice::~SimpleVoice()
@@ -17,7 +18,7 @@ SimpleVoice::~SimpleVoice()
 	delete m_SamplesBuffer;
 }
 
-void SimpleVoice::activate(double initialfreq, ADSR adsr)
+void SimpleVoice::activate(double initialfreq, int initialMIDINote, ADSR adsr)
 {
 	if (m_bActive)
 		m_pModuleServices->pLogger->writeLine("ERROR: voice #%d already active");

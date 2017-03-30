@@ -19,7 +19,7 @@ class ModuleServices;
  *	\brief Simple oscillator with preset waveforms
  */
 
-class Oscillator : public SimpleGenerator, FrequecyRetriever
+class Oscillator : public SimpleGenerator
 {
 public:
 	/**
@@ -47,7 +47,7 @@ public:
 	virtual void stop(void);
 	virtual const EUKind* getKind(void);
 	static const EUKind* s_GetKind(void);
-	virtual double GetCurrentFrequence();
+	virtual double GetCurrentFrequence(int midiNote);
 
 	static void* getAmplitude(void* pEU) 
 	{

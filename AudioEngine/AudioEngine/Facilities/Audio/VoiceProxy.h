@@ -9,8 +9,8 @@ class VoiceProxy
 public:
 	static int index;
 
-	VoiceProxy(int id,double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices);
-	void activate(double initialfreq, ADSR adsr);
+	VoiceProxy(int id,double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices);
+	void activate(double initialfreq, int initialMIDINote, ADSR adsr);
 	void deactivate(void);
 	bool isFree();
 	bool isDeactivating();

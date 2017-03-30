@@ -2,13 +2,13 @@
 #include <stdio.h>
 #include "VoiceLIFO.h"
 
-VoiceLIFO::VoiceLIFO(double samplingPeriod, int samplesBufferSize, ModuleServices* pModuleServices)
+VoiceLIFO::VoiceLIFO(double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices)
 {
 	numActiveVoices = 0;
 	m_pModuleServices = pModuleServices;
 	for (int i = 0; i < NUM_VOICES; i++)
 	{
-		preallocatedVoices[i] = new VoiceProxy(i, samplingPeriod, samplesBufferSize, pModuleServices);
+		preallocatedVoices[i] = new VoiceProxy(i, samplingPeriod, samplesBufferSize, fRetr, pModuleServices);
 	}
 
 	firstAllocated = NULL;
@@ -50,7 +50,7 @@ VoiceProxy* VoiceLIFO::getLatestAllocated()
 	return ptr;
 }
 
-void VoiceLIFO::Activate(double initialfreq, ADSR adsr)
+void VoiceLIFO::Activate(double initialfreq, int initialMIDINote, ADSR adsr)
 {
 	// Search for first free voice
 	VoiceProxy* firstFree = getFirstFreeVoice();
@@ -79,7 +79,7 @@ void VoiceLIFO::Activate(double initialfreq, ADSR adsr)
 			*/
 		}
 
-		firstFree->activate(initialfreq, adsr);
+		firstFree->activate(initialfreq, initialMIDINote, adsr);
 		numActiveVoices++;
 		m_pModuleServices->pLogger->writeLine("Voices allocated: %d", numActiveVoices);
 	}

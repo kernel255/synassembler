@@ -40,7 +40,7 @@ void SimpleGenerator::initVoices(EAG_SAMPLE_TYPE updatePeriod)
 	for(int i=0;i<MIDIChannelMessage::NumMIDINotes;i++)
 	{
 		//m_pVoices[i] = new SimpleVoice(updatePeriod, C_DefaultBufferSize, m_pModuleServices);
-		m_pVoicesLIFO[i] = new VoiceLIFO(updatePeriod, C_DefaultBufferSize, m_pModuleServices);
+		m_pVoicesLIFO[i] = new VoiceLIFO(updatePeriod, C_DefaultBufferSize, this, m_pModuleServices);
 	}
 }
 
@@ -223,7 +223,7 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 				m_pModuleServices->pLogger->writeLine("Note On %d", midimsg.data.NoteMessage.Note);
 				m_pAmplitudeLFO->setCarrierFrequence(midimsg.data.NoteMessage.Frequency);
 				m_pFrequencyLFO->setCarrierFrequence(midimsg.data.NoteMessage.Frequency);
-				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency, adsr);
+				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency, midimsg.data.NoteMessage.Note, adsr);
 				m_MutexProxy->ReleaseMutex();
 			}
 			break;

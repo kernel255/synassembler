@@ -8,7 +8,7 @@
 #include "..\General\MutexProxy.h"
 #include "..\Audio\LFO.h"
 
-class SimpleGenerator : public VirtualElaborationUnit {
+class SimpleGenerator : public VirtualElaborationUnit, FrequencyRetriever {
 public:
 	SimpleGenerator(ModuleServices* pService, int numProperties, const EUKind* kinna);
 	virtual ~SimpleGenerator();

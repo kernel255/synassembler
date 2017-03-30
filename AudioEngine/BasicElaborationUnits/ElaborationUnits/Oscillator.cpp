@@ -232,7 +232,7 @@ const EUKind* Oscillator::s_GetKind(void)
 	return (EUKind *) &kinna;
 }
 
-double Oscillator::GetCurrentFrequence()
+double Oscillator::GetCurrentFrequence(int midiNote)
 {
-	return MIDIChannelMessage::GetFreqByMIDINote(this->iNumInput, transpose, tune);
+	return MIDIChannelMessage::GetFreqByMIDINote(midiNote, transpose, tune);
 }

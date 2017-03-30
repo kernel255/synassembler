@@ -282,4 +282,9 @@ int PCMWaveform::getProperty(int propertyIndex, char* value, int bufferSize)
 	}
 }
 
+double PCMWaveform::GetCurrentFrequence(int midiNote)
+{
+	return MIDIChannelMessage::GetFreqByMIDINote(midiNote, 0, 0);
+}
+
 PCMWaveformKind PCMWaveform::kinna;
