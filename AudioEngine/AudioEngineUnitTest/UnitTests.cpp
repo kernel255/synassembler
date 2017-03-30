@@ -166,3 +166,54 @@ int TestMixerWAV(int algoId)
 
 	return 0;
 }
+
+int TestSimpleOscTransposeTune(int algoId)
+{
+	//Create oscillator
+	int oscId = ::createElaborationUnit(BASIC_EU_FACTORY, VIRTUAL_EU_CATEGORY, 0, -1);
+	//Create DirectSound
+	int dsId = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 0, 0);
+	//Create Polytrack keyboard
+	int seqId = ::createElaborationUnit(BASIC_EU_FACTORY, VIRTUAL_EU_CATEGORY, 1, -1);
+	//Add to algorithm
+	::addElaborationUnitToAlgorithm(algoId, dsId);
+	::addElaborationUnitToAlgorithm(algoId, oscId);
+	::addElaborationUnitToAlgorithm(algoId, seqId);
+	//Connect EU
+	::connectElaboratioUnits(algoId, oscId, 0, dsId, 0);
+	::connectElaboratioUnits(algoId, seqId, 0, oscId, 2);
+
+	::playAlgorithm(algoId);
+	printf("Playing\n");
+	::Sleep(100);
+	//Change note
+	/*
+	for (int i = 0; i < 12; i++)
+	{
+		//printf("Change note %d\n", i);
+		::setEUIProperty(oscId, 13, i);
+		::Sleep(500);
+	}
+	*/
+	for (int i = 0; i < 20; i++)
+	{
+		//printf("Change tune cent=%d\n", i);
+		::setEUIProperty(oscId, 14, i);
+		::Sleep(10);
+	}
+	/*
+	printf("Change note +1\n");
+	::setEUIProperty(oscId, 13, 1);
+	::Sleep(1000);
+	printf("Change note +2\n");
+	::setEUIProperty(oscId, 13, 2);
+	::Sleep(5000);
+	*/
+
+
+
+	::stopAlgorithm(algoId);
+	::destroyAlgorithm(algoId);
+
+	return 0;
+}

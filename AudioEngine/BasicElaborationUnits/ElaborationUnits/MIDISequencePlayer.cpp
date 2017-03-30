@@ -123,7 +123,7 @@ void MIDISequencePlayer::setSamplesBufferMaximumSize(int size)
 const int MIDISequencePlayer::NULL_NOTE = -1;
 
 int MIDISequencePlayer::noteArray[] = {				50,		50,		54,		54,		57,		57,		62,		62 };
-int MIDISequencePlayer::noteDurationArray[] =  {	100,	10,		100,	10,		100,	10,		100,	10 };
+int MIDISequencePlayer::noteDurationArray[] =  {	10000,	10,		100,	10,		100,	10,		100,	10 };
 bool MIDISequencePlayer::noteOnOffArray[] = {		true,	false,	true,	false,	true,	false,	true,	false };
 
 class MIDISequencePlayer::MIDINoteInfo MIDISequencePlayer::NotesInfoArray[NUM_NOTES];

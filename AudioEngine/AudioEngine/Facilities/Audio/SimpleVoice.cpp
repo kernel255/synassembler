@@ -2,6 +2,7 @@
 #include <assert.h>
 #include "ADSR.h"
 #include "SimpleVoice.h"
+#include "MIDIChannelMessage.h"
 
 SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices) : m_bActive(false)
 {
@@ -23,9 +24,11 @@ void SimpleVoice::activate(double initialfreq, int initialMIDINote, ADSR adsr)
 	if (m_bActive)
 		m_pModuleServices->pLogger->writeLine("ERROR: voice #%d already active");
 	m_pModuleServices->pLogger->writeLine("Started Voice #%d", id);
-	m_InitialFrequency = initialfreq;
+	//m_InitialFrequency = initialfreq;
+	m_InitialMIDINote = initialMIDINote;
+	m_InitialFrequency = m_FreqRetriever->GetCurrentFrequence(initialMIDINote);
 	m_TimeAccumulator = 0.0;
-	m_Period = 1.0 / m_InitialFrequency;
+	//m_Period = 1.0 / m_InitialFrequency;
 	m_pEnvelope->start(adsr);
 	//Activated by last, so the note can begin with the correct parameters
 	m_bActive = true;
@@ -52,4 +55,10 @@ void SimpleVoice::dispose(void)
 void SimpleVoice::increaseAccumulatedTime(double time)
 {
 	m_TimeAccumulator += time;
+}
+
+double SimpleVoice::getPeriod()
+{
+	double period = m_FreqRetriever->GetCurrentFrequence(m_InitialMIDINote);
+	return 1.0 / period;
 }

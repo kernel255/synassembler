@@ -34,14 +34,15 @@ public:
 	bool m_bFinalRelease;
 	//double m_Frequency;
 	double m_TimeAccumulator;
-	double m_Period;
+	//double m_Period;
 	double m_InitialFrequency;
+	int m_InitialMIDINote;
 	SimpleEnvelope *m_pEnvelope;
 	EAG_SAMPLE_TYPE* m_SamplesBuffer;
 	ModuleServices* m_pModuleServices;
 
 	virtual double getTimeAccumulated() { return m_TimeAccumulator; }
-	virtual double getPeriod() { return m_Period; }
+	virtual double getPeriod();
 	virtual void increaseAccumulatedTime(double time);
 private:
 	int id;
