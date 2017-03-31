@@ -29,7 +29,7 @@
             <ToggleButton Name="PlayButton" Content="Play" Click="PlayButton_Click"></ToggleButton>
             <ToggleButton Name="StopButton" Content="Stop" Click="StopButton_Click"></ToggleButton>
         </ToolBar>
-        <Grid DockPanel.Dock="Left" Margin="0,1,0,-1">
+        <Grid DockPanel.Dock="Left" Margin="0,1,0,-1" Name="MainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
