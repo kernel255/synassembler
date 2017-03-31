@@ -208,6 +208,10 @@
 cd $(SolutionDir)
 cd ..
 cd Waves
+copy *.* $(TargetDir)\Resources
+
+cd ..
+cd MIDIFiles
 copy *.* $(TargetDir)\Resources</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
