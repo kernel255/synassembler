@@ -59,6 +59,7 @@ namespace SynAssember
             else
                 loadAtStartup = false;
 			*/
+			okSelected = true;
 			loadAtStartup = (LoadAtStartupCheckbox.IsChecked==true);
 			hardcodedMode = (HardcodedSynth.IsChecked==true);
             Close();
@@ -66,7 +67,17 @@ namespace SynAssember
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+			okSelected = false;
+			Close();
         }
+
+		private bool okSelected = false;
+		public bool OkSelected
+		{
+			get
+			{
+				return okSelected;
+			}
+		}
     }
 }

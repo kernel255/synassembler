@@ -355,6 +355,11 @@ namespace SynAssember
             options.ShowDialog();
             Properties.Settings.Default.LoadAtStartUp = options.LoadAtStartup;
 			Properties.Settings.Default.HardcodedSynth = options.HardcodedMode;
+			if(options.OkSelected)
+			{
+				HideShelves(options.HardcodedMode);
+			}
+			
         }
 
         private bool loadAtStratupLastUseedSynth = false;
@@ -391,6 +396,14 @@ namespace SynAssember
 			Properties.Settings.Default.Save();
         }
 
+		private void HideShelves(bool hide)
+		{
+			if (hide)
+				MainGrid.RowDefinitions[0].Height = new GridLength(0);
+			else
+				MainGrid.RowDefinitions[0].Height = new GridLength(300);
+		}
+
 		/// <summary>
 		/// 
 		/// </summary>
@@ -402,8 +415,7 @@ namespace SynAssember
 
 			if(Properties.Settings.Default.HardcodedSynth)
 			{
-				MainGrid.RowDefinitions[0].Height = new GridLength(0);
-				
+				HideShelves(true);
 			}
 
 
