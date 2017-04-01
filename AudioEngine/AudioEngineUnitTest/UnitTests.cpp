@@ -195,11 +195,11 @@ int TestSimpleOscTransposeTune(int algoId)
 		::Sleep(500);
 	}
 	*/
-	for (int i = 0; i < 20; i++)
+	for (int i = 0; i < 100; i++)
 	{
 		//printf("Change tune cent=%d\n", i);
 		::setEUIProperty(oscId, 14, i);
-		::Sleep(10);
+		::Sleep(250);
 	}
 	/*
 	printf("Change note +1\n");
