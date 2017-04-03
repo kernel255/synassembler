@@ -19,9 +19,40 @@ namespace BasicEUFact
     /// </summary>
     public partial class MIDISequencePanel : UserControl
     {
+
+		private class MIDIFilenameItem
+		{
+			public String name;
+			public String filename;
+			public MIDIFilenameItem(String _name, String _filename)
+			{
+				name = _name;
+				filename = _filename;
+			}
+			public override string ToString()
+			{
+				return name;
+			}
+		}
+
+		void AddAllMIDIFiles(List<String> filenames)
+		{
+			foreach(String name in filenames)
+			{
+				MIDIFilenameItem item = new MIDIFilenameItem(name, name);
+				MIDISequenceName.Items.Add(item);
+			}
+		}
+
         public MIDISequencePanel()
         {
             InitializeComponent();
+			AddAllMIDIFiles(MIDISequencePlayerWrapper.s_MIDIFilenames);
         }
-    }
+
+		private void MIDISequenceName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+	}
 }

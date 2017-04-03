@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using SynthPanels;
 using GeneralUtils;
 using System.Drawing;
@@ -11,6 +12,8 @@ namespace BasicEUFact
     class MIDISequencePlayerWrapper : AbstractSynthPanel
     {
 		MIDISequencePanel m_MIDIPanel;
+		internal static List<String> s_MIDIFilenames = new List<string>();
+		const String MIDI_SUFFIX = ".mid";
 
 		public MIDISequencePlayerWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
 			: base(new MIDISequencePanel(), id, deleHolder, facilities)
@@ -39,6 +42,15 @@ namespace BasicEUFact
 			return 1;
 		}
 
+		internal static void InitMIDIFileNames(String resourcesFolder)
+		{
+			DirectoryInfo info = new DirectoryInfo(resourcesFolder);
+			foreach (FileInfo file in info.GetFiles())
+			{
+				if (file.Name.EndsWith(MIDI_SUFFIX))
+					s_MIDIFilenames.Add(file.Name);
+			}
+		}
 
 	}
 }
