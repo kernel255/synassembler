@@ -6,6 +6,7 @@ using System.IO;
 using SynthPanels;
 using GeneralUtils;
 using System.Drawing;
+using System.Xml;
 
 namespace BasicEUFact
 {
@@ -14,6 +15,8 @@ namespace BasicEUFact
 		MIDISequencePanel m_MIDIPanel;
 		internal static List<String> s_MIDIFilenames = new List<string>();
 		const String MIDI_SUFFIX = ".mid";
+
+		const String XML_MIDIFILE_NAME = "MIDIFilename";
 
 		public MIDISequencePlayerWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
 			: base(new MIDISequencePanel(), id, deleHolder, facilities)
@@ -52,5 +55,19 @@ namespace BasicEUFact
 			}
 		}
 
+		public override void write(XmlTextWriter writer)
+		{
+			base.write(writer);
+			String midiFilename = delegateHolder.readEUProp(m_EUId, MIDISequencePanel.MIDI_NAME_INDEX);
+			writer.WriteAttributeString(XML_MIDIFILE_NAME, midiFilename);
+		}
+
+		public override void read(XmlTextReader reader)
+		{
+			base.read(reader);
+			String str = reader.GetAttribute(XML_MIDIFILE_NAME);
+			delegateHolder.writeEUProp(m_EUId, MIDISequencePanel.MIDI_NAME_INDEX, str);
+		}
+
 	}
-}
+	}

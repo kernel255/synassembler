@@ -54,5 +54,7 @@ namespace BasicEUFact
 		{
 
 		}
+
+		internal static int MIDI_NAME_INDEX = 0;
 	}
 }
