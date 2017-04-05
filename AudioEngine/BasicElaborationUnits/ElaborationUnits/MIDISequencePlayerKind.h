@@ -10,6 +10,8 @@ class MIDISequencePlayerKind : public AbstractEUKind
 {
 
 public:
+	MIDISequencePlayerKind();
+	~MIDISequencePlayerKind();
 	const char* getName(void) const;
 	virtual bool isPhysical(void) const;
 	virtual int getInputPortNumber(void) const;
