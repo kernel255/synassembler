@@ -19,7 +19,7 @@ namespace BasicEUFact
 		const String XML_MIDIFILE_NAME = "MIDIFilename";
 
 		public MIDISequencePlayerWrapper(int id, SynthDelegateHolder deleHolder, Facilities facilities)
-			: base(new MIDISequencePanel(), id, deleHolder, facilities)
+			: base(new MIDISequencePanel(id, deleHolder, facilities), id, deleHolder, facilities)
         {
 			m_MIDIPanel = (MIDISequencePanel)m_UserControl;
 
@@ -69,5 +69,9 @@ namespace BasicEUFact
 			delegateHolder.writeEUProp(m_EUId, MIDISequencePanel.MIDI_NAME_INDEX, str);
 		}
 
+		public override void readParametersFromEngine()
+		{
+			m_MIDIPanel.readParametersFromEngine();
+		}
 	}
 	}
