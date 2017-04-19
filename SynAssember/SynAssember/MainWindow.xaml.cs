@@ -108,9 +108,17 @@ namespace SynAssember
 			}
 			else
 			{
-				currentFolder = Directory.GetCurrentDirectory();
-				Trace.Write("Current folder=" + currentFolder);
-				InitLayout();
+				if(AudioEngineWrapper.getDefault().getFactories()==null)
+				{
+					MessageBox.Show("Fatal Error: no facotories available!");
+					Application.Current.Shutdown(-1);
+				}
+				else
+				{
+					currentFolder = Directory.GetCurrentDirectory();
+					Trace.Write("Current folder=" + currentFolder);
+					InitLayout();
+				}
 			}
 
 			SynthPanelManager.getDefault().SetCanvas(SynthPanelArea);

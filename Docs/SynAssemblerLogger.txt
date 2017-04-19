@@ -55,8 +55,16 @@ Connection of MIDI: Issue #16 Problems on reading Canvas.Top/Left in hexagon, re
 
 Transpose&Tune: Added properties and controls in UI. Still to be completed the Oscillator's frequence, added FrequencyRetriever to get instantaneous frequence
 
+9 April
+
+Need to implement a MIDI File player: here the MIDI File format:
+
+http://cs.fit.edu/~ryan/cse4051/projects/midi/midi.html
 
 
+19 April
+
+Almost Completed installer development, still to debug the Resources folder, which is left empty by installer. Maybe the installer script to copy *.wav and *.mid file is missing.
 
 
 *******#######

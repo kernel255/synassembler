@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SynAssember</RootNamespace>
-    <AssemblyName>SynAssember</AssemblyName>
+    <AssemblyName>SynAssembler</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -204,11 +204,24 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir $(TargetDir)\Resources
+    <PostBuildEvent>echo Started postbuild
+REM if not exist $(TargetDir)\Resources goto SkipCreateResDir
+mkdir $(TargetDir)\Resources
+REM :SkipCreateResDir
+
 cd $(SolutionDir)
 cd ..
 cd Waves
-copy *.* $(TargetDir)\Resources</PostBuildEvent>
+copy *.* $(TargetDir)\Resources
+
+cd $(SolutionDir)
+cd ..
+cd SynAssemblerInstaller
+echo %25cd%25
+copy $(TargetPath) .
+copy $(TargetDir)\*.dll .
+copy $(TargetDir)\*.application .
+copy $(TargetDir)\*.config .</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -16,7 +16,13 @@ namespace ClayAudioEngine.Layout
 		public ShelvesPanel(Canvas canvas)
 		{
 			this.canvas = canvas;
-			m_Shelf = new EUShelf(6, 1000, 200, 0, 0, AudioEngineWrapper.getDefault().getFactories());
+			IList<ElaborationUnitFactory> factories = AudioEngineWrapper.getDefault().getFactories();
+			if (factories == null)
+			{
+				MessageBox.Show("Fatal error: no AudioEngine factories available");
+				Application.Current.Shutdown();
+			}
+			m_Shelf = new EUShelf(6, 1000, 200, 0, 0, factories);
 			m_Shelf.addToPanel(canvas);
 		}
 

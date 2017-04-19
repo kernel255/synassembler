@@ -27,10 +27,13 @@ namespace BasicEUFact
 		internal static void InitWaveNames(String resourcesFolder)
 		{
 			DirectoryInfo info = new DirectoryInfo(resourcesFolder);
-			foreach (FileInfo file in info.GetFiles())
+			if (info.Exists)
 			{
-				if (file.Name.EndsWith(WAV_SUFFIX))
-					s_WaveNames.Add(file.Name);
+				foreach (FileInfo file in info.GetFiles())
+				{
+					if (file.Name.EndsWith(WAV_SUFFIX))
+						s_WaveNames.Add(file.Name);
+				}
 			}
 		}
 

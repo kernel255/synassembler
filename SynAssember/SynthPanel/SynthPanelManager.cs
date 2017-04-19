@@ -113,9 +113,10 @@ namespace SynthPanels
                         Trace.Write("Something went wrong while loading assembly: " + absolutePath + "\n");
 
                 }
-                catch(Exception)
+                catch(Exception ex)
                 {
                     Trace.WriteLine("Unable to load factory: " + requestedFactory);
+					MessageBox.Show("Exception\n" + ex.Message);
                 }
             }
             

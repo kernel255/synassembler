@@ -254,6 +254,7 @@ int PCMWaveform::getProperty(int propertyIndex, char* value, int bufferSize)
 	memset(value,'\0',bufferSize);
 	switch(propertyIndex)
 	{
+
 	case PCMWaveformKind::C_OutputLevelIndex:
 		{
 			sprintf_s(value,bufferSize,"%f",this->m_OutputLevel);
