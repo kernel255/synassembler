@@ -18,6 +18,7 @@ namespace BasicEUFact
         {
 			base.init(deleHold, facilities);
 			PCMWaveformWrapper.InitWaveNames(facilities.ResourcesFolder);
+			MIDISequencePlayerWrapper.InitMIDIFileNames(facilities.ResourcesFolder);
         }
 
 		public override string getEUFactoryName()

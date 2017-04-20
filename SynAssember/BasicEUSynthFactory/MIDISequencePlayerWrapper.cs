@@ -72,9 +72,10 @@ namespace BasicEUFact
 			delegateHolder.writeEUProp(m_EUId, MIDISequencePanel.MIDI_NAME_INDEX, str);
 		}
 
+
 		public override void readParametersFromEngine()
 		{
 			m_MIDIPanel.readParametersFromEngine();
 		}
 	}
-}
+	}

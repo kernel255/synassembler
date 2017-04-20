@@ -36,6 +36,25 @@ public:
 	static const EUKind* s_GetKind(void);
 	virtual int setProperty(int propertyIndex, const char* value);
 	virtual int getProperty(int propertyIndex, char* value, int bufferSize);
+
+	static void* GetMIDIFilename(void* pEU)
+	{
+		MIDISequencePlayer* pMIDISeq = (MIDISequencePlayer*)pEU;
+		pMIDISeq->m_pModuleServices->pLogger->writeLine("GetMIDIFilename %s", pMIDISeq->m_MIDIFilename);
+		const wchar_t* ptr = pMIDISeq->m_MIDIFilename.c_str();
+		return (wchar_t*)ptr;
+	}
+
+	static bool SetMIDIFilename(void* pEU, void* value)
+	{
+		MIDISequencePlayer* pMIDISeq = (MIDISequencePlayer*)pEU;
+		wchar_t* pMIDIFilename = (wchar_t*)value;
+		pMIDISeq->m_MIDIFilename.assign(pMIDIFilename);
+		pMIDISeq->m_pModuleServices->pLogger->writeLine("SetMIDIFilename: %s", pMIDIFilename);
+		return true;
+	}
+
+
 private:
 	static const int NULL_NOTE;
 	static const MIDISequencePlayerKind kinna;
@@ -52,6 +71,8 @@ private:
 	int getNextMIDINoteDuration(void);
 	int getNextMIDINote(void);
 	bool getNextMIDIOnOff(void);
+
+	std::wstring m_MIDIFilename;
 
 	class MIDINoteInfo {
 	public:

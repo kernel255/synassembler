@@ -1,5 +1,20 @@
 
 #include "MIDISequencePlayerKind.h"
+#include "MIDISequencePlayer.h"
+#include "..\Facilities\General\StringProperty.h"
+
+MIDISequencePlayerKind::MIDISequencePlayerKind()
+{
+	// #0 MIDI Filename
+	StringProperty* fName = new StringProperty("MIDI Filename");
+	fName->setGetter(MIDISequencePlayer::GetMIDIFilename);
+	fName->setSetter(MIDISequencePlayer::SetMIDIFilename);
+	addProperty(fName);
+}
+
+MIDISequencePlayerKind::~MIDISequencePlayerKind()
+{
+}
 
 const char* MIDISequencePlayerKind::getName(void) const
 {
