@@ -1,4 +1,4 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
@@ -34,3 +34,12 @@
 /SynAssember/ClayAudioEngine/bin/Debug
 /AudioEngine/BasicElaborationUnits/Release
 /AudioEngine/InputOutput/Release
+SynAssemblerInstaller/BasicAudioControls.dll
+SynAssemblerInstaller/BasicElementsSynthFactory.dll
+SynAssemblerInstaller/ClayAudioEngine.dll
+SynAssemblerInstaller/InputOutputSynthFactory.dll
+SynAssemblerInstaller/SynAssembler.application
+SynAssemblerInstaller/SynAssembler.exe
+SynAssemblerInstaller/SynAssembler.vshost.application
+SynAssemblerInstaller/SynAssemblerSetup.exe
+SynAssemblerInstaller/SynthPanel.dll
