@@ -44,3 +44,7 @@ SynAssemblerInstaller/SynAssembler.application
 SynAssemblerInstaller/SynAssembler.exe
 SynAssemblerInstaller/SynAssembler.vshost.application
 SynAssemblerInstaller/SynthPanel.dll
+SynAssemblerInstaller/SynAssember.vshost.application
+SynAssemblerInstaller/SynAssember.vshost.exe.config
+SynAssemblerInstaller/SynAssembler.exe.config
+SynAssemblerInstaller/SynAssembler.vshost.exe.config
