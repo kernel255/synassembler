@@ -36,3 +36,11 @@
 /AudioEngine/InputOutput/Release
 SynAssember/.vs/SynAssember/v14/.suo
 SynAssemblerInstaller/SynAssemblerSetup.exe
+SynAssemblerInstaller/BasicAudioControls.dll
+SynAssemblerInstaller/BasicElementsSynthFactory.dll
+SynAssemblerInstaller/ClayAudioEngine.dll
+SynAssemblerInstaller/InputOutputSynthFactory.dll
+SynAssemblerInstaller/SynAssembler.application
+SynAssemblerInstaller/SynAssembler.exe
+SynAssemblerInstaller/SynAssembler.vshost.application
+SynAssemblerInstaller/SynthPanel.dll
