@@ -359,8 +359,15 @@ namespace SynAssember
             options = new Options();
             options.Owner = this;
             options.LoadAtStartup = Properties.Settings.Default.LoadAtStartUp;
+			options.HardcodedMode = Properties.Settings.Default.HardcodedSynth;
             options.ShowDialog();
             Properties.Settings.Default.LoadAtStartUp = options.LoadAtStartup;
+			Properties.Settings.Default.HardcodedSynth = options.HardcodedMode;
+			if(options.OkSelected)
+			{
+				HideShelves(options.HardcodedMode);
+			}
+			
         }
 
         private bool loadAtStratupLastUseedSynth = false;
@@ -376,18 +383,34 @@ namespace SynAssember
             }
         }
 
+		private bool hardcodedSynth = false;
+		public bool HardCodedSynth
+		{
+			set { hardcodedSynth = value; }
+			get { return hardcodedSynth; }
+		}
+
         private string loadAtStartUpPath = "";
 
         private void RetrieveSettings()
         {
             loadAtStratupLastUseedSynth = Properties.Settings.Default.LoadAtStartUp;
             loadAtStartUpPath = Properties.Settings.Default.LoadAtStartUpPath;
+			hardcodedSynth = Properties.Settings.Default.HardcodedSynth;
         }
 
         private void StoreSettings()
         {
 			Properties.Settings.Default.Save();
         }
+
+		private void HideShelves(bool hide)
+		{
+			if (hide)
+				MainGrid.RowDefinitions[0].Height = new GridLength(0);
+			else
+				MainGrid.RowDefinitions[0].Height = new GridLength(300);
+		}
 
 		/// <summary>
 		/// 
@@ -397,6 +420,13 @@ namespace SynAssember
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
 			LoadLastSynth();
+
+			if(Properties.Settings.Default.HardcodedSynth)
+			{
+				HideShelves(true);
+			}
+
+
 
 			Dispatcher.BeginInvoke(
 				new Action(()=>

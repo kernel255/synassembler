@@ -6,9 +6,11 @@
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <CheckBox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Name="LoadAtStartupCheckbox">Load Last Synth at Startup</CheckBox>
-        <Grid Grid.Row="1">
+        <CheckBox Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Name="HardcodedSynth">Hardcoded Synth Panel Layout</CheckBox>
+        <CheckBox Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Name="LoadAtStartupCheckbox">Load Last Synth at Startup</CheckBox>
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>

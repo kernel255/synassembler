@@ -37,18 +37,47 @@ namespace SynAssember
             }
         }
 
+		private bool hardcodedMode;
+		public bool HardcodedMode
+		{
+			get
+			{
+				return hardcodedMode;
+			}
+			set
+			{
+				hardcodedMode = value;
+				HardcodedSynth.IsChecked = hardcodedMode;
+			}
+		}
+
         private void OkButton_Click(object sender, RoutedEventArgs e)
         {
+			/*
             if (LoadAtStartupCheckbox.IsChecked == true)
                 loadAtStartup = true;
             else
                 loadAtStartup = false;
+			*/
+			okSelected = true;
+			loadAtStartup = (LoadAtStartupCheckbox.IsChecked==true);
+			hardcodedMode = (HardcodedSynth.IsChecked==true);
             Close();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+			okSelected = false;
+			Close();
         }
+
+		private bool okSelected = false;
+		public bool OkSelected
+		{
+			get
+			{
+				return okSelected;
+			}
+		}
     }
 }
