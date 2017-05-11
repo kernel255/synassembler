@@ -48,3 +48,4 @@ SynAssemblerInstaller/SynAssember.vshost.application
 SynAssemblerInstaller/SynAssember.vshost.exe.config
 SynAssemblerInstaller/SynAssembler.exe.config
 SynAssemblerInstaller/SynAssembler.vshost.exe.config
+AudioEngine/AudioEngine.VC.db
