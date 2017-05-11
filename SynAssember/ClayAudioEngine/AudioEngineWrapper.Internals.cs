@@ -168,6 +168,10 @@ namespace ClayAudioEngine
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void setHwndEngine(Int32 hwnd);
 
+		// Logging facilities
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern int logX(StringBuilder msg);
+
         // Factories
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int getFactoryNumber();
