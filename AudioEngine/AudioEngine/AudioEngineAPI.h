@@ -279,6 +279,16 @@ extern "C" __declspec( dllexport ) const char* getPropertyByName(int factoryInde
 //extern "C" __declspec(dllexport) int sendMIDIMessage(int euIndex, wchar_t* midiMsg);
 extern "C" __declspec(dllexport) int sendMIDIMessage(int euIndex, unsigned char* midiMsg);
 
+/**
+ * @fn Write a message on log file
+*/
+extern "C" __declspec(dllexport) int logX(const wchar_t* message);
+
+/**
+ * @fn Write the log file on persistence
+ */
+extern "C" __declspec(dllexport) int forceLogFlush(void);
+
 #endif //WIN32
 
 #endif //AUDIOENGINE_API

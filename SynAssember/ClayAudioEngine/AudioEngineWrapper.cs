@@ -58,6 +58,15 @@ namespace ClayAudioEngine
 			return result;
 		}
 
+		StringBuilder strBuild = new StringBuilder("");
+
+		public void LogX(String msg)
+		{
+			strBuild = new StringBuilder("[SYN]");
+			strBuild.Append(msg);
+			logX(strBuild);
+		}
+
 		private EUPropertyPlumbing initPlumbing()
 		{
 			EUPropertyPlumbing plumbing = new EUPropertyPlumbing();

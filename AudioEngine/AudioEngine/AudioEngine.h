@@ -65,6 +65,8 @@ public:
 	const char* getPropertyByName(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int propertyIndex);
 	//int sendMIDIMessage(int euIndex, wchar_t* msg);
 	int sendMIDIMessage(int euIndex, unsigned char* msg);
+	int log(const wchar_t* message);
+	int forceLogFlush(void);
 protected:
 	Algorithm* newAlgorithm();
 	void deleteAlgorithm(Algorithm* algo);

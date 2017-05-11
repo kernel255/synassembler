@@ -443,6 +443,30 @@ extern "C" __declspec( dllexport ) int initEngine(const wchar_t* folderName, int
 	return 0;
 }
 
+extern "C" __declspec( dllexport ) int logX(const wchar_t* message)
+{
+	if (audioEngine == NULL)
+	{
+		return -1;
+	} 
+	else 
+	{
+		return audioEngine->log(message);
+	}
+}
+
+extern "C" __declspec( dllexport ) int forceLogFlush(void)
+{
+	if (audioEngine == NULL)
+	{
+		return -1;
+	}
+	else
+	{
+		return audioEngine->forceLogFlush();
+	}
+}
+
 extern "C" __declspec( dllexport ) void releaseEngine(void)
 {
 	delete audioEngine;
@@ -1104,6 +1128,18 @@ MIDIChannelMessage* AudioEngine::getMIDIMsgByString(const wchar_t* str)
 
 	return msg;
 }
+
+int AudioEngine::log(const wchar_t* message) 
+{
+	pModuleServices->pLogger->writeLine(message);
+	return 0;
+}
+
+int AudioEngine::forceLogFlush(void)
+{
+	return 0;
+}
+
 
 //##################################
 //#######                    #######

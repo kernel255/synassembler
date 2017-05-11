@@ -226,6 +226,8 @@ namespace SynAssember
                 }
 
                 Properties.Settings.Default.LoadAtStartUpPath = dlg.FileName;
+
+				AudioEngineWrapper.getDefault().LogX("Pippo");
             }
         }
 
@@ -419,6 +421,8 @@ namespace SynAssember
 		/// <param name="e"></param>
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
+			AudioEngineWrapper.getDefault().LogX(@"Started main SynAssembler window");
+
 			LoadLastSynth();
 
 			if(Properties.Settings.Default.HardcodedSynth)
