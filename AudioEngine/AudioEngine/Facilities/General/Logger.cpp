@@ -60,8 +60,10 @@ wchar_t* addTime(const wchar_t* line)
 	wsprintf(buffer, L"%02d:%02d:%02d:%03d ", time.wHour, time.wMinute, time.wSecond, time.wMilliseconds);
 	int totLen = lineLen + TIME_HDR_LEN;
 	wchar_t* buffer2 = new wchar_t[totLen];
+	memset(buffer2, 0, totLen);
 	wcsncpy(buffer2, buffer, TIME_HDR_LEN);
-	wcsncpy(buffer2 + TIME_HDR_LEN - 1, line, lineLen);
+	wcsncpy(buffer2 + TIME_HDR_LEN - 1, line, lineLen+1);
+	//wcsncpy(buffer2 + TIME_HDR_LEN - 1, line, 2);
 
 	return buffer2;
 }
