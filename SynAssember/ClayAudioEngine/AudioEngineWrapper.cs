@@ -18,10 +18,13 @@ namespace ClayAudioEngine
 		private int m_NumFactories = 0;
 		private List<ElaborationUnitFactory> m_Factories;
 
+		private String m_EnginePath;
+
 		Facilities facilities;
 		public int init(StringBuilder path, Int32 hwnd, int samplingFrequence, int bitResolution, int numChannels, Facilities facilities)
 		{
 			this.facilities = facilities;
+			this.m_EnginePath = path.ToString();
 			deleHolder = new SynthDelegateHolder();
 			deleHolder.writeEUProp = new WriteEUProperty(EUPropertyPlumbing.writeEUProperty);
 			deleHolder.writeEUDProp = new WriteEUDoubleProperty(EUPropertyPlumbing.writeEUDoubleProperty);
@@ -295,6 +298,14 @@ namespace ClayAudioEngine
 				audioWrapper = new AudioEngineWrapper();
 			}
 			return audioWrapper;
+		}
+
+		const String AUDIOENGINE_LOG_FILENAME = "audioengine.log";
+
+		public String RetrieveBugReportFilename()
+		{
+			String path = m_EnginePath + AUDIOENGINE_LOG_FILENAME;
+			return path;
 		}
     }
 }
