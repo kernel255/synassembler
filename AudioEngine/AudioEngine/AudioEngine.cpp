@@ -1137,6 +1137,7 @@ int AudioEngine::log(const wchar_t* message)
 
 int AudioEngine::forceLogFlush(void)
 {
+	pModuleServices->pLogger->Flush();
 	return 0;
 }
 

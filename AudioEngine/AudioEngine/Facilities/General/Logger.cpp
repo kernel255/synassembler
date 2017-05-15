@@ -123,4 +123,7 @@ void Logger::writeLine(char* format, ...)
 	//fwrite("\n",1,1,m_fp);
 }
 
-
+void Logger::Flush()
+{
+	m_TextFile.Flush();
+}

@@ -522,5 +522,17 @@ namespace SynAssember
 		private void LeftPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e) { m_ShelvesPanel.SizeChanged(sender, e);	}
 		private void RightPanelContainer_SizeChanged(object sender, SizeChangedEventArgs e)	{ m_AlgorithmPanel.SizeChanged(sender, e); }
 
+		private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+		{
+			System.Windows.Forms.FolderBrowserDialog folderDlg = new System.Windows.Forms.FolderBrowserDialog();
+			System.Windows.Forms.DialogResult res = folderDlg.ShowDialog();
+			if(res.Equals(System.Windows.Forms.DialogResult.OK))
+			{
+				String destPath = folderDlg.SelectedPath;
+				AudioEngineWrapper.getDefault().RetrieveBugReportFilename(destPath);
+			}
+
+			
+		}
 	}
 }

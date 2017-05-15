@@ -171,9 +171,11 @@ namespace ClayAudioEngine
 		// Logging facilities
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int logX(StringBuilder msg);
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern int forceLogFlush();
 
-        // Factories
-        [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
+		// Factories
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern int getFactoryNumber();
         [DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern String getNthFactoryName(int factoryIndex);

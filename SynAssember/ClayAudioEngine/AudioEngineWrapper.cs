@@ -8,6 +8,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using GeneralUtils;
 using System.Runtime.InteropServices;
+using System.IO.Compression;
+
 
 namespace ClayAudioEngine
 {
@@ -302,10 +304,20 @@ namespace ClayAudioEngine
 
 		const String AUDIOENGINE_LOG_FILENAME = "audioengine.log";
 
-		public String RetrieveBugReportFilename()
+		public void RetrieveBugReportFilename(String destFolder)
 		{
+			if(!m_EnginePath.EndsWith(@"\"))
+			{
+				m_EnginePath = m_EnginePath + @"\";
+			}
 			String path = m_EnginePath + AUDIOENGINE_LOG_FILENAME;
-			return path;
+			String destName = destFolder + @"\" + "BugReport.zip";
+			using (ZipArchive zipBugReport = ZipFile.Open(destName, ZipArchiveMode.Create))
+			{
+				// TODO: Close the log file
+				forceLogFlush();
+				zipBugReport.CreateEntryFromFile(path, AUDIOENGINE_LOG_FILENAME);
+			}
 		}
     }
 }

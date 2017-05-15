@@ -19,6 +19,7 @@ public:
 	void writeLine(const char* line);
 	void writeLine(const wchar_t* line);
 	void writeLine(char* format, ...);
+	void Flush(void);
 private:
 	FILE* m_fp;
 	std::wstring m_Filename;
