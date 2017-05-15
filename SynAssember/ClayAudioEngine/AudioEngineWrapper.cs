@@ -312,6 +312,7 @@ namespace ClayAudioEngine
 			}
 			String path = m_EnginePath + AUDIOENGINE_LOG_FILENAME;
 			String destName = destFolder + @"\" + "BugReport.zip";
+			// TODO: Add try/catch to manage different problems
 			using (ZipArchive zipBugReport = ZipFile.Open(destName, ZipArchiveMode.Create))
 			{
 				// TODO: Close the log file
