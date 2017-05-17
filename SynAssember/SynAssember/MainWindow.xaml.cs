@@ -38,7 +38,7 @@ namespace SynAssember
 
 	}
 
-	public partial class MainWindow : Window
+	public partial class MainWindow : Window, System.Windows.Forms.IWin32Window
     {
 		/*
         [DllImport("kernel32.dll", ExactSpelling = true)]
@@ -514,6 +514,15 @@ namespace SynAssember
 			}
 		}
 
+		public IntPtr Handle
+		{
+			get
+			{
+				var interophelper = new WindowInteropHelper(this);
+				return interophelper.Handle;
+			}
+		}
+
 		const String WINDOW_TITLE = "SynAssembler - ";
 		const String SYNASSEMBLER_EXTENSION_DIALOG = "SynAssembler Synthesizer (sya)|*sya";
 		const String SYNASSEMBLER_EXTENSION = "sya";
@@ -525,11 +534,24 @@ namespace SynAssember
 		private void MenuItem_Click_2(object sender, RoutedEventArgs e)
 		{
 			System.Windows.Forms.FolderBrowserDialog folderDlg = new System.Windows.Forms.FolderBrowserDialog();
-			System.Windows.Forms.DialogResult res = folderDlg.ShowDialog();
+
+
+			
+
+
+			System.Windows.Forms.DialogResult res = folderDlg.ShowDialog(this);
 			if(res.Equals(System.Windows.Forms.DialogResult.OK))
 			{
 				String destPath = folderDlg.SelectedPath;
-				AudioEngineWrapper.getDefault().RetrieveBugReportFilename(destPath);
+				try
+				{
+					AudioEngineWrapper.getDefault().RetrieveBugReportFilename(destPath);
+				}
+				catch(Exception ex)
+				{
+					String msg = "Error while trying to collect BugReport:\n" + ex.Message;
+					MessageBox.Show(msg);
+				}
 			}
 
 			

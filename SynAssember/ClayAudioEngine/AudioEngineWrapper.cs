@@ -304,20 +304,32 @@ namespace ClayAudioEngine
 
 		const String AUDIOENGINE_LOG_FILENAME = "audioengine.log";
 
-		public void RetrieveBugReportFilename(String destFolder)
+		private String getTimeDate()
+		{
+			DateTime date = DateTime.Now;
+			return date.ToString("yyyyMMdd_HH:mm:ss");
+		}
+
+		public void RetrieveBugReportFilename(String destFolder) 
 		{
 			if(!m_EnginePath.EndsWith(@"\"))
 			{
 				m_EnginePath = m_EnginePath + @"\";
 			}
 			String path = m_EnginePath + AUDIOENGINE_LOG_FILENAME;
-			String destName = destFolder + @"\" + "BugReport.zip";
+			String destName = destFolder + @"\" + "BugReport.zip" + "-" + getTimeDate();
 			// TODO: Add try/catch to manage different problems
-			using (ZipArchive zipBugReport = ZipFile.Open(destName, ZipArchiveMode.Create))
+			try
 			{
-				// TODO: Close the log file
+				ZipArchive zipBugReport = ZipFile.Open(destName, ZipArchiveMode.Create);
 				forceLogFlush();
 				zipBugReport.CreateEntryFromFile(path, AUDIOENGINE_LOG_FILENAME);
+			}
+			catch(Exception ex)
+			{
+				// TODO: Close the log file
+				Exception ex2 = new Exception(ex.Message);
+				throw ex2;
 			}
 		}
     }
