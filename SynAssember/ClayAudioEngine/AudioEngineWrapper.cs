@@ -307,7 +307,7 @@ namespace ClayAudioEngine
 		private String getTimeDate()
 		{
 			DateTime date = DateTime.Now;
-			return date.ToString("yyyyMMdd_HH:mm:ss");
+			return date.ToString("yyyyMMdd_HHmmss");
 		}
 
 		public void RetrieveBugReportFilename(String destFolder) 
@@ -317,13 +317,14 @@ namespace ClayAudioEngine
 				m_EnginePath = m_EnginePath + @"\";
 			}
 			String path = m_EnginePath + AUDIOENGINE_LOG_FILENAME;
-			String destName = destFolder + @"\" + "BugReport.zip" + "-" + getTimeDate();
+			String destName = destFolder + @"\" + "BugReport" + "-" + getTimeDate() + ".zip";
 			// TODO: Add try/catch to manage different problems
 			try
 			{
 				ZipArchive zipBugReport = ZipFile.Open(destName, ZipArchiveMode.Create);
 				forceLogFlush();
 				zipBugReport.CreateEntryFromFile(path, AUDIOENGINE_LOG_FILENAME);
+				zipBugReport.Dispose();
 			}
 			catch(Exception ex)
 			{

@@ -126,4 +126,6 @@ void Logger::writeLine(char* format, ...)
 void Logger::Flush()
 {
 	m_TextFile.Flush();
+	m_Opened = false;
+	m_TextFile.Close();
 }
