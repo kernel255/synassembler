@@ -67,6 +67,7 @@ public:
 	int sendMIDIMessage(int euIndex, unsigned char* msg);
 	int log(const wchar_t* message);
 	int forceLogFlush(void);
+	int reopenLog(void);
 protected:
 	Algorithm* newAlgorithm();
 	void deleteAlgorithm(Algorithm* algo);

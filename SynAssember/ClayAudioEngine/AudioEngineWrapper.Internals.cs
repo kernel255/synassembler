@@ -173,6 +173,8 @@ namespace ClayAudioEngine
 		private static extern int logX(StringBuilder msg);
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
 		private static extern int forceLogFlush();
+		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl, CharSet = CharSet.Unicode)]
+		private static extern int reopenLog();
 
 		// Factories
 		[DllImport("AudioEngine.dll", CallingConvention = CallingConvention.Cdecl)]

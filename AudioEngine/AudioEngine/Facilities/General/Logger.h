@@ -20,6 +20,7 @@ public:
 	void writeLine(const wchar_t* line);
 	void writeLine(char* format, ...);
 	void Flush(void);
+	int ReOpen(void);
 private:
 	FILE* m_fp;
 	std::wstring m_Filename;

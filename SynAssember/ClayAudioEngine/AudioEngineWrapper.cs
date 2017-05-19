@@ -325,6 +325,7 @@ namespace ClayAudioEngine
 				forceLogFlush();
 				zipBugReport.CreateEntryFromFile(path, AUDIOENGINE_LOG_FILENAME);
 				zipBugReport.Dispose();
+				reopenLog();
 			}
 			catch(Exception ex)
 			{

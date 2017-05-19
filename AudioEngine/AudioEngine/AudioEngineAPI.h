@@ -288,6 +288,10 @@ extern "C" __declspec(dllexport) int logX(const wchar_t* message);
  * @fn Write the log file on persistence
  */
 extern "C" __declspec(dllexport) int forceLogFlush(void);
+/**
+ * @fn Reopen the log file after it has been flushed
+*/
+extern "C" __declspec(dllexport) int reopenLog(void);
 
 #endif //WIN32
 

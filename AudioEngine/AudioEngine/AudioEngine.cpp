@@ -467,6 +467,18 @@ extern "C" __declspec( dllexport ) int forceLogFlush(void)
 	}
 }
 
+extern "C" __declspec(dllexport) int reopenLog(void)
+{
+	if (audioEngine == NULL)
+	{
+		return -1;
+	}
+	else
+	{
+		return audioEngine->reopenLog();
+	}
+}
+
 extern "C" __declspec( dllexport ) void releaseEngine(void)
 {
 	delete audioEngine;
@@ -1141,6 +1153,10 @@ int AudioEngine::forceLogFlush(void)
 	return 0;
 }
 
+int AudioEngine::reopenLog(void)
+{
+	return pModuleServices->pLogger->ReOpen();
+}
 
 //##################################
 //#######                    #######
