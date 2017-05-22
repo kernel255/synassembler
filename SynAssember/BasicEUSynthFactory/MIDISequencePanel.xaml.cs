@@ -25,6 +25,8 @@ namespace BasicEUFact
     {
 		public MIDISequencePanel(int id, SynthDelegateHolder deleHolder, Facilities facilities)
 		{
+			InitializeComponent();
+			AddAllMIDIFiles(MIDISequencePlayerWrapper.s_MIDIFilenames);
 			this.id = id;
 			this.facilities = facilities;
 			synDeleHolder = deleHolder;
