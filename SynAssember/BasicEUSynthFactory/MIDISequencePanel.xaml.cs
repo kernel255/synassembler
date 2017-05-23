@@ -56,7 +56,7 @@ namespace BasicEUFact
 			foreach(String name in filenames)
 			{
 				MIDIFilenameItem item = new MIDIFilenameItem(name, name);
-				MIDISequenceName.Items.Add(item);
+				MIDISequenceNameComboBox.Items.Add(item);
 			}
 		}
 
@@ -68,7 +68,7 @@ namespace BasicEUFact
 
 		private void MIDISequenceName_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			MIDIFilenameItem selItem = (MIDIFilenameItem)MIDISequenceName.SelectedItem;
+			MIDIFilenameItem selItem = (MIDIFilenameItem)MIDISequenceNameComboBox.SelectedItem;
 			if(selItem!=null)
 			{
 				String midiName = selItem.name;
@@ -85,13 +85,13 @@ namespace BasicEUFact
 		internal void readParametersFromEngine()
 		{
 			String midiFilename = synDeleHolder.readEUProp(id, MIDI_NAME_INDEX);
-			ItemCollection midis = MIDISequenceName.Items;
+			ItemCollection midis = MIDISequenceNameComboBox.Items;
 			for(int i=0;i<midis.Count;i++)
 			{
 				MIDIFilenameItem item = (MIDIFilenameItem)midis.GetItemAt(i);
 				if(midiFilename.Equals(item.ToString()))
 				{
-					MIDISequenceName.SelectedItem = item;
+					MIDISequenceNameComboBox.SelectedItem = item;
 					break;
 				}
 			}
