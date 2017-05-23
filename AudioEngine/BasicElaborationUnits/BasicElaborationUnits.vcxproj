@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\ADSR.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\FrequencySmoother.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\LFO.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="ElaborationUnits\PCMWaveformKind.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\FrequencySmoother.h" />
     <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleGenerator.h" />
     <ClInclude Include="..\AudioEngine\Facilities\Audio\SimpleVoice.h" />
     <ClInclude Include="..\AudioEngine\Facilities\Audio\VoiceLIFO.h" />

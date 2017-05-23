@@ -165,6 +165,9 @@
     <ClCompile Include="..\AudioEngine\Facilities\General\StringProperty.cpp">
       <Filter>Facilities\General</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\Audio\FrequencySmoother.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">
@@ -207,6 +210,9 @@
       <Filter>Facilities</Filter>
     </ClInclude>
     <ClInclude Include="FrequencyRetriever.h">
+      <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="..\AudioEngine\Facilities\Audio\FrequencySmoother.h">
       <Filter>Facilities</Filter>
     </ClInclude>
   </ItemGroup>
