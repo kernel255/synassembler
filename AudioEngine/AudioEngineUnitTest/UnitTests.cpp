@@ -186,20 +186,28 @@ int TestSimpleOscTransposeTune(int algoId)
 	::playAlgorithm(algoId);
 	printf("Playing\n");
 	::Sleep(100);
+
+	bool testNote = true;
+	bool testTune = false;
+
 	//Change note
-	/*
-	for (int i = 0; i < 12; i++)
+	if (testNote)
 	{
-		//printf("Change note %d\n", i);
-		::setEUIProperty(oscId, 13, i);
-		::Sleep(500);
+		for (int i = 0; i < 2; i++)
+		{
+			printf("Change note %d\n", i);
+			::setEUIProperty(oscId, 13, i);
+			::Sleep(1000);
+		}
 	}
-	*/
-	for (int i = 0; i < 100; i++)
+	if (testTune)
 	{
-		//printf("Change tune cent=%d\n", i);
-		::setEUIProperty(oscId, 14, i);
-		::Sleep(250);
+		for (int i = 0; i < 100; i++)
+		{
+			//printf("Change tune cent=%d\n", i);
+			::setEUIProperty(oscId, 14, i);
+			::Sleep(250);
+		}
 	}
 	/*
 	printf("Change note +1\n");
@@ -210,7 +218,7 @@ int TestSimpleOscTransposeTune(int algoId)
 	::Sleep(5000);
 	*/
 
-
+	::Sleep(500);
 
 	::stopAlgorithm(algoId);
 	::destroyAlgorithm(algoId);

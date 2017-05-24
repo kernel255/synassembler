@@ -5,6 +5,7 @@
 #include "../Facilities/Audio/SimpleEnvelope.h"
 #include "../Audio/TimeAccumulatedVoice.h"
 #include "../Audio/FrequencyRetriever.h"
+#include "../Audio/FrequencySmoother.h"
 
 class SimpleVoice : public TimeAccumulatedVoice
 {
@@ -47,4 +48,6 @@ public:
 private:
 	int id;
 	FrequencyRetriever* m_FreqRetriever;
+	double lastPeriod;
+	FrequencySmoother freqSmoother;
 };

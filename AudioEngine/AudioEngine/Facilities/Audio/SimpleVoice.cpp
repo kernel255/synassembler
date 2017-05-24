@@ -4,6 +4,8 @@
 #include "SimpleVoice.h"
 #include "MIDIChannelMessage.h"
 
+#define C_FIRST_PERIOD -1
+
 SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices) : m_bActive(false)
 {
 	m_pEnvelope = new SimpleEnvelope(pModuleServices, samplingPeriod);
@@ -11,12 +13,14 @@ SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, F
 	m_pModuleServices = pModuleServices;
 	this->id = id;
 	m_FreqRetriever = fRetr;
+	lastPeriod = C_FIRST_PERIOD;
 }
 
 SimpleVoice::~SimpleVoice()
 {
 	delete m_pEnvelope;
 	delete m_SamplesBuffer;
+
 }
 
 void SimpleVoice::activate(double initialfreq, int initialMIDINote, ADSR adsr)
@@ -33,6 +37,7 @@ void SimpleVoice::activate(double initialfreq, int initialMIDINote, ADSR adsr)
 	//Activated by last, so the note can begin with the correct parameters
 	m_bActive = true;
 	m_bFinalRelease = false;
+	lastPeriod = C_FIRST_PERIOD;
 }
 void SimpleVoice::deactivate(void)
 {
@@ -59,6 +64,24 @@ void SimpleVoice::increaseAccumulatedTime(double time)
 
 double SimpleVoice::getPeriod()
 {
+	//m_pModuleServices->pLogger->writeLine("getPeriod");
 	double period = m_FreqRetriever->GetCurrentFrequence(m_InitialMIDINote);
+#define FREQ_SMOOTHER
+#ifdef  FREQ_SMOOTHER
+
+
+
+	if (period != lastPeriod && lastPeriod!=C_FIRST_PERIOD)
+	{
+		freqSmoother.start(lastPeriod, period);
+	}
+	lastPeriod = period;
+	if (freqSmoother.isActive())
+	{
+		period = freqSmoother.getCurrentPeriod();
+
+	}
+
+#endif //  FREQ_SMOOTHER
 	return 1.0 / period;
 }
