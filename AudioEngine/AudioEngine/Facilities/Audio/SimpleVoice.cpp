@@ -69,11 +69,10 @@ double SimpleVoice::getPeriod()
 #define FREQ_SMOOTHER
 #ifdef  FREQ_SMOOTHER
 
-
-
 	if (period != lastPeriod && lastPeriod!=C_FIRST_PERIOD)
 	{
 		freqSmoother.start(lastPeriod, period);
+		m_pModuleServices->pLogger->writeLine("StartedSmoother");
 	}
 	lastPeriod = period;
 	if (freqSmoother.isActive())

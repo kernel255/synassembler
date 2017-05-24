@@ -1,6 +1,6 @@
 #pragma once
 
-#define C_SMOOTH_STEPS	30;
+#define C_SMOOTH_STEPS	30
 
 class FrequencySmoother
 {
@@ -11,6 +11,10 @@ private:
 	bool active;
 	int stepNumber;
 	double acc;
+
+	double* dumpSamples;
+	double* bufPtr;
+
 public:
 	FrequencySmoother();
 	void start(double initialF, double finalF);
