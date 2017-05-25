@@ -128,6 +128,12 @@
     <ClCompile Include="Facilities\General\StringProperty.cpp">
       <Filter>Facilities</Filter>
     </ClCompile>
+    <ClCompile Include="Facilities\General\ArrayLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Facilities\General\ArrayLoggerFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h">
@@ -252,6 +258,15 @@
     </ClInclude>
     <ClInclude Include="Facilities\General\StringProperty.h">
       <Filter>Facilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\ArrayLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\IArrayLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Facilities\General\ArrayLoggerFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

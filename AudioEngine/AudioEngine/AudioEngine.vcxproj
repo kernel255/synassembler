@@ -110,6 +110,8 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClCompile Include="Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="Facilities\Audio\WaveLogger.cpp" />
     <ClCompile Include="Facilities\General\AbstractProperty.cpp" />
+    <ClCompile Include="Facilities\General\ArrayLogger.cpp" />
+    <ClCompile Include="Facilities\General\ArrayLoggerFactory.cpp" />
     <ClCompile Include="Facilities\General\BooleanProperty.cpp" />
     <ClCompile Include="Facilities\General\GainIndexedProperty.cpp" />
     <ClCompile Include="Facilities\General\GainProperty.cpp" />
@@ -151,9 +153,12 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
     <ClInclude Include="Facilities\Audio\LFO.h" />
     <ClInclude Include="Facilities\Audio\WaveLogger.h" />
     <ClInclude Include="Facilities\General\AbstractProperty.h" />
+    <ClInclude Include="Facilities\General\ArrayLogger.h" />
+    <ClInclude Include="Facilities\General\ArrayLoggerFactory.h" />
     <ClInclude Include="Facilities\General\BooleanProperty.h" />
     <ClInclude Include="Facilities\General\GainIndexedProperty.h" />
     <ClInclude Include="Facilities\General\GainProperty.h" />
+    <ClInclude Include="Facilities\General\IArrayLogger.h" />
     <ClInclude Include="Facilities\General\IntegerProperty.h" />
     <ClInclude Include="Facilities\General\MutexProxy.h" />
     <ClInclude Include="Facilities\General\Property.h" />
