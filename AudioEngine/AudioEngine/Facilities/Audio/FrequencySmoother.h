@@ -1,6 +1,6 @@
 #pragma once
 
-#define C_SMOOTH_STEPS	30
+#define C_SMOOTH_STEPS	100
 
 class FrequencySmoother
 {

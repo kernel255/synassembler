@@ -17,7 +17,6 @@ IArrayLogger* ArrayLoggerFactory::getNewArrayLogger(char* name)
 
 void ArrayLoggerFactory::dumpAllCSV()
 {
-	// TODO: save all loggers as CSV
 	for (auto const &ent : m_LoggersMap)
 	{
 		char* name = ent.first;
@@ -28,5 +27,10 @@ void ArrayLoggerFactory::dumpAllCSV()
 		mbstowcs(wc, content, len);
 		logger->writeLine(wc);
 		delete wc;
+		delete content;
+	}
+	for (auto const &ent : m_LoggersMap)
+	{
+		delete ent.second;
 	}
 }

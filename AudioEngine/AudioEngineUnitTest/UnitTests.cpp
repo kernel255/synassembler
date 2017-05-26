@@ -193,11 +193,11 @@ int TestSimpleOscTransposeTune(int algoId)
 	//Change note
 	if (testNote)
 	{
-		for (int i = 0; i < 2; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			printf("Change note %d\n", i);
 			::setEUIProperty(oscId, 13, i);
-			::Sleep(1000);
+			::Sleep(500);
 		}
 	}
 	if (testTune)

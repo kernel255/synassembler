@@ -65,6 +65,7 @@ IArrayLogger * ModuleServices::getArrayLogger(char* name)
 void ModuleServices::dumpAllArrayLogger()
 {
 	m_pArrayLoggerFactory->dumpAllCSV();
+	delete m_pArrayLoggerFactory;
 }
 
 /*

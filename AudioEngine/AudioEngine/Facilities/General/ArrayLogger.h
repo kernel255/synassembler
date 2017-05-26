@@ -14,6 +14,6 @@ public:
 	const char* getContent();
 	virtual const char* getName();
 private:
-	vector<double> content;
+	vector<double> vals;
 	string name;
 };

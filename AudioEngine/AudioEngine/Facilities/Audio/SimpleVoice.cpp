@@ -14,7 +14,7 @@ SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, F
 	this->id = id;
 	m_FreqRetriever = fRetr;
 	lastPeriod = C_FIRST_PERIOD;
-	m_pArrayLogger = pModuleServices->getArrayLogger("SimpleVoice");
+	
 }
 
 SimpleVoice::~SimpleVoice()
@@ -28,6 +28,7 @@ void SimpleVoice::activate(double initialfreq, int initialMIDINote, ADSR adsr)
 {
 	if (m_bActive)
 		m_pModuleServices->pLogger->writeLine("ERROR: voice #%d already active");
+	m_pArrayLogger = m_pModuleServices->getArrayLogger("SimpleVoice");
 	m_pModuleServices->pLogger->writeLine("Started Voice #%d", id);
 	//m_InitialFrequency = initialfreq;
 	m_InitialMIDINote = initialMIDINote;
@@ -79,9 +80,9 @@ double SimpleVoice::getPeriod()
 	if (freqSmoother.isActive())
 	{
 		period = freqSmoother.getCurrentPeriod();
-
 	}
-	m_pArrayLogger->addValue(period);
+	
 #endif //  FREQ_SMOOTHER
+	m_pArrayLogger->addValue(period);
 	return 1.0 / period;
 }
