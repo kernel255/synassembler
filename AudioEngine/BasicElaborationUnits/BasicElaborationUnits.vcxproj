@@ -102,6 +102,8 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\VoiceUpdater.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveGeneratoFacilities.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\AbstractProperty.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLogger.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLoggerFactory.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\BooleanProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\GainIndexedProperty.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\GainProperty.cpp" />

@@ -21,6 +21,9 @@ void ArrayLogger::addValue(double val)
 const char* ArrayLogger::getContent()
 {
 	std::string content;
+	content.append("ArrayLogger name: ");
+	content.append(name);
+	content.append("\n");
 	int size = content.size();
 	for (int i = 0; i < size; i++)
 	{
@@ -31,5 +34,9 @@ const char* ArrayLogger::getContent()
 		content.append(buffer);
 	}
 
-	return content.c_str();
+	size_t len = content.length();
+	char* result = new char[len];
+	memcpy(result, content.c_str(), len);
+
+	return result;
 }

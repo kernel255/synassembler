@@ -14,6 +14,7 @@ SimpleVoice::SimpleVoice(int id, double samplingPeriod, int samplesBufferSize, F
 	this->id = id;
 	m_FreqRetriever = fRetr;
 	lastPeriod = C_FIRST_PERIOD;
+	m_pArrayLogger = pModuleServices->getArrayLogger("SimpleVoice");
 }
 
 SimpleVoice::~SimpleVoice()
@@ -80,7 +81,7 @@ double SimpleVoice::getPeriod()
 		period = freqSmoother.getCurrentPeriod();
 
 	}
-
+	m_pArrayLogger->addValue(period);
 #endif //  FREQ_SMOOTHER
 	return 1.0 / period;
 }

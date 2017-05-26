@@ -95,6 +95,8 @@
   <ItemGroup>
     <ClCompile Include="..\AudioEngine\ElaborationUnits\AbstractEUKind.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\Audio\WaveLogger.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLogger.cpp" />
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLoggerFactory.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\hpslib.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\Logger.cpp" />
     <ClCompile Include="..\AudioEngine\Facilities\General\PropertyValuesHolder.cpp" />

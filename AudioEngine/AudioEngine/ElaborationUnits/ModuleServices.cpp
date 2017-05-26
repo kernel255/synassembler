@@ -20,6 +20,7 @@ ModuleServices::ModuleServices(char* logFilename, EngineSettings* pEngineSetting
 	pLogger = log;
 	timeBase = new TimeBase(log);
 	m_pEngineSettings = pEngineSettings;
+	m_pArrayLoggerFactory = new ArrayLoggerFactory(log);
 }
 
 ModuleServices::~ModuleServices()
@@ -53,6 +54,17 @@ void ModuleServices::dumpSampleBlock(double* buffer, int numSamples)
 		if (i%lineElems == 0 && i != 0)
 			printf("\n");
 	}
+}
+
+IArrayLogger * ModuleServices::getArrayLogger(char* name)
+{
+	IArrayLogger* result = m_pArrayLoggerFactory->getNewArrayLogger(name);
+	return result;
+}
+
+void ModuleServices::dumpAllArrayLogger()
+{
+	m_pArrayLoggerFactory->dumpAllCSV();
 }
 
 /*

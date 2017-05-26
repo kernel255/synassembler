@@ -7,6 +7,7 @@
 #include "../Facilities/General/TimeBase.h"
 #include "../Facilities/General/EngineSettings.h"
 #include "../SpecificOSInfo.h"
+#include "../Facilities/General/ArrayLoggerFactory.h"
 
 #ifdef WIN32
 #include <windows.h>
@@ -42,8 +43,18 @@ public:
 	ModuleServices(char* logFilename, EngineSettings* pEngineSettings);
 	EngineSettings* getEngineSettings();
 	void dumpSampleBlock(double* buffer, int numSamples);
+	/**
+	* @fn Get a brand new IArrayLogger interface to store array of double
+	* @param name Name of the array logger as it will be printed in log
+	*/
+	IArrayLogger* getArrayLogger(char* name);
+	/**
+	 *@fn Dump all the registered ArrayLoggers
+	*/
+	void dumpAllArrayLogger();
 private:
 	AbstractModuleInfo* m_pModuleInfo;
 	EngineSettings* m_pEngineSettings;
 	//SpecificOSData specOSData;
+	ArrayLoggerFactory *m_pArrayLoggerFactory;
 };

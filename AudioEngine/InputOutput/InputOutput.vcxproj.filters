@@ -16,6 +16,9 @@
     <Filter Include="AbstractElaborationUnits">
       <UniqueIdentifier>{7ceda459-7f2f-4dc8-98ef-44e1e6a95a41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Facilities">
+      <UniqueIdentifier>{e0534214-883b-4d57-890a-22c3203b56d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ElaborationUnits\DirectSoundOutput.cpp">
@@ -113,6 +116,12 @@
     </ClCompile>
     <ClCompile Include="ElaborationUnits\PCKeyboardKind.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLogger.cpp">
+      <Filter>Facilities</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLoggerFactory.cpp">
+      <Filter>Facilities</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

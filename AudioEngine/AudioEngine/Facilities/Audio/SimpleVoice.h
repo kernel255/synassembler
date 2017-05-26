@@ -50,4 +50,6 @@ private:
 	FrequencyRetriever* m_FreqRetriever;
 	double lastPeriod;
 	FrequencySmoother freqSmoother;
+	//DEBUG
+	IArrayLogger* m_pArrayLogger;
 };

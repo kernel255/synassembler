@@ -168,6 +168,12 @@
     <ClCompile Include="..\AudioEngine\Facilities\Audio\FrequencySmoother.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLoggerFactory.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\AudioEngine\Facilities\General\ArrayLogger.cpp">
+      <Filter>Facilities\General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BasicElaborationUnits.h">

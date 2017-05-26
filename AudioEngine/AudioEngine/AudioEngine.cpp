@@ -34,14 +34,10 @@ AudioEngine::~AudioEngine()
 {
 	cleanUpAlgorithms();
 	pModuleServices->pLogger->writeLine("Releasing factories");
-
-
 	//factoryRetriever->freeFactories();
 	factoryRetriever->releaseFactories();
-
-
-
 	delete factoryRetriever;
+	pModuleServices->dumpAllArrayLogger();
 	pModuleServices->pLogger->writeLine("Closing library");
 	pModuleServices->pLogger->close();
 }
