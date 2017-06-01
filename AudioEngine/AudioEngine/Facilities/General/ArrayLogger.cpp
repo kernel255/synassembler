@@ -9,6 +9,10 @@ ArrayLogger::ArrayLogger(char* _name)
 	
 }
 
+ArrayLogger::~ArrayLogger()
+{
+}
+
 const char* ArrayLogger::getName()
 {
 	return name.c_str();
@@ -33,6 +37,7 @@ const char* ArrayLogger::getContent()
 		memset(buffer, 0, 100);
 		snprintf(buffer, 100, "%f\n", val);
 		content.append(buffer);
+		delete buffer;
 	}
 
 	size_t len = content.length();
@@ -41,3 +46,4 @@ const char* ArrayLogger::getContent()
 
 	return result;
 }
+

@@ -218,7 +218,7 @@ int TestSimpleOscTransposeTune(int algoId)
 	::Sleep(5000);
 	*/
 
-	::Sleep(500);
+	::Sleep(4000);
 
 	::stopAlgorithm(algoId);
 	::destroyAlgorithm(algoId);

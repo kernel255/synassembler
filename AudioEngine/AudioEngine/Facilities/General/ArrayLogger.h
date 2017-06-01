@@ -10,6 +10,7 @@ class ArrayLogger : public IArrayLogger
 {
 public:
 	ArrayLogger(char* name);
+	~ArrayLogger();
 	void addValue(double val);
 	const char* getContent();
 	virtual const char* getName();
