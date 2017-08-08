@@ -1,116 +1,244 @@
-Ôªø20:24:33:336 AudioEngine library started
-20:24:33:336 Folder name:
-20:24:33:336 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\DebugÏ∑çÔ∑ΩÔ∑ΩÌ∑ùÌ∑ùÁöæÂéõËÖü
-20:24:33:337 Find file=008ddf98
-20:24:33:337 Trying to open library: 0√ØM
-20:24:33:337 Library is not an ElaborationUnitFactory
-20:24:33:337 Library open failure
-20:24:33:337 FindNextFile=1
-20:24:33:337 Trying to open library: 0√ØM
-20:24:33:351 Basic EU factory constructor
-20:24:33:351 Library open successful
-20:24:33:351 FindNextFile=1
-20:24:33:351 Trying to open library: 0√ØM
-20:24:33:747 InputOutputFactory constructor
-20:24:34:010 Library open successful
-20:24:34:010 FindNextFile=0
-20:24:34:010 FindNextFile failure = 18
-20:24:34:010 Factories=2
-20:24:34:055 Oscillator constructor
-20:24:34:056 Creating DirectSound output
-20:24:34:156 HWND=0x003b124e
-20:24:34:161 Started timebase
-20:24:34:161 Started timebase thread
-20:24:34:171 Started MIDISequencer
-20:24:34:171 Playing algorithm
-20:24:34:181 Playing note On
-20:24:34:181 Frequency=293.665 Note=50
-20:24:34:181 Waiting Mutex # 1
-20:24:34:181 Elapsed: 0
-20:24:34:181 Note On 50
-20:24:34:181 LFO Freq: 293.664768
-20:24:34:181 LFO Freq: 293.664768
-20:24:34:181 VoiceProxy.allocate#0
-20:24:34:181 First voice allocated
-20:24:34:181 Started Voice #0
-20:24:34:181 Env State: Attack
-20:24:34:181 VoiceProxy.activate#0
-20:24:34:181 Voices allocated: 1
-20:24:34:235 Env State: Decay
-20:24:34:272 setTune: 0
-20:24:34:272 Tune: 0
-20:24:34:272 Written IValue propIndex=14 value=0
-20:24:34:282 setTune: 1
-20:24:34:282 Tune: 1
-20:24:34:282 Written IValue propIndex=14 value=1
-20:24:34:287 Env State: Sustain
-20:24:34:292 setTune: 2
-20:24:34:292 Tune: 2
-20:24:34:292 Written IValue propIndex=14 value=2
-20:24:34:302 setTune: 3
-20:24:34:302 Tune: 3
-20:24:34:302 Written IValue propIndex=14 value=3
-20:24:34:312 setTune: 4
-20:24:34:312 Tune: 4
-20:24:34:312 Written IValue propIndex=14 value=4
-20:24:34:322 setTune: 5
-20:24:34:322 Tune: 5
-20:24:34:322 Written IValue propIndex=14 value=5
-20:24:34:332 setTune: 6
-20:24:34:332 Tune: 6
-20:24:34:332 Written IValue propIndex=14 value=6
-20:24:34:342 setTune: 7
-20:24:34:342 Tune: 7
-20:24:34:342 Written IValue propIndex=14 value=7
-20:24:34:352 setTune: 8
-20:24:34:352 Tune: 8
-20:24:34:352 Written IValue propIndex=14 value=8
-20:24:34:362 setTune: 9
-20:24:34:362 Tune: 9
-20:24:34:362 Written IValue propIndex=14 value=9
-20:24:34:372 setTune: 10
-20:24:34:372 Tune: 10
-20:24:34:372 Written IValue propIndex=14 value=10
-20:24:34:382 setTune: 11
-20:24:34:382 Tune: 11
-20:24:34:382 Written IValue propIndex=14 value=11
-20:24:34:392 setTune: 12
-20:24:34:392 Tune: 12
-20:24:34:392 Written IValue propIndex=14 value=12
-20:24:34:402 setTune: 13
-20:24:34:402 Tune: 13
-20:24:34:402 Written IValue propIndex=14 value=13
-20:24:34:412 setTune: 14
-20:24:34:412 Tune: 14
-20:24:34:412 Written IValue propIndex=14 value=14
-20:24:34:422 setTune: 15
-20:24:34:422 Tune: 15
-20:24:34:422 Written IValue propIndex=14 value=15
-20:24:34:432 setTune: 16
-20:24:34:432 Tune: 16
-20:24:34:432 Written IValue propIndex=14 value=16
-20:24:34:442 setTune: 17
-20:24:34:442 Tune: 17
-20:24:34:442 Written IValue propIndex=14 value=17
-20:24:34:452 setTune: 18
-20:24:34:452 Tune: 18
-20:24:34:452 Written IValue propIndex=14 value=18
-20:24:34:462 setTune: 19
-20:24:34:462 Tune: 19
-20:24:34:462 Written IValue propIndex=14 value=19
-20:24:34:472 Stopped timebase
-20:24:34:472 Stopping DirectSoundOutput
-20:24:34:472 Stopping oscillator
-20:24:34:472 Stopping algorithm
-20:24:34:472 Algorithm destructor
-20:24:34:472 DirectSoundOutput destructor id=-842150451
-20:24:34:472 Stopping DirectSoundOutput
-20:24:34:481 File size=28000
-20:24:34:481 Oscillator destructor id=-842150451
-20:24:34:484 Simple generator destructor
-20:24:34:484 MIDISequencer destructor
-20:24:34:484 Invalid algorithm Id
-20:24:34:484 Releasing factories
-20:24:34:484 Basic EU factory destructor
-20:24:34:484 InputOutputFactory: destructor
-20:24:34:484 Closing library
+Ôªø14:23:22:065 AudioEngine library started
+14:23:22:066 Folder name:
+14:23:22:066 E:\Mine\Audinos\Git-SynAssembler\AudioEngine\Release
+14:23:22:066 Find file=0050b040
+14:23:22:066 Trying to open library: E
+14:23:22:066 Library is not an ElaborationUnitFactory
+14:23:22:066 Library open failure
+14:23:22:066 FindNextFile=1
+14:23:22:066 Trying to open library: E
+14:23:22:102 Basic EU factory constructor
+14:23:22:102 Library open successful
+14:23:22:102 FindNextFile=1
+14:23:22:102 Trying to open library: E
+14:23:22:425 InputOutputFactory constructor
+14:23:22:756 Library open successful
+14:23:22:756 FindNextFile=0
+14:23:22:756 FindNextFile failure = 18
+14:23:22:756 Factories=2
+14:23:22:803 Oscillator constructor
+14:23:22:803 Creating DirectSound output
+14:23:22:863 HWND=0x008b0b0c
+14:23:22:872 Started timebase
+14:23:22:877 Started timebase thread
+14:23:22:896 Started MIDISequencer
+14:23:22:896 Playing algorithm
+14:23:22:897 Playing note On
+14:23:22:897 Frequency=293.665 Note=50
+14:23:22:897 Waiting Mutex # 1
+14:23:22:897 Elapsed: 0
+14:23:22:897 Note On 50
+14:23:22:897 LFO Freq: 293.664768
+14:23:22:897 LFO Freq: 293.664768
+14:23:22:897 VoiceProxy.allocate#0
+14:23:22:897 First voice allocated
+14:23:22:897 Started Voice #0
+14:23:22:897 Env State: Attack
+14:23:22:897 VoiceProxy.activate#0
+14:23:22:897 Voices allocated: 1
+14:23:22:957 Env State: Decay
+14:23:22:996 setTune: 0
+14:23:22:996 Tune: 0
+14:23:22:996 Written IValue propIndex=14 value=0
+14:23:23:008 Env State: Sustain
+14:23:23:246 setTune: 1
+14:23:23:246 Tune: 1
+14:23:23:246 Written IValue propIndex=14 value=1
+14:23:23:496 setTune: 2
+14:23:23:496 Tune: 2
+14:23:23:496 Written IValue propIndex=14 value=2
+14:23:23:746 setTune: 3
+14:23:23:746 Tune: 3
+14:23:23:746 Written IValue propIndex=14 value=3
+14:23:23:996 setTune: 4
+14:23:23:996 Tune: 4
+14:23:23:996 Written IValue propIndex=14 value=4
+14:23:24:246 setTune: 5
+14:23:24:246 Tune: 5
+14:23:24:246 Written IValue propIndex=14 value=5
+14:23:24:496 setTune: 6
+14:23:24:496 Tune: 6
+14:23:24:496 Written IValue propIndex=14 value=6
+14:23:24:746 setTune: 7
+14:23:24:746 Tune: 7
+14:23:24:746 Written IValue propIndex=14 value=7
+14:23:24:996 setTune: 8
+14:23:24:996 Tune: 8
+14:23:24:996 Written IValue propIndex=14 value=8
+14:23:25:246 setTune: 9
+14:23:25:246 Tune: 9
+14:23:25:246 Written IValue propIndex=14 value=9
+14:23:25:496 setTune: 10
+14:23:25:496 Tune: 10
+14:23:25:496 Written IValue propIndex=14 value=10
+14:23:25:746 setTune: 11
+14:23:25:746 Tune: 11
+14:23:25:746 Written IValue propIndex=14 value=11
+14:23:25:996 setTune: 12
+14:23:25:996 Tune: 12
+14:23:25:996 Written IValue propIndex=14 value=12
+14:23:26:246 setTune: 13
+14:23:26:246 Tune: 13
+14:23:26:246 Written IValue propIndex=14 value=13
+14:23:26:496 setTune: 14
+14:23:26:496 Tune: 14
+14:23:26:496 Written IValue propIndex=14 value=14
+14:23:26:746 setTune: 15
+14:23:26:746 Tune: 15
+14:23:26:746 Written IValue propIndex=14 value=15
+14:23:26:996 setTune: 16
+14:23:26:996 Tune: 16
+14:23:26:996 Written IValue propIndex=14 value=16
+14:23:27:246 setTune: 17
+14:23:27:246 Tune: 17
+14:23:27:246 Written IValue propIndex=14 value=17
+14:23:27:497 setTune: 18
+14:23:27:497 Tune: 18
+14:23:27:497 Written IValue propIndex=14 value=18
+14:23:27:747 setTune: 19
+14:23:27:747 Tune: 19
+14:23:27:747 Written IValue propIndex=14 value=19
+14:23:27:997 setTune: 20
+14:23:27:997 Tune: 20
+14:23:27:997 Written IValue propIndex=14 value=20
+14:23:28:247 setTune: 21
+14:23:28:247 Tune: 21
+14:23:28:247 Written IValue propIndex=14 value=21
+14:23:28:497 setTune: 22
+14:23:28:497 Tune: 22
+14:23:28:497 Written IValue propIndex=14 value=22
+14:23:28:747 setTune: 23
+14:23:28:747 Tune: 23
+14:23:28:747 Written IValue propIndex=14 value=23
+14:23:28:997 setTune: 24
+14:23:28:997 Tune: 24
+14:23:28:997 Written IValue propIndex=14 value=24
+14:23:29:247 setTune: 25
+14:23:29:247 Tune: 25
+14:23:29:247 Written IValue propIndex=14 value=25
+14:23:29:497 setTune: 26
+14:23:29:497 Tune: 26
+14:23:29:497 Written IValue propIndex=14 value=26
+14:23:29:747 setTune: 27
+14:23:29:747 Tune: 27
+14:23:29:747 Written IValue propIndex=14 value=27
+14:23:29:997 setTune: 28
+14:23:29:997 Tune: 28
+14:23:29:997 Written IValue propIndex=14 value=28
+14:23:30:247 setTune: 29
+14:23:30:247 Tune: 29
+14:23:30:247 Written IValue propIndex=14 value=29
+14:23:30:497 setTune: 30
+14:23:30:497 Tune: 30
+14:23:30:497 Written IValue propIndex=14 value=30
+14:23:30:747 setTune: 31
+14:23:30:747 Tune: 31
+14:23:30:747 Written IValue propIndex=14 value=31
+14:23:30:997 setTune: 32
+14:23:30:997 Tune: 32
+14:23:30:997 Written IValue propIndex=14 value=32
+14:23:31:247 setTune: 33
+14:23:31:247 Tune: 33
+14:23:31:247 Written IValue propIndex=14 value=33
+14:23:31:497 setTune: 34
+14:23:31:497 Tune: 34
+14:23:31:497 Written IValue propIndex=14 value=34
+14:23:31:747 setTune: 35
+14:23:31:747 Tune: 35
+14:23:31:747 Written IValue propIndex=14 value=35
+14:23:31:997 setTune: 36
+14:23:31:997 Tune: 36
+14:23:31:997 Written IValue propIndex=14 value=36
+14:23:32:247 setTune: 37
+14:23:32:247 Tune: 37
+14:23:32:247 Written IValue propIndex=14 value=37
+14:23:32:497 setTune: 38
+14:23:32:497 Tune: 38
+14:23:32:497 Written IValue propIndex=14 value=38
+14:23:32:747 setTune: 39
+14:23:32:747 Tune: 39
+14:23:32:747 Written IValue propIndex=14 value=39
+14:23:32:997 setTune: 40
+14:23:32:997 Tune: 40
+14:23:32:997 Written IValue propIndex=14 value=40
+14:23:33:247 setTune: 41
+14:23:33:247 Tune: 41
+14:23:33:247 Written IValue propIndex=14 value=41
+14:23:33:497 setTune: 42
+14:23:33:497 Tune: 42
+14:23:33:497 Written IValue propIndex=14 value=42
+14:23:33:747 setTune: 43
+14:23:33:747 Tune: 43
+14:23:33:747 Written IValue propIndex=14 value=43
+14:23:33:997 setTune: 44
+14:23:33:997 Tune: 44
+14:23:33:997 Written IValue propIndex=14 value=44
+14:23:34:247 setTune: 45
+14:23:34:247 Tune: 45
+14:23:34:247 Written IValue propIndex=14 value=45
+14:23:34:497 setTune: 46
+14:23:34:497 Tune: 46
+14:23:34:497 Written IValue propIndex=14 value=46
+14:23:34:747 setTune: 47
+14:23:34:747 Tune: 47
+14:23:34:747 Written IValue propIndex=14 value=47
+14:23:34:997 setTune: 48
+14:23:34:997 Tune: 48
+14:23:34:997 Written IValue propIndex=14 value=48
+14:23:35:247 setTune: 49
+14:23:35:247 Tune: 49
+14:23:35:247 Written IValue propIndex=14 value=49
+14:23:35:497 setTune: 50
+14:23:35:497 Tune: 50
+14:23:35:497 Written IValue propIndex=14 value=50
+14:23:35:747 setTune: 51
+14:23:35:747 Tune: 51
+14:23:35:747 Written IValue propIndex=14 value=51
+14:23:35:997 setTune: 52
+14:23:35:997 Tune: 52
+14:23:35:997 Written IValue propIndex=14 value=52
+14:23:36:247 setTune: 53
+14:23:36:247 Tune: 53
+14:23:36:247 Written IValue propIndex=14 value=53
+14:23:36:497 setTune: 54
+14:23:36:497 Tune: 54
+14:23:36:497 Written IValue propIndex=14 value=54
+14:23:36:747 setTune: 55
+14:23:36:747 Tune: 55
+14:23:36:747 Written IValue propIndex=14 value=55
+14:23:36:997 setTune: 56
+14:23:36:997 Tune: 56
+14:23:36:997 Written IValue propIndex=14 value=56
+14:23:37:247 setTune: 57
+14:23:37:247 Tune: 57
+14:23:37:247 Written IValue propIndex=14 value=57
+14:23:37:498 setTune: 58
+14:23:37:498 Tune: 58
+14:23:37:498 Written IValue propIndex=14 value=58
+14:23:37:748 setTune: 59
+14:23:37:748 Tune: 59
+14:23:37:748 Written IValue propIndex=14 value=59
+14:23:37:999 setTune: 60
+14:23:37:999 Tune: 60
+14:23:37:999 Written IValue propIndex=14 value=60
+14:23:38:249 setTune: 61
+14:23:38:249 Tune: 61
+14:23:38:249 Written IValue propIndex=14 value=61
+14:23:38:499 setTune: 62
+14:23:38:499 Tune: 62
+14:23:38:499 Written IValue propIndex=14 value=62
+14:23:38:749 setTune: 63
+14:23:38:749 Tune: 63
+14:23:38:749 Written IValue propIndex=14 value=63
+14:23:38:999 setTune: 64
+14:23:38:999 Tune: 64
+14:23:38:999 Written IValue propIndex=14 value=64
+14:23:39:249 setTune: 65
+14:23:39:249 Tune: 65
+14:23:39:249 Written IValue propIndex=14 value=65
+14:23:39:499 setTune: 66
+14:23:39:499 Tune: 66
+14:23:39:499 Written IValue propIndex=14 value=66
+14:23:39:749 setTune: 67
+14:23:39:749 Tune: 67
+14:23:39:749 Written IValue propIndex
