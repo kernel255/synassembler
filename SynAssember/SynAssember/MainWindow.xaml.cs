@@ -110,7 +110,7 @@ namespace SynAssember
 			{
 				if(AudioEngineWrapper.getDefault().getFactories()==null)
 				{
-					MessageBox.Show("Fatal Error: no facotories available!");
+					MessageBox.Show("Fatal Error: No factories available! Please check installation");
 					Application.Current.Shutdown(-1);
 				}
 				else
@@ -343,7 +343,7 @@ namespace SynAssember
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-			if(currentAlgorithm.Changed)
+			if(currentAlgorithm!=null && currentAlgorithm.Changed)
 			{
 				MessageBoxResult res = MessageBox.Show(this, "The Synthesizer has been changed.\nDo you want to save it?", "Save Alert", MessageBoxButton.YesNo);
 				if(res.Equals(MessageBoxResult.Yes))
