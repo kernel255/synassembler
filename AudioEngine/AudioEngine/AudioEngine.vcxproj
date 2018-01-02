@@ -14,6 +14,7 @@
     <ProjectGuid>{93B59692-22DE-4233-BEDE-B82ADCAF5F6F}</ProjectGuid>
     <RootNamespace>AudioEngine</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
