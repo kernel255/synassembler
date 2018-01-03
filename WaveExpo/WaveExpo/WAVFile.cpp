@@ -29,19 +29,19 @@ int WAVFile::writeFile()
 	wavbinstream.open(m_Name, ios::out | ios::binary);
 	int numSamples = m_SamplesVectors[0]->size();
 	int32_t numSamplesBytes = numSamples * sizeof(double);
-	int32_t totalSize = numSamples + 44;
+	int32_t totalSize = numSamples * m_NumChannels * (m_BitPerSample/8)+ 36;
 
 	// RIFF
 	const char* riff = "RIFF";
-	wavbinstream.write(riff, sizeof(riff));
+	wavbinstream.write(riff, strlen(riff));
 	// Size
 	wavbinstream.write((char*)&totalSize, sizeof(int32_t));
 	// WAV
 	const char* wave = "WAVE";
-	wavbinstream.write(wave, sizeof(wave));
+	wavbinstream.write(wave, strlen(wave));
 	// fmt
 	const char* fmt = "fmt ";
-	wavbinstream.write(fmt, sizeof(fmt));
+	wavbinstream.write(fmt, strlen(fmt));
 	int32_t subChunkSize = 16;
 	wavbinstream.write((char*)&subChunkSize, sizeof(int32_t));
 	// Audio Format
@@ -64,7 +64,7 @@ int WAVFile::writeFile()
 	wavbinstream.write((char*)&bitPerSample, sizeof(int16_t));
 	// Subchunk data
 	const char* data = "data";
-	wavbinstream.write((char*)data, sizeof(data));
+	wavbinstream.write((char*)data, strlen(data));
 	// Subchunk  size
 	int32_t dataLen = numSamples * m_BitPerSample / 8 * m_NumChannels;
 	wavbinstream.write((char*)&dataLen, sizeof(int32_t));
