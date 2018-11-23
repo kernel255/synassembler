@@ -50,3 +50,16 @@ SynAssemblerInstaller/SynAssembler.exe.config
 SynAssemblerInstaller/SynAssembler.vshost.exe.config
 AudioEngine/AudioEngine.VC.db
 AudioEngine/AudioEngine.VC.VC.opendb
+SynAssemblerInstaller/InputOutput.dll
+SynAssemblerInstaller/BasicElaborationUnits.dll
+SynAssemblerInstaller/AudioEngine.dll
+WaveExpo/.vs/WaveExpo/v15/ipch/AutoPCH/dee56d532a2b605/WAVFILE.ipch
+WaveExpo/.vs/WaveExpo/v15/ipch/AutoPCH/98eab99bd4512b31/TRANSPOSEDWAVE.ipch
+WaveExpo/.vs/WaveExpo/v15/ipch/AutoPCH/5d59bd09f959a784/WAVEEXPO.ipch
+WaveExpo/.vs/WaveExpo/v15/ipch/AutoPCH/1811759524a2d351/NEW_ARRAY.ipch
+WaveExpo/.vs/WaveExpo/v15/Browse.VC.db
+WaveExpo/.vs/WaveExpo/v15/Browse.VC (1).db
+WaveExpo/.vs/WaveExpo/v15/.suo (1)
+WaveExpo/.vs/WaveExpo/v15/.suo
+WaveExpo/WaveExpo/x64/Debug/
+WaveExpo/x64/Debug/
