@@ -1,0 +1,3 @@
+﻿  MyAudioSource.cpp
+c:\users\stefanoc\source\repos\audiowasapi\audiowasapi\myaudiosource.cpp(46): warning C4018: '<': signed/unsigned mismatch
+  AudioWASAPI.vcxproj -> C:\Users\stefanoc\source\repos\AudioWASAPI\Debug\AudioWASAPI.exe
