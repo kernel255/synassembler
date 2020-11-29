@@ -8,7 +8,8 @@ enum UnitTest
 	MixerPlay2OSc,
 	WrongEUAddedToAlgo,
 	MixerWAV,
-	SimpleOscTransposeTune
+	SimpleOscTransposeTune,
+	SimpleOscMIDI
 } ;
 
 int TestSimpleOsc(int algoId);
@@ -18,3 +19,4 @@ int TestMixer2Osc(int algoId);
 int TestWrongIdAddedToAlgo(int algoId);
 int TestMixerWAV(int algoId);
 int TestSimpleOscTransposeTune(int algoId);
+int TestSimpleOscMIDI(int algoId);

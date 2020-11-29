@@ -73,7 +73,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//UnitTest unitTest = MixerReadWrite;
 	//UnitTest unitTest = SimpleOscTransposeTune;
-	UnitTest unitTest = SimpleOsc;
+	UnitTest unitTest = SimpleOscMIDI;
 	//UnitTest unitTest = WrongEUAddedToAlgo;
 	//Algorith build
 	int algoId;
@@ -96,6 +96,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		result = TestMixerWAV(algoId);
 	case SimpleOscTransposeTune:
 		result = TestSimpleOscTransposeTune(algoId);
+	case SimpleOscMIDI:
+		result = TestSimpleOscMIDI(algoId);
 	default:
 		result = 0;
 	}
