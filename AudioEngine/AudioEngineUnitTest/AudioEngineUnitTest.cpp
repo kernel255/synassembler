@@ -28,26 +28,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		folderName = folderName.substr(0,found);
 	}
 
-	/*
-#ifdef _DEBUG
-	wchar_t* suffix = L"\\Debug\\";
-#else
-	wchar_t* suffix = L"\\Release\\";
-#endif //_DEBUG
-
-	DWORD size = ::GetCurrentDirectoryW(0, NULL);
-	wchar_t* currentFolderName = new wchar_t[size];
-	::GetCurrentDirectoryW(size, currentFolderName);
-
-	std::wstring folderName = currentFolderName;
-	size_t found = folderName.find_last_of(L"\\");
-	if(found!=std::wstring::npos)
-	{
-		folderName = folderName.substr(0,found);
-		folderName += suffix;
-	}
-	*/
-
 	HWND hwnd = getConsoleHwnd();
 
 	SpecificOSInfo specOSInfo;

@@ -236,7 +236,7 @@ int TestSimpleOscMIDI(int algoId)
 
 	::playAlgorithm(algoId);
 
-	::Sleep(600000);
+	::Sleep(20000);
 
 	::stopAlgorithm(algoId);
 	::destroyAlgorithm(algoId);
@@ -244,7 +244,4 @@ int TestSimpleOscMIDI(int algoId)
 
 	return 0;
 
-
-
-	return 0;
 }

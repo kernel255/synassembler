@@ -321,6 +321,9 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						double currentAmplifiedSample = m_Amplitude*envLevel*m_pAmplitudeInBuffer[sampleIndex] * currSample;
 						currentAmplifiedSample = (currentAmplifiedSample + lfoAmpl*currentAmplifiedSample) / 2.0;
 						//pSamplesBuffer[sampleIndex] += currentAmplifiedSample;
+
+						currSample /= 10;
+
 						pSamplesBuffer[sampleIndex] += currSample;
 
 
