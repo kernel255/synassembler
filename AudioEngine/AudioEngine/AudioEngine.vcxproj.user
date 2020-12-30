@@ -5,4 +5,9 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerWorkingDirectory>..\..\SynAssember\SynAssember\bin\Debug</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>E:\Mine\Audinos\Git-SynAssembler\SynAssember\SynAssember\bin\Debug\SynAssembler.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerWorkingDirectory>..\..\SynAssember\SynAssember\bin\Debug</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
 </Project>

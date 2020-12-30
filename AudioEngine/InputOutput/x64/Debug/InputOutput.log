@@ -1,0 +1,52 @@
+﻿  AbstractEUKind.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\ElaborationUnits\AbstractEUKind.cpp(12,36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\ElaborationUnits\AbstractEUKind.cpp(22,28): warning C4267: 'return': conversion from 'size_t' to 'const int', possible loss of data
+  WaveLogger.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\WaveLogger.cpp(84,114): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\WaveLogger.cpp(77,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  hpslib.cpp
+  Logger.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(45,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(44,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(47,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(48,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(61,37): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(64,2): warning C4996: 'wcsncpy': This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(65,2): warning C4996: 'wcsncpy': This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(113,2): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  PropertyValuesHolder.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\PropertyValuesHolder.cpp(92,65): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  textfile.cpp
+  TimeBase.cpp
+  DirectSoundOutput.cpp
+  DirectSoundOutputKind.cpp
+  PCKeyboard.cpp
+  PCKeyboardKind.cpp
+  InputOutput.cpp
+  InputOutputFactory.cpp
+  MIDIChannelMessage.cpp
+  MIDIInput.cpp
+  MIDIInputKind.cpp
+  PolyKeyboard.cpp
+  PolyKeyboardKind.cpp
+  AbstractElaborationUnit.cpp
+  AbstractElaborationUnitFactory.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\ElaborationUnits\AbstractElaborationUnitFactory.cpp(15,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  Generating Code...
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(145): warning C4715: 'Logger::ReOpen': not all control paths return a value
+  Compiling...
+  AbstractPhysicalElaborationUnitFactory.cpp
+  Algorithm.cpp
+  AudioOutput.cpp
+  ConcretePort.cpp
+  ElaborationUnit.cpp
+  ElaborationUnitFactory.cpp
+  ElaborationUnitPort.cpp
+  EUKind.cpp
+  ModuleServices.cpp
+  PhysicalElaborationUnit.cpp
+  ProxyElaborationUnit.cpp
+  VirtualElaborationUnit.cpp
+  Generating Code...
+     Creating library C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\x64\Debug\InputOutput.lib and object C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\x64\Debug\InputOutput.exp
+  InputOutput.vcxproj -> C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\x64\Debug\InputOutput.dll

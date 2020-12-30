@@ -1,0 +1,82 @@
+﻿  stdafx.cpp
+  AudioEngine.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(541,16): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(595,18): warning C4018: '>': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(599,4): warning C4996: 'wcscpy': This function or variable may be unsafe. Consider using wcscpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(613,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(650,23): warning C4018: '>': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(654,16): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(740,25): warning C4018: '>': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(744,16): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(819,25): warning C4018: '>': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(823,16): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(842,17): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(850,17): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(869,17): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(877,17): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(924,17): warning C4996: 'mbstowcs': This function or variable may be unsafe. Consider using mbstowcs_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\AudioEngine.cpp(1033,3): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  AbstractEUKind.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\ElaborationUnits\AbstractEUKind.cpp(27,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\ElaborationUnits\AbstractEUKind.cpp(40,20): warning C4018: '>=': signed/unsigned mismatch
+  ADSR.cpp
+  LFO.cpp
+  SimpleEnvelope.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp(28,19): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp(29,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\SimpleEnvelope.cpp(30,20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  WaveGeneratoFacilities.cpp
+  WaveLogger.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\Audio\WaveLogger.cpp(77,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  AbstractProperty.cpp
+  BooleanProperty.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\BooleanProperty.cpp(17,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\BooleanProperty.cpp(18,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  GainIndexedProperty.cpp
+  GainProperty.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\GainProperty.cpp(20,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\GainProperty.cpp(21,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  hpslib.cpp
+  IntegerProperty.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\IntegerProperty.cpp(21,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\IntegerProperty.cpp(22,3): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  Logger.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(44,2): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(47,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(48,2): warning C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(64,2): warning C4996: 'wcsncpy': This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(65,2): warning C4996: 'wcsncpy': This function or variable may be unsafe. Consider using wcsncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(113,2): warning C4996: 'vsprintf': This function or variable may be unsafe. Consider using vsprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  MutexProxy.cpp
+  PropertyValuesHolder.cpp
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\PropertyValuesHolder.cpp(64,20): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\PropertyValuesHolder.cpp(118,20): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\PropertyValuesHolder.cpp(151,20): warning C4018: '>=': signed/unsigned mismatch
+  StringProperty.cpp
+  textfile.cpp
+  TimeBase.cpp
+  FactoryRetriever.cpp
+  Compiling...
+  AbstractElaborationUnit.cpp
+  AbstractElaborationUnitFactory.cpp
+  AbstractPhysicalElaborationUnitFactory.cpp
+  Algorithm.cpp
+  AudioOutput.cpp
+  ConcretePort.cpp
+  ElaborationUnit.cpp
+  ElaborationUnitFactory.cpp
+  ElaborationUnitPort.cpp
+  EUKind.cpp
+  MIDIChannelMessage.cpp
+  ModuleServices.cpp
+  PhysicalElaborationUnit.cpp
+  ProxyElaborationUnit.cpp
+  VirtualElaborationUnit.cpp
+  dllmain.cpp
+     Creating library C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\Release\AudioEngine.lib and object C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\Release\AudioEngine.exp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\AudioEngine\Facilities\General\Logger.cpp(145): warning C4715: 'Logger::ReOpen': not all control paths return a value
+  All 1177 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  AudioEngine.vcxproj -> C:\Users\user\OneDrive\Audinos\SynAssembler\AudioEngine\Release\AudioEngine.dll

@@ -3,10 +3,11 @@
 ################################################################################
 
 /AudioEngine/AudioEngine/Debug
-/AudioEngine/AudioEngine/Release
-/AudioEngine/AudioEngineUnitTest/Debug
-/AudioEngine/AudioEngineUnitTest/Release
-/AudioEngine/AudioEngineWinTest/Debug
+/AudioEngine/AudioEngine/x64/Debug
+/AudioEngine/AudioEngine/x64/Release
+/AudioEngine/AudioEngineUnitTest/x64/Debug
+/AudioEngine/AudioEngineUnitTest/x64/Release
+/AudioEngine/AudioEngineWinTest/x64/Debug
 /AudioEngine/AudioEngineWinTest/AudioEngineWinTest
 /AudioEngine/AudioEngineWinTest/AudioEngineWinTest/Debug
 /AudioEngine/AudioEngineWinTest2/AudioEngineWinTest2/Debug
