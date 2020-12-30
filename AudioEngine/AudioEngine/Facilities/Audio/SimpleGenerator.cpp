@@ -231,11 +231,11 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 	case MIDIChannelMessage::e_NoteOff:
 		{
 			m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
-			m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
+			int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
+			m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 			m_pModuleServices->pLogger->writeLine("Note Off %d", midimsg.data.NoteMessage.Note);
 			m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Deactivate();
-			int res = m_MutexProxy->ReleaseMutex();
-			m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
+			res = m_MutexProxy->ReleaseMutex();
 			break;
 		}
 	default:
@@ -322,7 +322,11 @@ void SimpleGenerator::updateAudioSamples(EAG_SAMPLE_TYPE *pSamplesBuffer,int num
 						currentAmplifiedSample = (currentAmplifiedSample + lfoAmpl*currentAmplifiedSample) / 2.0;
 						//pSamplesBuffer[sampleIndex] += currentAmplifiedSample;
 
-						currSample /= 10;
+						// Need to update with the level provided by preferences
+
+						currSample *= envLevel;
+
+						currSample /= 2;
 
 						pSamplesBuffer[sampleIndex] += currSample;
 

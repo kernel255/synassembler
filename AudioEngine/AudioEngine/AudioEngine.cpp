@@ -44,6 +44,8 @@ AudioEngine::~AudioEngine()
 	delete factoryRetriever;
 	pModuleServices->pLogger->writeLine("Closing library");
 	pModuleServices->pLogger->close();
+
+	printf("Closing Log\n");
 }
 
 void AudioEngine::setSpecifiOSInfo(SpecificOSInfo* osInfo)

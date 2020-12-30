@@ -1,4 +1,6 @@
 
+// This is a simple class to manage oscillator and wave generators
+
 #pragma once
 
 #include "ConcretePort.h"

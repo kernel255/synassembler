@@ -94,6 +94,7 @@ EAG_SAMPLE_TYPE SimpleEnvelope::getUpdatedLevel(void)
 		{
 			setState(Decay);
 			currentRatio = getRatioByState(state);
+			m_pModuleServices->pLogger->writeLine("ADSR-State:  Attack Complete");
 		}
 		break;
 	case Decay:
@@ -101,13 +102,26 @@ EAG_SAMPLE_TYPE SimpleEnvelope::getUpdatedLevel(void)
 		{
 			setState(Sustain);
 			currentRatio = 0.0;
+			m_pModuleServices->pLogger->writeLine("ADSR-State:  Decay Complete");
 		}
 		break;
 	case Sustain:
 		break;
 	case Release:
-		if((currentTime-envOffTime)>getmsec(releaseTime))
-			setState(Completed);
+		if ((currentTime - envOffTime) > getmsec(releaseTime))
+		{
+			if (currentLevel < 0.0)
+			{
+				currentLevel = 0.0;
+				setState(Completed);
+			}
+			
+		}
+		//m_pModuleServices->pLogger->writeLine("ADSR-State:  Release Complete");
+		break;
+	case Completed:
+		break;
+	default:
 		break;
 	}
 	currentLevel += currentRatio;
@@ -122,6 +136,7 @@ void SimpleEnvelope::stop(void)
 	setState(Release);
 	currentRatio = getRatioByState(state);
 	envOffTime = currentTime;
+	m_pModuleServices->pLogger->writeLine("envOffTime=%f", envOffTime);
 }
 
 EAG_SAMPLE_TYPE SimpleEnvelope::getCurrentLevel(void)

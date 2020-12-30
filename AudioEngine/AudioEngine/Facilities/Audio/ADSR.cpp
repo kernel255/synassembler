@@ -3,9 +3,9 @@
 
 ADSR::ADSR()
 {
-	attackTime = 60;
-	decayTime = 60;
-	releaseTime = 400;
+	attackTime = 500;
+	decayTime = 500;
+	releaseTime = 60;
 	attackLevel = 1.0;
 	sustainLevel = 0.6;
 }

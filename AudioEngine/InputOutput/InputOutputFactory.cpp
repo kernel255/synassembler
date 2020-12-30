@@ -263,9 +263,10 @@ ElaborationUnit* InputOutputFactory::getDirectSoundOutput(int instanceIndex)
 
 ElaborationUnit* InputOutputFactory::getMidiIn(int instanceIndex)
 {
-	int num;
+	int num = MIDIInput::GetMIDIDevicesNumber();
+
 	//Check if a MIDIIn device is available
-	if( (num = MIDIInput::GetMIDIDevicesNumber()) > 0 )
+	if( instanceIndex<=num )
 	{
 		//First of all, create the object
 		MIDIInput *pMidiIn = new MIDIInput(moduleServices);
