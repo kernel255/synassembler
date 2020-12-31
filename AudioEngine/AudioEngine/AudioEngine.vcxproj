@@ -121,8 +121,9 @@ copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debu
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>copy $(SolutionDir)$(Configuration)\*.dll ..\..\SynAssember\SynAssember\bin\Debug
-copy $(SolutionDir)$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debug</Command>
+      <Command>copy $(SolutionDir)$(Platform_Actual)\$(Configuration)\*.dll ..\..\SynAssember\SynAssember\bin\Debug
+
+copy $(SolutionDir)$(Platform_Actual)\$(Configuration)\*.pdb ..\..\SynAssember\SynAssember\bin\Debug</Command>
       <Message>Copy dll to be used by SynAssembler</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
