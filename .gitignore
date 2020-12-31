@@ -116,3 +116,7 @@ WpfApplicationStudySpline/WpfApplicationStudySpline/obj
 *.lib
 *.exp
 *.log
+*.exe
+*.bsc
+*.raw
+*.log
