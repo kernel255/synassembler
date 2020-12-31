@@ -23,7 +23,7 @@ MIDIInPort(ElaborationUnitPort::INPUT_PORT,ElaborationUnitPort::MIDI_PORT,Elabor
 	MainOutPort.setName(OscillatorKind::MainOutPortName);
 	MIDIInPort.setName(OscillatorKind::MIDIPortName);
 	m_WaveKind = WaveKind::e_Sine;
-	//m_WaveKind = e_Square;
+	//m_WaveKind = WaveKind::e_Saw;
 	m_Amplitude = 1.0;
 	m_FreqAccumulator = 0.0;
 
