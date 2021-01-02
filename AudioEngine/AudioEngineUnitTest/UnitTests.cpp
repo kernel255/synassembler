@@ -225,7 +225,7 @@ int TestSimpleOscMIDI(int algoId)
 	//Create DirectSound
 	int dsId = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 0, 0);
 	//Create MIDI Input
-	int midi = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 1, 2);
+	int midi = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 1, 1);
 
 	if (oscId < 0 || dsId < 0 || midi < 0) {
 		return -1;
