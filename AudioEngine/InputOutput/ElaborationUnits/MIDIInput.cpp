@@ -182,6 +182,13 @@ void MIDIInput::CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& mid
 				m_pModuleServices->pLogger->writeLine("ERROR: invalid note");
 				break;
 				*/
+			break;
+		}
+	case (int) MIDIChannelMessage::e_NoteOff:
+		{
+			midimsg.data.NoteMessage.Note = *(pbData + 1);
+			midimsg.data.NoteMessage.Velocity = *(pbData + 2);
+			break;
 		}
 	default:
 		{
