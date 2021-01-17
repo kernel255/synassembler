@@ -160,7 +160,7 @@ void CALLBACK MIDIInput::MidiInProc(HMIDIIN hMidiIn,UINT wMsg,DWORD dwInstance,D
 }
 */
 
-void MIDIInput::CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& midimsg)
+void MIDIInput::CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& midimsg, ModuleServices* pService)
 {
 	unsigned char kind, channel;
 
@@ -177,12 +177,16 @@ void MIDIInput::CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& mid
 			midimsg.data.NoteMessage.Note = *(pbData+1);
 			midimsg.data.NoteMessage.Velocity = *(pbData+2);
 			midimsg.data.NoteMessage.Frequency = MIDIChannelMessage::GetFreqByMIDINote(*(pbData+1));
-			/*
-			if (midimsg.data.NoteMessage.Frequency==0.0)
-				m_pModuleServices->pLogger->writeLine("ERROR: invalid note");
-				break;
-				*/
+			//pService->pLogger->writeLine("CreateMIDIMessage:Note On=%d Vel=%d", midimsg.data.NoteMessage.Note, midimsg.data.NoteMessage.Velocity);
+			break;
 		}
+	case (int) MIDIChannelMessage::e_NoteOff:
+	{
+		midimsg.data.NoteMessage.Note = *(pbData + 1);
+		midimsg.data.NoteMessage.Velocity = *(pbData + 2);
+		//pService->pLogger->writeLine("CreateMIDIMessage:Note Off=%d Vel=%d", midimsg.data.NoteMessage.Note, midimsg.data.NoteMessage.Velocity);
+		break;
+	}
 	default:
 		{
 			break;
@@ -228,7 +232,7 @@ DWORD WINAPI MIDIThreadProc(LPVOID param)
 			{
 				assert(pMIDIIn->m_hMIDIIn == (HMIDIIN) msg.wParam);
 				MIDIChannelMessage midimsg;
-				MIDIInput::CreateMIDIMessage(((unsigned char *) &msg.lParam),midimsg);
+				MIDIInput::CreateMIDIMessage(((unsigned char *) &msg.lParam),midimsg, pMIDIIn->m_pModuleServices);
 				pMIDIIn->receiveMIDIMessage(midimsg);
 				break;
 			}

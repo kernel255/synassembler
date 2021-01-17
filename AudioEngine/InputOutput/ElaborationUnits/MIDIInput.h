@@ -45,7 +45,7 @@ public:
 	virtual int getProperty(int propertyIndex, char* value, int bufferSize);
 private:
 	void SendMIDIMessageToConnectedEUs(unsigned char* buffer, int size);
-	static void CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& midimsg);
+	static void CreateMIDIMessage(unsigned char* pbData, MIDIChannelMessage& midimsg, ModuleServices* pService);
 	static const MIDIInputKind kinna;
 	static unsigned int m_NumMIDIDevices;
 	unsigned int m_MIDIInId;

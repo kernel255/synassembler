@@ -207,17 +207,17 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 			//When NoteOn is received with velocity 0, is a note off
 			if( midimsg.data.NoteMessage.Velocity == 0 )
 			{
-				m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
+				//m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
 				int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
-				m_pModuleServices->pLogger->writeLine("Note Off %d", midimsg.data.NoteMessage.Note);
+				m_pModuleServices->pLogger->writeLine("Note On Zero Vel  %d", midimsg.data.NoteMessage.Note);
 				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Deactivate();
 				m_MutexProxy->ReleaseMutex();
 			}
 			else
 			{
 				//This is a true NoteOn
-				m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
+				//m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
 				int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 				m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 				m_pModuleServices->pLogger->writeLine("Note On %d", midimsg.data.NoteMessage.Note);
@@ -225,16 +225,47 @@ void SimpleGenerator::receiveMIDIMessage(MIDIChannelMessage& midimsg)
 				m_pFrequencyLFO->setCarrierFrequence(midimsg.data.NoteMessage.Frequency);
 				m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Activate(midimsg.data.NoteMessage.Frequency, midimsg.data.NoteMessage.Note, adsr);
 				m_MutexProxy->ReleaseMutex();
+				m_ActiveNotesList.push_back(midimsg.data.NoteMessage.Note);
+				m_pModuleServices->pLogger->writeLine("List len=%d", m_ActiveNotesList.size());
 			}
 			break;
 		}
 	case MIDIChannelMessage::e_NoteOff:
 		{
+			unsigned char note = midimsg.data.NoteMessage.Note;
 			m_pModuleServices->pLogger->writeLine("Waiting Mutex # 1");
 			int res = m_MutexProxy->WaitMutex(MutexProxy::WAIT_INFINITE);
 			m_pModuleServices->pLogger->writeLine("Elapsed: %d", res);
 			m_pModuleServices->pLogger->writeLine("Note Off %d", midimsg.data.NoteMessage.Note);
-			m_pVoicesLIFO[midimsg.data.NoteMessage.Note]->Deactivate();
+			if (m_pVoicesLIFO[note]->isVoiceDeactivable())
+			{
+				m_pVoicesLIFO[note]->Deactivate();
+				m_ActiveNotesList.pop_back();
+			}
+			else
+			{
+				if (m_ActiveNotesList.size() > 0) 
+				{
+					note = m_ActiveNotesList.back();
+					m_pModuleServices->pLogger->writeLine("Popped note %d", note);
+					m_ActiveNotesList.pop_back();
+					if (m_pVoicesLIFO[note]->isVoiceDeactivable()) 
+					{
+						m_pVoicesLIFO[note]->Deactivate();
+						m_pModuleServices->pLogger->writeLine("Deactivated note after pop %d", note);
+					}
+					else
+					{
+						m_pModuleServices->pLogger->writeLine("ERROR: Note %d not deactivable", note);
+					}
+				} 
+				else
+				{
+					m_pModuleServices->pLogger->writeLine("EERROR: No MIDI Note On found for %d LIST EMPTY", note);
+				}
+				
+				m_pModuleServices->pLogger->writeLine("List len=%d", m_ActiveNotesList.size());
+			}
 			res = m_MutexProxy->ReleaseMutex();
 			break;
 		}

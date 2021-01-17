@@ -29,6 +29,7 @@ public:
 	VoiceProxy* getFirstAllocated();
 	VoiceProxy* getMyPredecessor(VoiceProxy* myVProxy);
 	VoiceProxy* getFirstDeactivable();
+	bool isVoiceDeactivable();
 public:
 	VoiceLIFO(double samplingPeriod, int samplesBufferSize, FrequencyRetriever* fRetr, ModuleServices* pModuleServices);
 	~VoiceLIFO();

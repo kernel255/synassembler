@@ -209,3 +209,8 @@ VoiceProxy* VoiceLIFO::getNextAllocatedVoice()
 	allocatedIterator = allocatedIterator->nextAllocated;
 	return allocatedIterator;
 }
+
+bool VoiceLIFO::isVoiceDeactivable()
+{
+	return firstAllocated != NULL;
+}

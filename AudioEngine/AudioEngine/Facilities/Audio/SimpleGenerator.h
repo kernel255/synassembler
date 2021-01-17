@@ -62,6 +62,8 @@ protected:
 
 	int lastVoiceActNumber;
 
+	std::list<int> m_ActiveNotesList;
+
 	/**
 	 * @var Array of the voices, one for each note
 	 */
