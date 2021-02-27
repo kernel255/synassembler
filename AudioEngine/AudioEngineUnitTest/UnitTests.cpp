@@ -250,3 +250,36 @@ int TestSimpleOscMIDI(int algoId)
 	return 0;
 
 }
+
+int TestSimpleOscMIDIWithName(int algoId, std::wstring midiDeviceName)
+{
+	//Create oscillator
+	int oscId = ::createElaborationUnit(BASIC_EU_FACTORY, VIRTUAL_EU_CATEGORY, 0, -1);
+	//Create DirectSound
+	int dsId = ::createElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 0, 0);
+	//Create MIDI Input
+	int midi = ::createNamedElaborationUnit(INOUT_EU_FACTORY, PHYSICAL_EU_CATEGORY, 1, midiDeviceName);
+
+	if (oscId < 0 || dsId < 0 || midi < 0) {
+		return -1;
+	}
+
+	//Add to algorithm
+	::addElaborationUnitToAlgorithm(algoId, dsId);
+	::addElaborationUnitToAlgorithm(algoId, oscId);
+	::addElaborationUnitToAlgorithm(algoId, midi);
+	//Connect EU
+	::connectElaboratioUnits(algoId, oscId, 0, dsId, 0);
+	::connectElaboratioUnits(algoId, midi, 0, oscId, 2);
+
+	::playAlgorithm(algoId);
+
+	::Sleep(2000000);
+
+	::stopAlgorithm(algoId);
+	::destroyAlgorithm(algoId);
+
+
+	return 0;
+
+}

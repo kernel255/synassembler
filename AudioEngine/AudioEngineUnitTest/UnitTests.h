@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 enum UnitTest
 {
 	SimpleOsc,
@@ -20,3 +22,4 @@ int TestWrongIdAddedToAlgo(int algoId);
 int TestMixerWAV(int algoId);
 int TestSimpleOscTransposeTune(int algoId);
 int TestSimpleOscMIDI(int algoId);
+int TestSimpleOscMIDIWithName(int algoId, std::wstring midiDeviceName);

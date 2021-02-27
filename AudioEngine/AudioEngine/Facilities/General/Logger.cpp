@@ -133,12 +133,14 @@ void Logger::Flush()
 int Logger::ReOpen(void)
 {
 	if (m_Opened)
+	{
 		return -1;
+	}
 	if (!m_TextFile.Open(m_Filename.c_str(), TF_APPEND, TF_UTF8))
 	{
 		m_Opened = true;
-	}
-	else
+		return 0;
+	} else
 	{
 		return -2;
 	}

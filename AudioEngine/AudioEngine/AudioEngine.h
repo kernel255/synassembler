@@ -42,6 +42,8 @@ public:
 	int createVirtualElaborationUnit(int factoryIndex, int elaborationUnitIndex, int instanceIndex);
 	// ElaborationUnits/Physical
 	int createPhysicalElaborationUnit(int factoryIndex, int elaborationUnitIndex, int instanceIndex);
+	// Create physical elaboration unit using name
+	int createNamedPhysicalElaborationUnit(int factoryIndex, int elaborationUnitIndex, std::wstring name);
 	int addElaboratioUnitToAlgorithm(int elabrationUnitIndex, int algorithmIndex);
 	int connectElaboratioUnits(int algorithmIndex, int elaborationUnitSource, int sourcePortId, int elaborationUnitDestination, int destinationPortId);
 	char* checkAlgorithmValidity(int algorithmIndex);

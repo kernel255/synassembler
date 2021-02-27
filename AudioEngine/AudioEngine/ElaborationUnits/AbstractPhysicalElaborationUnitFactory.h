@@ -53,6 +53,7 @@ public:
 	virtual unsigned int getPhysicalEUInstanceNumber(int euIndex);
 	virtual const wchar_t* getNthPhysicalEUInstanceName(int euIndex, int instanceIndex);
 	virtual PhysicalEUDescription* getNthEUDescription(int euIndex, int instanceIndex);
+	virtual PhysicalEUDescription* getEUDescrByName(int euIndex, std::wstring name);
 private:
 	std::vector<PhysicalEUDescription*> instancesVect;
 };

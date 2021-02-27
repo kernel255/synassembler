@@ -159,6 +159,23 @@ int AudioEngine::createPhysicalElaborationUnit(int factoryIndex, int elaboration
 	return euId;
 }
 
+int  AudioEngine::createNamedPhysicalElaborationUnit(int factoryIndex, int elaborationUnitIndex, std::wstring name)
+{
+	ElaborationUnitFactory* pFactory = audioEngine->factoryRetriever->getNthFactory(factoryIndex);
+	if (pFactory == NULL)
+		return FACTORY_NOT_FOUND;
+	ElaborationUnit* elaborationUnit = pFactory->createNamedPhysicalElaborationUnit(elaborationUnitIndex, name);
+	if (elaborationUnit == NULL)
+		return ELABORATIONUNIT_NOT_FOUND;
+	int euId = currentElaborationUnitId++;
+	//Store the pointer with Id
+	mapIdToElaborationUnits[euId] = elaborationUnit;
+	//Store the id of the factory
+	mapEUIdToFactoryId[euId] = factoryIndex;
+
+	return euId;
+}
+
 int AudioEngine::addElaboratioUnitToAlgorithm(int algorithmIndex, int elaborationUnitIndex)
 {
 	Algorithm* algo;
@@ -1209,6 +1226,18 @@ extern "C" __declspec( dllexport ) int createElaborationUnit(int factoryIndex, i
 		return UNKNOWN_CATEGORY;
 	}
 	
+}
+
+extern "C" __declspec(dllexport) int createNamedElaborationUnit(int factory, int categoryIndex, int elaborationUnitIndex, std::wstring physicalInstanceName)
+{
+	switch (categoryIndex)
+	{
+	case PHYSICAL_EU_CATEGORY:
+		return audioEngine->createNamedPhysicalElaborationUnit(factory, elaborationUnitIndex, physicalInstanceName);
+	case VIRTUAL_EU_CATEGORY:
+	default:
+		return -1;
+	}
 }
 
 extern "C" __declspec( dllexport ) int addElaborationUnitToAlgorithm(int algorithmIndex, int elaborationUnitIndex)

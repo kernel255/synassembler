@@ -66,7 +66,7 @@ public:
 	virtual const EUKind* getNthPhysicalEUKind(int n);
 	//virtual unsigned int getPhysicalEUInstanceNumber(int euIndex);
 	ElaborationUnit* createPhysicalElaborationUnit(unsigned euIndex, unsigned instanceIndex);
-	
+	ElaborationUnit* createNamedPhysicalElaborationUnit(unsigned euIndex, std::wstring name);
 	
 	/**
 	 * @fn 
@@ -100,6 +100,9 @@ private:
 	ElaborationUnit* getMidiIn(int instanceIndex);
 	ElaborationUnit* getPolyKeyboard(int instanceIndex);
 	ElaborationUnit* getPCKeyboard(int instanceIndex);
+	ElaborationUnit* getDirectSoundOutputByName(std::wstring name);
+	ElaborationUnit* getMIDIInByName(wstring miniInName);
+
 	/**
 	* @var m_bDirectSoundAvailable true if the DirectSound installed, this not means that the device is available
 	*/ 

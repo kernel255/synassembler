@@ -45,6 +45,7 @@ public:
 	virtual const EUKind* getNthPhysicalEUKind(int n);
 	virtual unsigned int getPhysicalEUInstanceNumber(int euIndex);
 	virtual ElaborationUnit* createPhysicalElaborationUnit(unsigned euIndex, unsigned instanceIndex);
+	virtual ElaborationUnit* createNamedPhysicalElaborationUnit(unsigned euIndex, std::wstring name);
 /**
  * @param Index of the Elaboration Unit to be created
  * @return Pointer to the specified EU

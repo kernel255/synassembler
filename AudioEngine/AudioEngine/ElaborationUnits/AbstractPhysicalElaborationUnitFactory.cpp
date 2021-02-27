@@ -87,3 +87,21 @@ AbstractPhysicalElaborationUnitFactory::PhysicalEUDescription* AbstractPhysicalE
 	return NULL;
 
 }
+
+AbstractPhysicalElaborationUnitFactory::PhysicalEUDescription* AbstractPhysicalElaborationUnitFactory::getEUDescrByName(int euIndex, std::wstring name)
+{
+	PhysicalEUDescription* desc;
+	std::vector<PhysicalEUDescription*>::iterator it;
+	//int index = 0;
+	for (it = instancesVect.begin(); it != instancesVect.end(); ++it)
+	{
+		desc = *it;
+		if (desc->euIndex == euIndex)
+		{
+			if (desc->name.compare(name) == 0)
+				return desc;
+		}
+	}
+
+	return NULL;
+}

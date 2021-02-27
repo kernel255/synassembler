@@ -1,4 +1,6 @@
 
+#include <string>
+
 #ifndef AUDIOENGINE_API
 #define AUDIOENGINE_API 1
 
@@ -173,6 +175,11 @@ extern "C" __declspec(dllexport) int destroyAlgorithm(int id);
  * Create an elaboration unit by id, category id and factory id
  */
 extern "C" __declspec( dllexport ) int createElaborationUnit(int factoryIndex, int categoryIndex, int elaborationUnitIndex, int physicalInstanceIndex);
+
+/**
+* Create an elaboration unit by id, category and name
+*/
+extern "C" __declspec(dllexport) int createNamedElaborationUnit(int factory, int categoryIndex, int elaborationUnitIndex, std::wstring name);
 /**
  * Add an elaboration unit to an algorithm
  */

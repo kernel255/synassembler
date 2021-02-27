@@ -1,6 +1,9 @@
 #pragma once
 
 //#include ".\CommonAudioLayer\ElaborationUnit.h"
+
+#include <string>
+
 #include "ElaborationUnit.h"
 
 #define C_UnknownIndex -1
@@ -65,6 +68,13 @@ public:
 	 * @param instanceIndex Index of the instance to be created
 	 */
 	virtual ElaborationUnit* createPhysicalElaborationUnit(unsigned euIndex, unsigned instanceIndex) = 0;
+
+	/**
+	* @fn Create a physical elaboration unit using the instance name
+	* @param euIndex Index of the EU to be created
+	* @param name Name of the instance to be created
+	*/
+	virtual ElaborationUnit* createNamedPhysicalElaborationUnit(unsigned euIndex, std::wstring name) = 0;
 
 	/**
 	* @fn Retrieve the given EU Factory's internal index

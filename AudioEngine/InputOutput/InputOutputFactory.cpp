@@ -206,6 +206,22 @@ const EUKind* InputOutputFactory::getNthPhysicalEUKind(int n)
 	}
 }
 
+#define PRIMARY_BUFFER 1
+
+ElaborationUnit* InputOutputFactory::getDirectSoundOutputByName(std::wstring name)
+{
+	moduleServices->pLogger->writeLine("Creating DirectSound output with name %s", name);
+
+	PhysicalEUDescription* desc = getEUDescrByName(DIRECTSOUND_INDEX, name);
+	if (desc == NULL)
+	{
+		moduleServices->pLogger->writeLine("Unable to find physical EU");
+		return NULL;
+	}
+	return getDirectSoundOutput(desc->euIndex);
+
+}
+
 ElaborationUnit* InputOutputFactory::getDirectSoundOutput(int instanceIndex)
 {
 	moduleServices->pLogger->writeLine("Creating DirectSound output");
@@ -259,6 +275,46 @@ ElaborationUnit* InputOutputFactory::getDirectSoundOutput(int instanceIndex)
 		moduleServices->pLogger->writeLine("Unable to create Direct Sound");
 		return NULL;
 	}
+}
+
+ElaborationUnit* InputOutputFactory::getMIDIInByName(wstring midiInName)
+{
+	unsigned int numDevs = getPhysicalEUInstanceNumber(MIDIIN_INDEX);
+	for (unsigned int i = 0; i < numDevs; i++)
+	{
+		const wchar_t* devName = getNthPhysicalEUInstanceName(MIDIIN_INDEX, i);
+		if (wcscmp(devName, midiInName.c_str()) == 0)
+		{
+			// Create the object
+			MIDIInput* pMidiIn = new MIDIInput(moduleServices);
+			HMIDIIN hMIDIIn;
+			DWORD ThId;
+
+			HANDLE h = ::CreateThread(NULL, 0, &MIDIThreadProc, pMidiIn, 0, &ThId);
+			assert(h);
+			MMRESULT mmres = ::midiInOpen(&hMIDIIn, i, (DWORD_PTR)ThId, NULL, CALLBACK_THREAD);
+			if (mmres == MMSYSERR_NOERROR)
+			{
+				//Object created successfully
+				pMidiIn->SetMIDIInHandle(hMIDIIn);
+				//m_MIDIInDescriptions[i].m_bAllocated = true;
+				addElaborationUnit(pMidiIn);
+				return pMidiIn;
+			}
+			else
+			{
+				//Stop the Thread
+				if (h)
+					::CloseHandle(h);
+				delete pMidiIn;
+
+				return NULL;
+			}
+		}
+	}
+	moduleServices->pLogger->writeLine("Unable to find: %ls", midiInName.c_str());
+		return NULL;
+
 }
 
 ElaborationUnit* InputOutputFactory::getMidiIn(int instanceIndex)
@@ -414,6 +470,20 @@ ElaborationUnit* InputOutputFactory::createPhysicalElaborationUnit(unsigned euIn
 	case PCKEYBOARD_INDEX:
 		return getPCKeyboard(instanceIndex);
 	default:
+		return NULL;
+	}
+}
+
+ElaborationUnit* InputOutputFactory::createNamedPhysicalElaborationUnit(unsigned euIndex, std::wstring name)
+{
+	switch (euIndex)
+	{
+	case DIRECTSOUND_INDEX:
+		return getDirectSoundOutputByName(name);
+	case MIDIIN_INDEX:
+		return getMIDIInByName(name);
+	default:
+		moduleServices->pLogger->writeLine("Other physical elaboration unitsw still to be implemented");
 		return NULL;
 	}
 }

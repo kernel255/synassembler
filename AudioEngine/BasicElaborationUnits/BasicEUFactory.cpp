@@ -158,3 +158,7 @@ void BasicEUFactory::destroyElaborationUnit(ElaborationUnit* peu)
 	removeElaborationUnit(peu);	
 }
 
+ElaborationUnit* BasicEUFactory::createNamedPhysicalElaborationUnit(unsigned euIndex, std::wstring name)
+{
+	return NULL;
+}

@@ -112,7 +112,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		result = TestSimpleOscTransposeTune(algoId);
 		break;
 	case SimpleOscMIDI:
-		result = TestSimpleOscMIDI(algoId);
+		result = TestSimpleOscMIDIWithName(algoId, L"Garagekey groove");
 		break;
 	default:
 		result = 0;
