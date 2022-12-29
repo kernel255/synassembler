@@ -126,7 +126,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	::releaseEngine();
 
-	printf("Finished\n");
+	printf("Finished AudioEngine Test\n");
 
 	_CrtDumpMemoryLeaks();
 
