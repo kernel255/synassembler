@@ -21,6 +21,7 @@ Now you can run SynAssembler from IDE
 * Other guidelines
 
 ### Who do I talk to? ###
+Synthesis
 
 * For any question contact kernel255@gmail.com
 
