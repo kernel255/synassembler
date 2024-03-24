@@ -79,12 +79,15 @@ int _tmain(int argc, _TCHAR* argv[])
 		return 0;
 	}
 
+	//enum UnitTest unitTest = SimpleOsc;
 	//UnitTest unitTest = MixerReadWrite;
 	//UnitTest unitTest = SimpleOscTransposeTune;
 	enum UnitTest unitTest = SimpleOscMIDI;
 	//UnitTest unitTest = WrongEUAddedToAlgo;
 	//Algorith build
 	algoId = ::createAlgorithm();
+
+
 
 	initCompleted = true;
 	int result;
